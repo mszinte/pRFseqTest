@@ -1,0 +1,25 @@
+{
+	"Manufacturer": "Philips",
+	"PatientPosition": "HFS",
+	"SeriesDescription": "ImageMRSERIES",
+	"ProtocolName": "task-hrfmapper_run-1_bold",
+	"SeriesNumber": 4,
+	"AcquisitionNumber": 4,
+	"ImageComments": "FEED",
+	"PhilipsRescaleSlope": 4.01416,
+	"PhilipsRescaleIntercept": 0,
+	"PhilipsScaleSlope": 5.54723e-05,
+	"UsePhilipsFloatNotDisplayScaling": 1,
+	"EchoTime": 0.01689,
+	"RepetitionTime": 1.31702,
+	"ReconMatrixPE": 112,
+	"ImageOrientationPatientDICOM": [
+		0,
+		0.920505,
+		-0.390731,
+		-0,
+		-0.390731,
+		-0.920505	],
+	"ConversionSoftware": "dcm2niix",
+	"ConversionSoftwareVersion": "v1.0.20181125  GCC5.4.0"
+}
