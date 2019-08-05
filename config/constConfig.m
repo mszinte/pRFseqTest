@@ -34,7 +34,7 @@ const.dot_color         =   const.stim_color;                                   
 const.dot_probe_color   =   const.black;                                                        % define fixation dot color when probe
 
 %% Time parameters
-const.TR_dur            =   1.0;                                                                % repetition time
+const.TR_dur            =   1.25;                                                               % repetition time
 const.TR_num            =   (round(const.TR_dur/scr.frame_duration));                           % repetition time in screen frames
 const.bar_dir_num       =   9;                                                                  % number of bar passes and break
 
@@ -69,7 +69,7 @@ const.num_frame_max_blk =   const.blk_step*const.TR_num;                        
 
 %% Stim parameters
 % Noise patches
-const.noise_num         =   2;                                                                  % number of generated patches per kappa
+const.noise_num         =   5;                                                                  % number of generated patches per kappa
 const.stim_size         =   [scr.scr_sizeX/2,scr.scr_sizeY/2];                                  % full screen stimuli size in pixels
 
 const.stim_rect         =   [   scr.x_mid-const.stim_size(1);...                                % rect of the actual stimulus
@@ -77,7 +77,7 @@ const.stim_rect         =   [   scr.x_mid-const.stim_size(1);...                
                                 scr.x_mid+const.stim_size(1);...
                                 scr.y_mid+const.stim_size(2)];
                             
-const.num_steps_kappa   =   3;%15;                                                                 % number of kappa steps
+const.num_steps_kappa   =   15;                                                                 % number of kappa steps
 const.noise_kappa       =   [0,10.^(linspace(-1,1.5,const.num_steps_kappa-1))];                 % von misses filter kappa parameter (1st = noise, last = less noisy)
 const.good_4_harder     =   3;                                                                  % amount of trials before (harder) staircase update
 const.bad_4_easier      =   1;                                                                  % amount of trials before (easier) staircase update
