@@ -7,9 +7,9 @@
 
 % Version description
 % ===================
-% Experiment in which we first used a full screen 4 direction (left/right/up/down)
-% bar pass stimuli in a attetion to the bar experiment to pretest some sequence and focus on frontal
-% and subcortical structures
+% Experiment in which we first use a full screen 4 direction (left/right/up/down) pRF
+% bar pass stimuli with an attetion toward the bar to pretest 3T Prisma acquisition 
+% sequences optimal for (occipital, parietal) frontal and subcortical structures.
 
 % TO DO
 % =====
@@ -18,7 +18,10 @@
 % Siemens button press values in new scanner
 % Siemens triggers of first TR
 % Sequence values of the TR
-% Analysis behavior and eye tracking in python
+% Get informed consent form
+% Get scanner consent form
+% Collect behavioral data in testing room
+% Make analysis behavior and eye tracking in python
 
 % To run
 % ======
