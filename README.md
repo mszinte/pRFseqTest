@@ -1,4 +1,4 @@
-# PRFGAZEMOD
+# pRFseqTEST
 # ==========
 # By :      Martin SZINTE
 # Projet :  pRFseqTest
