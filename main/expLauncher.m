@@ -13,7 +13,6 @@
 
 % TO DO
 % =====
-% Write procedure instructions to put in expLauncher.m
 % ProPixx settings and settings for Siemens Prisma
 % Siemens button press values in new scanner
 % Siemens triggers of first TR
@@ -22,9 +21,6 @@
 % Get scanner consent form
 % Collect behavioral data in testing room
 % Make analysis behavior and eye tracking in python
-
-% To run
-% ======
 
 % First settings
 % --------------
