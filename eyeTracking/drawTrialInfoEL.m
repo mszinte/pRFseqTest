@@ -69,8 +69,7 @@ stimCol                 =   4;
 eyeLinkClearScreen(bgCol);
 
 % Cond2 : fixation direction
-cond2                   =   const.cond2;
-rect_ctr                =   [scr.x_mid,scr.y_mid] + const.stim_offset(cond2,:);
+rect_ctr                =   [scr.x_mid,scr.y_mid];
 
 %% Draw Stimulus
 % Fixation box

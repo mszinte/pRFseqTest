@@ -327,8 +327,8 @@ if const.scanner
 end
 
 %% Eyelink calibration value
-const.maxX              =   scr.scr_sizeX*0.6;                                                 % maximum horizontal amplitude of the screen
-const.maxY              =   scr.scr_sizeY*0.6;                                                 % maximum vertical amplitude of the screen
+const.maxX              =   scr.scr_sizeX*0.5;                                                 % maximum horizontal amplitude of the screen
+const.maxY              =   scr.scr_sizeY*0.5;                                                 % maximum vertical amplitude of the screen
 const.calib_maxX     	=   const.maxX/2;
 const.calib_maxY        =   const.maxY/2;
 const.calib_center      =   [scr.scr_sizeX/2,scr.scr_sizeY/2];
