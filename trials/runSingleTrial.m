@@ -246,7 +246,7 @@ while nbf < num_frame_max
     if time2make
         expDes.texnew           =   Screen('MakeTexture',scr.main,screen_stim,[],[],[],angle);
         
-        % save fix and stim staircase level
+        % save stim staircase level
         expDes.expMat(bar_trials_num(bar_step),11)  =   expDes.stim_stair_val;
 
         % define random number of noise patches
@@ -304,7 +304,7 @@ while nbf < num_frame_max
         if const.tracker
             Eyelink('message','%s',log_txt);
         end
-        expDes.expMat(bar_trials_num(bar_step),15)  =   GetSecs;
+        expDes.expMat(bar_trials_num(bar_step),13)  =   GetSecs;
     end
     
     if trial_start_cond(nbf,t)
@@ -316,7 +316,7 @@ while nbf < num_frame_max
         if const.tracker
             Eyelink('message','%s',log_txt);
         end
-        expDes.expMat(bar_trials_num(bar_step),10) =   GetSecs;
+        expDes.expMat(bar_trials_num(bar_step),9) =   GetSecs;
     end
     
     if trial_end_cond(nbf,t)
@@ -328,7 +328,7 @@ while nbf < num_frame_max
         if const.tracker
             Eyelink('message','%s',log_txt);
         end
-        expDes.expMat(bar_trials_num(bar_step),11)  =   GetSecs;
+        expDes.expMat(bar_trials_num(bar_step),10)  =   GetSecs;
     end
     
     %% Check keyboard
