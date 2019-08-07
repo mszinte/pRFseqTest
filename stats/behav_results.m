@@ -23,7 +23,7 @@ function behav_results(subject,num_run,eyetracker)
 % Get behavioral data
 fprintf(1,'\n\tProcessing data...\n');
 
-file_dir = sprintf('/Users/martin/Dropbox/Experiments/pRFseqTest/data/%s',subject);
+file_dir = sprintf('%s/data/%s',cd,subject);
 
 task1_txt = 'AttendStim';
 task2_1_txt = 'Seq1';
@@ -155,7 +155,6 @@ if eyetracker
     blinkNum = 0;
     blink_start = 0;
     for tTime = 1:size(eye_data_runs,1)
-        
         if ~blink_start
             if eye_data_runs(tTime,2)==-1
                 blinkNum = blinkNum + 1;
@@ -174,12 +173,13 @@ if eyetracker
     end
     
     % nan record around detected blinks
-    befDurBlink = 150;   % duration before blink
+    befDurBlink = 100;   % duration before blink
     aftDurBlink = 150;   % duration after blink
+    eye_data_runs_no_blink = eye_data_runs;
     for tBlink = 1:blinkNum
         blink_onset_offset(tBlink,:) = [blink_onset_offset(tBlink,1)-befDurBlink,blink_onset_offset(tBlink,1)+aftDurBlink];
-        eye_data_runs(eye_data_runs(:,1) >= blink_onset_offset(tBlink,1) & eye_data_runs(:,1) <= blink_onset_offset(tBlink,2),2) = NaN;
-        eye_data_runs(eye_data_runs(:,1) >= blink_onset_offset(tBlink,1) & eye_data_runs(:,1) <= blink_onset_offset(tBlink,2),3) = NaN;
+        eye_data_runs_no_blink(eye_data_runs(:,1) >= blink_onset_offset(tBlink,1) & eye_data_runs_no_blink(:,1) <= blink_onset_offset(tBlink,2),2) = NaN;
+        eye_data_runs_no_blink(eye_data_runs(:,1) >= blink_onset_offset(tBlink,1) & eye_data_runs_no_blink(:,1) <= blink_onset_offset(tBlink,2),3) = NaN;
     end
     
     % compute in time percentage between start and end
@@ -191,9 +191,12 @@ if eyetracker
     eye_data_runs(:,2) = (eye_data_runs(:,2) - (screen_size(1)/2))/ppd;
     eye_data_runs(:,3) = (-1*(eye_data_runs(:,3) - screen_size(2)/2))/ppd;
     
+    eye_data_runs_no_blink(:,2) = (eye_data_runs_no_blink(:,2) - (screen_size(1)/2))/ppd;
+    eye_data_runs_no_blink(:,3) = (-1*(eye_data_runs_no_blink(:,3) - screen_size(2)/2))/ppd;
+       
     % compute mean accuracy and precision
     fix_pos = [0,0];
-    fix_accuracy = [fix_accuracy;sqrt((eye_data_runs(:,2) - fix_pos(1)).^2 + (eye_data_runs(:,3) - fix_pos(2)).^2)];
+    fix_accuracy = [fix_accuracy;sqrt((eye_data_runs_no_blink(:,2) - fix_pos(1)).^2 + (eye_data_runs_no_blink(:,3) - fix_pos(2)).^2)];
     
     % compute mean fixation accuracy
     accuracy_val = nanmean(fix_accuracy);
@@ -202,11 +205,11 @@ if eyetracker
     precision_val = nanstd(fix_accuracy,1);
     
     % compute fixation heatmap
-    eye_data_runs_resample  = resample(eye_data_runs,1,100);
+    eye_data_runs_resample  = resample(eye_data_runs_no_blink,1,100);
     
     radMaxX     = ceil(config.scr.x_mid/ppd);
     radMaxY     = ceil(config.scr.y_mid/ppd);
-    [~,densityFix,xHeatMap,yHeatMap]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX,-radMaxY],[radMaxX,radMaxY],2^8);
+    [~,densityFix,xHeatMap,yHeatMap]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX,-radMaxY],[radMaxX,radMaxY],2^5);
     densityFix_min = min(min(densityFix));
     densityFix_max = max(max(densityFix));
     densityFix = (densityFix - densityFix_min)./(densityFix_max-densityFix_min);
@@ -214,7 +217,7 @@ if eyetracker
     % compute fixation heatmap zoom
     radMaxX_zoom     = ceil(config.scr.x_mid/ppd)/10;
     radMaxY_zoom     = ceil(config.scr.y_mid/ppd)/10;
-    [~,densityFix_zoom,xHeatMap_zoom,yHeatMap_zoom]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX_zoom,-radMaxY_zoom],[radMaxX_zoom,radMaxY_zoom],2^8);
+    [~,densityFix_zoom,xHeatMap_zoom,yHeatMap_zoom]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX_zoom,-radMaxY_zoom],[radMaxX_zoom,radMaxY_zoom],2^5);
     densityFix_min_zoom = min(min(densityFix_zoom));
     densityFix_max_zoom = max(max(densityFix_zoom));
     densityFix_zoom = (densityFix_zoom - densityFix_min_zoom)./(densityFix_max_zoom-densityFix_min_zoom);
@@ -304,7 +307,8 @@ for tRow = 1:numRow
         elseif tRow == 2
             if tCol == 1
                 xPlot       = time_prc_eye;
-                yPlot       = eye_data_runs(:,2);
+                yPlot2      = eye_data_runs(:,2);
+                yPlot       = eye_data_runs_no_blink(:,2);
                 xlim        = [0,1];
                 ylim        = [-5,5];
                 xtick       = 0:0.1:1;
@@ -313,7 +317,8 @@ for tRow = 1:numRow
                 fig_title   = 'Eye horizontal position';
             elseif tCol == 2
                 xPlot       = time_prc_eye;
-                yPlot       = eye_data_runs(:,3);
+                yPlot2      = eye_data_runs(:,3);
+                yPlot      = eye_data_runs_no_blink(:,3);
                 xlim        = [0,1];
                 ylim        = [-5,5];
                 xtick       = 0:0.1:1;
@@ -343,7 +348,11 @@ for tRow = 1:numRow
         
         % plot data
         if tCol < 3
+            if tRow == 2
+                plot(xPlot,yPlot2,'LineWidth',2,'Color',[0.8,0,0]);
+            end
             plot(xPlot,yPlot,'LineWidth',2,'Color',resCol);
+            
         else
             contourf(xHeatMap_val,yHeatMap_val,densityFix_val,5,'linestyle','none');
         end
@@ -465,7 +474,7 @@ for tRow = 1:numRow
         
         % set figure 
         set(gca,'XLim',xlim+[-xrange*0.35,xrange*0.45],'YLim',ylim+[-yrange*0.4,yrange*0.4],'XTicklabel','','YTicklabel','','XColor',white,'YColor',white)
-         
+        
     end
 end
 

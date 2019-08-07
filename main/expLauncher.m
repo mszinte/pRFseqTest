@@ -41,10 +41,6 @@ const.scanner           =   0;              % run in MRI scanner                
 const.scannerTest       =   1;              % run with T returned at TR time                    0 = NO  , 1 = YES
 const.room              =   2;              % run in MRI or eye-tracking room                   1 = MRI , 2 = eye-tracking
 
-% Durations
-% ---------
-% 1 SESSION OF 35 min each of run + topup
-% AttendStim: 5 x 3:00 min (150 TR)
 
 % Run order
 % ---------
