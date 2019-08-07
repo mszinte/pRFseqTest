@@ -327,6 +327,7 @@ if const.scanner
 end
 
 %% Eyelink calibration value
+const.ppd               =   vaDeg2pix(1,scr);                                                  % get one pixel per degree
 const.maxX              =   scr.scr_sizeX*0.5;                                                 % maximum horizontal amplitude of the screen
 const.maxY              =   scr.scr_sizeY*0.5;                                                 % maximum vertical amplitude of the screen
 const.calib_maxX     	=   const.maxX/2;

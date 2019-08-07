@@ -8,7 +8,7 @@
 % Version description
 % ===================
 % Experiment in which we first use a full screen 4 direction (left/right/up/down) pRF
-% bar pass stimuli with an attetion toward the bar to pretest 3T Prisma acquisition 
+% bar pass stimuli with an attetion toward the bar to pretest 3T Prisma acquisition
 % sequences optimal for (occipital, parietal) frontal and subcortical structures.
 
 % TO DO
@@ -17,10 +17,7 @@
 % Siemens button press values in new scanner
 % Siemens triggers of first TR
 % Sequence values of the TR
-% Get informed consent form
-% Get scanner consent form
 % Collect behavioral data in testing room
-% Make analysis behavior and eye tracking in python
 
 % First settings
 % --------------
@@ -78,12 +75,16 @@ cd(dir(1:end-18));
 
 % Add Matlab path
 % ---------------
-addpath('config','main','conversion','eyeTracking','instructions','trials','stim');
+addpath('config','main','conversion','eyeTracking','instructions','trials','stim','stats');
 
 % Subject configuration
 % ---------------------
 [const]                 =   sbjConfig(const);
                         
-% Main run:
-% ---------
+% Main run
+% --------
 main(const);
+
+% Analyse data
+% ------------
+behav_results(const.sjct,const.runNum,const.tracker)

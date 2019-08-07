@@ -1,0 +1,1523 @@
+** CONVERTED FROM /Users/martin/Dropbox/Experiments/pRFseqTest/data/sub-001/func/sub-001_task-AttendStimSeq2_run-1_eyeData.edf using edfapi 4.0 MacOS X Jul  7 2014 on Wed Aug  7 09:41:57 2019
+** DATE: Tue Aug  6 15:53:09 2019
+** TYPE: EDF_FILE BINARY EVENT SAMPLE TAGGED
+** VERSION: EYELINK II 1
+** SOURCE: EYELINK CL
+** EYELINK II CL v3.0 Oct 23 2006
+** CAMERA: EyeLink CL Version 1.4 Sensor=BFE
+** SERIAL NUMBER: CL1-61N29
+** CAMERA_CONFIG: 61N29140.SCD
+**
+
+MSG	548555 RECCFG CR 1000 1 1 
+MSG	548555 GAZE_COORDS 0.00 0.00 1919.00 1079.00
+MSG	548555 THRESHOLDS R 102 215
+MSG	548555 ELCL_PROC CENTROID (3)
+MSG	548555 ELCL_PCR_PARAM 5 3.0
+MSG	548556 !MODE RECORD CR 1000 1 1
+START	548557 	RIGHT	EVENTS
+PRESCALER	1
+VPRESCALER	1
+PUPIL	DIAMETER
+EVENTS	GAZE	RIGHT	RATE	1000.00	TRACKING	CR	FILTER	1
+SBLINK R 548557
+EBLINK R 548557	548600	44
+SFIX R   548611
+MSG	548639 RECORD_START
+EFIX R   548611	548932	322	  839.5	  576.7	   8939
+SSACC R  548933
+ESACC R  548933	548978	46	  836.5	  576.7	  787.7	  733.7	   5.94	    430
+SFIX R   548979
+EFIX R   548979	549070	92	  787.5	  746.0	   8567
+SSACC R  549071
+SBLINK R 549097
+EBLINK R 549097	549338	242
+ESACC R  549071	549366	296	  788.7	  748.1	 2813.8	 3270.0	  54.45	   3270
+SFIX R   549367
+EFIX R   549367	549526	160	 3037.9	 3270.0	   2674
+SSACC R  549527
+ESACC R  549527	549544	18	 3178.5	 3270.0	 3189.2	 3270.0	   0.12	     66
+SFIX R   549545
+EFIX R   549545	549575	31	 3205.4	 3270.0	   2814
+SSACC R  549576
+ESACC R  549576	549602	27	 3224.2	 3270.0	 3253.7	 3270.0	   0.33	     57
+SFIX R   549603
+EFIX R   549603	549820	218	 3270.0	 3270.0	   2961
+SSACC R  549821
+ESACC R  549821	549827	7	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     69
+SFIX R   549828
+EFIX R   549828	549884	57	 3270.0	 3270.0	   3079
+SSACC R  549885
+ESACC R  549885	549916	32	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	    139
+SFIX R   549917
+EFIX R   549917	549944	28	 3270.0	 3270.0	   3287
+SSACC R  549945
+ESACC R  549945	549951	7	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     70
+SFIX R   549952
+EFIX R   549952	550005	54	 3270.0	 3270.0	   3332
+SSACC R  550006
+ESACC R  550006	550087	82	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	    161
+SFIX R   550088
+EFIX R   550088	550168	81	 3270.0	 3270.0	   3411
+SSACC R  550169
+ESACC R  550169	550254	86	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	   1356
+SFIX R   550255
+EFIX R   550255	550439	185	 3270.0	 3270.0	   3496
+SSACC R  550440
+ESACC R  550440	550490	51	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	    375
+SFIX R   550491
+EFIX R   550491	550566	76	 3270.0	 3270.0	   3291
+SSACC R  550567
+ESACC R  550567	550697	131	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	    636
+SFIX R   550698
+EFIX R   550698	550841	144	 3270.0	 3270.0	   3408
+SSACC R  550842
+ESACC R  550842	550856	15	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     71
+SFIX R   550857
+EFIX R   550857	550941	85	 3270.0	 3270.0	   3441
+SSACC R  550942
+ESACC R  550942	550955	14	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     87
+SFIX R   550956
+EFIX R   550956	551199	244	 3270.0	 3270.0	   3345
+SSACC R  551200
+ESACC R  551200	551210	11	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     74
+SFIX R   551211
+EFIX R   551211	551404	194	 3270.0	 3270.0	   3453
+SSACC R  551405
+ESACC R  551405	551419	15	 3270.0	 3270.0	 3270.0	 3270.0	   0.00	     64
+SFIX R   551420
+MSG	551573 bar pass 1 started at 30138.251759
+EFIX R   551420	551664	245	 3270.0	 3270.0	   3487
+SSACC R  551665
+SBLINK R 551695
+EBLINK R 551695	552349	655
+ESACC R  551665	552359	695	 3270.0	 3270.0	  959.4	  523.2	  48.53	   3270
+SFIX R   552360
+MSG	552833 bar pass 1 event t at 30139.525107
+MSG	552843 bar pass 1 trial onset at 30139.535581
+MSG	552844 bar pass 1 event t at 30139.536491
+MSG	554094 bar pass 1 trial offset at 30140.785364
+MSG	554102 bar pass 1 trial onset at 30140.793265
+MSG	554103 bar pass 1 event t at 30140.794813
+EFIX R   552360	554281	1922	  961.1	  521.5	   9389
+SSACC R  554282
+ESACC R  554282	554302	21	  960.5	  521.7	  933.8	  522.1	   0.97	    107
+SFIX R   554303
+EFIX R   554303	554402	100	  940.7	  520.6	   9604
+SSACC R  554403
+ESACC R  554403	554422	20	  941.6	  521.1	  967.6	  523.0	   0.95	    104
+SFIX R   554423
+MSG	555343 bar pass 1 trial offset at 30142.035765
+MSG	555351 bar pass 1 trial onset at 30142.043066
+MSG	555351 bar pass 1 event t at 30142.043351
+MSG	556593 bar pass 1 trial offset at 30143.285275
+MSG	556601 bar pass 1 trial onset at 30143.293560
+MSG	556602 bar pass 1 event t at 30143.293862
+EFIX R   554423	557273	2851	  956.9	  525.7	   9697
+SSACC R  557274
+ESACC R  557274	557294	21	  956.6	  529.2	  933.0	  531.4	   0.87	     95
+SFIX R   557295
+EFIX R   557295	557409	115	  939.9	  529.5	   9630
+SSACC R  557410
+ESACC R  557410	557429	20	  941.6	  529.9	  964.8	  531.8	   0.85	    104
+SFIX R   557430
+EFIX R   557430	557680	251	  959.2	  531.9	   9613
+SSACC R  557681
+ESACC R  557681	557687	7	  956.4	  532.3	  949.3	  527.9	   0.31	     43
+SFIX R   557688
+MSG	557843 bar pass 1 trial offset at 30144.534997
+MSG	557851 bar pass 1 trial onset at 30144.543041
+MSG	557851 bar pass 1 event t at 30144.543303
+MSG	559093 bar pass 1 trial offset at 30145.784937
+MSG	559101 bar pass 1 trial onset at 30145.793045
+MSG	559101 bar pass 1 event t at 30145.793312
+MSG	560343 bar pass 1 trial offset at 30147.035515
+MSG	560351 bar pass 1 trial onset at 30147.042724
+MSG	560351 bar pass 1 event t at 30147.042997
+MSG	561592 bar pass 1 trial offset at 30148.284382
+MSG	561601 bar pass 1 trial onset at 30148.292720
+MSG	561601 bar pass 1 event t at 30148.292973
+EFIX R   557688	562115	4428	  948.4	  530.6	   9636
+SSACC R  562116
+ESACC R  562116	562133	18	  946.6	  534.2	  960.4	  532.0	   0.51	     64
+SFIX R   562134
+EFIX R   562134	562367	234	  954.8	  531.3	   9650
+SSACC R  562368
+ESACC R  562368	562376	9	  953.7	  530.1	  940.1	  531.4	   0.50	     61
+SFIX R   562377
+MSG	562843 bar pass 1 trial offset at 30149.534556
+MSG	562851 bar pass 1 trial onset at 30149.542819
+MSG	562851 bar pass 1 event t at 30149.543058
+EFIX R   562377	562904	528	  945.4	  531.5	   9710
+SSACC R  562905
+ESACC R  562905	562922	18	  946.8	  530.7	  949.2	  535.6	   0.20	     45
+SFIX R   562923
+EFIX R   562923	563372	450	  945.8	  530.7	   9796
+SSACC R  563373
+SBLINK R 563393
+EBLINK R 563393	563489	97
+ESACC R  563373	563551	179	  941.9	  539.0	  949.5	  537.0	   0.29	   3270
+SFIX R   563552
+MSG	564093 bar pass 1 trial offset at 30150.784782
+MSG	564101 bar pass 1 trial onset at 30150.793269
+MSG	564102 bar pass 1 event t at 30150.793536
+EFIX R   563552	564108	557	  942.7	  540.6	   9764
+SSACC R  564109
+ESACC R  564109	564126	18	  947.3	  536.9	  957.6	  530.8	   0.44	     66
+SFIX R   564127
+EFIX R   564127	564421	295	  954.9	  532.8	   9695
+SSACC R  564422
+ESACC R  564422	564441	20	  954.4	  529.5	  933.6	  525.5	   0.77	     96
+SFIX R   564442
+EFIX R   564442	564614	173	  939.3	  525.0	   9670
+SSACC R  564615
+ESACC R  564615	564624	10	  940.5	  525.5	  953.3	  528.7	   0.48	     55
+SFIX R   564625
+EFIX R   564625	565002	378	  949.2	  527.0	   9750
+SSACC R  565003
+ESACC R  565003	565105	103	  948.7	  534.5	  951.5	  520.5	   0.52	   3270
+SFIX R   565106
+MSG	565348 bar pass 1 trial offset at 30152.035269
+MSG	565363 bar pass 1 - 124/125 drawn bar stimuli - and 0/0 probes - 2 missed sync on 1500 frames, 0.1(mean/median delay = 6.7/6.7 ms)
+MSG	565364 bar pass 1 stopped at 30152.054924
+MSG	565483 bar pass 2 started at 30152.174258
+MSG	565502 bar pass 2 trial onset at 30152.193847
+MSG	565504 bar pass 2 event t at 30152.195727
+MSG	565886 bar pass 2 stimulus probe onset at 30152.576669
+MSG	566453 bar pass 2 event e at 30153.143628
+MSG	566768 bar pass 2 trial offset at 30153.459703
+MSG	566776 bar pass 2 trial onset at 30153.467987
+MSG	566777 bar pass 2 event t at 30153.468366
+MSG	567143 bar pass 2 stimulus probe onset at 30153.834551
+MSG	567827 bar pass 2 event b at 30154.518193
+MSG	567829 stimulus staircase updated to 7.00 at 30154.520364
+MSG	568051 bar pass 2 trial offset at 30154.742715
+MSG	568060 bar pass 2 trial onset at 30154.751264
+MSG	568060 bar pass 2 event t at 30154.751569
+MSG	568426 bar pass 2 stimulus probe onset at 30155.117645
+MSG	569035 bar pass 2 event e at 30155.726613
+MSG	569335 bar pass 2 trial offset at 30156.026295
+MSG	569343 bar pass 2 trial onset at 30156.034330
+MSG	569343 bar pass 2 event t at 30156.034657
+MSG	569710 bar pass 2 stimulus probe onset at 30156.401179
+MSG	570393 bar pass 2 event b at 30157.084580
+MSG	570618 bar pass 2 trial offset at 30157.309554
+MSG	570626 bar pass 2 trial onset at 30157.317765
+MSG	570627 bar pass 2 event t at 30157.318075
+MSG	570993 bar pass 2 stimulus probe onset at 30157.684464
+MSG	571710 bar pass 2 event e at 30158.401342
+MSG	571713 stimulus staircase updated to 8.00 at 30158.401862
+EFIX R   565106	571832	6727	  948.9	  531.4	   9838
+SSACC R  571833
+ESACC R  571833	571852	20	  950.0	  532.4	  957.0	  535.6	   0.28	     59
+SFIX R   571853
+MSG	571876 bar pass 2 trial offset at 30158.567385
+MSG	571884 bar pass 2 trial onset at 30158.575357
+MSG	571884 bar pass 2 event t at 30158.575665
+MSG	572251 bar pass 2 stimulus probe onset at 30158.942624
+MSG	573101 bar pass 2 event e at 30159.792457
+MSG	573168 bar pass 2 trial offset at 30159.859146
+MSG	573176 bar pass 2 trial onset at 30159.867364
+MSG	573176 bar pass 2 event t at 30159.867658
+MSG	573542 bar pass 2 stimulus probe onset at 30160.233682
+MSG	574293 bar pass 2 event e at 30160.984117
+EFIX R   571853	574301	2449	  949.4	  531.0	   9917
+SSACC R  574302
+ESACC R  574302	574320	19	  951.9	  526.5	  970.6	  527.8	   0.68	     74
+SFIX R   574321
+MSG	574460 bar pass 2 trial offset at 30161.150798
+MSG	574468 bar pass 2 trial onset at 30161.159092
+MSG	574468 bar pass 2 event t at 30161.159386
+EFIX R   574321	574472	152	  963.4	  528.5	   9832
+SSACC R  574473
+ESACC R  574473	574491	19	  961.3	  528.7	  952.9	  532.8	   0.34	     66
+SFIX R   574492
+MSG	574835 bar pass 2 stimulus probe onset at 30161.525973
+MSG	575577 bar pass 2 event b at 30162.267711
+MSG	575577 stimulus staircase updated to 7.00 at 30162.267972
+MSG	575726 bar pass 2 trial offset at 30162.417172
+MSG	575735 bar pass 2 trial onset at 30162.425802
+MSG	575735 bar pass 2 event t at 30162.426036
+EFIX R   574492	576082	1591	  953.6	  532.9	   9793
+SSACC R  576083
+ESACC R  576083	576099	17	  954.2	  532.6	  958.1	  534.9	   0.17	     40
+SFIX R   576100
+MSG	576101 bar pass 2 stimulus probe onset at 30162.792095
+MSG	576935 bar pass 2 event e at 30163.625687
+MSG	576993 bar pass 2 trial offset at 30163.683968
+MSG	577001 bar pass 2 trial onset at 30163.692091
+MSG	577001 bar pass 2 event t at 30163.692338
+MSG	577368 bar pass 2 stimulus probe onset at 30164.058749
+MSG	578210 bar pass 2 event e at 30164.900798
+MSG	578210 stimulus staircase updated to 8.00 at 30164.901055
+MSG	578243 bar pass 2 trial offset at 30164.933895
+MSG	578251 bar pass 2 trial onset at 30164.942084
+MSG	578251 bar pass 2 event t at 30164.942299
+EFIX R   576100	578340	2241	  953.5	  534.3	   9853
+SSACC R  578341
+ESACC R  578341	578358	18	  949.6	  536.6	  961.9	  540.5	   0.47	     56
+SFIX R   578359
+MSG	578618 bar pass 2 stimulus probe onset at 30165.308912
+EFIX R   578359	578632	274	  955.1	  538.2	   9826
+SSACC R  578633
+ESACC R  578633	578653	21	  953.5	  538.7	  953.3	  536.3	   0.09	     67
+SFIX R   578654
+MSG	579493 bar pass 2 trial offset at 30166.183912
+MSG	579501 bar pass 2 trial onset at 30166.192045
+MSG	579501 bar pass 2 event t at 30166.192273
+MSG	579868 bar pass 2 stimulus probe onset at 30166.558892
+MSG	580743 bar pass 2 trial offset at 30167.433842
+MSG	580751 bar pass 2 trial onset at 30167.442267
+MSG	580751 bar pass 2 event t at 30167.442486
+EFIX R   578654	580799	2146	  952.9	  532.3	   9860
+SSACC R  580800
+ESACC R  580800	580814	15	  951.5	  527.9	  955.4	  539.9	   0.46	     49
+SFIX R   580815
+MSG	581117 bar pass 2 stimulus probe onset at 30167.808262
+MSG	581910 bar pass 2 event b at 30168.600575
+MSG	581992 bar pass 2 trial offset at 30168.683274
+MSG	582001 bar pass 2 trial onset at 30168.691682
+MSG	582001 bar pass 2 event t at 30168.691936
+MSG	582368 bar pass 2 stimulus probe onset at 30169.058494
+MSG	583067 bar pass 2 event e at 30169.758242
+MSG	583243 bar pass 2 trial offset at 30169.933621
+MSG	583251 bar pass 2 trial onset at 30169.941798
+MSG	583251 bar pass 2 event t at 30169.942008
+MSG	583618 bar pass 2 stimulus probe onset at 30170.308724
+MSG	584217 bar pass 2 event b at 30170.908253
+MSG	584218 stimulus staircase updated to 7.00 at 30170.908508
+EFIX R   580815	584479	3665	  950.0	  538.5	   9731
+SSACC R  584480
+MSG	584493 bar pass 2 trial offset at 30171.183548
+ESACC R  584480	584499	20	  946.8	  544.4	  964.4	  547.4	   0.65	     77
+SFIX R   584500
+MSG	584501 bar pass 2 trial onset at 30171.191586
+MSG	584501 bar pass 2 event t at 30171.191802
+MSG	584868 bar pass 2 stimulus probe onset at 30171.558653
+EFIX R   584500	584928	429	  957.0	  543.4	   9416
+SSACC R  584929
+ESACC R  584929	584941	13	  955.4	  540.2	  934.0	  542.7	   0.79	     77
+SFIX R   584942
+EFIX R   584942	585111	170	  940.3	  541.6	   9409
+SSACC R  585112
+ESACC R  585112	585129	18	  940.6	  542.0	  954.9	  545.0	   0.53	     69
+SFIX R   585130
+MSG	585485 bar pass 2 event e at 30172.175380
+MSG	585743 bar pass 2 trial offset at 30172.433529
+MSG	585751 bar pass 2 trial onset at 30172.441643
+MSG	585751 bar pass 2 event t at 30172.441835
+MSG	586118 bar pass 2 stimulus probe onset at 30172.808584
+MSG	586751 bar pass 2 event b at 30173.441533
+MSG	586993 bar pass 2 trial offset at 30173.683538
+MSG	587001 bar pass 2 trial onset at 30173.691653
+MSG	587001 bar pass 2 event t at 30173.691866
+MSG	587368 bar pass 2 stimulus probe onset at 30174.058437
+MSG	588110 bar pass 2 event b at 30174.800324
+MSG	588110 stimulus staircase updated to 6.00 at 30174.800563
+MSG	588243 bar pass 2 trial offset at 30174.933343
+MSG	588251 bar pass 2 trial onset at 30174.941555
+MSG	588251 bar pass 2 event t at 30174.941750
+MSG	588618 bar pass 2 stimulus probe onset at 30175.308356
+MSG	589344 bar pass 2 event e at 30176.034209
+MSG	589493 bar pass 2 trial offset at 30176.183286
+MSG	589501 bar pass 2 trial onset at 30176.191439
+MSG	589501 bar pass 2 event t at 30176.191632
+MSG	589868 bar pass 2 stimulus probe onset at 30176.558245
+MSG	590609 bar pass 2 event b at 30177.299268
+MSG	590743 bar pass 2 trial offset at 30177.433222
+MSG	590751 bar pass 2 trial onset at 30177.441430
+MSG	590751 bar pass 2 event t at 30177.441616
+MSG	591117 bar pass 2 stimulus probe onset at 30177.807890
+MSG	591993 bar pass 2 trial offset at 30178.683085
+MSG	591993 bar pass 2 event b at 30178.683335
+MSG	591993 stimulus staircase updated to 5.00 at 30178.683517
+MSG	592001 bar pass 2 trial onset at 30178.691537
+MSG	592001 bar pass 2 event t at 30178.691753
+MSG	592367 bar pass 2 stimulus probe onset at 30179.057862
+EFIX R   585130	592432	7303	  948.1	  544.9	   9502
+SSACC R  592433
+ESACC R  592433	592453	21	  948.2	  546.3	  960.8	  549.6	   0.48	     89
+SFIX R   592454
+EFIX R   592454	592576	123	  957.1	  549.4	   9852
+SSACC R  592577
+ESACC R  592577	592586	10	  954.8	  549.2	  938.7	  550.0	   0.59	     67
+SFIX R   592587
+MSG	593218 bar pass 2 event e at 30179.908494
+MSG	593243 bar pass 2 trial offset at 30179.933132
+MSG	593251 bar pass 2 trial onset at 30179.941113
+MSG	593251 bar pass 2 event t at 30179.941310
+EFIX R   592587	593349	763	  944.3	  550.8	   9806
+SSACC R  593350
+ESACC R  593350	593357	8	  948.0	  553.1	  960.0	  557.6	   0.47	     58
+SFIX R   593358
+MSG	593618 bar pass 2 stimulus probe onset at 30180.308018
+MSG	594452 bar pass 2 event e at 30181.141735
+MSG	594493 bar pass 2 trial offset at 30181.183089
+MSG	594501 bar pass 2 trial onset at 30181.191240
+MSG	594501 bar pass 2 event t at 30181.191450
+MSG	594867 bar pass 2 stimulus probe onset at 30181.557681
+MSG	595672 bar pass 2 event b at 30182.357766
+MSG	595673 stimulus staircase updated to 6.00 at 30182.362780
+MSG	595743 bar pass 2 trial offset at 30182.432958
+MSG	595751 bar pass 2 trial onset at 30182.441055
+MSG	595751 bar pass 2 event t at 30182.441248
+MSG	596118 bar pass 2 stimulus probe onset at 30182.807899
+MSG	596843 bar pass 2 event e at 30183.532613
+MSG	596993 bar pass 2 trial offset at 30183.682651
+MSG	597001 bar pass 2 trial onset at 30183.690698
+MSG	597001 bar pass 2 event t at 30183.690911
+MSG	597367 bar pass 2 stimulus probe onset at 30184.057472
+MSG	598160 bar pass 2 event b at 30184.849982
+MSG	598160 stimulus staircase updated to 7.00 at 30184.850194
+MSG	598243 bar pass 2 trial offset at 30184.932875
+MSG	598251 bar pass 2 trial onset at 30184.941022
+MSG	598251 bar pass 2 event t at 30184.941214
+MSG	598618 bar pass 2 stimulus probe onset at 30185.307621
+MSG	599493 bar pass 2 trial offset at 30186.182779
+MSG	599493 bar pass 2 event b at 30186.183031
+MSG	599501 bar pass 2 trial onset at 30186.190947
+MSG	599501 bar pass 2 event t at 30186.191140
+EFIX R   593358	599538	6181	  950.2	  559.1	   9900
+SSACC R  599539
+ESACC R  599539	599559	21	  947.9	  558.7	  954.1	  558.0	   0.23	     69
+SFIX R   599560
+MSG	599868 bar pass 2 stimulus probe onset at 30186.557774
+MSG	600734 bar pass 2 event e at 30187.424090
+MSG	600734 stimulus staircase updated to 8.00 at 30187.424350
+MSG	600743 bar pass 2 trial offset at 30187.432517
+MSG	600751 bar pass 2 trial onset at 30187.440684
+MSG	600751 bar pass 2 event t at 30187.440875
+MSG	601118 bar pass 2 stimulus probe onset at 30187.807628
+MSG	601993 bar pass 2 trial offset at 30188.682330
+MSG	602001 bar pass 2 trial onset at 30188.690804
+MSG	602001 bar pass 2 event t at 30188.691004
+MSG	602368 bar pass 2 stimulus probe onset at 30189.057656
+MSG	603193 bar pass 2 event e at 30189.882678
+MSG	603243 bar pass 2 trial offset at 30189.932531
+MSG	603251 bar pass 2 trial onset at 30189.940682
+MSG	603251 bar pass 2 event t at 30189.940874
+MSG	603618 bar pass 2 stimulus probe onset at 30190.307538
+MSG	604393 bar pass 2 event e at 30191.082577
+MSG	604493 bar pass 2 trial offset at 30191.182512
+MSG	604501 bar pass 2 trial onset at 30191.190609
+MSG	604501 bar pass 2 event t at 30191.190816
+MSG	604868 bar pass 2 stimulus probe onset at 30191.557503
+MSG	605535 bar pass 2 event b at 30192.224285
+MSG	605535 stimulus staircase updated to 7.00 at 30192.224529
+MSG	605743 bar pass 2 trial offset at 30192.432432
+MSG	605745 bar pass 2 - 400/400 drawn bar stimuli - and 160/160 probes - 109 missed sync on 4800 frames, 2.3(mean/median delay = 2.7/1.9 ms)
+MSG	605745 bar pass 2 stopped at 30192.434439
+MSG	605864 bar pass 3 started at 30192.553536
+MSG	605877 bar pass 3 trial onset at 30192.566861
+MSG	605879 bar pass 3 event t at 30192.568683
+EFIX R   599560	606164	6605	  944.6	  555.3	  10153
+SSACC R  606165
+SBLINK R 606224
+EBLINK R 606224	606310	87
+ESACC R  606165	606363	199	  944.7	  558.1	  952.5	  557.1	   0.29	    995
+SFIX R   606364
+EFIX R   606364	606588	225	  944.3	  555.3	  10279
+SSACC R  606589
+ESACC R  606589	606595	7	  946.6	  555.5	  952.9	  561.1	   0.31	     49
+SFIX R   606596
+EFIX R   606596	606999	404	  953.1	  556.3	  10251
+SSACC R  607000
+SBLINK R 607023
+MSG	607126 bar pass 3 trial offset at 30193.815543
+MSG	607135 bar pass 3 trial onset at 30193.824092
+MSG	607135 bar pass 3 event t at 30193.824529
+EBLINK R 607023	607141	119
+ESACC R  607000	607199	200	  955.8	  560.5	  950.5	  546.9	   0.53	    926
+SFIX R   607200
+EFIX R   607200	607336	137	  942.4	  561.3	  10123
+SSACC R  607337
+ESACC R  607337	607345	9	  946.1	  561.9	  958.9	  567.3	   0.51	     62
+SFIX R   607346
+EFIX R   607346	608037	692	  954.3	  556.8	  10147
+SSACC R  608038
+ESACC R  608038	608045	8	  953.9	  554.0	  943.4	  557.0	   0.40	     51
+SFIX R   608046
+MSG	608376 bar pass 3 trial offset at 30195.065451
+MSG	608384 bar pass 3 trial onset at 30195.073983
+MSG	608385 bar pass 3 event t at 30195.074292
+EFIX R   608046	608871	826	  949.0	  555.9	  10231
+SSACC R  608872
+ESACC R  608872	608892	21	  950.5	  556.0	  960.4	  552.8	   0.38	     75
+SFIX R   608893
+EFIX R   608893	609196	304	  958.6	  555.0	  10313
+SSACC R  609197
+ESACC R  609197	609206	10	  958.8	  555.0	  944.2	  551.2	   0.55	     66
+SFIX R   609207
+EFIX R   609207	609466	260	  947.9	  552.5	  10341
+SSACC R  609467
+ESACC R  609467	609485	19	  948.6	  552.0	  959.2	  549.6	   0.40	     66
+SFIX R   609486
+MSG	609626 bar pass 3 trial offset at 30196.315255
+MSG	609634 bar pass 3 trial onset at 30196.323927
+MSG	609635 bar pass 3 event t at 30196.324230
+EFIX R   609486	609928	443	  956.0	  553.2	  10324
+SSACC R  609929
+ESACC R  609929	610041	113	  955.1	  560.6	  963.9	  546.1	   0.62	   3270
+SFIX R   610042
+EFIX R   610042	610272	231	  953.3	  560.9	  10332
+SSACC R  610273
+SBLINK R 610302
+EBLINK R 610302	610359	58
+ESACC R  610273	610417	145	  954.7	  560.8	  955.8	  534.8	   0.95	   3270
+SFIX R   610418
+MSG	610876 bar pass 3 trial offset at 30197.564923
+MSG	610884 bar pass 3 trial onset at 30197.573767
+MSG	610885 bar pass 3 event t at 30197.574075
+EFIX R   610418	611168	751	  947.9	  553.5	  10306
+SSACC R  611169
+ESACC R  611169	611186	18	  947.9	  557.3	  956.7	  548.4	   0.46	     55
+SFIX R   611187
+EFIX R   611187	611504	318	  952.4	  550.7	  10253
+SSACC R  611505
+ESACC R  611505	611525	21	  952.1	  552.4	  927.6	  550.8	   0.90	    103
+SFIX R   611526
+EFIX R   611526	611689	164	  933.0	  551.1	  10246
+SSACC R  611690
+ESACC R  611690	611704	15	  933.4	  551.8	  955.5	  551.7	   0.81	     79
+SFIX R   611705
+MSG	612126 bar pass 3 trial offset at 30198.814815
+MSG	612134 bar pass 3 trial onset at 30198.823531
+MSG	612135 bar pass 3 event t at 30198.823850
+EFIX R   611705	612281	577	  945.1	  552.7	  10167
+SSACC R  612282
+ESACC R  612282	612298	17	  945.6	  552.8	  953.0	  547.6	   0.33	     50
+SFIX R   612299
+EFIX R   612299	612681	383	  951.2	  550.3	  10125
+SSACC R  612682
+SBLINK R 612707
+EBLINK R 612707	612756	50
+ESACC R  612682	612816	135	  953.0	  561.2	  962.8	  543.1	   0.75	   3270
+SFIX R   612817
+EFIX R   612817	613204	388	  953.7	  554.4	  10186
+SSACC R  613205
+ESACC R  613205	613213	9	  953.0	  552.1	  940.5	  554.4	   0.46	     56
+SFIX R   613214
+MSG	613376 bar pass 3 trial offset at 30200.065201
+MSG	613384 bar pass 3 trial onset at 30200.073671
+MSG	613385 bar pass 3 event t at 30200.073972
+EFIX R   613214	613618	405	  947.8	  553.5	  10196
+SSACC R  613619
+ESACC R  613619	613635	17	  949.8	  553.1	  960.6	  551.1	   0.40	     50
+SFIX R   613636
+EFIX R   613636	614246	611	  957.0	  555.4	  10191
+SSACC R  614247
+ESACC R  614247	614263	17	  958.0	  553.8	  947.3	  547.8	   0.45	     56
+SFIX R   614264
+MSG	614626 bar pass 3 trial offset at 30201.315113
+MSG	614634 bar pass 3 trial onset at 30201.323642
+MSG	614635 bar pass 3 event t at 30201.323937
+EFIX R   614264	615090	827	  951.6	  551.9	  10248
+SSACC R  615091
+ESACC R  615091	615108	18	  953.3	  552.8	  963.0	  551.3	   0.36	     61
+SFIX R   615109
+EFIX R   615109	615346	238	  957.4	  551.6	  10264
+SSACC R  615347
+ESACC R  615347	615366	20	  955.0	  552.8	  940.5	  548.4	   0.55	     76
+SFIX R   615367
+EFIX R   615367	615855	489	  946.6	  551.1	  10271
+SSACC R  615856
+ESACC R  615856	615873	18	  949.6	  551.5	  956.1	  552.8	   0.24	     47
+SFIX R   615874
+MSG	615876 bar pass 3 trial offset at 30202.564898
+MSG	615884 bar pass 3 trial onset at 30202.573336
+MSG	615884 bar pass 3 event t at 30202.573614
+EFIX R   615874	616355	482	  954.7	  553.0	  10253
+SSACC R  616356
+ESACC R  616356	616376	21	  954.8	  553.2	  937.7	  548.0	   0.65	     92
+SFIX R   616377
+EFIX R   616377	616574	198	  942.4	  548.9	  10224
+SSACC R  616575
+ESACC R  616575	616584	10	  944.5	  549.3	  958.1	  552.0	   0.51	     62
+SFIX R   616585
+MSG	617126 bar pass 3 trial offset at 30203.815120
+MSG	617134 bar pass 3 trial onset at 30203.822739
+MSG	617134 bar pass 3 event t at 30203.822980
+MSG	618376 bar pass 3 trial offset at 30205.064864
+MSG	618378 bar pass 3 - 125/125 drawn bar stimuli - and 0/0 probes - 1 missed sync on 1500 frames, 0.1(mean/median delay = 6.7/6.7 ms)
+MSG	618378 bar pass 3 stopped at 30205.067353
+MSG	618497 bar pass 4 started at 30205.185952
+MSG	618510 bar pass 4 trial onset at 30205.198505
+MSG	618510 bar pass 4 event t at 30205.199071
+EFIX R   616585	618535	1951	  950.5	  554.3	  10215
+SSACC R  618536
+ESACC R  618536	618549	14	  950.5	  556.8	  931.2	  556.9	   0.70	     70
+SFIX R   618550
+MSG	618876 bar pass 4 stimulus probe onset at 30205.564856
+MSG	619159 bar pass 4 event e at 30205.848069
+MSG	619785 bar pass 4 trial offset at 30206.473697
+MSG	619793 bar pass 4 trial onset at 30206.481695
+MSG	619793 bar pass 4 event t at 30206.481927
+MSG	620175 bar pass 4 stimulus probe onset at 30206.864366
+MSG	620909 bar pass 4 event b at 30207.598030
+MSG	620909 stimulus staircase updated to 8.00 at 30207.598256
+MSG	621050 bar pass 4 trial offset at 30207.739195
+MSG	621059 bar pass 4 trial onset at 30207.747610
+MSG	621059 bar pass 4 event t at 30207.747828
+EFIX R   618550	621075	2526	  940.6	  553.6	   9775
+SSACC R  621076
+ESACC R  621076	621095	20	  944.8	  550.3	  949.3	  539.9	   0.41	     64
+SFIX R   621096
+MSG	621434 bar pass 4 stimulus probe onset at 30208.122570
+MSG	622159 bar pass 4 event b at 30208.848126
+MSG	622351 bar pass 4 trial offset at 30209.039631
+MSG	622359 bar pass 4 trial onset at 30209.047580
+MSG	622359 bar pass 4 event t at 30209.047828
+MSG	622726 bar pass 4 stimulus probe onset at 30209.414536
+MSG	623410 bar pass 4 event e at 30210.098211
+MSG	623651 bar pass 4 trial offset at 30210.339969
+MSG	623659 bar pass 4 trial onset at 30210.348106
+MSG	623660 bar pass 4 event t at 30210.348346
+MSG	624026 bar pass 4 stimulus probe onset at 30210.714457
+MSG	624584 bar pass 4 event b at 30211.273024
+MSG	624585 stimulus staircase updated to 7.00 at 30211.273227
+EFIX R   621096	624943	3848	  950.9	  546.6	   9796
+SSACC R  624944
+MSG	624946 bar pass 4 trial offset at 30211.631345
+MSG	624951 bar pass 4 trial onset at 30211.640130
+MSG	624952 bar pass 4 event t at 30211.640378
+ESACC R  624944	624963	20	  949.6	  548.1	  959.4	  555.2	   0.44	     72
+SFIX R   624964
+MSG	625326 bar pass 4 stimulus probe onset at 30212.014398
+EFIX R   624964	625394	431	  955.2	  551.2	   9762
+SSACC R  625395
+ESACC R  625395	625412	18	  952.6	  549.7	  919.6	  542.9	   1.23	    118
+SFIX R   625413
+EFIX R   625413	625534	122	  931.1	  545.2	   9732
+SSACC R  625535
+ESACC R  625535	625556	22	  932.2	  545.6	  958.4	  555.5	   1.02	    119
+SFIX R   625557
+MSG	626067 bar pass 4 event b at 30212.755734
+MSG	626209 bar pass 4 trial offset at 30212.897429
+MSG	626218 bar pass 4 trial onset at 30212.906151
+MSG	626218 bar pass 4 event t at 30212.906392
+MSG	626584 bar pass 4 stimulus probe onset at 30213.272817
+MSG	627226 bar pass 4 event e at 30213.914588
+MSG	627476 bar pass 4 trial offset at 30214.164329
+MSG	627485 bar pass 4 trial onset at 30214.173034
+MSG	627485 bar pass 4 event t at 30214.173267
+MSG	627851 bar pass 4 stimulus probe onset at 30214.539262
+MSG	628452 bar pass 4 event b at 30215.139912
+MSG	628452 stimulus staircase updated to 6.00 at 30215.140134
+MSG	628750 bar pass 4 trial offset at 30215.438842
+MSG	628759 bar pass 4 trial onset at 30215.447269
+MSG	628759 bar pass 4 event t at 30215.447528
+MSG	629126 bar pass 4 stimulus probe onset at 30215.814071
+MSG	629726 bar pass 4 event e at 30216.414130
+MSG	630034 bar pass 4 trial offset at 30216.722678
+MSG	630043 bar pass 4 trial onset at 30216.731118
+MSG	630043 bar pass 4 event t at 30216.731368
+MSG	630409 bar pass 4 stimulus probe onset at 30217.097210
+MSG	631059 bar pass 4 event e at 30217.747741
+MSG	631317 bar pass 4 trial offset at 30218.005184
+MSG	631326 bar pass 4 trial onset at 30218.014345
+MSG	631326 bar pass 4 event t at 30218.014562
+EFIX R   625557	631366	5810	  948.3	  556.5	   9283
+SSACC R  631367
+ESACC R  631367	631387	21	  948.5	  558.0	  958.3	  570.0	   0.57	     89
+SFIX R   631388
+EFIX R   631388	631645	258	  956.9	  567.8	   8950
+SSACC R  631646
+ESACC R  631646	631663	18	  959.2	  567.8	  947.7	  561.2	   0.48	     72
+SFIX R   631664
+MSG	631701 bar pass 4 stimulus probe onset at 30218.389492
+EFIX R   631664	631814	151	  952.4	  562.5	   8986
+SSACC R  631815
+ESACC R  631815	631834	20	  954.4	  561.3	  964.6	  569.4	   0.48	     82
+SFIX R   631835
+MSG	632376 bar pass 4 event e at 30219.063779
+MSG	632376 stimulus staircase updated to 5.00 at 30219.064001
+EFIX R   631835	632560	726	  962.9	  567.1	   8857
+SSACC R  632561
+ESACC R  632561	632570	10	  956.2	  566.4	  944.3	  564.8	   0.44	     52
+SFIX R   632571
+MSG	632609 bar pass 4 trial offset at 30219.297446
+MSG	632618 bar pass 4 trial onset at 30219.306017
+MSG	632618 bar pass 4 event t at 30219.306250
+MSG	632984 bar pass 4 stimulus probe onset at 30219.672406
+MSG	633534 bar pass 4 event b at 30220.222341
+MSG	633534 stimulus staircase updated to 6.00 at 30220.222560
+MSG	633884 bar pass 4 trial offset at 30220.572481
+MSG	633893 bar pass 4 trial onset at 30220.580869
+MSG	633893 bar pass 4 event t at 30220.581075
+EFIX R   632571	634242	1672	  951.1	  564.6	   9089
+SSACC R  634243
+MSG	634259 bar pass 4 stimulus probe onset at 30220.947506
+ESACC R  634243	634261	19	  955.2	  560.4	  967.7	  561.2	   0.46	     59
+SFIX R   634262
+MSG	634884 bar pass 4 event e at 30221.572334
+MSG	635176 bar pass 4 trial offset at 30221.863872
+MSG	635184 bar pass 4 trial onset at 30221.872389
+MSG	635185 bar pass 4 event t at 30221.872650
+EFIX R   634262	635208	947	  956.3	  556.5	   9299
+SSACC R  635209
+ESACC R  635209	635225	17	  954.8	  554.9	  924.0	  554.2	   1.12	    107
+SFIX R   635226
+EFIX R   635226	635320	95	  933.3	  554.4	   9394
+SSACC R  635321
+ESACC R  635321	635337	17	  934.3	  553.2	  966.8	  554.7	   1.19	    103
+SFIX R   635338
+MSG	635559 bar pass 4 stimulus probe onset at 30222.247404
+MSG	636185 bar pass 4 event b at 30222.872848
+MSG	636484 bar pass 4 trial offset at 30223.172220
+MSG	636493 bar pass 4 trial onset at 30223.180707
+MSG	636493 bar pass 4 event t at 30223.180922
+MSG	636859 bar pass 4 stimulus probe onset at 30223.546779
+MSG	637418 bar pass 4 event e at 30224.105937
+MSG	637418 stimulus staircase updated to 5.00 at 30224.106117
+MSG	637767 bar pass 4 trial offset at 30224.454996
+MSG	637776 bar pass 4 trial onset at 30224.463536
+MSG	637776 bar pass 4 event t at 30224.463779
+MSG	638143 bar pass 4 stimulus probe onset at 30224.830776
+MSG	638626 bar pass 4 event b at 30225.313759
+MSG	639059 bar pass 4 trial offset at 30225.747225
+MSG	639067 bar pass 4 trial onset at 30225.754996
+MSG	639067 bar pass 4 event t at 30225.755183
+EFIX R   635338	639158	3821	  952.8	  557.1	   9469
+SSACC R  639159
+ESACC R  639159	639181	23	  953.4	  555.8	  972.9	  554.1	   0.71	    109
+SFIX R   639182
+EFIX R   639182	639312	131	  965.1	  556.1	   9589
+SSACC R  639313
+ESACC R  639313	639325	13	  960.8	  555.5	  939.9	  555.9	   0.76	     76
+SFIX R   639326
+MSG	639434 bar pass 4 stimulus probe onset at 30226.121979
+MSG	640026 bar pass 4 event b at 30226.713844
+MSG	640026 stimulus staircase updated to 6.00 at 30226.714047
+EFIX R   639326	640314	989	  950.8	  558.0	   9548
+SSACC R  640315
+ESACC R  640315	640331	17	  953.7	  560.3	  960.0	  559.5	   0.23	     49
+SFIX R   640332
+MSG	640351 bar pass 4 trial offset at 30227.038848
+MSG	640359 bar pass 4 trial onset at 30227.047127
+MSG	640359 bar pass 4 event t at 30227.047346
+MSG	640725 bar pass 4 stimulus probe onset at 30227.413088
+MSG	641335 bar pass 4 event e at 30228.022554
+MSG	641643 bar pass 4 trial offset at 30228.330293
+MSG	641644 bar pass 4 - 225/225 drawn bar stimuli - and 90/90 probes - 63 missed sync on 2700 frames, 2.3(mean/median delay = 2.6/1.4 ms)
+MSG	641644 bar pass 4 stopped at 30228.331613
+MSG	641764 bar pass 5 started at 30228.451697
+MSG	641776 bar pass 5 trial onset at 30228.463433
+MSG	641776 bar pass 5 event t at 30228.464028
+EFIX R   640332	642990	2659	  954.6	  563.0	   9835
+SSACC R  642991
+ESACC R  642991	643020	30	  948.4	  576.6	  937.8	  564.3	   0.59	    122
+SFIX R   643021
+MSG	643026 bar pass 5 trial offset at 30229.713653
+MSG	643034 bar pass 5 trial onset at 30229.721424
+MSG	643034 bar pass 5 event t at 30229.721694
+EFIX R   643021	643344	324	  947.2	  559.0	   9786
+SSACC R  643345
+SBLINK R 643370
+EBLINK R 643370	643444	75
+ESACC R  643345	643497	153	  949.7	  561.8	  957.3	  553.3	   0.42	   3270
+SFIX R   643498
+EFIX R   643498	643799	302	  948.0	  562.9	   9744
+SSACC R  643800
+ESACC R  643800	643808	9	  949.3	  560.9	  960.0	  564.7	   0.41	     50
+SFIX R   643809
+EFIX R   643809	644197	389	  957.1	  563.4	   9743
+SSACC R  644198
+SBLINK R 644224
+MSG	644276 bar pass 5 trial offset at 30230.963402
+MSG	644284 bar pass 5 trial onset at 30230.971923
+MSG	644285 bar pass 5 event t at 30230.972167
+EBLINK R 644224	644294	71
+ESACC R  644198	644353	156	  957.6	  571.3	  963.0	  560.0	   0.46	   3270
+SFIX R   644354
+EFIX R   644354	644934	581	  950.8	  564.9	   9821
+SSACC R  644935
+SBLINK R 644962
+EBLINK R 644962	645042	81
+ESACC R  644935	645103	169	  954.4	  569.8	  965.5	  565.9	   0.43	   3270
+SFIX R   645104
+MSG	645526 bar pass 5 trial offset at 30232.213253
+MSG	645533 bar pass 5 trial onset at 30232.220544
+MSG	645533 bar pass 5 event t at 30232.220804
+EFIX R   645104	646427	1324	  954.1	  557.7	   9983
+SSACC R  646428
+SBLINK R 646463
+EBLINK R 646463	646498	36
+ESACC R  646428	646565	138	  958.8	  559.8	  971.1	  533.7	   1.06	   3270
+SFIX R   646566
+MSG	646776 bar pass 5 trial offset at 30233.463280
+MSG	646784 bar pass 5 trial onset at 30233.471703
+MSG	646784 bar pass 5 event t at 30233.471962
+EFIX R   646566	647303	738	  955.2	  550.7	  10117
+SSACC R  647304
+SBLINK R 647329
+EBLINK R 647329	647387	59
+ESACC R  647304	647450	147	  953.1	  554.7	  960.0	  555.1	   0.25	   3270
+SFIX R   647451
+EFIX R   647451	647982	532	  949.5	  554.6	  10091
+SSACC R  647983
+ESACC R  647983	647998	16	  952.4	  555.7	  961.3	  550.5	   0.38	     45
+SFIX R   647999
+MSG	648026 bar pass 5 trial offset at 30234.713353
+MSG	648033 bar pass 5 trial onset at 30234.720692
+MSG	648033 bar pass 5 event t at 30234.720921
+EFIX R   647999	648439	441	  954.5	  554.7	  10086
+SSACC R  648440
+SBLINK R 648467
+EBLINK R 648467	648517	51
+ESACC R  648440	648576	137	  955.4	  560.2	  964.3	  556.1	   0.36	   3270
+SFIX R   648577
+MSG	649276 bar pass 5 trial offset at 30235.963311
+MSG	649283 bar pass 5 trial onset at 30235.970553
+MSG	649283 bar pass 5 event t at 30235.970762
+EFIX R   648577	649399	823	  952.1	  557.1	  10072
+SSACC R  649400
+ESACC R  649400	649512	113	  954.7	  563.8	  951.2	  538.8	   0.92	   1377
+SFIX R   649513
+EFIX R   649513	650233	721	  945.9	  551.2	  10053
+SSACC R  650234
+ESACC R  650234	650342	109	  951.6	  560.6	  963.4	  542.8	   0.78	   3270
+SFIX R   650343
+MSG	650526 bar pass 5 trial offset at 30237.213202
+MSG	650534 bar pass 5 trial onset at 30237.220788
+MSG	650534 bar pass 5 event t at 30237.220995
+EFIX R   650343	650887	545	  952.9	  555.5	  10060
+SSACC R  650888
+ESACC R  650888	650905	18	  951.3	  555.8	  937.4	  551.4	   0.53	     66
+SFIX R   650906
+EFIX R   650906	651133	228	  943.5	  550.6	  10063
+SSACC R  651134
+ESACC R  651134	651140	7	  946.1	  550.7	  953.0	  552.7	   0.26	     41
+SFIX R   651141
+MSG	651776 bar pass 5 trial offset at 30238.463118
+MSG	651784 bar pass 5 trial onset at 30238.470751
+MSG	651784 bar pass 5 event t at 30238.470949
+MSG	653026 bar pass 5 trial offset at 30239.712925
+MSG	653034 bar pass 5 trial onset at 30239.720970
+MSG	653034 bar pass 5 event t at 30239.721179
+EFIX R   651141	653206	2066	  954.8	  551.3	  10045
+SSACC R  653207
+ESACC R  653207	653214	8	  951.6	  551.8	  940.9	  548.9	   0.40	     53
+SFIX R   653215
+EFIX R   653215	653473	259	  945.7	  549.1	   9973
+SSACC R  653474
+ESACC R  653474	653480	7	  950.2	  550.7	  957.4	  552.1	   0.27	     47
+SFIX R   653481
+EFIX R   653481	653925	445	  953.2	  552.6	   9910
+SSACC R  653926
+ESACC R  653926	653937	12	  953.1	  555.2	  934.2	  548.6	   0.73	     77
+SFIX R   653938
+EFIX R   653938	654010	73	  938.9	  548.3	   9873
+SSACC R  654011
+ESACC R  654011	654035	25	  941.2	  549.3	  981.0	  550.2	   1.45	    163
+SFIX R   654036
+EFIX R   654036	654115	80	  968.9	  551.3	   9845
+SSACC R  654116
+ESACC R  654116	654133	18	  968.7	  552.4	  937.0	  552.6	   1.16	    103
+SFIX R   654134
+MSG	654276 bar pass 5 trial offset at 30240.963010
+MSG	654280 bar pass 5 - 125/125 drawn bar stimuli - and 0/0 probes - 7 missed sync on 1500 frames, 0.5(mean/median delay = 1.2/0.3 ms)
+MSG	654281 bar pass 5 stopped at 30240.967617
+MSG	654399 bar pass 6 started at 30241.085686
+MSG	654418 bar pass 6 trial onset at 30241.104559
+MSG	654418 bar pass 6 event t at 30241.105045
+MSG	654783 bar pass 6 stimulus probe onset at 30241.470343
+MSG	655146 bar pass 6 event b at 30241.829694
+MSG	655147 stimulus staircase updated to 7.00 at 30241.833548
+MSG	655700 bar pass 6 trial offset at 30242.386754
+MSG	655709 bar pass 6 trial onset at 30242.395900
+MSG	655709 bar pass 6 event t at 30242.396129
+MSG	656076 bar pass 6 stimulus probe onset at 30242.762532
+MSG	656700 bar pass 6 event e at 30243.386865
+MSG	656700 stimulus staircase updated to 8.00 at 30243.387053
+MSG	656984 bar pass 6 trial offset at 30243.671070
+MSG	656993 bar pass 6 trial onset at 30243.679597
+MSG	656993 bar pass 6 event t at 30243.679820
+EFIX R   654134	657011	2878	  942.9	  554.5	   9739
+SSACC R  657012
+ESACC R  657012	657034	23	  946.1	  558.4	  953.0	  554.5	   0.29	     66
+SFIX R   657035
+MSG	657359 bar pass 6 stimulus probe onset at 30244.045822
+MSG	657943 bar pass 6 event b at 30244.629898
+MSG	657943 stimulus staircase updated to 9.00 at 30244.630129
+MSG	658233 bar pass 6 trial offset at 30244.920000
+MSG	658243 bar pass 6 trial onset at 30244.929492
+MSG	658243 bar pass 6 event t at 30244.929741
+MSG	658609 bar pass 6 stimulus probe onset at 30245.296138
+MSG	659175 bar pass 6 event b at 30245.862250
+MSG	659176 stimulus staircase updated to 10.00 at 30245.862446
+MSG	659517 bar pass 6 trial offset at 30246.203490
+MSG	659526 bar pass 6 trial onset at 30246.212694
+MSG	659526 bar pass 6 event t at 30246.212908
+MSG	659893 bar pass 6 stimulus probe onset at 30246.579385
+MSG	660493 bar pass 6 event e at 30247.179630
+MSG	660493 stimulus staircase updated to 11.00 at 30247.179815
+MSG	660776 bar pass 6 trial offset at 30247.462688
+MSG	660784 bar pass 6 trial onset at 30247.470851
+MSG	660784 bar pass 6 event t at 30247.471112
+MSG	661151 bar pass 6 stimulus probe onset at 30247.837467
+MSG	661751 bar pass 6 event b at 30248.437663
+MSG	661751 stimulus staircase updated to 12.00 at 30248.437840
+EFIX R   657035	661829	4795	  949.5	  558.0	   9961
+SSACC R  661830
+ESACC R  661830	661840	11	  952.1	  561.9	  950.1	  549.8	   0.45	     52
+SFIX R   661841
+MSG	662068 bar pass 6 trial offset at 30248.754304
+MSG	662076 bar pass 6 trial onset at 30248.762604
+MSG	662076 bar pass 6 event t at 30248.762817
+EFIX R   661841	662195	355	  945.5	  553.0	  10120
+SSACC R  662196
+ESACC R  662196	662216	21	  947.5	  552.5	  959.2	  555.9	   0.44	     82
+SFIX R   662217
+MSG	662443 bar pass 6 stimulus probe onset at 30249.129253
+MSG	662918 bar pass 6 event e at 30249.604475
+MSG	662918 stimulus staircase updated to 13.00 at 30249.604640
+MSG	663351 bar pass 6 trial offset at 30250.037497
+MSG	663359 bar pass 6 trial onset at 30250.045850
+MSG	663359 bar pass 6 event t at 30250.046083
+EFIX R   662217	663518	1302	  957.5	  552.0	  10102
+SSACC R  663519
+ESACC R  663519	663539	21	  956.5	  553.8	  914.9	  561.3	   1.54	    129
+SFIX R   663540
+EFIX R   663540	663653	114	  928.2	  559.3	  10034
+SSACC R  663654
+ESACC R  663654	663672	19	  929.0	  558.9	  964.6	  554.4	   1.31	    127
+SFIX R   663673
+MSG	663726 bar pass 6 stimulus probe onset at 30250.412485
+MSG	664343 bar pass 6 event b at 30251.029867
+EFIX R   663673	664398	726	  954.3	  554.9	   9905
+SSACC R  664399
+ESACC R  664399	664408	10	  951.2	  556.4	  938.7	  551.1	   0.50	     55
+SFIX R   664409
+MSG	664626 bar pass 6 trial offset at 30251.312503
+MSG	664634 bar pass 6 trial onset at 30251.320785
+MSG	664634 bar pass 6 event t at 30251.320994
+EFIX R   664409	664671	263	  943.6	  549.6	   9850
+SSACC R  664672
+ESACC R  664672	664689	18	  945.8	  549.9	  956.1	  554.0	   0.40	     65
+SFIX R   664690
+MSG	665001 bar pass 6 stimulus probe onset at 30251.687419
+MSG	665726 bar pass 6 event e at 30252.412470
+MSG	665909 bar pass 6 trial offset at 30252.595424
+MSG	665917 bar pass 6 trial onset at 30252.603938
+MSG	665918 bar pass 6 event t at 30252.604160
+MSG	666284 bar pass 6 stimulus probe onset at 30252.970361
+MSG	666959 bar pass 6 event b at 30253.645720
+MSG	666960 stimulus staircase updated to 12.00 at 30253.645928
+MSG	667193 bar pass 6 trial offset at 30253.879023
+MSG	667201 bar pass 6 trial onset at 30253.887261
+MSG	667201 bar pass 6 event t at 30253.887476
+MSG	667568 bar pass 6 stimulus probe onset at 30254.253866
+EFIX R   664690	667633	2944	  961.1	  549.8	   9527
+SSACC R  667634
+ESACC R  667634	667647	14	  969.4	  545.4	  945.9	  544.9	   0.86	     81
+SFIX R   667648
+EFIX R   667648	668140	493	  954.7	  541.5	   9341
+SSACC R  668141
+ESACC R  668141	668169	29	  955.3	  539.6	  974.5	  554.3	   0.88	    152
+SFIX R   668170
+MSG	668225 bar pass 6 event e at 30254.911685
+EFIX R   668170	668246	77	  974.3	  551.2	   9219
+SSACC R  668247
+ESACC R  668247	668268	22	  974.8	  550.8	  942.3	  541.2	   1.24	    130
+SFIX R   668269
+EFIX R   668269	668475	207	  951.1	  541.7	   9217
+MSG	668476 bar pass 6 trial offset at 30255.162237
+SSACC R  668476
+MSG	668484 bar pass 6 trial onset at 30255.170454
+MSG	668484 bar pass 6 event t at 30255.170682
+ESACC R  668476	668485	10	  952.1	  541.0	  966.2	  542.3	   0.52	     59
+SFIX R   668486
+MSG	668851 bar pass 6 stimulus probe onset at 30255.537236
+MSG	669501 bar pass 6 event b at 30256.187139
+MSG	669501 stimulus staircase updated to 13.00 at 30256.187326
+MSG	669751 bar pass 6 trial offset at 30256.437175
+MSG	669759 bar pass 6 trial onset at 30256.445376
+MSG	669759 bar pass 6 event t at 30256.445592
+MSG	670126 bar pass 6 stimulus probe onset at 30256.812141
+MSG	670726 bar pass 6 event b at 30257.412235
+EFIX R   668486	670781	2296	  958.1	  547.7	   9013
+SSACC R  670782
+ESACC R  670782	670801	20	  955.5	  552.6	  966.4	  548.7	   0.42	     72
+SFIX R   670802
+MSG	671034 bar pass 6 trial offset at 30257.720306
+MSG	671043 bar pass 6 trial onset at 30257.728780
+MSG	671043 bar pass 6 event t at 30257.729048
+EFIX R   670802	671193	392	  962.5	  550.6	   9105
+SSACC R  671194
+ESACC R  671194	671214	21	  962.1	  550.1	  930.1	  560.6	   1.23	    122
+SFIX R   671215
+EFIX R   671215	671330	116	  939.1	  554.0	   9223
+SSACC R  671331
+ESACC R  671331	671345	15	  939.9	  552.7	  966.3	  553.4	   0.96	    102
+SFIX R   671346
+MSG	671409 bar pass 6 stimulus probe onset at 30258.095295
+MSG	671968 bar pass 6 event e at 30258.653743
+EFIX R   671346	671972	627	  952.1	  548.6	   8899
+SSACC R  671973
+ESACC R  671973	671996	24	  948.6	  547.4	  971.4	  544.2	   0.84	    111
+SFIX R   671997
+EFIX R   671997	672108	112	  962.8	  545.3	   8587
+SSACC R  672109
+ESACC R  672109	672126	18	  963.0	  545.4	  950.4	  547.3	   0.47	     75
+SFIX R   672127
+MSG	672326 bar pass 6 trial offset at 30259.011775
+MSG	672334 bar pass 6 trial onset at 30259.019985
+MSG	672334 bar pass 6 event t at 30259.020192
+MSG	672701 bar pass 6 stimulus probe onset at 30259.387074
+MSG	673251 bar pass 6 event b at 30259.937190
+MSG	673251 stimulus staircase updated to 12.00 at 30259.937395
+MSG	673609 bar pass 6 trial offset at 30260.295020
+MSG	673617 bar pass 6 trial onset at 30260.303352
+MSG	673618 bar pass 6 event t at 30260.303587
+MSG	673984 bar pass 6 stimulus probe onset at 30260.669905
+MSG	674684 bar pass 6 event e at 30261.370179
+MSG	674893 bar pass 6 trial offset at 30261.578513
+MSG	674901 bar pass 6 trial onset at 30261.586910
+MSG	674901 bar pass 6 event t at 30261.587101
+MSG	675268 bar pass 6 stimulus probe onset at 30261.953517
+EFIX R   672127	675793	3667	  953.7	  543.7	   8259
+SSACC R  675794
+ESACC R  675794	675814	21	  953.4	  542.5	  933.7	  542.4	   0.72	    105
+SFIX R   675815
+MSG	675876 bar pass 6 event e at 30262.561400
+EFIX R   675815	675984	170	  941.2	  542.3	   8182
+SSACC R  675985
+ESACC R  675985	675994	10	  942.1	  543.8	  956.9	  548.1	   0.56	     66
+SFIX R   675995
+MSG	676184 bar pass 6 trial offset at 30262.870154
+MSG	676193 bar pass 6 trial onset at 30262.878477
+MSG	676193 bar pass 6 event t at 30262.878693
+MSG	676559 bar pass 6 stimulus probe onset at 30263.244819
+MSG	677176 bar pass 6 event b at 30263.861834
+MSG	677176 stimulus staircase updated to 11.00 at 30263.862034
+MSG	677468 bar pass 6 trial offset at 30264.153333
+MSG	677476 bar pass 6 trial onset at 30264.161595
+MSG	677476 bar pass 6 event t at 30264.161776
+MSG	677843 bar pass 6 stimulus probe onset at 30264.528622
+MSG	678443 bar pass 6 event b at 30265.128296
+MSG	678751 bar pass 6 trial offset at 30265.436572
+MSG	678759 bar pass 6 trial onset at 30265.444730
+MSG	678759 bar pass 6 event t at 30265.444927
+EFIX R   675995	678849	2855	  951.7	  544.8	   8370
+SSACC R  678850
+ESACC R  678850	678870	21	  950.0	  549.4	  965.0	  550.2	   0.55	     81
+SFIX R   678871
+EFIX R   678871	678998	128	  959.3	  552.5	   8710
+SSACC R  678999
+ESACC R  678999	679008	10	  957.8	  553.1	  944.7	  553.1	   0.48	     54
+SFIX R   679009
+MSG	679126 bar pass 6 stimulus probe onset at 30265.811642
+MSG	679776 bar pass 6 event b at 30266.461572
+EFIX R   679009	679870	862	  949.7	  553.0	   8855
+SSACC R  679871
+ESACC R  679871	679879	9	  958.8	  555.9	  970.6	  557.2	   0.43	     54
+SFIX R   679880
+MSG	680009 bar pass 6 trial offset at 30266.694899
+MSG	680018 bar pass 6 trial onset at 30266.703274
+MSG	680018 bar pass 6 event t at 30266.703475
+MSG	680384 bar pass 6 stimulus probe onset at 30267.069628
+MSG	681076 bar pass 6 event b at 30267.761511
+MSG	681076 stimulus staircase updated to 10.00 at 30267.761735
+MSG	681267 bar pass 6 trial offset at 30267.952905
+MSG	681276 bar pass 6 trial onset at 30267.961538
+MSG	681276 bar pass 6 event t at 30267.961750
+EFIX R   679880	681306	1427	  956.2	  554.2	   8970
+SSACC R  681307
+ESACC R  681307	681329	23	  953.6	  551.3	  938.2	  547.6	   0.58	     93
+SFIX R   681330
+EFIX R   681330	681439	110	  940.9	  548.1	   8984
+SSACC R  681440
+ESACC R  681440	681453	14	  941.3	  548.4	  962.5	  552.0	   0.78	     76
+SFIX R   681454
+MSG	681642 bar pass 6 stimulus probe onset at 30268.328019
+MSG	682334 bar pass 6 event e at 30269.019844
+MSG	682551 bar pass 6 trial offset at 30269.236381
+MSG	682559 bar pass 6 trial onset at 30269.244459
+MSG	682559 bar pass 6 event t at 30269.244644
+MSG	682926 bar pass 6 stimulus probe onset at 30269.611351
+EFIX R   681454	682979	1526	  953.2	  546.6	   9126
+SSACC R  682980
+ESACC R  682980	683000	21	  949.2	  547.1	  974.3	  547.7	   0.92	     89
+SFIX R   683001
+EFIX R   683001	683113	113	  964.9	  549.1	   9268
+SSACC R  683114
+ESACC R  683114	683127	14	  963.9	  549.8	  939.8	  547.4	   0.88	     74
+SFIX R   683128
+MSG	683651 bar pass 6 event b at 30270.336739
+EFIX R   683128	683662	535	  951.5	  549.6	   9181
+SSACC R  683663
+ESACC R  683663	683670	8	  955.1	  549.6	  965.6	  551.3	   0.39	     50
+SFIX R   683671
+MSG	683842 bar pass 6 trial offset at 30270.527546
+MSG	683851 bar pass 6 trial onset at 30270.536145
+MSG	683851 bar pass 6 event t at 30270.536345
+MSG	684218 bar pass 6 stimulus probe onset at 30270.902971
+MSG	684962 bar pass 6 event b at 30271.645041
+MSG	684963 stimulus staircase updated to 9.00 at 30271.648065
+MSG	685126 bar pass 6 trial offset at 30271.811185
+MSG	685134 bar pass 6 trial onset at 30271.819391
+MSG	685134 bar pass 6 event t at 30271.819593
+MSG	685501 bar pass 6 stimulus probe onset at 30272.186307
+MSG	686184 bar pass 6 event b at 30272.869686
+MSG	686418 bar pass 6 trial offset at 30273.102911
+MSG	686426 bar pass 6 trial onset at 30273.111205
+MSG	686426 bar pass 6 event t at 30273.111400
+MSG	686792 bar pass 6 stimulus probe onset at 30273.477806
+EFIX R   683671	687397	3727	  957.2	  554.2	   9297
+SSACC R  687398
+MSG	687401 bar pass 6 event e at 30274.086350
+MSG	687401 stimulus staircase updated to 10.00 at 30274.086558
+ESACC R  687398	687421	24	  952.8	  554.0	  989.3	  557.8	   1.34	    135
+SFIX R   687422
+EFIX R   687422	687542	121	  976.3	  556.1	   9427
+SSACC R  687543
+ESACC R  687543	687559	17	  975.2	  555.9	  945.5	  551.1	   1.10	     88
+SFIX R   687560
+MSG	687684 bar pass 6 trial offset at 30274.369433
+MSG	687692 bar pass 6 trial onset at 30274.377737
+MSG	687693 bar pass 6 event t at 30274.377924
+MSG	688059 bar pass 6 stimulus probe onset at 30274.744043
+MSG	688934 bar pass 6 trial offset at 30275.619077
+MSG	688942 bar pass 6 trial onset at 30275.627510
+MSG	688942 bar pass 6 event t at 30275.627702
+MSG	689309 bar pass 6 stimulus probe onset at 30275.994095
+EFIX R   687560	689370	1811	  956.0	  551.1	   9631
+SSACC R  689371
+ESACC R  689371	689380	10	  951.4	  552.0	  966.1	  554.6	   0.54	     60
+SFIX R   689381
+MSG	690068 bar pass 6 event e at 30276.752731
+MSG	690184 bar pass 6 trial offset at 30276.869066
+MSG	690192 bar pass 6 trial onset at 30276.877650
+MSG	690193 bar pass 6 event t at 30276.877837
+MSG	690559 bar pass 6 stimulus probe onset at 30277.243829
+MSG	691309 bar pass 6 event b at 30277.993853
+MSG	691309 stimulus staircase updated to 11.00 at 30277.994074
+MSG	691434 bar pass 6 trial offset at 30278.119025
+MSG	691443 bar pass 6 trial onset at 30278.127641
+MSG	691443 bar pass 6 event t at 30278.127843
+MSG	691809 bar pass 6 stimulus probe onset at 30278.493700
+MSG	692334 bar pass 6 event e at 30279.019017
+MSG	692684 bar pass 6 trial offset at 30279.368796
+MSG	692692 bar pass 6 trial onset at 30279.376951
+MSG	692692 bar pass 6 event t at 30279.377137
+MSG	693059 bar pass 6 stimulus probe onset at 30279.743748
+MSG	693575 bar pass 6 event b at 30280.260326
+MSG	693934 bar pass 6 trial offset at 30280.618657
+MSG	693942 bar pass 6 trial onset at 30280.626752
+MSG	693942 bar pass 6 event t at 30280.626950
+EFIX R   689381	694177	4797	  958.2	  556.5	   9757
+SSACC R  694178
+ESACC R  694178	694199	22	  958.9	  553.2	  941.1	  547.8	   0.68	     94
+SFIX R   694200
+EFIX R   694200	694243	44	  947.3	  549.8	   9729
+SSACC R  694244
+ESACC R  694244	694268	25	  946.6	  550.3	  972.9	  550.7	   0.96	    122
+SFIX R   694269
+MSG	694309 bar pass 6 stimulus probe onset at 30280.993725
+EFIX R   694269	694353	85	  965.0	  551.8	   9737
+SSACC R  694354
+ESACC R  694354	694373	20	  963.6	  550.9	  943.6	  552.1	   0.73	     97
+SFIX R   694374
+MSG	694859 bar pass 6 event b at 30281.543730
+MSG	694859 stimulus staircase updated to 10.00 at 30281.543941
+MSG	695184 bar pass 6 trial offset at 30281.868806
+MSG	695184 bar pass 6 - 399/400 drawn bar stimuli - and 160/160 probes - 103 missed sync on 4800 frames, 2.1(mean/median delay = 5.8/6.5 ms)
+MSG	695185 bar pass 6 stopped at 30281.869537
+EFIX R   694374	695240	867	  950.8	  553.9	   9680
+SSACC R  695241
+ESACC R  695241	695249	9	  951.5	  554.9	  965.8	  556.7	   0.53	     58
+SFIX R   695250
+MSG	695303 bar pass 7 started at 30281.987569
+MSG	695318 bar pass 7 trial onset at 30282.002549
+MSG	695318 bar pass 7 event t at 30282.003036
+EFIX R   695250	695783	534	  955.2	  556.4	   9850
+SSACC R  695784
+SBLINK R 695819
+EBLINK R 695819	695873	55
+ESACC R  695784	695935	152	  947.1	  566.3	  953.7	  547.0	   0.75	   3270
+SFIX R   695936
+EFIX R   695936	696125	190	  943.4	  557.4	   9862
+SSACC R  696126
+SBLINK R 696153
+EBLINK R 696153	696253	101
+ESACC R  696126	696314	189	  943.4	  562.1	  966.9	  550.4	   0.96	   3270
+SFIX R   696315
+MSG	696559 bar pass 7 trial offset at 30283.243809
+MSG	696568 bar pass 7 trial onset at 30283.252350
+MSG	696568 bar pass 7 event t at 30283.252590
+EFIX R   696315	696664	350	  953.7	  558.0	   9609
+SSACC R  696665
+ESACC R  696665	696671	7	  952.6	  553.4	  948.9	  559.7	   0.27	     38
+SFIX R   696672
+EFIX R   696672	697804	1133	  950.9	  556.3	   9599
+SSACC R  697805
+MSG	697809 bar pass 7 trial offset at 30284.493656
+MSG	697817 bar pass 7 trial onset at 30284.502260
+MSG	697818 bar pass 7 event t at 30284.502494
+ESACC R  697805	697825	21	  950.5	  559.0	  961.7	  553.6	   0.45	     76
+SFIX R   697826
+EFIX R   697826	698049	224	  953.8	  557.1	   9778
+SSACC R  698050
+ESACC R  698050	698057	8	  949.7	  556.8	  939.5	  556.7	   0.37	     50
+SFIX R   698058
+EFIX R   698058	698692	635	  945.1	  557.0	   9874
+SSACC R  698693
+ESACC R  698693	698711	19	  949.3	  558.2	  954.8	  555.0	   0.23	     55
+SFIX R   698712
+EFIX R   698712	699026	315	  954.1	  558.8	   9972
+SSACC R  699027
+SBLINK R 699054
+MSG	699059 bar pass 7 trial offset at 30285.743487
+MSG	699067 bar pass 7 trial onset at 30285.751550
+MSG	699067 bar pass 7 event t at 30285.751776
+EBLINK R 699054	699113	60
+ESACC R  699027	699179	153	  954.8	  565.5	  969.7	  547.6	   0.85	   3270
+SFIX R   699180
+EFIX R   699180	699452	273	  957.5	  564.2	   9934
+SSACC R  699453
+ESACC R  699453	699468	16	  954.5	  563.4	  946.4	  551.8	   0.52	     54
+SFIX R   699469
+EFIX R   699469	700154	686	  953.7	  557.2	   9795
+SSACC R  700155
+ESACC R  700155	700172	18	  955.4	  557.3	  964.6	  561.1	   0.36	     56
+SFIX R   700173
+MSG	700309 bar pass 7 trial offset at 30286.993575
+MSG	700317 bar pass 7 trial onset at 30287.002035
+MSG	700318 bar pass 7 event t at 30287.002254
+EFIX R   700173	700645	473	  958.7	  561.0	   9731
+SSACC R  700646
+ESACC R  700646	700665	20	  958.7	  561.0	  945.7	  555.5	   0.52	     71
+SFIX R   700666
+MSG	701559 bar pass 7 trial offset at 30288.243282
+MSG	701567 bar pass 7 trial onset at 30288.251338
+MSG	701567 bar pass 7 event t at 30288.251575
+EFIX R   700666	701602	937	  953.1	  557.6	   9892
+SSACC R  701603
+ESACC R  701603	701696	94	  957.5	  562.9	  979.7	  547.2	   0.99	    582
+SFIX R   701697
+EFIX R   701697	701869	173	  960.4	  559.1	   9980
+SSACC R  701870
+SBLINK R 701894
+EBLINK R 701894	701976	83
+ESACC R  701870	702030	161	  958.6	  563.5	  956.2	  552.1	   0.43	   3270
+SFIX R   702031
+EFIX R   702031	702221	191	  946.0	  564.1	   9942
+SSACC R  702222
+ESACC R  702222	702230	9	  947.6	  563.4	  959.0	  569.7	   0.48	     55
+SFIX R   702231
+MSG	702809 bar pass 7 trial offset at 30289.493426
+MSG	702818 bar pass 7 trial onset at 30289.502070
+MSG	702818 bar pass 7 event t at 30289.502282
+EFIX R   702231	703797	1567	  953.6	  566.9	   9890
+SSACC R  703798
+ESACC R  703798	703807	10	  954.1	  567.3	  942.5	  560.2	   0.50	     53
+SFIX R   703808
+MSG	704059 bar pass 7 trial offset at 30290.743185
+MSG	704068 bar pass 7 trial onset at 30290.752286
+MSG	704068 bar pass 7 event t at 30290.752507
+EFIX R   703808	704131	324	  947.5	  560.1	  10048
+SSACC R  704132
+ESACC R  704132	704153	22	  949.3	  560.2	  960.1	  563.9	   0.42	     75
+SFIX R   704154
+EFIX R   704154	704490	337	  955.0	  563.8	  10100
+SSACC R  704491
+ESACC R  704491	704511	21	  953.9	  564.9	  912.0	  551.4	   1.61	    132
+SFIX R   704512
+EFIX R   704512	704665	154	  925.0	  554.1	  10098
+SSACC R  704666
+ESACC R  704666	704688	23	  924.5	  554.0	  956.3	  559.8	   1.18	    130
+SFIX R   704689
+EFIX R   704689	705063	375	  947.5	  556.1	  10077
+SSACC R  705064
+ESACC R  705064	705084	21	  949.0	  554.9	  960.0	  560.5	   0.45	     68
+SFIX R   705085
+EFIX R   705085	705297	213	  956.4	  558.7	  10065
+SSACC R  705298
+MSG	705309 bar pass 7 trial offset at 30291.992824
+ESACC R  705298	705315	18	  956.9	  559.6	  944.5	  558.9	   0.45	     62
+SFIX R   705316
+MSG	705317 bar pass 7 trial onset at 30292.001084
+MSG	705317 bar pass 7 event t at 30292.001306
+EFIX R   705316	705758	443	  949.6	  559.9	  10098
+SSACC R  705759
+ESACC R  705759	705778	20	  949.4	  561.4	  955.5	  559.1	   0.24	     63
+SFIX R   705779
+MSG	706559 bar pass 7 trial offset at 30293.243137
+MSG	706567 bar pass 7 trial onset at 30293.251719
+MSG	706568 bar pass 7 event t at 30293.251963
+EFIX R   705779	707744	1966	  952.1	  559.3	  10140
+SSACC R  707745
+ESACC R  707745	707765	21	  950.8	  556.0	  941.1	  555.2	   0.36	     87
+SFIX R   707766
+EFIX R   707766	707800	35	  943.1	  555.0	  10149
+SSACC R  707801
+MSG	707809 bar pass 7 trial offset at 30294.492929
+MSG	707813 bar pass 7 - 125/125 drawn bar stimuli - and 0/0 probes - 0 missed sync on 1500 frames, 0.0(mean/median delay = NaN/NaN ms)
+MSG	707813 bar pass 7 stopped at 30294.497042
+ESACC R  707801	707828	28	  942.8	  555.9	  979.5	  555.5	   1.34	    166
+SFIX R   707829
+EFIX R   707829	707922	94	  969.5	  555.4	  10141
+SSACC R  707923
+MSG	707931 bar pass 8 started at 30294.614856
+ESACC R  707923	707942	20	  968.7	  555.4	  930.2	  556.0	   1.41	    109
+MSG	707943 bar pass 8 trial onset at 30294.626850
+MSG	707943 bar pass 8 event t at 30294.627278
+SFIX R   707943
+MSG	708309 bar pass 8 stimulus probe onset at 30294.993066
+MSG	708801 bar pass 8 event b at 30295.485046
+MSG	708801 stimulus staircase updated to 11.00 at 30295.485394
+MSG	709184 bar pass 8 trial offset at 30295.867948
+MSG	709192 bar pass 8 trial onset at 30295.876086
+MSG	709192 bar pass 8 event t at 30295.876293
+MSG	709559 bar pass 8 stimulus probe onset at 30296.242972
+MSG	710108 bar pass 8 event e at 30296.792434
+MSG	710434 bar pass 8 trial offset at 30297.117909
+MSG	710442 bar pass 8 trial onset at 30297.126023
+MSG	710442 bar pass 8 event t at 30297.126223
+MSG	710809 bar pass 8 stimulus probe onset at 30297.492957
+MSG	711267 bar pass 8 event b at 30297.950941
+MSG	711684 bar pass 8 trial offset at 30298.367751
+MSG	711692 bar pass 8 trial onset at 30298.375882
+MSG	711692 bar pass 8 event t at 30298.376080
+MSG	712059 bar pass 8 stimulus probe onset at 30298.742864
+MSG	712693 bar pass 8 event e at 30299.376354
+MSG	712693 stimulus staircase updated to 10.00 at 30299.376600
+EFIX R   707943	712734	4792	  944.7	  565.3	   9438
+SSACC R  712735
+ESACC R  712735	712758	24	  953.6	  562.9	  964.0	  559.2	   0.40	    101
+SFIX R   712759
+EFIX R   712759	712857	99	  962.2	  561.8	   9602
+SSACC R  712858
+ESACC R  712858	712876	19	  962.3	  560.9	  945.5	  562.5	   0.62	     81
+SFIX R   712877
+MSG	712934 bar pass 8 trial offset at 30299.617684
+MSG	712942 bar pass 8 trial onset at 30299.625868
+MSG	712942 bar pass 8 event t at 30299.626053
+EFIX R   712877	713219	343	  951.6	  558.7	   9669
+SSACC R  713220
+ESACC R  713220	713238	19	  951.9	  557.3	  959.2	  556.9	   0.27	     57
+SFIX R   713239
+MSG	713309 bar pass 8 stimulus probe onset at 30299.992721
+MSG	713909 bar pass 8 event e at 30300.592583
+MSG	714192 bar pass 8 trial offset at 30300.876290
+MSG	714201 bar pass 8 trial onset at 30300.884623
+MSG	714201 bar pass 8 event t at 30300.884831
+MSG	714576 bar pass 8 stimulus probe onset at 30301.259486
+MSG	715094 bar pass 8 event b at 30301.776676
+EFIX R   713239	715177	1939	  956.4	  556.9	   9378
+SSACC R  715178
+ESACC R  715178	715196	19	  952.3	  554.1	  963.9	  560.3	   0.48	     69
+SFIX R   715197
+MSG	715467 bar pass 8 trial offset at 30302.151212
+MSG	715476 bar pass 8 trial onset at 30302.159530
+MSG	715476 bar pass 8 event t at 30302.159732
+MSG	715842 bar pass 8 stimulus probe onset at 30302.526158
+MSG	716301 bar pass 8 event e at 30302.984555
+MSG	716301 stimulus staircase updated to 9.00 at 30302.984758
+MSG	716725 bar pass 8 trial offset at 30303.409091
+MSG	716734 bar pass 8 trial onset at 30303.417521
+MSG	716734 bar pass 8 event t at 30303.417728
+MSG	717101 bar pass 8 stimulus probe onset at 30303.784506
+MSG	717759 bar pass 8 event e at 30304.442156
+MSG	718001 bar pass 8 trial offset at 30304.684387
+MSG	718009 bar pass 8 trial onset at 30304.692758
+MSG	718009 bar pass 8 event t at 30304.692954
+MSG	718384 bar pass 8 stimulus probe onset at 30305.067486
+MSG	718851 bar pass 8 event e at 30305.534416
+MSG	719268 bar pass 8 trial offset at 30305.951176
+MSG	719275 bar pass 8 trial onset at 30305.958784
+MSG	719275 bar pass 8 event t at 30305.958997
+MSG	719642 bar pass 8 stimulus probe onset at 30306.325301
+MSG	720159 bar pass 8 event e at 30306.842276
+MSG	720159 stimulus staircase updated to 8.00 at 30306.842499
+MSG	720526 bar pass 8 trial offset at 30307.209414
+MSG	720534 bar pass 8 trial onset at 30307.217536
+MSG	720534 bar pass 8 event t at 30307.217728
+MSG	720901 bar pass 8 stimulus probe onset at 30307.584225
+MSG	721442 bar pass 8 event b at 30308.125704
+EFIX R   715197	721513	6317	  952.2	  563.1	   9012
+SSACC R  721514
+ESACC R  721514	721535	22	  950.5	  560.3	  961.8	  552.8	   0.50	     94
+SFIX R   721536
+MSG	721809 bar pass 8 trial offset at 30308.492471
+MSG	721818 bar pass 8 trial onset at 30308.501031
+MSG	721818 bar pass 8 event t at 30308.501231
+MSG	722184 bar pass 8 stimulus probe onset at 30308.867334
+MSG	722825 bar pass 8 event b at 30309.508490
+MSG	722825 stimulus staircase updated to 9.00 at 30309.508709
+EFIX R   721536	722970	1435	  952.2	  548.8	   9323
+SSACC R  722971
+MSG	723075 bar pass 8 trial offset at 30309.758766
+MSG	723084 bar pass 8 trial onset at 30309.767308
+MSG	723084 bar pass 8 event t at 30309.767494
+ESACC R  722971	723103	133	  952.2	  543.8	  955.2	  513.2	   1.13	    310
+SFIX R   723104
+MSG	723451 bar pass 8 stimulus probe onset at 30310.133928
+EFIX R   723104	724059	956	  947.1	  522.0	   9442
+SSACC R  724060
+ESACC R  724060	724081	22	  948.0	  517.4	  944.8	  563.8	   1.70	    141
+SFIX R   724082
+MSG	724093 bar pass 8 event b at 30310.776118
+MSG	724359 bar pass 8 trial offset at 30311.041943
+MSG	724367 bar pass 8 trial onset at 30311.050102
+MSG	724367 bar pass 8 event t at 30311.050319
+MSG	724734 bar pass 8 stimulus probe onset at 30311.416994
+MSG	725433 bar pass 8 event b at 30312.116595
+MSG	725659 bar pass 8 trial offset at 30312.342218
+MSG	725667 bar pass 8 trial onset at 30312.350667
+MSG	725668 bar pass 8 event t at 30312.350863
+MSG	726033 bar pass 8 stimulus probe onset at 30312.716660
+MSG	726675 bar pass 8 event b at 30313.358230
+MSG	726675 stimulus staircase updated to 8.00 at 30313.358429
+MSG	726942 bar pass 8 trial offset at 30313.625554
+MSG	726951 bar pass 8 trial onset at 30313.633966
+MSG	726951 bar pass 8 event t at 30313.634166
+MSG	727317 bar pass 8 stimulus probe onset at 30313.999915
+MSG	728042 bar pass 8 event e at 30314.725322
+MSG	728226 bar pass 8 trial offset at 30314.909198
+MSG	728233 bar pass 8 trial onset at 30314.916575
+MSG	728234 bar pass 8 event t at 30314.916765
+MSG	728601 bar pass 8 stimulus probe onset at 30315.283829
+MSG	729301 bar pass 8 event b at 30315.983891
+MSG	729301 stimulus staircase updated to 9.00 at 30315.984066
+MSG	729526 bar pass 8 trial offset at 30316.209137
+MSG	729534 bar pass 8 trial onset at 30316.216966
+MSG	729534 bar pass 8 event t at 30316.217166
+MSG	729901 bar pass 8 stimulus probe onset at 30316.583754
+MSG	730484 bar pass 8 event e at 30317.166989
+MSG	730484 stimulus staircase updated to 10.00 at 30317.167238
+MSG	730808 bar pass 8 trial offset at 30317.491343
+MSG	730809 bar pass 8 - 225/225 drawn bar stimuli - and 90/90 probes - 42 missed sync on 2700 frames, 1.6(mean/median delay = 2.7/2.1 ms)
+MSG	730809 bar pass 8 stopped at 30317.491939
+MSG	730927 bar pass 9 started at 30317.610045
+MSG	730939 bar pass 9 trial onset at 30317.621952
+MSG	730939 bar pass 9 event t at 30317.622352
+EFIX R   724082	731243	7162	  950.8	  550.2	   9633
+SSACC R  731244
+ESACC R  731244	731388	145	  952.4	  565.6	  965.8	  561.4	   0.51	   3270
+SFIX R   731389
+EFIX R   731389	731494	106	  954.8	  568.6	   9847
+SSACC R  731495
+SBLINK R 731522
+EBLINK R 731522	731607	86
+ESACC R  731495	731671	177	  954.5	  562.6	  974.8	  551.3	   0.85	   3270
+SFIX R   731672
+EFIX R   731672	731976	305	  962.1	  564.7	   9835
+SSACC R  731977
+ESACC R  731977	731996	20	  956.4	  561.8	  944.8	  562.6	   0.42	     78
+SFIX R   731997
+EFIX R   731997	732043	47	  947.4	  563.7	   9866
+SSACC R  732044
+SBLINK R 732072
+EBLINK R 732072	732136	65
+MSG	732184 bar pass 9 trial offset at 30318.866450
+MSG	732192 bar pass 9 trial onset at 30318.875165
+MSG	732193 bar pass 9 event t at 30318.875420
+ESACC R  732044	732203	160	  945.6	  568.9	  963.2	  557.6	   0.76	   3270
+SFIX R   732204
+EFIX R   732204	733112	909	  948.5	  568.1	   9700
+SSACC R  733113
+ESACC R  733113	733129	17	  949.4	  562.6	  946.9	  553.1	   0.36	     46
+SFIX R   733130
+MSG	733434 bar pass 9 trial offset at 30320.116614
+MSG	733442 bar pass 9 trial onset at 30320.125230
+MSG	733443 bar pass 9 event t at 30320.125469
+MSG	734684 bar pass 9 trial offset at 30321.366529
+MSG	734692 bar pass 9 trial onset at 30321.375075
+MSG	734693 bar pass 9 event t at 30321.375327
+EFIX R   733130	735156	2027	  952.7	  561.2	   9800
+SSACC R  735157
+ESACC R  735157	735167	11	  953.6	  559.1	  935.1	  559.7	   0.68	     67
+SFIX R   735168
+EFIX R   735168	735348	181	  942.5	  559.1	   9859
+SSACC R  735349
+ESACC R  735349	735367	19	  942.7	  559.2	  953.9	  558.4	   0.41	     64
+SFIX R   735368
+MSG	735934 bar pass 9 trial offset at 30322.616459
+MSG	735942 bar pass 9 trial onset at 30322.624888
+MSG	735942 bar pass 9 event t at 30322.625151
+EFIX R   735368	735987	620	  947.9	  558.9	   9818
+SSACC R  735988
+ESACC R  735988	736007	20	  950.7	  559.1	  956.4	  555.2	   0.25	     47
+SFIX R   736008
+EFIX R   736008	736370	363	  954.4	  558.3	   9807
+SSACC R  736371
+ESACC R  736371	736390	20	  953.1	  558.7	  940.0	  557.5	   0.48	     61
+SFIX R   736391
+EFIX R   736391	736616	226	  944.7	  558.2	   9801
+SSACC R  736617
+ESACC R  736617	736624	8	  946.3	  557.1	  955.4	  562.3	   0.38	     50
+SFIX R   736625
+MSG	737184 bar pass 9 trial offset at 30323.866423
+MSG	737192 bar pass 9 trial onset at 30323.874881
+MSG	737192 bar pass 9 event t at 30323.875110
+EFIX R   736625	738176	1552	  953.5	  566.9	   9763
+SSACC R  738177
+ESACC R  738177	738194	18	  953.7	  571.9	  967.0	  566.2	   0.53	     66
+SFIX R   738195
+EFIX R   738195	738262	68	  960.4	  568.1	   9816
+SSACC R  738263
+ESACC R  738263	738272	10	  959.8	  567.9	  945.0	  565.8	   0.55	     62
+SFIX R   738273
+MSG	738434 bar pass 9 trial offset at 30325.116370
+MSG	738442 bar pass 9 trial onset at 30325.124868
+MSG	738443 bar pass 9 event t at 30325.125103
+EFIX R   738273	739650	1378	  951.1	  567.6	   9785
+SSACC R  739651
+ESACC R  739651	739668	18	  952.8	  569.3	  962.6	  574.2	   0.40	     62
+SFIX R   739669
+MSG	739684 bar pass 9 trial offset at 30326.366036
+MSG	739692 bar pass 9 trial onset at 30326.374833
+MSG	739692 bar pass 9 event t at 30326.375045
+EFIX R   739669	739903	235	  957.0	  572.8	   9817
+SSACC R  739904
+ESACC R  739904	739920	17	  955.6	  571.6	  949.5	  568.1	   0.26	     48
+SFIX R   739921
+MSG	740934 bar pass 9 trial offset at 30327.616353
+MSG	740943 bar pass 9 trial onset at 30327.625155
+MSG	740943 bar pass 9 event t at 30327.625349
+MSG	742184 bar pass 9 trial offset at 30328.866175
+MSG	742192 bar pass 9 trial onset at 30328.874644
+MSG	742192 bar pass 9 event t at 30328.874841
+MSG	743434 bar pass 9 trial offset at 30330.115852
+MSG	743438 bar pass 9 - 125/125 drawn bar stimuli - and 0/0 probes - 1 missed sync on 1500 frames, 0.1(mean/median delay = 1.9/1.9 ms)
+MSG	743438 bar pass 9 stopped at 30330.119989
+EFIX R   739921	744439	4519	  951.8	  570.6	   9697
+SSACC R  744440
+ESACC R  744440	744464	25	  936.9	  574.8	  872.2	  562.2	   2.40	    184
+SFIX R   744465
+EFIX R   744465	744769	305	  885.8	  567.7	   8383
+SSACC R  744770
+ESACC R  744770	744800	31	  891.0	  569.8	 1007.0	  572.5	   4.23	    268
+SFIX R   744801
+EFIX R   744801	745045	245	  986.0	  568.9	   8520
+SSACC R  745046
+ESACC R  745046	745085	40	  987.0	  568.7	 1112.2	  574.0	   4.56	    246
+SFIX R   745086
+EFIX R   745086	745287	202	 1093.7	  567.9	   8429
+SSACC R  745288
+ESACC R  745288	745325	38	 1091.3	  564.9	 1215.7	  580.0	   4.50	    251
+SFIX R   745326
+EFIX R   745326	745631	306	 1199.2	  571.9	   8376
+SSACC R  745632
+ESACC R  745632	745675	44	 1199.0	  569.3	  972.9	  576.6	   8.17	    415
+SFIX R   745676
+EFIX R   745676	745797	122	  982.7	  570.8	   8561
+SSACC R  745798
+SBLINK R 745832
+EBLINK R 745832	745957	126
+ESACC R  745798	746015	218	  979.3	  576.1	  972.7	  622.6	   1.71	    701
+SFIX R   746016
+EFIX R   746016	746256	241	  958.8	  621.1	   8557
+SSACC R  746257
+SBLINK R 746292
+EBLINK R 746292	746434	143
+ESACC R  746257	746496	240	  957.5	  621.5	  913.9	  580.1	   2.19	    659
+SFIX R   746497
+EFIX R   746497	746610	114	  904.4	  592.9	   8780
+SSACC R  746611
+SBLINK R 746647
+EBLINK R 746647	751557	4911
+ESACC R  746611	751557	4947	  904.5	  600.7	 3270.0	 3270.0	  41.01	   3270
+END	751557 	EVENTS	RES	  32.74	  34.82
+MSG	751568 RECORD_STOP
