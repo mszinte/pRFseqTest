@@ -1,4 +1,4 @@
-** CONVERTED FROM /Users/eyemanip/Experiments/Martin/pRFseqTest/data/sub-001/func/sub-001_task-AttendStimSeq2_run-5_eyeData.edf using edfapi 4.0 MacOS X Jul  7 2014 on Wed Aug  7 13:47:17 2019
+** CONVERTED FROM /Users/martinszinte/Experiments/pRFseqTest/data/sub-001/func/sub-001_task-AttendStimSeq2_run-5_eyeData.edf using edfapi 4.0 MacOS X Jul  7 2014 on Thu Aug  8 11:06:16 2019
 ** DATE: Wed Aug  7 13:46:23 2019
 ** TYPE: EDF_FILE BINARY EVENT SAMPLE TAGGED
 ** VERSION: EYELINK II 1
