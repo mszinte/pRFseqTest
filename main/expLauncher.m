@@ -13,11 +13,11 @@
 
 % TO DO
 % =====
-% ProPixx settings and settings for Siemens Prisma
-% Siemens button press values in new scanner
-% Siemens triggers of first TR
-% Sequence values of the TR
-% Collect behavioral data in testing room
+% ProPixx settings
+% 3T room button press
+% 3T room TR triggers
+% Set sequence values of the TR
+% Prepare sequence with right names
 
 % First settings
 % --------------
@@ -83,4 +83,8 @@ main(const);
 
 % Analyse data
 % ------------
-behav_results(const.sjct,const.runNum,const.tracker)
+if const.runNum > 2;        res = input(sprintf('\n\tPlot results? YES (1) NO (0) : '));
+elseif const.runNum == 10;  res = 1;
+else                        res = 1;
+end
+if res; behav_results(const.sjct,const.runNum,const.tracker); end

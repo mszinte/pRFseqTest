@@ -45,6 +45,7 @@ list_filename = {   sprintf('%s_task-%s%s_run-1',subject,task1_txt,task2_1_txt),
 time_last_run = 0;
 response_vals = [];
 stim_stair_vals = [];
+bar_directions = [];
 time_runs = [];
 
 for t_run = 1:num_run
@@ -66,6 +67,7 @@ for t_run = 1:num_run
     % concatenate values
     response_vals = [response_vals;val.response_val];
     stim_stair_vals = [stim_stair_vals;val.stim_stair_val];
+    bar_directions = [bar_directions;val.bar_direction];
     
     % define time
     time_start(t_run) = val.onset(1,1);
@@ -122,7 +124,7 @@ if eyetracker
                         first_time = 1;
                     end
                     
-                    if strcmp(la{1}(3),'bar') && strcmp(la{1}(4),'pass') && strcmp(la{1}(5),'1') && strcmp(la{1}(6),'stopped') && ~last_time
+                    if strcmp(la{1}(3),'bar') && strcmp(la{1}(4),'pass') && strcmp(la{1}(5),'9') && strcmp(la{1}(6),'stopped') && ~last_time
                         time_end_eye(t_run) = str2double(la{1}(2));
                         last_time = 1;
                     end
@@ -173,8 +175,8 @@ if eyetracker
     end
     
     % nan record around detected blinks
-    befDurBlink = 100;   % duration before blink
-    aftDurBlink = 150;   % duration after blink
+    befDurBlink = 300;   % duration before blink
+    aftDurBlink = 300;   % duration after blink
     eye_data_runs_no_blink = eye_data_runs;
     for tBlink = 1:blinkNum
         blink_onset_offset(tBlink,:) = [blink_onset_offset(tBlink,1)-befDurBlink,blink_onset_offset(tBlink,1)+aftDurBlink];
@@ -205,11 +207,15 @@ if eyetracker
     precision_val = nanstd(fix_accuracy,1);
     
     % compute fixation heatmap
-    eye_data_runs_resample  = resample(eye_data_runs_no_blink,1,100);
+%     eye_data_runs_resample  = resample(eye_data_runs_no_blink,1,100);
+%     time_prc_eye_resample  = resample(time_prc_eye,1,100);
+    eye_data_runs_no_blink_movmean = eye_data_runs_no_blink;
+    eye_data_runs_no_blink_movmean (:,2) = movmean(eye_data_runs_no_blink_movmean (:,2),5000,'omitnan');
+    eye_data_runs_no_blink_movmean (:,3) = movmean(eye_data_runs_no_blink_movmean (:,3),5000,'omitnan');
     
     radMaxX     = ceil(config.scr.x_mid/ppd);
     radMaxY     = ceil(config.scr.y_mid/ppd);
-    [~,densityFix,xHeatMap,yHeatMap]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX,-radMaxY],[radMaxX,radMaxY],2^5);
+    [~,densityFix,xHeatMap,yHeatMap]=kde2d([eye_data_runs(:,2),eye_data_runs(:,3)],[-radMaxX,-radMaxY],[radMaxX,radMaxY],2^5);
     densityFix_min = min(min(densityFix));
     densityFix_max = max(max(densityFix));
     densityFix = (densityFix - densityFix_min)./(densityFix_max-densityFix_min);
@@ -217,10 +223,11 @@ if eyetracker
     % compute fixation heatmap zoom
     radMaxX_zoom     = ceil(config.scr.x_mid/ppd)/10;
     radMaxY_zoom     = ceil(config.scr.y_mid/ppd)/10;
-    [~,densityFix_zoom,xHeatMap_zoom,yHeatMap_zoom]=kde2d([eye_data_runs_resample(:,2),eye_data_runs_resample(:,3)],[-radMaxX_zoom,-radMaxY_zoom],[radMaxX_zoom,radMaxY_zoom],2^5);
+    [~,densityFix_zoom,xHeatMap_zoom,yHeatMap_zoom]=kde2d([eye_data_runs(:,2),eye_data_runs(:,3)],[-radMaxX_zoom,-radMaxY_zoom],[radMaxX_zoom,radMaxY_zoom],2^5);
     densityFix_min_zoom = min(min(densityFix_zoom));
     densityFix_max_zoom = max(max(densityFix_zoom));
     densityFix_zoom = (densityFix_zoom - densityFix_min_zoom)./(densityFix_max_zoom-densityFix_min_zoom);
+    
     
     
 end
@@ -298,8 +305,8 @@ for tRow = 1:numRow
                 densityFix_val  = densityFix;
                 xlim        = [-radMaxX,radMaxX];
                 ylim        = [-radMaxY,radMaxY];
-                xtick       = linspace(xlim(1),xlim(2),11);
-                ytick       = linspace(ylim(1),ylim(2),11);
+                xtick       = linspace(xlim(1),xlim(2),15);
+                ytick       = linspace(ylim(1),ylim(2),7);
                 xlabel      = 'Horizontal coord. (dva)';
                 ylabel      = 'Vertical coord. (dva)';
                 fig_title   = 'Fixation heatmap (zoom)';
@@ -307,8 +314,8 @@ for tRow = 1:numRow
         elseif tRow == 2
             if tCol == 1
                 xPlot       = time_prc_eye;
+                yPlot       = eye_data_runs_no_blink_movmean(:,2);
                 yPlot2      = eye_data_runs(:,2);
-                yPlot       = eye_data_runs_no_blink(:,2);
                 xlim        = [0,1];
                 ylim        = [-5,5];
                 xtick       = 0:0.1:1;
@@ -317,8 +324,8 @@ for tRow = 1:numRow
                 fig_title   = 'Eye horizontal position';
             elseif tCol == 2
                 xPlot       = time_prc_eye;
-                yPlot2      = eye_data_runs(:,3);
-                yPlot      = eye_data_runs_no_blink(:,3);
+                yPlot       = eye_data_runs_no_blink_movmean(:,3);
+                yPlot2      = eye_data_runs_no_blink(:,3);
                 xlim        = [0,1];
                 ylim        = [-5,5];
                 xtick       = 0:0.1:1;
@@ -331,8 +338,8 @@ for tRow = 1:numRow
                 densityFix_val  = densityFix_zoom;
                 xlim        = [-radMaxX_zoom,radMaxX_zoom];
                 ylim        = [-radMaxY_zoom,radMaxY_zoom];
-                xtick       = linspace(xlim(1),xlim(2),11);
-                ytick       = linspace(ylim(1),ylim(2),11);
+                xtick       = linspace(xlim(1),xlim(2),15);
+                ytick       = linspace(ylim(1),ylim(2),7);
                 xlabel      = 'Horizontal coord. (dva)';
                 ylabel      = 'Vertical coord. (dva)';
                 fig_title   = 'Fixation heatmap (zoom)';
@@ -345,22 +352,21 @@ for tRow = 1:numRow
         % plot back figures
         patch([xlim(1),xlim(2),xlim(2),xlim(1)],[ylim(1),ylim(1),ylim(2),ylim(2)],beige,'linestyle','none');
         
-        
         % plot data
         if tCol < 3
+            
             if tRow == 2
-                plot(xPlot,yPlot2,'LineWidth',2,'Color',[0.8,0,0]);
+                plot(xPlot,yPlot2,'LineWidth',2,'Color',[0.95,0.95,0.95]);
             end
             plot(xPlot,yPlot,'LineWidth',2,'Color',resCol);
             
         else
-            contourf(xHeatMap_val,yHeatMap_val,densityFix_val,5,'linestyle','none');
+            contourf(xHeatMap_val,yHeatMap_val,densityFix_val,20,'linestyle','none');
         end
         
         % plot white hiders
         patch([xlim(1),xlim(2),xlim(2),xlim(1)],[ylim(1),ylim(1),ylim(1)-yrange*2,ylim(1)-yrange*2],white,'linestyle','none');
         patch([xlim(1),xlim(2),xlim(2),xlim(1)],[ylim(2),ylim(2),ylim(2)+yrange*2,ylim(2)+yrange*2],white,'linestyle','none');
-        
         
         % plot fixation position
         if tCol < 3 && tRow == 2
@@ -470,6 +476,14 @@ for tRow = 1:numRow
             yPlotBlink = ylim(2)+(yrange*mergin*(4));
             text(xPlotBlink+xrange*0.02,yPlotBlink,sprintf('Blinks = %i',blinkNum),'Hor','right','Ver','Middle')
 
+        end
+        
+        % plot block time
+        if tCol < 3
+            xPlotTask = time_prc;
+            xPlotTask(bar_directions==9) = NaN;
+            yPlotTask = xPlotTask*0 + ylim(1)-(yrange*mergin);
+            plot(xPlotTask,yPlotTask,'LineWidth',5,'Color',resCol);
         end
         
         % set figure 
