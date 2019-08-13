@@ -12,7 +12,7 @@ function [scr]=scrConfig(const)
 % scr : struct containing screen configurations
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 12 / 08 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -33,9 +33,8 @@ if const.room == 1
     
     % Settings 3T MRI room
     % --------------------
-
-    scr.disp_sizeX          =   698.4;                          % setting for BOLDScreen32'
-    scr.disp_sizeY          =   392.9;                          % setting for BOLDScreen32'
+    scr.disp_sizeX          =   435;                            % setting for ProPixx in 3TPrisma CERIMED
+    scr.disp_sizeY          =   435;                            % setting for ProPixx in 3TPrisma CERIMED
     scr.disp_sizeLeft       =   round(-scr.disp_sizeX/2);       % physical size of the screen from center to left edge (mm)
     scr.disp_sizeRight      =   round(scr.disp_sizeX/2);        % physical size of the screen from center to top edge (mm)
     scr.disp_sizeTop        =   round(scr.disp_sizeY/2);        % physical size of the screen from center to right edge (mm)
@@ -45,8 +44,8 @@ elseif const.room == 2
     
     % Settings eyelink room
     % ---------------------
-    scr.disp_sizeX          =   696;                          % setting for Display ++'
-    scr.disp_sizeY          =   391;                            % setting for Display ++'
+    scr.disp_sizeX          =   696;                            % setting for Display ++ INT
+    scr.disp_sizeY          =   391;                            % setting for Display ++ INT
     scr.disp_sizeLeft       =   round(-scr.disp_sizeX/2);       % physical size of the screen from center to left edge (mm)
     scr.disp_sizeRight      =   round(scr.disp_sizeX/2);        % physical size of the screen from center to top edge (mm)
     scr.disp_sizeTop        =   round(scr.disp_sizeY/2);        % physical size of the screen from center to right edge (mm)
@@ -88,9 +87,9 @@ if const.room == 1
     % --------------------
     
     % Screen distance 
-    scr.dist                =   57;                            % general screen distance in cm
-    scr.distTop             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
-    scr.distBot             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
+    scr.dist                =   120;                           % general screen distance in cm
+    scr.distTop             =   1210;                          % screen distance to top of the screeen for eyelink in mm (!)
+    scr.distBot             =   1210;                          % screen distance to top of the screeen for eyelink in mm (!)
 
     % Center of the screen :
     scr.x_mid               =   (scr.scr_sizeX/2.0);
@@ -104,14 +103,14 @@ elseif const.room == 2
     
     % Screen distance 
     scr.dist                =   57;                            % general screen distance in cm
-    scr.distTop             =   600;                           % screen distance to top of the screeen for eyelink in mm (!)
-    scr.distBot             =   610;                           % screen distance to top of the screeen for eyelink in mm (!)
+    scr.distTop             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
+    scr.distBot             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
 
     % Center of the screen :
     scr.x_mid               =   (scr.scr_sizeX/2.0);
     scr.y_mid               =   (scr.scr_sizeY/2.0);
     scr.mid                 =   [scr.x_mid,scr.y_mid];
-    
+
 end
 
 end

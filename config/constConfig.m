@@ -39,7 +39,7 @@ const.TR_num            =   (round(const.TR_dur/scr.frame_duration));           
 const.bar_dir_num       =   9;                                                                  % number of bar passes and break
 
 const.bar_step_ver      =   18;                                                                 % bar steps for vertical bar pass
-const.bar_step_hor      =   32;                                                                 % bar steps for horizontal bar pass 
+const.bar_step_hor      =   18;                                                                 % bar steps for horizontal bar pass 
 const.blk_step          =   10;                                                                 % blank period step
 
 const.bar_step_dur_ver  =   const.TR_dur;                                                       % bar step duration for vertical bar pass in seconds
@@ -70,7 +70,7 @@ const.num_frame_max_blk =   const.blk_step*const.TR_num;                        
 %% Stim parameters
 % Noise patches
 const.noise_num         =   5;                                                                  % number of generated patches per kappa
-const.stim_size         =   [scr.scr_sizeX/2,scr.scr_sizeY/2];                                  % full screen stimuli size in pixels
+const.stim_size         =   [scr.scr_sizeY/2,scr.scr_sizeY/2];                                  % full screen stimuli size in pixels
 
 const.stim_rect         =   [   scr.x_mid-const.stim_size(1);...                                % rect of the actual stimulus
                                 scr.y_mid-const.stim_size(2);...
@@ -155,6 +155,15 @@ const.bar_aperture_rect =  [scr.x_mid - const.bar_mask_size/2,...               
                             scr.y_mid + const.bar_mask_size/2];
 const.bar_step_size_ver =   const.stim_size(2)*2/(const.bar_step_ver-1);                        % bar step size in pixels for vertical bar pass
 const.bar_step_size_hor =   const.stim_size(1)*2/(const.bar_step_hor-1);                        % bar step size in pixels for horizontal bar pass
+
+const.left_propixx_hide = [0,...                                                                % square screen left side hider
+                           0,...
+                           (scr.scr_sizeX-scr.scr_sizeY)/2,...
+                           scr.scr_sizeY];
+const.right_propixx_hide = [(scr.scr_sizeX-scr.scr_sizeY)/2+scr.scr_sizeY,...                   % square screen right side hider
+                            0,...
+                            scr.scr_sizeX,...
+                            scr.scr_sizeY];
 
 % define horizontal bar pass
 for tAng = 1:size(const.bar_dir_ang,2)

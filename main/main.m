@@ -17,14 +17,6 @@ function main(const)
 % Version :     1.0
 % ----------------------------------------------------------------------
 
-% Network settings
-% ----------------
-if const.tracker
-    [~,~]                   =   system(sprintf('echo %s | sudo -S networksetup -switchtolocation "Eyelink"',const.sudopwd));
-else
-    [~,~]                   =   system(sprintf('echo %s | sudo -S networksetup -switchtolocation "Web"',const.sudopwd));
-end
-pause(2);
 
 % File director
 % -------------

@@ -152,7 +152,11 @@ for kappa_val_stim = 2:kappa_val_num
                     % draw all textures
                     Screen('FillRect',scr.main,const.background_color);
                     Screen('DrawTextures',scr.main,texs,[],rects,angles)
+                    Screen('FillRect',scr.main,const.background_color,const.left_propixx_hide)
+                    Screen('FillRect',scr.main,const.background_color,const.right_propixx_hide)
                     Screen('DrawingFinished',scr.main,[],1);
+                    
+                    
                     
                     if const.drawStimuli
                         % plot and save the sreenshot
@@ -227,6 +231,8 @@ for noise_rand = 1:noise_rand_num
             % draw all textures
             Screen('FillRect',scr.main,const.background_color);
             Screen('DrawTextures',scr.main,texs,[],rects,angles)
+            Screen('FillRect',scr.main,const.background_color,const.left_propixx_hide)
+            Screen('FillRect',scr.main,const.background_color,const.right_propixx_hide)
             Screen('DrawingFinished',scr.main,[],1);
             
             if const.drawStimuli
@@ -262,6 +268,8 @@ texs                    =   [tex_fix_ann_no_probe,...                           
 
 Screen('FillRect',scr.main,const.background_color);
 Screen('DrawTextures',scr.main,texs,[],rects)
+Screen('FillRect',scr.main,const.background_color,const.left_propixx_hide)
+Screen('FillRect',scr.main,const.background_color,const.right_propixx_hide)
 Screen('DrawingFinished',scr.main,[],1);
 
 if const.drawStimuli

@@ -13,11 +13,9 @@
 
 % TO DO
 % =====
-% ProPixx settings
-% 3T room button press
-% 3T room TR triggers
-% Set sequence values of the TR
-% Prepare sequence with right names
+% 3T room button press - setup Data Acquisition Toolbox
+% 3T room TR triggers - setup Data Acquisition Toolbox and see settings
+% Set sequence values of the TR - see Julien
 
 % First settings
 % --------------
@@ -26,8 +24,7 @@ Screen('CloseAll');clear all;clear mex;clear functions;close all;home;ListenChar
 % General settings
 % ----------------
 const.expName           =   'pRFseqTest';   % experiment name.
-const.sudopwd           =   'eyelink2';     % sudo pwd on machine
-const.expStart          =   1;              % Start of a recording exp                          0 = NO  , 1 = YES
+const.expStart          =   0;              % Start of a recording exp                          0 = NO  , 1 = YES
 const.checkTrial        =   0;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
 const.writeLogTxt       =   1;              % write a log file in addition to eyelink file      0 = NO  , 1 = YES
 const.genStimuli        =   0;              % Generate all stimuli                              0 = NO  , 1 = YES
@@ -36,11 +33,10 @@ const.mkVideo           =   0;              % Make a video of a run (on mac not 
 
 % External controls
 % -----------------
-const.tracker           =   1;              % run with eye tracker                              0 = NO  , 1 = YES
+const.tracker           =   0;              % run with eye tracker                              0 = NO  , 1 = YES
 const.scanner           =   0;              % run in MRI scanner                                0 = NO  , 1 = YES
 const.scannerTest       =   1;              % run with T returned at TR time                    0 = NO  , 1 = YES
 const.room              =   2;              % run in MRI or eye-tracking room                   1 = MRI , 2 = eye-tracking
-
 
 % Run order
 % ---------

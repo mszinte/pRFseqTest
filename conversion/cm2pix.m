@@ -14,14 +14,13 @@ function [pixX, pixY] = cm2pix(cm,scr)
 % ----------------------------------------------------------------------
 % Output(s):
 % pixX  = size in pixel(X)                             ex : = 35
-% pixY  = size in pixel(Y)                             ex : = 25.35  
+% pixY  = size in pixel(Y)                             ex : = 25.35
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
 % Last edit : 30 / 10 / 2008
 % Project : All
 % Version : 1.0
 % ----------------------------------------------------------------------
-
 
 pix_by_mmX = scr.scr_sizeX/scr.disp_sizeX;
 pix_by_mmY = scr.scr_sizeY/scr.disp_sizeY;

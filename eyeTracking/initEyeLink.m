@@ -99,6 +99,7 @@ Eyelink('command','screen_pixel_coords = %d %d %d %d', 0, 0, scr.scr_sizeX-1, sc
 Eyelink('command','screen_phys_coords = %d %d %d %d',scr.disp_sizeLeft,scr.disp_sizeTop,scr.disp_sizeRight,scr.disp_sizeBot);
 Eyelink('command','screen_distance = %d %d', scr.distTop, scr.distBot);
 Eyelink('command','simulation_screen_distance = %d', scr.dist*10);
+
 % Tracking mode and settings
 Eyelink('command','enable_automatic_calibration = NO');
 Eyelink('command','pupil_size_diameter = YES');
