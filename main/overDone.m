@@ -75,7 +75,7 @@ end
 
 % Close Psychtoolbox screen
 % -------------------------
-ListenChar(1);ShowCursor;
+ShowCursor;
 Screen('CloseAll');
 
 % Print block duration

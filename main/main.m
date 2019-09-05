@@ -17,7 +17,6 @@ function main(const)
 % Version :     1.0
 % ----------------------------------------------------------------------
 
-
 % File director
 % -------------
 [const]                 =   dirSaveFile(const);
@@ -48,7 +47,7 @@ priorityLevel           =   MaxPriority(scr.main);Priority(priorityLevel);
 % Initialise eye tracker
 % ----------------------
 el                      =   [];
-if const.tracker;
+if const.tracker
     [el]                    =   initEyeLink(scr,const,my_key);
 end
 
@@ -60,7 +59,6 @@ end
 
 % Trial runner
 % ------------
-ListenChar(2);
 [const]                 =   runTrials(scr,const,expDes,el,my_key);
 
 % End

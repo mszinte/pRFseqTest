@@ -43,7 +43,6 @@ my_key.right2           =   KbName(my_key.right2Val);
 my_key.right3           =   KbName(my_key.right3Val);
 my_key.right4           =   KbName(my_key.right4Val);
 
-
 my_key.keyboard_idx     =   GetKeyboardIndices;
 for keyb = 1:size(my_key.keyboard_idx,2)
     KbQueueCreate(my_key.keyboard_idx(keyb));

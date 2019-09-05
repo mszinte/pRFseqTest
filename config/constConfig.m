@@ -76,7 +76,7 @@ const.stim_rect         =   [   scr.x_mid-const.stim_size(1);...                
                                 scr.y_mid-const.stim_size(2);...
                                 scr.x_mid+const.stim_size(1);...
                                 scr.y_mid+const.stim_size(2)];
-                            
+
 const.num_steps_kappa   =   15;                                                                 % number of kappa steps
 const.noise_kappa       =   [0,10.^(linspace(-1,1.5,const.num_steps_kappa-1))];                 % von misses filter kappa parameter (1st = noise, last = less noisy)
 const.good_4_harder     =   3;                                                                  % amount of trials before (harder) staircase update
@@ -124,7 +124,7 @@ const.raised_cos        =   (const.raised_cos - min(const.raised_cos))/...
 
 
 % Fixation circular aperture
-const.fix_out_rim_radVal=   0.4;                                                                % radius of outer circle of fixation bull's eye
+const.fix_out_rim_radVal=   0.3;                                                                % radius of outer circle of fixation bull's eye
 const.fix_rim_radVal    =   0.75*const.fix_out_rim_radVal;                                      % radius of intermediate circle of fixation bull's eye in degree
 const.fix_radVal        =   0.25*const.fix_out_rim_radVal;                                      % radius of inner circle of fixation bull's eye in degrees
 const.fix_out_rim_rad   =   vaDeg2pix(const.fix_out_rim_radVal,scr);                            % radius of outer circle of fixation bull's eye in pixels
@@ -139,7 +139,7 @@ const.fix_dot_probe     =   const.fix_dot;
 const.bar_dir_run       =   [9,1,9,3,9,5,9,7,9];                                                % direction (1 = 180 deg, 2 = 225 deg, 3 =  270 deg, 4 = 315 deg,
                                                                                                 %            5 = 0 deg,   6 = 45 deg,  7 = 90 deg,   8 = 135 deg; 9 = none)
 
-const.bar_width_deg     =   3;                                                                  % bar width in dva
+const.bar_width_deg     =   2;                                                                  % bar width in dva
 const.bar_width         =   vaDeg2pix(const.bar_width_deg,scr);                                 % bar width in pixels
 
 const.bar_mask_size     =   const.stim_size(1)*4;                                               % bar mask size in pixels

@@ -33,7 +33,7 @@ if const.room == 1
     
     % Settings 3T MRI room
     % --------------------
-    scr.disp_sizeX          =   435;                            % setting for ProPixx in 3TPrisma CERIMED
+    scr.disp_sizeX          =   773.33;                         % setting for ProPixx in 3TPrisma CERIMED
     scr.disp_sizeY          =   435;                            % setting for ProPixx in 3TPrisma CERIMED
     scr.disp_sizeLeft       =   round(-scr.disp_sizeX/2);       % physical size of the screen from center to left edge (mm)
     scr.disp_sizeRight      =   round(scr.disp_sizeX/2);        % physical size of the screen from center to top edge (mm)
