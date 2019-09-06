@@ -24,7 +24,7 @@ Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpen
 % General settings
 % ----------------
 const.expName           =   'pRFseqTest';   % experiment name.
-const.expStart          =   0;              % Start of a recording exp                          0 = NO  , 1 = YES
+const.expStart          =   1;              % Start of a recording exp                          0 = NO  , 1 = YES
 const.checkTrial        =   0;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
 const.writeLogTxt       =   1;              % write a log file in addition to eyelink file      0 = NO  , 1 = YES
 const.genStimuli        =   0;              % Generate all stimuli                              0 = NO  , 1 = YES
@@ -84,3 +84,4 @@ elseif const.runNum == 10;  res = 1;
 else                        res = 1;
 end
 if res; behav_results(const.sjct,const.runNum,const.tracker); end
+

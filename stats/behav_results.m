@@ -54,6 +54,7 @@ for t_run = 1:num_run
     tsv_filename = sprintf('%s/func/%s_events.tsv',file_dir,list_filename{t_run});
     val = tdfread(tsv_filename);
     
+    
     % transform to matlab nan
     % response value
     response_val = zeros(size(val.response_val,1),1);
@@ -80,14 +81,20 @@ end
 time_prc = time_runs/sum(time_end - time_start);
 
 performances = [];
-for t = 1:size(response_vals,1); 
+for t = 1:size(response_vals,1)
     performance = nanmean(response_vals(1:t));
     performances = [performances;performance];
 end
 
 % Get eye data
 % ------------
-edf2asc_dir = '/Applications/Eyelink/EDF_Access_API/Example';
+if ismac
+    edf2asc_dir = '/Applications/Eyelink/EDF_Access_API/Example';
+    end_file = '';
+elseif ispc 
+    edf2asc_dir = 'C:\Users\maclab\Documents\Experiments\pRFseqTest\stats';
+    end_file ='.exe';
+end
 if eyetracker
     time_last_run_eye   =   0;
     fix_accuracy        =   [];
@@ -100,11 +107,10 @@ if eyetracker
         edf_filename = sprintf('%s/func/%s_eyeData',file_dir,list_filename{t_run});
         
         % get .msg and .dat file
-        
-        if ~exist(sprintf('%s.dat',edf_filename),'file') && ~exist(sprintf('%s.msg',edf_filename),'file')
-            [~,~] = system(sprintf('%s/edf2asc %s.edf -e -y',edf2asc_dir,edf_filename));
+        if ~exist(sprintf('%s.dat',edf_filename),'file') || ~exist(sprintf('%s.msg',edf_filename),'file')
+            [~,~] = system(sprintf('%s/edf2asc%s %s.edf -e -y',edf2asc_dir,end_file,edf_filename));
             movefile(sprintf('%s.asc',edf_filename),sprintf('%s.msg',edf_filename));
-            [~,~] = system(sprintf('%s/edf2asc %s.edf -s -miss -1.0 -y',edf2asc_dir,edf_filename));
+            [~,~] = system(sprintf('%s/edf2asc%s %s.edf -s -miss -1.0 -y',edf2asc_dir,end_file,edf_filename));
             movefile(sprintf('%s.asc',edf_filename),sprintf('%s.dat',edf_filename));
         end
         

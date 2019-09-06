@@ -1,21 +1,12 @@
-% Use the daq.getDevices command to display a list of devices available to your machine and MATLAB
-daq.getDevices
-
-% To learn more about an individual device, click the name of the device in the list in the Command window, or access the device in the array returned by daq.getDevices command.
-d = daq.getDevices;
-
-s = daq.createSession('ni');
-s.Rate = 5000;
-s.DurationInSeconds = 2;
-
-addAnalogInputChannel(s,'cDAQ1Mod1',0,'Voltage');
-% https://ch.mathworks.com/help/daq/ref/adddigitalchannel.html
-
-addDigitalChannel(s,'dev1','Port0/Line0:1','InputOnly');
-ch = addDigitalChannel(s,'dev1','Port0/Line2:3','OutputOnly');
-[ch,idx] = addDigitalChannel(s,'dev1','Port2/Line0:1','Bidirectional')
-
-data = s.startForeground();
-
-
-% https://ch.mathworks.com/help/daq/examples/software-analog-triggered-data-capture.html
+daq.reset;
+ni_devices = daq.getDevices;
+ni_session = daq.createSession(ni_devices.Vendor.ID);
+ni_channel_button = ni_session.addDigitalChannel('Dev2','port0/line0:7','InputOnly');
+ni_channel_band = ni_session.addDigitalChannel('Dev2','port1/line0','InputOnly');
+ni_session.inputSingleScan;
+% return = (0     0     0     0     0     0     0     0     1) order is
+% given in order of 
+mb_factor = 4;
+slice_number = 40;
+tr_dur = 1.6;
+% 10 trigger per TR from 0 to 1 until the end (toggle mode)
