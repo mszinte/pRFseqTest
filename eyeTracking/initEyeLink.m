@@ -1,6 +1,6 @@
-function [el]=initEyeLink(scr,const,my_key)
+function [el]=initEyeLink(scr,const)
 % ----------------------------------------------------------------------
-% [el]=initEyeLink(scr,const,my_key)
+% [el]=initEyeLink(scr,const)
 % ----------------------------------------------------------------------
 % Goal of the function :
 % Initializes eyeLink-connection, creates edf-file
@@ -9,13 +9,12 @@ function [el]=initEyeLink(scr,const,my_key)
 % Input(s) :
 % scr : struct containing screen configurations
 % const : struct containing constant configurations
-% my_key : availables keys
 % ----------------------------------------------------------------------
 % Output(s):
 % el : struct containing eyelink configurations
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 09 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -41,25 +40,14 @@ el.txtCol                       = 15;
 el.bgCol                        = 0;
 
 % Change button to use the button box in the scanner
-if ~const.scanner
-    el.uparrow      =   KbName('UpArrow');                  % Pupil threshold increase
-    el.downarrow    =   KbName('DownArrow');                % Pupil threshold decrease
-    el.tkey         =   KbName('LeftArrow');                % Toggle Threshold coloring on or off
-    el.rightarrow   =   KbName('RightArrow');               % Select Eye,Global or zoomed view for link
-    el.pluskey      =   KbName('=+');                       % Corneal reflection threshold increase
-    el.minuskey     =   KbName('-_');                       % Corneal reflection threshold decrease
-    el.returnkey    =   KbName('return');                   % Show camera image
-    el.qkey         =   KbName('q');                        % Toggle Ellipse and Centroid pupil center position algorithm
-elseif const.scanner
-    el.uparrow      =   KbName(my_key.left1Val);            % Pupil threshold increase
-    el.downarrow    =   KbName(my_key.left2Val);            % Pupil threshold decrease
-    el.tkey         =   KbName(my_key.left3Val);            % Toggle Threshold coloring on or off
-    el.rightarrow   =   KbName(my_key.left4Val);            % Select Eye,Global or zoomed view for link
-    el.pluskey      =   KbName(my_key.right1Val);           % Corneal reflection threshold increase
-    el.minuskey     =   KbName(my_key.right2Val);           % Corneal reflection threshold decrease
-    el.returnkey    =   KbName(my_key.right3Val);           % Show camera image
-    el.qkey         =   KbName(my_key.right4Val);           % Toggle Ellipse and Centroid pupil center position algorithm
-end
+el.uparrow      =   KbName('UpArrow');                  % Pupil threshold increase
+el.downarrow    =   KbName('DownArrow');                % Pupil threshold decrease
+el.tkey         =   KbName('LeftArrow');                % Toggle Threshold coloring on or off
+el.rightarrow   =   KbName('RightArrow');               % Select Eye,Global or zoomed view for link
+el.pluskey      =   KbName('=+');                       % Corneal reflection threshold increase
+el.minuskey     =   KbName('-_');                       % Corneal reflection threshold decrease
+el.returnkey    =   KbName('return');                   % Show camera image
+el.qkey         =   KbName('q');                        % Toggle Ellipse and Centroid pupil center position algorithm
 
 EyelinkUpdateDefaults(el);
 

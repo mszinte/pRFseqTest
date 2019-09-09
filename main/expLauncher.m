@@ -11,11 +11,19 @@
 % bar pass stimuli with an attetion toward the bar to pretest 3T Prisma acquisition
 % sequences optimal for (occipital, parietal) frontal and subcortical structures.
 
-% TO DO
-% =====
-% 3T room button press - setup Data Acquisition Toolbox
-% 3T room TR triggers - setup Data Acquisition Toolbox and see settings
-% Set sequence values of the TR - see Julien
+% Sequence 1:
+% ----------
+% 2.5 mm isotropic
+% TR 1.2 seconds
+% Multi-band 3
+% 48 slices
+
+% Sequence 2:
+% ----------
+% 2.0 mm isotropic
+% TR 1.2 seconds
+% Multi-band 4
+% 60 slices
 
 % First settings
 % --------------

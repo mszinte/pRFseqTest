@@ -12,11 +12,12 @@ function main(const)
 % none
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 09 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
 
+tic;
 % File director
 % -------------
 [const]                 =   dirSaveFile(const);
@@ -25,9 +26,8 @@ function main(const)
 % ---------------------
 [scr]                   =   scrConfig(const);
 
-% Keyboard configurations
-% -----------------------
-tic;
+% Triggers and button configurations
+% ----------------------------------
 [my_key]                =   keyConfig;
 
 % Experimental constant
@@ -48,7 +48,7 @@ priorityLevel           =   MaxPriority(scr.main);Priority(priorityLevel);
 % ----------------------
 el                      =   [];
 if const.tracker
-    [el]                    =   initEyeLink(scr,const,my_key);
+    [el]                    =   initEyeLink(scr,const);
 end
 
 % Draw and save all textures

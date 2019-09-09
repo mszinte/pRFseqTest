@@ -20,14 +20,14 @@ function [my_key]=keyConfig
 KbName('UnifyKeyNames');
 
 my_key.trVal            =   't';                    % TR
-my_key.left1Val         =   'd';                    % left button box button 1 (Leftmost->Rightmost)
-my_key.left2Val         =   'n';                    % left button box button 2 (Leftmost->Rightmost)
-my_key.left3Val         =   'w';                    % left button box button 3 (Leftmost->Rightmost)
-my_key.left4Val         =   'e';                    % left button box button 4 (Leftmost->Rightmost)
-my_key.right1Val        =   'b';                    % right button box button 1 (Leftmost->Rightmost)
-my_key.right2Val        =   'y';                    % right button box button 2 (Leftmost->Rightmost)
-my_key.right3Val        =   'g';                    % right button box button 3 (Leftmost->Rightmost)
-my_key.right4Val        =   'r';                    % right button box button 4 (Leftmost->Rightmost)
+my_key.left1Val         =   'r';                    % left button 1 (Leftmost->Rightmost)
+my_key.left2Val         =   'e';                    % left button 2 (Leftmost->Rightmost)
+my_key.left3Val         =   'z';                    % left button 3 (Leftmost->Rightmost)
+my_key.left4Val         =   'a';                    % left button 4 (Leftmost->Rightmost)
+my_key.right1Val        =   'u';                    % right button 1 (Leftmost->Rightmost)
+my_key.right2Val        =   'i';                    % right button 2 (Leftmost->Rightmost)
+my_key.right3Val        =   'o';                    % right button 3 (Leftmost->Rightmost)
+my_key.right4Val        =   'p';                    % right button 4 (Leftmost->Rightmost)
 my_key.escapeVal        =   'escape';               % escape button
 my_key.spaceVal         =   'space';                % space button
 
@@ -52,5 +52,46 @@ end
 
 [~,keyCodeMat]   = KbQueueCheck(my_key.keyboard_idx(1));
 my_key.keyCodeNum  = numel(keyCodeMat,1);
+
+
+if const.room == 1
+    
+    % NI board acquisition settings
+    daq.reset;
+    my_key.ni_devices = daq.getDevices;
+    my_key.ni_session = daq.createSession(my_key.ni_devices.Vendor.ID);
+    my_key.ni_device_ID = 'Dev2';
+    my_key.ni_measurement_type = 'InputOnly';
+    
+    % button press settings
+    my_key.port_button_left1    = 'port0/line0';        my_key.idx_button_left1     =  1;
+    my_key.port_button_left2    = [];                   my_key.idx_button_left2     = [];
+    my_key.port_button_left3    = [];                   my_key.idx_button_left3     = [];
+    my_key.port_button_left4    = [];                   my_key.idx_button_left4     = [];
+    
+    if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
+    if ~isempty(my_key.port_button_left3); my_key.channel_button_left2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left4); my_key.channel_button_left4 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left4,my_key.ni_measurement_type); end
+    
+    my_key.port_button_right1    = 'port0/line1';       my_key.idx_button_right1     =  2;
+    my_key.port_button_right2    = [];                  my_key.idx_button_right2     =  [];
+    my_key.port_button_right3    = [];                  my_key.idx_button_right3     =  [];
+    my_key.port_button_right4    = [];                  my_key.idx_button_right4     =  [];
+    
+    if ~isempty(my_key.port_button_right1); my_key.channel_button_right1 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right2); my_key.channel_button_right2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right2,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right3); my_key.channel_button_right3 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right4); my_key.channel_button_right4 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right4,my_key.ni_measurement_type); end
+    
+    % MRI trigger settings
+    fprintf(1,'\n\n\tDon''t forget to put MRI trigger in "Toggle" mode\n');
+    my_key.port_mri_bands       = [];%'port1/line0';
+    my_key.idx_mri_bands        = [];%3;
+    
+    if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
+    
+end
+    
 
 end

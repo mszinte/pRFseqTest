@@ -122,7 +122,6 @@ const.raised_cos        =   const.raised_cos(1:const.rCosine_grain)';           
 const.raised_cos        =   (const.raised_cos - min(const.raised_cos))/...
                                     (max(const.raised_cos)-min(const.raised_cos));              % normalize raising cosinus function
 
-
 % Fixation circular aperture
 const.fix_out_rim_radVal=   0.3;                                                                % radius of outer circle of fixation bull's eye
 const.fix_rim_radVal    =   0.75*const.fix_out_rim_radVal;                                      % radius of intermediate circle of fixation bull's eye in degree
