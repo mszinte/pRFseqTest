@@ -32,7 +32,7 @@ Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpen
 % General settings
 % ----------------
 const.expName           =   'pRFseqTest';   % experiment name.
-const.expStart          =   1;              % Start of a recording exp                          0 = NO  , 1 = YES
+const.expStart          =   0;              % Start of a recording exp                          0 = NO  , 1 = YES
 const.checkTrial        =   0;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
 const.writeLogTxt       =   1;              % write a log file in addition to eyelink file      0 = NO  , 1 = YES
 const.genStimuli        =   0;              % Generate all stimuli                              0 = NO  , 1 = YES
@@ -41,7 +41,7 @@ const.mkVideo           =   0;              % Make a video of a run (on mac not 
 
 % External controls
 % -----------------
-const.tracker           =   1;              % run with eye tracker                              0 = NO  , 1 = YES
+const.tracker           =   0;              % run with eye tracker                              0 = NO  , 1 = YES
 const.scanner           =   0;              % run in MRI scanner                                0 = NO  , 1 = YES
 const.scannerTest       =   1;              % run with T returned at TR time                    0 = NO  , 1 = YES
 const.room              =   1;              % run in MRI or eye-tracking room                   1 = MRI , 2 = eye-tracking
@@ -64,7 +64,7 @@ const.cond_run_num =  [1;1;...
 
 % Desired screen setting
 % ----------------------
-const.desiredFD         =   120;            % Desired refresh rate
+const.desiredFD         =   60;            % Desired refresh rate
 %fprintf(1,'\n\n\tDon''t forget to change before testing\n');
 const.desiredRes        =   [1920,1080];    % Desired resolution
 

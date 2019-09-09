@@ -341,6 +341,17 @@ while nbf < num_frame_max
         keyCode                 =   keyCode+keyC;
     end
     
+    if const.room == 1
+        input_return = my_key.ni_session.inputSingleScan;
+        if input_return(my_key.idx_button_right1) == my_key.button_press_val
+            keyPressed              = 1;
+            keyCode(my_key.right1)  = 1;
+        elseif input_return(my_key.idx_button_left4) == my_key.button_press_val
+            keyPressed              =  1;
+            keyCode(my_key.left4)   =  1;
+        end
+    end
+    
     if keyPressed
         if keyCode(my_key.tr)
             % write in log/edf

@@ -28,7 +28,7 @@ tic;
 
 % Triggers and button configurations
 % ----------------------------------
-[my_key]                =   keyConfig;
+[my_key]                =   keyConfig(const);
 
 % Experimental constant
 % ---------------------

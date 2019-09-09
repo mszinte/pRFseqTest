@@ -1,18 +1,18 @@
-function [my_key]=keyConfig
+function [my_key]=keyConfig(const)
 % ----------------------------------------------------------------------
-% [my_key]=keyConfig
+% [my_key]=keyConfig(const)
 % ----------------------------------------------------------------------
 % Goal of the function :
 % Unify key names and define structure containing each key names
 % ----------------------------------------------------------------------
 % Input(s) :
-% none
+% const : struct containing constant configurations
 % ----------------------------------------------------------------------
 % Output(s):
 % my_key : structure containing keyboard configurations
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 09 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -51,45 +51,49 @@ for keyb = 1:size(my_key.keyboard_idx,2)
 end
 
 [~,keyCodeMat]   = KbQueueCheck(my_key.keyboard_idx(1));
-my_key.keyCodeNum  = numel(keyCodeMat,1);
-
+my_key.keyCodeNum  = numel(keyCodeMat);
 
 if const.room == 1
     
     % NI board acquisition settings
+    warning off;
     daq.reset;
     my_key.ni_devices = daq.getDevices;
     my_key.ni_session = daq.createSession(my_key.ni_devices.Vendor.ID);
-    my_key.ni_device_ID = 'Dev2';
+    my_key.ni_device_ID = 'Dev1';
     my_key.ni_measurement_type = 'InputOnly';
+    my_key.button_press_val = 0;
     
     % button press settings
-    my_key.port_button_left1    = 'port0/line0';        my_key.idx_button_left1     =  1;
+    my_key.port_button_left1    = [];                   my_key.idx_button_left1     = 1;
     my_key.port_button_left2    = [];                   my_key.idx_button_left2     = [];
     my_key.port_button_left3    = [];                   my_key.idx_button_left3     = [];
-    my_key.port_button_left4    = [];                   my_key.idx_button_left4     = [];
+    my_key.port_button_left4    = 'port0/line0';        my_key.idx_button_left4     = 1;
     
-    if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
-    if ~isempty(my_key.port_button_left3); my_key.channel_button_left2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left3,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_left4); my_key.channel_button_left4 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left4,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
+    if ~isempty(my_key.port_button_left3); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left4); my_key.channel_button_left4 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left4,my_key.ni_measurement_type); end
     
     my_key.port_button_right1    = 'port0/line1';       my_key.idx_button_right1     =  2;
     my_key.port_button_right2    = [];                  my_key.idx_button_right2     =  [];
     my_key.port_button_right3    = [];                  my_key.idx_button_right3     =  [];
     my_key.port_button_right4    = [];                  my_key.idx_button_right4     =  [];
     
-    if ~isempty(my_key.port_button_right1); my_key.channel_button_right1 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right1,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right2); my_key.channel_button_right2 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right2,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right3); my_key.channel_button_right3 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right3,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right4); my_key.channel_button_right4 = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right4,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right1); my_key.channel_button_right1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right2); my_key.channel_button_right2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right2,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right3); my_key.channel_button_right3 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right4); my_key.channel_button_right4 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right4,my_key.ni_measurement_type); end
     
     % MRI trigger settings
     fprintf(1,'\n\n\tDon''t forget to put MRI trigger in "Toggle" mode\n');
     my_key.port_mri_bands       = [];%'port1/line0';
     my_key.idx_mri_bands        = [];%3;
     
-    if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
+    if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
+    
+    % first reading execution
+    my_key.ni_session.inputSingleScan;
     
 end
     

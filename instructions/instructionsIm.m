@@ -47,22 +47,21 @@ while ~push_button
     
     keyPressed              =   0;
     keyCode                 =   zeros(1,my_key.keyCodeNum);
+    
+    for keyb = 1:size(my_key.keyboard_idx,2)
+        [keyP, keyC]            =   KbQueueCheck(my_key.keyboard_idx(keyb));
+        keyPressed              =   keyPressed+keyP;
+        keyCode                 =   keyCode+keyC;
+    end
+    
     if const.room == 1
-        for keyb = 1:size(my_key.keyboard_idx,2)
-            [keyP, keyC]            =   KbQueueCheck(my_key.keyboard_idx(keyb));
-            keyPressed              =   keyPressed+keyP;
-            keyCode                 =   keyCode+keyC;
-        end
-        
-    elseif const.room == 2
-        
         input_return = my_key.ni_session.inputSingleScan;
-        if input_return(my_key.idx_button_right1)
+        if input_return(my_key.idx_button_right1) == my_key.button_press_val
+            keyPressed              = 1;
+            keyCode(my_key.right1)  = 1;
+        elseif input_return(my_key.idx_button_left4) == my_key.button_press_val
             keyPressed              =  1;
-            keyCode                 =  my_key.right1;
-        elseif input_return(my_key.idx_button_left1)
-            keyPressed              =  1;
-            keyCode                 =  my_key.left1;
+            keyCode(my_key.left4)   =  1;
         end
     end
     
