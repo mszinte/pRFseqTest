@@ -34,7 +34,7 @@ const.dot_color         =   const.stim_color;                                   
 const.dot_probe_color   =   const.black;                                                        % define fixation dot color when probe
 
 %% Time parameters
-const.TR_dur            =   1.2;                                                               % repetition time
+const.TR_dur            =   1.2;                                                                % repetition time
 const.TR_num            =   (round(const.TR_dur/scr.frame_duration));                           % repetition time in screen frames
 const.bar_dir_num       =   9;                                                                  % number of bar passes and break
 

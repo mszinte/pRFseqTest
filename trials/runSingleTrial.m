@@ -17,7 +17,7 @@ function [expDes]=runSingleTrial(scr,const,expDes,my_key,t)
 % expDes : struct containing all the variable design configurations.
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 10 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -142,13 +142,12 @@ if t == 1
     expDes.tex              =   expDes.tex_blank;
     Screen('DrawTexture',scr.main,expDes.tex,[],const.stim_rect);
     Screen('Flip',scr.main);
-    tellapsed               =   GetSecs - time_start;
-    first_tr                =   0;
+    first_trigger           =   0;
+    expDes.mri_band_val     =   0;
     
-    while ~first_tr
+    while ~first_trigger
         if const.scanner == 0 || const.scannerTest
-            WaitSecs(const.TR_dur-tellapsed);
-            first_tr                =   1;
+            first_trigger           =   1;
         else
             keyPressed              =   0;
             keyCode                 =   zeros(1,my_key.keyCodeNum);
@@ -157,11 +156,21 @@ if t == 1
                 keyPressed              =   keyPressed+keyP;
                 keyCode                 =   keyCode+keyC;
             end
+            if const.room == 1
+                input_return = my_key.ni_session.inputSingleScan;
+                
+                if input_return(my_key.idx_mri_bands) == ~expDes.mri_band_val
+                    keyPressed              = 1;
+                    keyCode(my_key.mri_tr)  = 1;
+                    expDes.mri_band_val     = ~expDes.mri_band_val;
+                end
+            end
+            
             if keyPressed
                 if keyCode(my_key.escape) && const.expStart == 0
                     overDone(const,my_key)
-                elseif keyCode(my_key.tr)
-                    first_tr                =   1;
+                elseif keyCode(my_key.mri_tr)
+                    first_trigger          =   1;
                 end
             end
         end
@@ -343,6 +352,8 @@ while nbf < num_frame_max
     
     if const.room == 1
         input_return = my_key.ni_session.inputSingleScan;
+        
+        % button press
         if input_return(my_key.idx_button_right1) == my_key.button_press_val
             keyPressed              = 1;
             keyCode(my_key.right1)  = 1;
@@ -350,12 +361,20 @@ while nbf < num_frame_max
             keyPressed              =  1;
             keyCode(my_key.left4)   =  1;
         end
+        
+        % mri trigger
+        if input_return(my_key.idx_mri_bands) == ~expDes.mri_band_val
+            keyPressed              = 1;
+            keyCode(my_key.mri_tr)  = 1;
+            expDes.mri_band_val     = ~expDes.mri_band_val;
+        end
+        
     end
     
     if keyPressed
-        if keyCode(my_key.tr)
+        if keyCode(my_key.idx_mri_bands)
             % write in log/edf
-            log_txt                 =   sprintf('bar pass %i event t at %f',t,GetSecs);
+            log_txt                 =   sprintf('bar pass %i event mri_trigger at %f',t,GetSecs);
             if const.writeLogTxt
                 fprintf(const.log_file_fid,'%s\n',log_txt);
             end
@@ -412,20 +431,6 @@ while nbf < num_frame_max
                 [expDes]                =   updateStaircase(cond1(bar_step),const,expDes,response,GetSecs);
                 resp                    =   1;
             end 
-        end
-    end
- 
-    % dummy mode for scanner
-    if const.scanner == 0 && const.scannerTest
-        if mod(nbf,const.TR_num)==1
-            % write in log/edf
-            log_txt                 =   sprintf('bar pass %i event t at %f',t,GetSecs);
-            if const.writeLogTxt
-                fprintf(const.log_file_fid,'%s\n',log_txt);
-            end
-            if const.tracker
-                Eyelink('message','%s',log_txt);
-            end
         end
     end
 end

@@ -27,8 +27,6 @@
 
 % To do
 % =====
-% Generate stimuli with ProPixx
-% change val button press from 0 to 1
 
 % First settings
 % --------------

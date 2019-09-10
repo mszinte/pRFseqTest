@@ -19,7 +19,7 @@ function [my_key]=keyConfig(const)
 
 KbName('UnifyKeyNames');
 
-my_key.trVal            =   't';                    % TR
+my_key.mri_trVal        =   't';                    % mri band trigger
 my_key.left1Val         =   'a';                    % left button 1 (Leftmost->Rightmost)
 my_key.left2Val         =   'z';                    % left button 2 (Leftmost->Rightmost)
 my_key.left3Val         =   'e';                    % left button 3 (Leftmost->Rightmost)
@@ -31,9 +31,8 @@ my_key.right4Val        =   'p';                    % right button 4 (Leftmost->
 my_key.escapeVal        =   'escape';               % escape button
 my_key.spaceVal         =   'space';                % space button
 
-my_key.escape           =   KbName(my_key.escapeVal);
-my_key.space            =   KbName(my_key.spaceVal);
-my_key.tr               =   KbName(my_key.trVal);
+
+my_key.mri_tr           =   KbName(my_key.mri_trVal);
 my_key.left1            =   KbName(my_key.left1Val);
 my_key.left2            =   KbName(my_key.left2Val);
 my_key.left3            =   KbName(my_key.left3Val);
@@ -42,6 +41,8 @@ my_key.right1           =   KbName(my_key.right1Val);
 my_key.right2           =   KbName(my_key.right2Val);
 my_key.right3           =   KbName(my_key.right3Val);
 my_key.right4           =   KbName(my_key.right4Val);
+my_key.escape           =   KbName(my_key.escapeVal);
+my_key.space            =   KbName(my_key.spaceVal);
 
 my_key.keyboard_idx     =   GetKeyboardIndices;
 for keyb = 1:size(my_key.keyboard_idx,2)
@@ -65,10 +66,10 @@ if const.room == 1
     my_key.button_press_val = 0;
     
     % button press settings
-    my_key.port_button_left1    = [];                   my_key.idx_button_left1     = 1;
+    my_key.port_button_left1    = [];                   my_key.idx_button_left1     = [];
     my_key.port_button_left2    = [];                   my_key.idx_button_left2     = [];
     my_key.port_button_left3    = [];                   my_key.idx_button_left3     = [];
-    my_key.port_button_left4    = 'port0/line0';        my_key.idx_button_left4     = 1;
+    my_key.port_button_left4    = [];                   my_key.idx_button_left4     = [];
     
     if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
     if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
@@ -87,8 +88,8 @@ if const.room == 1
     
     % MRI trigger settings
     fprintf(1,'\n\n\tDon''t forget to put MRI trigger in "Toggle" mode\n');
-    my_key.port_mri_bands       = [];%'port1/line0';
-    my_key.idx_mri_bands        = [];%3;
+    my_key.port_mri_bands       = 'port0/line0';%[];%'port1/line0';
+    my_key.idx_mri_bands        = 1;%3;
     
     if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
     
