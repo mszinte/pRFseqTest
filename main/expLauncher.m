@@ -25,6 +25,11 @@
 % Multi-band 4
 % 60 slices
 
+% To do
+% =====
+% Generate stimuli with ProPixx
+% change val button press from 0 to 1
+
 % First settings
 % --------------
 Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpenGL;
@@ -65,7 +70,7 @@ const.cond_run_num =  [1;1;...
 % Desired screen setting
 % ----------------------
 const.desiredFD         =   60;            % Desired refresh rate
-%fprintf(1,'\n\n\tDon''t forget to change before testing\n');
+fprintf(1,'\n\n\tDon''t forget to change before testing\n');
 const.desiredRes        =   [1920,1080];    % Desired resolution
 
 % Path

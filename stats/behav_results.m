@@ -244,7 +244,13 @@ fprintf(1,'\n\tPlotting figure...\n');
 close all
 
 numRow      = 2;
-numColumn   = 3;
+if eyetracker  
+    numRow      =   2;
+    numColumn   =   3;
+else
+    numRow      =   1;
+    numColumn   =   2;
+end
 white                   = [1,1,1];
 black                   = [0,0,0];
 gray                    = [0.6,0.6,0.6];

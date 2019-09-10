@@ -20,10 +20,10 @@ function [my_key]=keyConfig(const)
 KbName('UnifyKeyNames');
 
 my_key.trVal            =   't';                    % TR
-my_key.left1Val         =   'r';                    % left button 1 (Leftmost->Rightmost)
-my_key.left2Val         =   'e';                    % left button 2 (Leftmost->Rightmost)
-my_key.left3Val         =   'z';                    % left button 3 (Leftmost->Rightmost)
-my_key.left4Val         =   'a';                    % left button 4 (Leftmost->Rightmost)
+my_key.left1Val         =   'a';                    % left button 1 (Leftmost->Rightmost)
+my_key.left2Val         =   'z';                    % left button 2 (Leftmost->Rightmost)
+my_key.left3Val         =   'e';                    % left button 3 (Leftmost->Rightmost)
+my_key.left4Val         =   'r';                    % left button 4 (Leftmost->Rightmost)
 my_key.right1Val        =   'u';                    % right button 1 (Leftmost->Rightmost)
 my_key.right2Val        =   'i';                    % right button 2 (Leftmost->Rightmost)
 my_key.right3Val        =   'o';                    % right button 3 (Leftmost->Rightmost)
