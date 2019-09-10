@@ -12,7 +12,7 @@ function [my_key]=keyConfig(const)
 % my_key : structure containing keyboard configurations
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 09 / 09 / 2019
+% Last update : 10 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -30,7 +30,6 @@ my_key.right3Val        =   'o';                    % right button 3 (Leftmost->
 my_key.right4Val        =   'p';                    % right button 4 (Leftmost->Rightmost)
 my_key.escapeVal        =   'escape';               % escape button
 my_key.spaceVal         =   'space';                % space button
-
 
 my_key.mri_tr           =   KbName(my_key.mri_trVal);
 my_key.left1            =   KbName(my_key.left1Val);
@@ -61,15 +60,15 @@ if const.room == 1
     daq.reset;
     my_key.ni_devices = daq.getDevices;
     my_key.ni_session = daq.createSession(my_key.ni_devices.Vendor.ID);
-    my_key.ni_device_ID = 'Dev1';
+    my_key.ni_device_ID = 'Dev2';
     my_key.ni_measurement_type = 'InputOnly';
-    my_key.button_press_val = 0;
+    my_key.button_press_val = 1;
     
     % button press settings
     my_key.port_button_left1    = [];                   my_key.idx_button_left1     = [];
     my_key.port_button_left2    = [];                   my_key.idx_button_left2     = [];
     my_key.port_button_left3    = [];                   my_key.idx_button_left3     = [];
-    my_key.port_button_left4    = [];                   my_key.idx_button_left4     = [];
+    my_key.port_button_left4    = 'port0/line0';        my_key.idx_button_left4     = 1;
     
     if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
     if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
@@ -88,8 +87,8 @@ if const.room == 1
     
     % MRI trigger settings
     fprintf(1,'\n\n\tDon''t forget to put MRI trigger in "Toggle" mode\n');
-    my_key.port_mri_bands       = 'port0/line0';%[];%'port1/line0';
-    my_key.idx_mri_bands        = 1;%3;
+    my_key.port_mri_bands       = 'port1/line0';
+    my_key.idx_mri_bands        = 3;
     
     if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
     

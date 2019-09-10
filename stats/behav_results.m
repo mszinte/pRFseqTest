@@ -14,7 +14,7 @@ function behav_results(subject,num_run,eyetracker)
 % => pdf figures /data/sub-XXX/add/sub-XXX_behav_results.pdf
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 07 / 08 / 2019
+% Last update : 10 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------

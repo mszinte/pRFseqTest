@@ -15,7 +15,7 @@ function instructionsIm(scr,const,my_key,nameImage,exitFlag)
 % (none)
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 06 / 06 / 2018
+% Last update : 10 / 09 / 2019
 % Project :     pRF_gazeMod
 % Version :     3.0
 % ----------------------------------------------------------------------
@@ -59,9 +59,6 @@ while ~push_button
         if input_return(my_key.idx_button_right1) == my_key.button_press_val
             keyPressed              = 1;
             keyCode(my_key.right1)  = 1;
-        elseif input_return(my_key.idx_button_left4) == my_key.button_press_val
-            keyPressed              =  1;
-            keyCode(my_key.left4)   =  1;
         end
     end
     

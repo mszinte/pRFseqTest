@@ -138,7 +138,6 @@ expDes.texnew              =   Screen('MakeTexture',scr.main,screen_stim,[],[],[
 % wait for T press in trial beginning
 if t == 1
     % show the iti image
-    time_start              =   GetSecs;
     expDes.tex              =   expDes.tex_blank;
     Screen('DrawTexture',scr.main,expDes.tex,[],const.stim_rect);
     Screen('Flip',scr.main);
@@ -178,7 +177,7 @@ if t == 1
     
     % write in log/edf
     bar_pass_start          =   GetSecs;
-    log_txt                 =   sprintf('bar pass %i event t at %f',t,bar_pass_start);
+    log_txt                 =   sprintf('bar pass %i event mri_trigger at %f',t,bar_pass_start);
     if const.writeLogTxt
         fprintf(const.log_file_fid,'%s\n',log_txt);
     end
@@ -368,11 +367,10 @@ while nbf < num_frame_max
             keyCode(my_key.mri_tr)  = 1;
             expDes.mri_band_val     = ~expDes.mri_band_val;
         end
-        
     end
     
     if keyPressed
-        if keyCode(my_key.idx_mri_bands)
+        if keyCode(my_key.mri_tr)
             % write in log/edf
             log_txt                 =   sprintf('bar pass %i event mri_trigger at %f',t,GetSecs);
             if const.writeLogTxt
