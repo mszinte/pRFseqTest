@@ -162,6 +162,7 @@ if t == 1
                     keyPressed              = 1;
                     keyCode(my_key.mri_tr)  = 1;
                     expDes.mri_band_val     = ~expDes.mri_band_val;
+                    mri_band_val            = input_return(my_key.idx_mri_bands);
                 end
             end
             
@@ -177,7 +178,7 @@ if t == 1
     
     % write in log/edf
     bar_pass_start          =   GetSecs;
-    log_txt                 =   sprintf('bar pass %i event mri_trigger at %f',t,bar_pass_start);
+    log_txt                 =   sprintf('bar pass %i event mri_trigger val = %i at %f',t,mri_band_val,bar_pass_start);
     if const.writeLogTxt
         fprintf(const.log_file_fid,'%s\n',log_txt);
     end
@@ -366,13 +367,14 @@ while nbf < num_frame_max
             keyPressed              = 1;
             keyCode(my_key.mri_tr)  = 1;
             expDes.mri_band_val     = ~expDes.mri_band_val;
+            mri_band_val            = input_return(my_key.idx_mri_bands);
         end
     end
     
     if keyPressed
         if keyCode(my_key.mri_tr)
             % write in log/edf
-            log_txt                 =   sprintf('bar pass %i event mri_trigger at %f',t,GetSecs);
+            log_txt                 =   sprintf('bar pass %i event mri_trigger val = %i at %f',t,mri_band_val,GetSecs);
             if const.writeLogTxt
                 fprintf(const.log_file_fid,'%s\n',log_txt);
             end

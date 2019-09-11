@@ -11,6 +11,11 @@
 % bar pass stimuli with an attetion toward the bar to pretest 3T Prisma acquisition
 % sequences optimal for (occipital, parietal) frontal and subcortical structures.
 
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FF8432571E0. Setting thread priority to HIGHEST as a work-around...
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FF8432571E0. Setting thread priority to HIGHEST as a work-around...
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FF8432571E0. Setting thread priority to HIGHEST as a work-around...
+
+
 % Sequence 1:
 % ----------
 % 2.5 mm isotropic
