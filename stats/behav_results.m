@@ -14,7 +14,7 @@ function behav_results(subject,num_run,eyetracker)
 % => pdf figures /data/sub-XXX/add/sub-XXX_behav_results.pdf
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 10 / 09 / 2019
+% Last update : 13 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -26,8 +26,8 @@ fprintf(1,'\n\tProcessing data...\n');
 file_dir = sprintf('%s/data/%s',cd,subject);
 
 task1_txt = 'AttendStim';
-task2_1_txt = 'Seq1';
-task2_2_txt = 'Seq2';
+task2_1_txt = '_acq-2p5mm';
+task2_2_txt = '_acq-2mm';
 
 list_filename = {   sprintf('%s_task-%s%s_run-1',subject,task1_txt,task2_1_txt),...
                     sprintf('%s_task-%s%s_run-1',subject,task1_txt,task2_2_txt),...
@@ -119,6 +119,7 @@ if eyetracker
         first_last_time = 0;
         first_time = 0;
         last_time = 0;
+        mri_trigger_eye = [];
         while ~first_last_time
             line_read = fgetl(msgfid);
             if ~isempty(line_read)                           % skip empty lines
@@ -134,7 +135,13 @@ if eyetracker
                         time_end_eye(t_run) = str2double(la{1}(2));
                         last_time = 1;
                     end
+                    
+                    if strcmp(la{1}(7),'mri_trigger')
+                        mri_trigger_eye = [mri_trigger_eye;str2double(la{1}(2))];
+                    end
+                    
                 end
+                
                 if first_time && last_time
                     first_last_time = 1;
                     fclose(msgfid);
@@ -157,6 +164,7 @@ if eyetracker
         time_last_run_eye = eye_data_run(end,1);
         
         eye_data_runs = [eye_data_runs;eye_data_run];
+        mri_trigger_eye_runs{t_run} = mri_trigger_eye;
     end
     
     % delete blink time
@@ -479,14 +487,14 @@ for tRow = 1:numRow
         if tCol == 3
             xPlotAcc = xlim(2);
             yPlotAcc = ylim(2)+(yrange*mergin*(4));
-            text(xPlotAcc+xrange*0.02,yPlotAcc,sprintf('Fixation accuracy = %1.2f dva',accuracy_val),'Hor','right','Ver','Middle')
+            text(xPlotAcc+xrange*0.02,yPlotAcc,sprintf('Fixation accuracy = %1.2f dva',accuracy_val),'Hor','right','Ver','Middle','FontSize',6)
             xPlotPre = xlim(2);
             yPlotPre = ylim(2)+(yrange*mergin*(2));
-            text(xPlotPre+xrange*0.02,yPlotPre,sprintf('Fixation precision = %1.2f dva',precision_val),'Hor','right','Ver','Middle')
+            text(xPlotPre+xrange*0.02,yPlotPre,sprintf('Fixation precision = %1.2f dva',precision_val),'Hor','right','Ver','Middle','FontSize',6)
         elseif tRow == 2 && tCol < 3
             xPlotBlink = xlim(2);
             yPlotBlink = ylim(2)+(yrange*mergin*(4));
-            text(xPlotBlink+xrange*0.02,yPlotBlink,sprintf('Blinks = %i',blinkNum),'Hor','right','Ver','Middle')
+            text(xPlotBlink+xrange*0.02,yPlotBlink,sprintf('Blinks = %i',blinkNum),'Hor','right','Ver','Middle','FontSize',6)
 
         end
         

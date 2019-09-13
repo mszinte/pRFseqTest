@@ -331,6 +331,7 @@ if const.scanner
         end
         const.TRs               =   const.TRs + TR_bar_pass;
     end
+    const.TRs = const.TRs;
     fprintf(1,'\n\tScanner parameters; %1.0f TRs, %1.2f seconds, %s\n',const.TRs,const.TR_dur,datestr(seconds((const.TRs*const.TR_dur)),'MM:SS'));
 end
 

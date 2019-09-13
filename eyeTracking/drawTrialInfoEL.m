@@ -1,21 +1,20 @@
-function drawTrialInfoEL(scr,const,t)
+function drawTrialInfoEL(scr,const)
 % ----------------------------------------------------------------------
-% drawTrialInfoEL(scr,const,t)
+% drawTrialInfoEL(scr,const)
 % ----------------------------------------------------------------------
 % Goal of the function :
-% Draw on the eyelink display the trial configuration
+% Draw on the eyelink display the experiment configuration
 % ----------------------------------------------------------------------
 % Input(s) :
 % scr : struct containing screen configurations
 % const : struct containing constant configurations
 % expDes : struct containg experimental design
-% t : trial number
 % ----------------------------------------------------------------------
 % Output(s):
 % none
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 13 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -61,9 +60,7 @@ function drawTrialInfoEL(scr,const,t)
 % Color config
 frameCol                =   15;
 ftCol                   =   15;
-textCol                 =   15;
 bgCol                   =   0;
-stimCol                 =   4;
 
 % Clear screen
 eyeLinkClearScreen(bgCol);
@@ -75,9 +72,7 @@ rect_ctr                =   [scr.x_mid,scr.y_mid];
 % Fixation box
 eyeLinkDrawBox(rect_ctr(1),rect_ctr(2),const.fix_out_rim_rad*2,const.fix_out_rim_rad*2,2,frameCol,ftCol);
 
-% Two lines of text during trial (slow process)
-text0                   =   sprintf('Cond 1 = %s | Cond 2 = %s | BarPassNum = %i',const.cond1_txt,const.cond2_txt,t);
-eyeLinkDrawText(scr.x_mid,scr.scr_sizeY - 30,textCol,text0);
+
 WaitSecs(0.1);
 
 end

@@ -12,7 +12,7 @@ function main(const)
 % none
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 10 / 09 / 2019
+% Last update : 13 / 09 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -59,7 +59,7 @@ end
 
 % Trial runner
 % ------------
-[const]                 =   runTrials(scr,const,expDes,el,my_key);
+[const]                 = runExp(scr,const,expDes,el,my_key);
 
 % End
 % ---

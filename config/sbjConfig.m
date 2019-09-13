@@ -12,7 +12,7 @@ function [const]=sbjConfig(const)
 % const : struct containing constant configurations
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 05 / 08 / 2019
+% Last update : 13 / 08 / 2019
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
@@ -51,9 +51,9 @@ end
 const.cond1_txt          =  'AttendStim';
 
 if const.cond2 == 1
-    const.cond2_txt         =  'Seq1';
+    const.cond2_txt         =  '_acq-2p5mm';
 elseif const.cond2 == 2
-    const.cond2_txt         =  'Seq2';
+    const.cond2_txt         =  '_acq-2mm';
 end
 
 fprintf(1,'\n\tTask: %s%s\n',const.cond1_txt,const.cond2_txt);
