@@ -159,6 +159,7 @@ for t = 1:const.bar_dir_num
         while ~first_trigger
             if const.scanner == 0 || const.scannerTest
                 first_trigger           =   1;
+                mri_band_val            =   -8;
             else
                 keyPressed              =   0;
                 keyCode                 =   zeros(1,my_key.keyCodeNum);

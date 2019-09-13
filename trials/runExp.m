@@ -114,42 +114,14 @@ screen_filename         =   sprintf('%s/blank.mat',const.stim_folder);
 load(screen_filename,'screen_stim');
 expDes.tex_blank        =   Screen('MakeTexture',scr.main,screen_stim);
 
-% Main Loop
-% ---------
-
 % Write on eyelink screen
 if const.tracker
     drawTrialInfoEL(scr,const)
 end
 
-
-% 
-[expDes] = runAllTrials(scr,const,expDes,my_key);
-
-for t = 1:const.bar_dir_num
-    
-    % Write in log/edf
-    log_txt                     =   sprintf('bar pass %i started at %f\n',t,GetSecs);
-    if const.writeLogTxt
-        fprintf(const.log_file_fid,log_txt);
-    end
-    if const.tracker
-        Eyelink('message','%s',log_txt);
-        Eyelink('command', 'record_status_message ''BAR PASS %d''', t);
-    end
-    
-    % Run single trial
-    [expDes]                    =   runSingleTrial(scr,const,expDes,my_key,t);
-    
-    % write in log/edf
-    log_txt                     =   sprintf('bar pass %i stopped at %f',t,GetSecs);
-    if const.writeLogTxt
-        fprintf(const.log_file_fid,'%s\n',log_txt);
-    end
-    if const.tracker
-        Eyelink('message', '%s',log_txt);
-    end
-end
+% Main trial loop
+% ---------------
+[expDes] = runTrials(scr,const,expDes,my_key);
 
 % Compute/Write mean/std behavioral data
 % --------------------------------------
