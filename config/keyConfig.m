@@ -93,7 +93,7 @@ if const.room == 1
     if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
     
     % first reading execution
-    my_key.ni_session.inputSingleScan;
+    my_key.first_val = my_key.ni_session.inputSingleScan;
     
 end
     

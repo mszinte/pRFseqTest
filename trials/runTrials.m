@@ -154,7 +154,7 @@ for t = 1:const.bar_dir_num
         Screen('DrawTexture',scr.main,expDes.tex,[],const.stim_rect);
         Screen('Flip',scr.main);
         first_trigger           =   0;
-        expDes.mri_band_val     =   0;
+        expDes.mri_band_val     =   my_key.first_val(3);
 
         while ~first_trigger
             if const.scanner == 0 || const.scannerTest
