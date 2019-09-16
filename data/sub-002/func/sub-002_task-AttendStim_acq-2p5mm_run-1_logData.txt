@@ -1,0 +1,17 @@
+bar pass 1 started at 872.733597
+bar pass 1 event mri_trigger val = 1 at 872.750282
+bar pass 1 trial onset at 872.754860
+bar pass 1 trial offset at 874.005047
+bar pass 1 trial onset at 874.013440
+bar pass 1 trial offset at 875.205520
+bar pass 1 trial onset at 875.213865
+bar pass 1 trial offset at 876.622763
+bar pass 1 trial onset at 876.631036
+bar pass 1 trial offset at 878.073336
+bar pass 1 trial onset at 878.081789
+bar pass 1 trial offset at 879.273951
+bar pass 1 trial onset at 879.282193
+bar pass 1 trial offset at 880.474200
+bar pass 1 trial onset at 880.482539
+bar pass 1 trial offset at 882.103227
+bar pass 1 trial onset at 882.121158
