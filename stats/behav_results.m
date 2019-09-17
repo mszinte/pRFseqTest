@@ -235,8 +235,8 @@ if eyetracker
     densityFix = (densityFix - densityFix_min)./(densityFix_max-densityFix_min);
     
     % compute fixation heatmap zoom
-    radMaxX_zoom     = ceil(config.scr.x_mid/ppd)/10;
-    radMaxY_zoom     = ceil(config.scr.y_mid/ppd)/10;
+    radMaxX_zoom     = ceil(config.scr.x_mid/ppd)/3;
+    radMaxY_zoom     = ceil(config.scr.y_mid/ppd)/3;
     [~,densityFix_zoom,xHeatMap_zoom,yHeatMap_zoom]=kde2d([eye_data_runs(:,2),eye_data_runs(:,3)],[-radMaxX_zoom,-radMaxY_zoom],[radMaxX_zoom,radMaxY_zoom],2^5);
     densityFix_min_zoom = min(min(densityFix_zoom));
     densityFix_max_zoom = max(max(densityFix_zoom));
@@ -381,7 +381,7 @@ for tRow = 1:numRow
             plot(xPlot,yPlot,'LineWidth',2,'Color',resCol);
             
         else
-            contourf(xHeatMap_val,yHeatMap_val,densityFix_val,20,'linestyle','none');
+            contourf(xHeatMap_val,yHeatMap_val,densityFix_val,10,'linestyle','none');
         end
         
         % plot white hiders
@@ -487,14 +487,14 @@ for tRow = 1:numRow
         if tCol == 3
             xPlotAcc = xlim(2);
             yPlotAcc = ylim(2)+(yrange*mergin*(4));
-            text(xPlotAcc+xrange*0.02,yPlotAcc,sprintf('Fixation accuracy = %1.2f dva',accuracy_val),'Hor','right','Ver','Middle','FontSize',6)
+            text(xPlotAcc+xrange*0.02,yPlotAcc,sprintf('Fixation accuracy = %1.2f dva',accuracy_val),'Hor','right','Ver','Middle','FontSize',7)
             xPlotPre = xlim(2);
             yPlotPre = ylim(2)+(yrange*mergin*(2));
-            text(xPlotPre+xrange*0.02,yPlotPre,sprintf('Fixation precision = %1.2f dva',precision_val),'Hor','right','Ver','Middle','FontSize',6)
+            text(xPlotPre+xrange*0.02,yPlotPre,sprintf('Fixation precision = %1.2f dva',precision_val),'Hor','right','Ver','Middle','FontSize',7)
         elseif tRow == 2 && tCol < 3
             xPlotBlink = xlim(2);
             yPlotBlink = ylim(2)+(yrange*mergin*(4));
-            text(xPlotBlink+xrange*0.02,yPlotBlink,sprintf('Blinks = %i',blinkNum),'Hor','right','Ver','Middle','FontSize',6)
+            text(xPlotBlink+xrange*0.02,yPlotBlink,sprintf('Blinks = %i',blinkNum),'Hor','right','Ver','Middle','FontSize',7)
 
         end
         
