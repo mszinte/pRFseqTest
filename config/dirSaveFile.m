@@ -44,11 +44,6 @@ if const.expStart
 end
 const.behav_file_fid    =   fopen(const.behav_file,'w');
 
-% Log file
-if const.writeLogTxt
-    const.log_file          =   sprintf('%s_logData.txt',const.dat_output_file);
-    const.log_file_fid      =   fopen(const.log_file,'w');
-end
 
 % Create additional info directory
 if ~isdir(sprintf('data/%s/add/',const.sjct))
@@ -63,6 +58,12 @@ const.mat_file          =   sprintf('%s_matFile.mat',const.add_output_file);
 
 % Staircase file
 const.staircase_file    =   sprintf('data/%s/add/%s_staircases.mat',const.sjct,const.sjct);
+
+% Log file
+if const.writeLogTxt
+    const.log_file          =   sprintf('data/%s/add/%s_logData.txt',const.sjct,const.dat_output_file);
+    const.log_file_fid      =   fopen(const.log_file,'w');
+end
 
 % Define .mat stimuli file
 const.stim_folder       =   sprintf('stim/screenshots');

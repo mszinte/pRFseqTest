@@ -22,6 +22,7 @@
 % |     48 slices     |     60 slices     |
 % +-------------------+-------------------+
 
+
 % First settings
 % --------------
 Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpenGL;

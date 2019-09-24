@@ -23,9 +23,9 @@ if const.expStart
         error('Incorrect participant number');
     end
     if const.sjctNum > 9
-        const.sjct              =  sprintf('sub-0%i',const.sjctNum);
+        const.sjct              =  sprintf('sub-%i',const.sjctNum);
     else
-        const.sjct              =  sprintf('sub-00%i',const.sjctNum);
+        const.sjct              =  sprintf('sub-0%i',const.sjctNum);
     end 
 end
 

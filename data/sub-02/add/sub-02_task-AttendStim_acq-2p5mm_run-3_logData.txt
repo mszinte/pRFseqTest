@@ -1,0 +1,2366 @@
+bar pass 1 started at 7856.118477
+bar pass 1 event mri_trigger val = 0 at 7874.355176
+bar pass 1 trial onset at 7874.361652
+bar pass 1 event mri_trigger val = 1 at 7874.431369
+bar pass 1 event mri_trigger val = 0 at 7874.506282
+bar pass 1 event mri_trigger val = 1 at 7874.581365
+bar pass 1 event mri_trigger val = 0 at 7874.656415
+bar pass 1 event mri_trigger val = 1 at 7874.732129
+bar pass 1 event mri_trigger val = 0 at 7874.806616
+bar pass 1 event mri_trigger val = 1 at 7874.881310
+bar pass 1 event mri_trigger val = 0 at 7874.956359
+bar pass 1 event mri_trigger val = 1 at 7875.031489
+bar pass 1 event mri_trigger val = 0 at 7875.107535
+bar pass 1 event mri_trigger val = 1 at 7875.181437
+bar pass 1 event mri_trigger val = 0 at 7875.256477
+bar pass 1 event mri_trigger val = 1 at 7875.331571
+bar pass 1 event mri_trigger val = 0 at 7875.406622
+bar pass 1 event mri_trigger val = 1 at 7875.481500
+bar pass 1 trial offset at 7875.553500
+bar pass 1 event mri_trigger val = 0 at 7875.556970
+bar pass 1 trial onset at 7875.561893
+bar pass 1 event mri_trigger val = 1 at 7875.631643
+bar pass 1 event mri_trigger val = 0 at 7875.706729
+bar pass 1 event mri_trigger val = 1 at 7875.781791
+bar pass 1 event mri_trigger val = 0 at 7875.856794
+bar pass 1 event mri_trigger val = 1 at 7875.931693
+bar pass 1 event mri_trigger val = 0 at 7876.006706
+bar pass 1 event mri_trigger val = 1 at 7876.081826
+bar pass 1 event mri_trigger val = 0 at 7876.156825
+bar pass 1 event mri_trigger val = 1 at 7876.231770
+bar pass 1 event mri_trigger val = 0 at 7876.306754
+bar pass 1 event mri_trigger val = 1 at 7876.381820
+bar pass 1 event mri_trigger val = 0 at 7876.457232
+bar pass 1 event mri_trigger val = 1 at 7876.531776
+bar pass 1 event mri_trigger val = 0 at 7876.607273
+bar pass 1 event mri_trigger val = 1 at 7876.681954
+bar pass 1 trial offset at 7876.754027
+bar pass 1 event mri_trigger val = 0 at 7876.757324
+bar pass 1 trial onset at 7876.762407
+bar pass 1 event mri_trigger val = 1 at 7876.832113
+bar pass 1 event mri_trigger val = 0 at 7876.907227
+bar pass 1 event mri_trigger val = 1 at 7876.981999
+bar pass 1 event mri_trigger val = 0 at 7877.057103
+bar pass 1 event mri_trigger val = 1 at 7877.132249
+bar pass 1 event mri_trigger val = 0 at 7877.207303
+bar pass 1 event mri_trigger val = 1 at 7877.282370
+bar pass 1 event mri_trigger val = 0 at 7877.357189
+bar pass 1 event mri_trigger val = 1 at 7877.432342
+bar pass 1 event mri_trigger val = 0 at 7877.507388
+bar pass 1 event mri_trigger val = 1 at 7877.582459
+bar pass 1 event mri_trigger val = 0 at 7877.657512
+bar pass 1 event mri_trigger val = 1 at 7877.732355
+bar pass 1 event mri_trigger val = 0 at 7877.807458
+bar pass 1 event mri_trigger val = 1 at 7877.882547
+bar pass 1 trial offset at 7877.954611
+bar pass 1 event mri_trigger val = 0 at 7877.957876
+bar pass 1 trial onset at 7877.962871
+bar pass 1 event mri_trigger val = 1 at 7878.032442
+bar pass 1 event mri_trigger val = 0 at 7878.107528
+bar pass 1 event mri_trigger val = 1 at 7878.182639
+bar pass 1 event mri_trigger val = 0 at 7878.257721
+bar pass 1 event mri_trigger val = 1 at 7878.332805
+bar pass 1 event mri_trigger val = 0 at 7878.407810
+bar pass 1 event mri_trigger val = 1 at 7878.482690
+bar pass 1 event mri_trigger val = 0 at 7878.557915
+bar pass 1 event mri_trigger val = 1 at 7878.632882
+bar pass 1 event mri_trigger val = 0 at 7878.707930
+bar pass 1 event mri_trigger val = 1 at 7878.782987
+bar pass 1 event mri_trigger val = 0 at 7878.858010
+bar pass 1 event mri_trigger val = 1 at 7878.932891
+bar pass 1 event mri_trigger val = 0 at 7879.007929
+bar pass 1 event mri_trigger val = 1 at 7879.083005
+bar pass 1 trial offset at 7879.154978
+bar pass 1 event mri_trigger val = 0 at 7879.158413
+bar pass 1 trial onset at 7879.163570
+bar pass 1 event mri_trigger val = 1 at 7879.232915
+bar pass 1 event mri_trigger val = 0 at 7879.307971
+bar pass 1 event mri_trigger val = 1 at 7879.383068
+bar pass 1 event mri_trigger val = 0 at 7879.458124
+bar pass 1 event mri_trigger val = 1 at 7879.533008
+bar pass 1 event mri_trigger val = 0 at 7879.608049
+bar pass 1 event mri_trigger val = 1 at 7879.683204
+bar pass 1 event mri_trigger val = 0 at 7879.758306
+bar pass 1 event mri_trigger val = 1 at 7879.833392
+bar pass 1 event mri_trigger val = 0 at 7879.908388
+bar pass 1 event mri_trigger val = 1 at 7879.983258
+bar pass 1 event mri_trigger val = 0 at 7880.058393
+bar pass 1 event mri_trigger val = 1 at 7880.133503
+bar pass 1 event mri_trigger val = 0 at 7880.208519
+bar pass 1 event mri_trigger val = 1 at 7880.283670
+bar pass 1 trial offset at 7880.355663
+bar pass 1 event mri_trigger val = 0 at 7880.360099
+bar pass 1 trial onset at 7880.363899
+bar pass 1 event mri_trigger val = 1 at 7880.433564
+bar pass 1 event mri_trigger val = 0 at 7880.508627
+bar pass 1 event mri_trigger val = 1 at 7880.583676
+bar pass 1 event mri_trigger val = 0 at 7880.658785
+bar pass 1 event mri_trigger val = 1 at 7880.733533
+bar pass 1 event mri_trigger val = 0 at 7880.808740
+bar pass 1 event mri_trigger val = 1 at 7880.883804
+bar pass 1 event mri_trigger val = 0 at 7880.958884
+bar pass 1 event mri_trigger val = 1 at 7881.033750
+bar pass 1 event mri_trigger val = 0 at 7881.108786
+bar pass 1 event mri_trigger val = 1 at 7881.183860
+bar pass 1 event mri_trigger val = 0 at 7881.258900
+bar pass 1 event mri_trigger val = 1 at 7881.333810
+bar pass 1 event mri_trigger val = 0 at 7881.409023
+bar pass 1 event mri_trigger val = 1 at 7881.484072
+bar pass 1 trial offset at 7881.556027
+bar pass 1 event mri_trigger val = 0 at 7881.559136
+bar pass 1 trial onset at 7881.564370
+bar pass 1 event mri_trigger val = 1 at 7881.634073
+bar pass 1 event mri_trigger val = 0 at 7881.709079
+bar pass 1 event mri_trigger val = 1 at 7881.784007
+bar pass 1 event mri_trigger val = 0 at 7881.859018
+bar pass 1 event mri_trigger val = 1 at 7881.934115
+bar pass 1 event mri_trigger val = 0 at 7882.009227
+bar pass 1 event mri_trigger val = 1 at 7882.084262
+bar pass 1 event mri_trigger val = 0 at 7882.159079
+bar pass 1 event mri_trigger val = 1 at 7882.234196
+bar pass 1 event mri_trigger val = 0 at 7882.309227
+bar pass 1 event mri_trigger val = 1 at 7882.384329
+bar pass 1 event mri_trigger val = 0 at 7882.459474
+bar pass 1 event mri_trigger val = 1 at 7882.534243
+bar pass 1 event mri_trigger val = 0 at 7882.609886
+bar pass 1 event mri_trigger val = 1 at 7882.684459
+bar pass 1 trial offset at 7882.756509
+bar pass 1 event mri_trigger val = 0 at 7882.759764
+bar pass 1 trial onset at 7882.764858
+bar pass 1 event mri_trigger val = 1 at 7882.834633
+bar pass 1 event mri_trigger val = 0 at 7882.909465
+bar pass 1 event mri_trigger val = 1 at 7882.984528
+bar pass 1 event mri_trigger val = 0 at 7883.059632
+bar pass 1 event mri_trigger val = 1 at 7883.134722
+bar pass 1 event mri_trigger val = 0 at 7883.209564
+bar pass 1 event mri_trigger val = 1 at 7883.284879
+bar pass 1 event mri_trigger val = 0 at 7883.359708
+bar pass 1 event mri_trigger val = 1 at 7883.434780
+bar pass 1 event mri_trigger val = 0 at 7883.509860
+bar pass 1 event mri_trigger val = 1 at 7883.585003
+bar pass 1 event mri_trigger val = 0 at 7883.660030
+bar pass 1 event mri_trigger val = 1 at 7883.735135
+bar pass 1 event mri_trigger val = 0 at 7883.809963
+bar pass 1 event mri_trigger val = 1 at 7883.885016
+bar pass 1 trial offset at 7883.956980
+bar pass 1 event mri_trigger val = 0 at 7883.960127
+bar pass 1 trial onset at 7883.965295
+bar pass 1 event mri_trigger val = 1 at 7884.034934
+bar pass 1 event mri_trigger val = 0 at 7884.109993
+bar pass 1 event mri_trigger val = 1 at 7884.185112
+bar pass 1 event mri_trigger val = 0 at 7884.260159
+bar pass 1 event mri_trigger val = 1 at 7884.335017
+bar pass 1 event mri_trigger val = 0 at 7884.410223
+bar pass 1 event mri_trigger val = 1 at 7884.485187
+bar pass 1 event mri_trigger val = 0 at 7884.560212
+bar pass 1 event mri_trigger val = 1 at 7884.635090
+bar pass 1 event mri_trigger val = 0 at 7884.710161
+bar pass 1 event mri_trigger val = 1 at 7884.785226
+bar pass 1 event mri_trigger val = 0 at 7884.860305
+bar pass 1 event mri_trigger val = 1 at 7884.935308
+bar pass 1 event mri_trigger val = 0 at 7885.010445
+bar pass 1 event mri_trigger val = 1 at 7885.085479
+bar pass 1 trial offset at 7885.157435
+bar pass 1 event mri_trigger val = 0 at 7885.160647
+bar pass 1 trial onset at 7885.165853
+bar pass 1 event mri_trigger val = 1 at 7885.235368
+bar pass 1 event mri_trigger val = 0 at 7885.310454
+bar pass 1 event mri_trigger val = 1 at 7885.385565
+bar pass 1 event mri_trigger val = 0 at 7885.460717
+bar pass 1 event mri_trigger val = 1 at 7885.535479
+bar pass 1 event mri_trigger val = 0 at 7885.610631
+bar pass 1 event mri_trigger val = 1 at 7885.685711
+bar pass 1 event mri_trigger val = 0 at 7885.760806
+bar pass 1 event mri_trigger val = 1 at 7885.835876
+bar pass 1 event mri_trigger val = 0 at 7885.910945
+bar pass 1 event mri_trigger val = 1 at 7885.985763
+bar pass 1 event mri_trigger val = 0 at 7886.060876
+bar pass 1 event mri_trigger val = 1 at 7886.135970
+bar pass 1 event mri_trigger val = 0 at 7886.210802
+bar pass 1 event mri_trigger val = 1 at 7886.286142
+bar pass 1 trial offset at 7886.357958
+bar pass 1 event mri_trigger val = 0 at 7886.361110
+bar pass 1 - 120/120 drawn bar stimuli - and 0/0 probes - 0 missed sync on 1440 frames, 0.0% (mean/median delay = NaN/NaN ms)
+bar pass 1 stopped at 7886.372067
+bar pass 2 started at 7886.372239
+bar pass 2 trial onset at 7886.383664
+bar pass 2 event mri_trigger val = 1 at 7886.436137
+bar pass 2 event mri_trigger val = 0 at 7886.511173
+bar pass 2 event mri_trigger val = 1 at 7886.586027
+bar pass 2 event mri_trigger val = 0 at 7886.661135
+bar pass 2 stimulus probe onset at 7886.733173
+bar pass 2 event mri_trigger val = 1 at 7886.736911
+bar pass 2 event mri_trigger val = 0 at 7886.811282
+bar pass 2 event mri_trigger val = 1 at 7886.886099
+bar pass 2 event mri_trigger val = 0 at 7886.961385
+bar pass 2 event mri_trigger val = 1 at 7887.036275
+bar pass 2 event mri_trigger val = 0 at 7887.111312
+bar pass 2 event mri_trigger val = 1 at 7887.186168
+bar pass 2 event u at 7887.194911
+stimulus staircase updated to 9.00 at 7887.195290
+bar pass 2 event mri_trigger val = 0 at 7887.261280
+bar pass 2 event mri_trigger val = 1 at 7887.336323
+bar pass 2 event mri_trigger val = 0 at 7887.411399
+bar pass 2 event mri_trigger val = 1 at 7887.486513
+bar pass 2 event mri_trigger val = 0 at 7887.561364
+bar pass 2 trial offset at 7887.600148
+bar pass 2 trial onset at 7887.608451
+bar pass 2 event mri_trigger val = 1 at 7887.636346
+bar pass 2 event mri_trigger val = 0 at 7887.711428
+bar pass 2 event mri_trigger val = 1 at 7887.786553
+bar pass 2 event mri_trigger val = 0 at 7887.861368
+bar pass 2 event mri_trigger val = 1 at 7887.936462
+bar pass 2 stimulus probe onset at 7887.950341
+bar pass 2 event mri_trigger val = 0 at 7888.012063
+bar pass 2 event mri_trigger val = 1 at 7888.086693
+bar pass 2 event mri_trigger val = 0 at 7888.161744
+bar pass 2 event mri_trigger val = 1 at 7888.245399
+bar pass 2 event mri_trigger val = 0 at 7888.311720
+bar pass 2 event mri_trigger val = 1 at 7888.386893
+bar pass 2 event mri_trigger val = 0 at 7888.461988
+bar pass 2 event mri_trigger val = 1 at 7888.536802
+bar pass 2 event mri_trigger val = 0 at 7888.611895
+bar pass 2 event mri_trigger val = 1 at 7888.686947
+bar pass 2 event mri_trigger val = 0 at 7888.762058
+bar pass 2 event r at 7888.787202
+bar pass 2 trial offset at 7888.833991
+bar pass 2 event mri_trigger val = 1 at 7888.837121
+bar pass 2 trial onset at 7888.842325
+bar pass 2 event mri_trigger val = 0 at 7888.911974
+bar pass 2 event mri_trigger val = 1 at 7888.987072
+bar pass 2 event mri_trigger val = 0 at 7889.062166
+bar pass 2 event mri_trigger val = 1 at 7889.137185
+bar pass 2 stimulus probe onset at 7889.184178
+bar pass 2 event mri_trigger val = 0 at 7889.212035
+bar pass 2 event mri_trigger val = 1 at 7889.287117
+bar pass 2 event mri_trigger val = 0 at 7889.370568
+bar pass 2 event mri_trigger val = 1 at 7889.437361
+bar pass 2 event mri_trigger val = 0 at 7889.512231
+bar pass 2 event mri_trigger val = 1 at 7889.587516
+bar pass 2 event mri_trigger val = 0 at 7889.662373
+bar pass 2 event mri_trigger val = 1 at 7889.737453
+bar pass 2 event mri_trigger val = 0 at 7889.812296
+bar pass 2 event mri_trigger val = 1 at 7889.887355
+bar pass 2 event mri_trigger val = 0 at 7889.962425
+bar pass 2 event mri_trigger val = 1 at 7890.037500
+bar pass 2 trial offset at 7890.067734
+bar pass 2 trial onset at 7890.076160
+bar pass 2 event mri_trigger val = 0 at 7890.112529
+bar pass 2 event mri_trigger val = 1 at 7890.187487
+bar pass 2 event mri_trigger val = 0 at 7890.262472
+bar pass 2 event mri_trigger val = 1 at 7890.337558
+bar pass 2 event mri_trigger val = 0 at 7890.412588
+bar pass 2 stimulus probe onset at 7890.417953
+bar pass 2 event mri_trigger val = 1 at 7890.496174
+bar pass 2 event mri_trigger val = 0 at 7890.562618
+bar pass 2 event mri_trigger val = 1 at 7890.637630
+bar pass 2 event mri_trigger val = 0 at 7890.712804
+bar pass 2 event mri_trigger val = 1 at 7890.787831
+bar pass 2 event mri_trigger val = 0 at 7890.862696
+bar pass 2 event mri_trigger val = 1 at 7890.929754
+bar pass 2 event mri_trigger val = 0 at 7891.004526
+bar pass 2 event mri_trigger val = 1 at 7891.079593
+bar pass 2 event mri_trigger val = 0 at 7891.163121
+bar pass 2 event mri_trigger val = 1 at 7891.229511
+bar pass 2 event mri_trigger val = 0 at 7891.304635
+bar pass 2 trial offset at 7891.309992
+bar pass 2 trial onset at 7891.318329
+bar pass 2 event mri_trigger val = 1 at 7891.379620
+bar pass 2 event mri_trigger val = 0 at 7891.454727
+bar pass 2 event mri_trigger val = 1 at 7891.529574
+bar pass 2 event mri_trigger val = 0 at 7891.604661
+bar pass 2 stimulus probe onset at 7891.660415
+bar pass 2 event r at 7891.665080
+stimulus staircase updated to 10.00 at 7891.665417
+bar pass 2 event mri_trigger val = 1 at 7891.680064
+bar pass 2 event mri_trigger val = 0 at 7891.754638
+bar pass 2 event mri_trigger val = 1 at 7891.829724
+bar pass 2 event mri_trigger val = 0 at 7891.905140
+bar pass 2 event mri_trigger val = 1 at 7891.979774
+bar pass 2 event mri_trigger val = 0 at 7892.054761
+bar pass 2 event mri_trigger val = 1 at 7892.129920
+bar pass 2 event mri_trigger val = 0 at 7892.205043
+bar pass 2 event mri_trigger val = 1 at 7892.280161
+bar pass 2 event mri_trigger val = 0 at 7892.355187
+bar pass 2 event mri_trigger val = 1 at 7892.430080
+bar pass 2 event mri_trigger val = 0 at 7892.505149
+bar pass 2 trial offset at 7892.552137
+bar pass 2 trial onset at 7892.560530
+bar pass 2 event mri_trigger val = 1 at 7892.580184
+bar pass 2 event mri_trigger val = 0 at 7892.655297
+bar pass 2 event mri_trigger val = 1 at 7892.730185
+bar pass 2 event mri_trigger val = 0 at 7892.805462
+bar pass 2 event mri_trigger val = 1 at 7892.880285
+bar pass 2 stimulus probe onset at 7892.902548
+bar pass 2 event mri_trigger val = 0 at 7892.955350
+bar pass 2 event mri_trigger val = 1 at 7893.030451
+bar pass 2 event mri_trigger val = 0 at 7893.105351
+bar pass 2 event mri_trigger val = 1 at 7893.180360
+bar pass 2 event mri_trigger val = 0 at 7893.255558
+bar pass 2 event mri_trigger val = 1 at 7893.330354
+bar pass 2 event mri_trigger val = 0 at 7893.413835
+bar pass 2 event mri_trigger val = 1 at 7893.480533
+bar pass 2 event mri_trigger val = 0 at 7893.555610
+bar pass 2 event mri_trigger val = 1 at 7893.630629
+bar pass 2 event mri_trigger val = 0 at 7893.705700
+bar pass 2 event u at 7893.747476
+bar pass 2 event mri_trigger val = 1 at 7893.780594
+bar pass 2 trial offset at 7893.794391
+bar pass 2 trial onset at 7893.802636
+bar pass 2 event mri_trigger val = 0 at 7893.855680
+bar pass 2 event mri_trigger val = 1 at 7893.930738
+bar pass 2 event mri_trigger val = 0 at 7894.005794
+bar pass 2 event mri_trigger val = 1 at 7894.080691
+bar pass 2 stimulus probe onset at 7894.144454
+bar pass 2 event mri_trigger val = 0 at 7894.155753
+bar pass 2 event mri_trigger val = 1 at 7894.230844
+bar pass 2 event mri_trigger val = 0 at 7894.305899
+bar pass 2 event mri_trigger val = 1 at 7894.381085
+bar pass 2 event mri_trigger val = 0 at 7894.456213
+bar pass 2 event mri_trigger val = 1 at 7894.530977
+bar pass 2 event mri_trigger val = 0 at 7894.605887
+bar pass 2 event mri_trigger val = 1 at 7894.680903
+bar pass 2 event mri_trigger val = 0 at 7894.756049
+bar pass 2 event mri_trigger val = 1 at 7894.830842
+bar pass 2 event mri_trigger val = 0 at 7894.906246
+bar pass 2 event mri_trigger val = 1 at 7894.981314
+bar pass 2 trial offset at 7895.036484
+bar pass 2 trial onset at 7895.044851
+bar pass 2 event mri_trigger val = 0 at 7895.056392
+bar pass 2 event mri_trigger val = 1 at 7895.131218
+bar pass 2 event mri_trigger val = 0 at 7895.206318
+bar pass 2 event mri_trigger val = 1 at 7895.281130
+bar pass 2 event mri_trigger val = 0 at 7895.356236
+bar pass 2 stimulus probe onset at 7895.386670
+bar pass 2 event mri_trigger val = 1 at 7895.431302
+bar pass 2 event mri_trigger val = 0 at 7895.506146
+bar pass 2 event mri_trigger val = 1 at 7895.581588
+bar pass 2 event mri_trigger val = 0 at 7895.656634
+bar pass 2 event mri_trigger val = 1 at 7895.731461
+bar pass 2 event mri_trigger val = 0 at 7895.806620
+bar pass 2 event mri_trigger val = 1 at 7895.881412
+bar pass 2 event mri_trigger val = 0 at 7895.956534
+bar pass 2 event mri_trigger val = 1 at 7896.031559
+bar pass 2 event mri_trigger val = 0 at 7896.106690
+bar pass 2 event mri_trigger val = 1 at 7896.181731
+bar pass 2 event r at 7896.206670
+bar pass 2 event mri_trigger val = 0 at 7896.256619
+bar pass 2 trial offset at 7896.270365
+bar pass 2 trial onset at 7896.278613
+bar pass 2 event mri_trigger val = 1 at 7896.331659
+bar pass 2 event mri_trigger val = 0 at 7896.406626
+bar pass 2 event mri_trigger val = 1 at 7896.481567
+bar pass 2 event mri_trigger val = 0 at 7896.556662
+bar pass 2 stimulus probe onset at 7896.620487
+bar pass 2 event mri_trigger val = 1 at 7896.631752
+bar pass 2 event mri_trigger val = 0 at 7896.706867
+bar pass 2 event mri_trigger val = 1 at 7896.781919
+bar pass 2 event mri_trigger val = 0 at 7896.856928
+bar pass 2 event mri_trigger val = 1 at 7896.931867
+bar pass 2 event mri_trigger val = 0 at 7897.006870
+bar pass 2 event mri_trigger val = 1 at 7897.081872
+bar pass 2 event mri_trigger val = 0 at 7897.156906
+bar pass 2 event mri_trigger val = 1 at 7897.231951
+bar pass 2 event mri_trigger val = 0 at 7897.307022
+bar pass 2 event mri_trigger val = 1 at 7897.382415
+bar pass 2 event mri_trigger val = 0 at 7897.456923
+bar pass 2 trial offset at 7897.512480
+bar pass 2 trial onset at 7897.520870
+bar pass 2 event mri_trigger val = 1 at 7897.532057
+bar pass 2 event mri_trigger val = 0 at 7897.607071
+bar pass 2 event mri_trigger val = 1 at 7897.682481
+bar pass 2 event mri_trigger val = 0 at 7897.757324
+bar pass 2 event mri_trigger val = 1 at 7897.832086
+bar pass 2 stimulus probe onset at 7897.862636
+bar pass 2 event mri_trigger val = 0 at 7897.907167
+bar pass 2 event mri_trigger val = 1 at 7897.982351
+bar pass 2 event mri_trigger val = 0 at 7898.057490
+bar pass 2 event mri_trigger val = 1 at 7898.132319
+bar pass 2 event mri_trigger val = 0 at 7898.207670
+bar pass 2 event mri_trigger val = 1 at 7898.282488
+bar pass 2 event mri_trigger val = 0 at 7898.357405
+bar pass 2 event mri_trigger val = 1 at 7898.432644
+bar pass 2 event mri_trigger val = 0 at 7898.507672
+bar pass 2 event mri_trigger val = 1 at 7898.582565
+bar pass 2 event mri_trigger val = 0 at 7898.657578
+bar pass 2 event mri_trigger val = 1 at 7898.732720
+bar pass 2 trial offset at 7898.737972
+bar pass 2 trial onset at 7898.746272
+bar pass 2 event mri_trigger val = 0 at 7898.807813
+bar pass 2 event mri_trigger val = 1 at 7898.882647
+bar pass 2 event mri_trigger val = 0 at 7898.957744
+bar pass 2 event mri_trigger val = 1 at 7899.032843
+bar pass 2 stimulus probe onset at 7899.088095
+bar pass 2 event mri_trigger val = 0 at 7899.107864
+bar pass 2 event mri_trigger val = 1 at 7899.182770
+bar pass 2 event mri_trigger val = 0 at 7899.257840
+bar pass 2 event mri_trigger val = 1 at 7899.332950
+bar pass 2 event mri_trigger val = 0 at 7899.408005
+bar pass 2 event mri_trigger val = 1 at 7899.491566
+bar pass 2 event mri_trigger val = 0 at 7899.557957
+bar pass 2 event mri_trigger val = 1 at 7899.633029
+bar pass 2 event mri_trigger val = 0 at 7899.707900
+bar pass 2 event mri_trigger val = 1 at 7899.783125
+bar pass 2 event mri_trigger val = 0 at 7899.858038
+bar pass 2 event mri_trigger val = 1 at 7899.933081
+bar pass 2 trial offset at 7899.971837
+bar pass 2 trial onset at 7899.980065
+bar pass 2 event mri_trigger val = 0 at 7900.008155
+bar pass 2 event mri_trigger val = 1 at 7900.083196
+bar pass 2 event mri_trigger val = 0 at 7900.158092
+bar pass 2 event mri_trigger val = 1 at 7900.233128
+bar pass 2 event mri_trigger val = 0 at 7900.308270
+bar pass 2 stimulus probe onset at 7900.322006
+bar pass 2 event mri_trigger val = 1 at 7900.383335
+bar pass 2 event mri_trigger val = 0 at 7900.458185
+bar pass 2 event mri_trigger val = 1 at 7900.533249
+bar pass 2 event mri_trigger val = 0 at 7900.616771
+bar pass 2 event mri_trigger val = 1 at 7900.683522
+bar pass 2 event mri_trigger val = 0 at 7900.758687
+bar pass 2 event mri_trigger val = 1 at 7900.833826
+bar pass 2 event mri_trigger val = 0 at 7900.908582
+bar pass 2 event mri_trigger val = 1 at 7900.983655
+bar pass 2 event mri_trigger val = 0 at 7901.058545
+bar pass 2 event u at 7901.125181
+stimulus staircase updated to 9.00 at 7901.125568
+bar pass 2 event mri_trigger val = 1 at 7901.133602
+bar pass 2 event mri_trigger val = 0 at 7901.208666
+bar pass 2 trial offset at 7901.214012
+bar pass 2 trial onset at 7901.222284
+bar pass 2 event mri_trigger val = 1 at 7901.283763
+bar pass 2 event mri_trigger val = 0 at 7901.358817
+bar pass 2 event mri_trigger val = 1 at 7901.433662
+bar pass 2 event mri_trigger val = 0 at 7901.508768
+bar pass 2 stimulus probe onset at 7901.564134
+bar pass 2 event mri_trigger val = 1 at 7901.583831
+bar pass 2 event mri_trigger val = 0 at 7901.658942
+bar pass 2 event mri_trigger val = 1 at 7901.734043
+bar pass 2 event mri_trigger val = 0 at 7901.808897
+bar pass 2 event mri_trigger val = 1 at 7901.884017
+bar pass 2 event mri_trigger val = 0 at 7901.959080
+bar pass 2 event mri_trigger val = 1 at 7902.034121
+bar pass 2 event mri_trigger val = 0 at 7902.109172
+bar pass 2 event mri_trigger val = 1 at 7902.184051
+bar pass 2 event r at 7902.234097
+bar pass 2 event mri_trigger val = 0 at 7902.259082
+bar pass 2 event mri_trigger val = 1 at 7902.334149
+bar pass 2 event mri_trigger val = 0 at 7902.409236
+bar pass 2 trial offset at 7902.440375
+bar pass 2 trial onset at 7902.447857
+bar pass 2 event mri_trigger val = 1 at 7902.484113
+bar pass 2 event mri_trigger val = 0 at 7902.559147
+bar pass 2 event mri_trigger val = 1 at 7902.634199
+bar pass 2 event mri_trigger val = 0 at 7902.709145
+bar pass 2 event mri_trigger val = 1 at 7902.784193
+bar pass 2 stimulus probe onset at 7902.797959
+bar pass 2 event mri_trigger val = 0 at 7902.859262
+bar pass 2 event mri_trigger val = 1 at 7902.934198
+bar pass 2 event mri_trigger val = 0 at 7903.009242
+bar pass 2 event mri_trigger val = 1 at 7903.093120
+bar pass 2 event mri_trigger val = 0 at 7903.159459
+bar pass 2 event mri_trigger val = 1 at 7903.234605
+bar pass 2 event mri_trigger val = 0 at 7903.309764
+bar pass 2 event mri_trigger val = 1 at 7903.384432
+bar pass 2 event mri_trigger val = 0 at 7903.459557
+bar pass 2 event mri_trigger val = 1 at 7903.534635
+bar pass 2 event u at 7903.601367
+bar pass 2 event mri_trigger val = 0 at 7903.609783
+bar pass 2 event mri_trigger val = 1 at 7903.684610
+bar pass 2 trial offset at 7903.690012
+bar pass 2 trial onset at 7903.698291
+bar pass 2 event mri_trigger val = 0 at 7903.759610
+bar pass 2 event mri_trigger val = 1 at 7903.834762
+bar pass 2 event mri_trigger val = 0 at 7903.909864
+bar pass 2 event mri_trigger val = 1 at 7903.984680
+bar pass 2 stimulus probe onset at 7904.040154
+bar pass 2 event mri_trigger val = 0 at 7904.059744
+bar pass 2 event mri_trigger val = 1 at 7904.134901
+bar pass 2 event mri_trigger val = 0 at 7904.209952
+bar pass 2 event mri_trigger val = 1 at 7904.284851
+bar pass 2 event mri_trigger val = 0 at 7904.359918
+bar pass 2 event mri_trigger val = 1 at 7904.435007
+bar pass 2 event mri_trigger val = 0 at 7904.510026
+bar pass 2 event mri_trigger val = 1 at 7904.585161
+bar pass 2 event mri_trigger val = 0 at 7904.659988
+bar pass 2 event mri_trigger val = 1 at 7904.735044
+bar pass 2 event r at 7904.735435
+stimulus staircase updated to 8.00 at 7904.737271
+bar pass 2 event mri_trigger val = 0 at 7904.810163
+bar pass 2 event mri_trigger val = 1 at 7904.885226
+bar pass 2 trial offset at 7904.915415
+bar pass 2 trial onset at 7904.923868
+bar pass 2 event mri_trigger val = 0 at 7904.960293
+bar pass 2 event mri_trigger val = 1 at 7905.035140
+bar pass 2 event mri_trigger val = 0 at 7905.110229
+bar pass 2 event mri_trigger val = 1 at 7905.185311
+bar pass 2 event mri_trigger val = 0 at 7905.260347
+bar pass 2 stimulus probe onset at 7905.265601
+bar pass 2 event mri_trigger val = 1 at 7905.343964
+bar pass 2 event mri_trigger val = 0 at 7905.410308
+bar pass 2 event mri_trigger val = 1 at 7905.485354
+bar pass 2 event mri_trigger val = 0 at 7905.560424
+bar pass 2 event mri_trigger val = 1 at 7905.635488
+bar pass 2 event mri_trigger val = 0 at 7905.710392
+bar pass 2 event mri_trigger val = 1 at 7905.785394
+bar pass 2 event mri_trigger val = 0 at 7905.860476
+bar pass 2 event mri_trigger val = 1 at 7905.935565
+bar pass 2 event mri_trigger val = 0 at 7906.010849
+bar pass 2 event u at 7906.060862
+stimulus staircase updated to 9.00 at 7906.062703
+bar pass 2 event mri_trigger val = 1 at 7906.085811
+bar pass 2 trial offset at 7906.124304
+bar pass 2 trial onset at 7906.132602
+bar pass 2 event mri_trigger val = 0 at 7906.160563
+bar pass 2 event mri_trigger val = 1 at 7906.235644
+bar pass 2 event mri_trigger val = 0 at 7906.310860
+bar pass 2 event mri_trigger val = 1 at 7906.385874
+bar pass 2 event mri_trigger val = 0 at 7906.460689
+bar pass 2 stimulus probe onset at 7906.474391
+bar pass 2 event mri_trigger val = 1 at 7906.535797
+bar pass 2 event mri_trigger val = 0 at 7906.610954
+bar pass 2 event mri_trigger val = 1 at 7906.685768
+bar pass 2 event mri_trigger val = 0 at 7906.769461
+bar pass 2 event mri_trigger val = 1 at 7906.835990
+bar pass 2 event mri_trigger val = 0 at 7906.911099
+bar pass 2 event mri_trigger val = 1 at 7906.986217
+bar pass 2 event mri_trigger val = 0 at 7907.061009
+bar pass 2 event mri_trigger val = 1 at 7907.136092
+bar pass 2 event mri_trigger val = 0 at 7907.211204
+bar pass 2 event mri_trigger val = 1 at 7907.286312
+bar pass 2 event r at 7907.344415
+stimulus staircase updated to 10.00 at 7907.344883
+bar pass 2 event mri_trigger val = 0 at 7907.361090
+bar pass 2 trial offset at 7907.366452
+bar pass 2 trial onset at 7907.374797
+bar pass 2 event mri_trigger val = 1 at 7907.436166
+bar pass 2 event mri_trigger val = 0 at 7907.511237
+bar pass 2 event mri_trigger val = 1 at 7907.586336
+bar pass 2 event mri_trigger val = 0 at 7907.661372
+bar pass 2 stimulus probe onset at 7907.716568
+bar pass 2 event mri_trigger val = 1 at 7907.736429
+bar pass 2 event mri_trigger val = 0 at 7907.811407
+bar pass 2 event mri_trigger val = 1 at 7907.886419
+bar pass 2 event mri_trigger val = 0 at 7907.961354
+bar pass 2 event mri_trigger val = 1 at 7908.036555
+bar pass 2 event mri_trigger val = 0 at 7908.119929
+bar pass 2 event mri_trigger val = 1 at 7908.186590
+bar pass 2 event mri_trigger val = 0 at 7908.261415
+bar pass 2 event mri_trigger val = 1 at 7908.336671
+bar pass 2 event u at 7908.394863
+bar pass 2 event mri_trigger val = 0 at 7908.411519
+bar pass 2 event mri_trigger val = 1 at 7908.486630
+bar pass 2 event mri_trigger val = 0 at 7908.561469
+bar pass 2 trial offset at 7908.600355
+bar pass 2 - 216/2.160000e+02 drawn bar stimuli - and 90/90 probes - 1 missed sync on 2592 frames, 0.0% (mean/median delay = 7.8/7.8 ms)
+bar pass 2 stopped at 7908.606139
+bar pass 3 started at 7908.606314
+bar pass 3 trial onset at 7908.617285
+bar pass 3 event mri_trigger val = 1 at 7908.637315
+bar pass 3 event mri_trigger val = 0 at 7908.711627
+bar pass 3 event mri_trigger val = 1 at 7908.786546
+bar pass 3 event mri_trigger val = 0 at 7908.861862
+bar pass 3 event mri_trigger val = 1 at 7908.936960
+bar pass 3 event mri_trigger val = 0 at 7909.011685
+bar pass 3 event mri_trigger val = 1 at 7909.086857
+bar pass 3 event mri_trigger val = 0 at 7909.161948
+bar pass 3 event mri_trigger val = 1 at 7909.237040
+bar pass 3 event mri_trigger val = 0 at 7909.311781
+bar pass 3 event mri_trigger val = 1 at 7909.386963
+bar pass 3 event mri_trigger val = 0 at 7909.462028
+bar pass 3 event mri_trigger val = 1 at 7909.537121
+bar pass 3 event mri_trigger val = 0 at 7909.611949
+bar pass 3 event mri_trigger val = 1 at 7909.687010
+bar pass 3 event mri_trigger val = 0 at 7909.762107
+bar pass 3 trial offset at 7909.809190
+bar pass 3 trial onset at 7909.817537
+bar pass 3 event mri_trigger val = 1 at 7909.837171
+bar pass 3 event mri_trigger val = 0 at 7909.912264
+bar pass 3 event mri_trigger val = 1 at 7909.987365
+bar pass 3 event mri_trigger val = 0 at 7910.062370
+bar pass 3 event mri_trigger val = 1 at 7910.138236
+bar pass 3 event mri_trigger val = 0 at 7910.212227
+bar pass 3 event mri_trigger val = 1 at 7910.287440
+bar pass 3 event mri_trigger val = 0 at 7910.362467
+bar pass 3 event mri_trigger val = 1 at 7910.437589
+bar pass 3 event mri_trigger val = 0 at 7910.512306
+bar pass 3 event mri_trigger val = 1 at 7910.587508
+bar pass 3 event mri_trigger val = 0 at 7910.662547
+bar pass 3 event mri_trigger val = 1 at 7910.737628
+bar pass 3 event mri_trigger val = 0 at 7910.812613
+bar pass 3 event mri_trigger val = 1 at 7910.887545
+bar pass 3 event mri_trigger val = 0 at 7910.962611
+bar pass 3 trial offset at 7911.009579
+bar pass 3 trial onset at 7911.018000
+bar pass 3 event mri_trigger val = 1 at 7911.037689
+bar pass 3 event mri_trigger val = 0 at 7911.112690
+bar pass 3 event mri_trigger val = 1 at 7911.187653
+bar pass 3 event mri_trigger val = 0 at 7911.262673
+bar pass 3 event mri_trigger val = 1 at 7911.337770
+bar pass 3 event mri_trigger val = 0 at 7911.412796
+bar pass 3 event mri_trigger val = 1 at 7911.487671
+bar pass 3 event mri_trigger val = 0 at 7911.562691
+bar pass 3 event mri_trigger val = 1 at 7911.637826
+bar pass 3 event mri_trigger val = 0 at 7911.712839
+bar pass 3 event mri_trigger val = 1 at 7911.787767
+bar pass 3 event mri_trigger val = 0 at 7911.863019
+bar pass 3 event mri_trigger val = 1 at 7911.938197
+bar pass 3 event mri_trigger val = 0 at 7912.012924
+bar pass 3 event mri_trigger val = 1 at 7912.088128
+bar pass 3 event mri_trigger val = 0 at 7912.163150
+bar pass 3 trial offset at 7912.210148
+bar pass 3 trial onset at 7912.218489
+bar pass 3 event mri_trigger val = 1 at 7912.238278
+bar pass 3 event mri_trigger val = 0 at 7912.313093
+bar pass 3 event mri_trigger val = 1 at 7912.388200
+bar pass 3 event mri_trigger val = 0 at 7912.463283
+bar pass 3 event mri_trigger val = 1 at 7912.538343
+bar pass 3 event mri_trigger val = 0 at 7912.613414
+bar pass 3 event mri_trigger val = 1 at 7912.688273
+bar pass 3 event mri_trigger val = 0 at 7912.763317
+bar pass 3 event mri_trigger val = 1 at 7912.838435
+bar pass 3 event mri_trigger val = 0 at 7912.913485
+bar pass 3 event mri_trigger val = 1 at 7912.988355
+bar pass 3 event mri_trigger val = 0 at 7913.063417
+bar pass 3 event mri_trigger val = 1 at 7913.138539
+bar pass 3 event mri_trigger val = 0 at 7913.213563
+bar pass 3 event mri_trigger val = 1 at 7913.288684
+bar pass 3 event mri_trigger val = 0 at 7913.363732
+bar pass 3 trial offset at 7913.410645
+bar pass 3 trial onset at 7913.418875
+bar pass 3 event mri_trigger val = 1 at 7913.438771
+bar pass 3 event mri_trigger val = 0 at 7913.513668
+bar pass 3 event mri_trigger val = 1 at 7913.588758
+bar pass 3 event mri_trigger val = 0 at 7913.663752
+bar pass 3 event mri_trigger val = 1 at 7913.738850
+bar pass 3 event mri_trigger val = 0 at 7913.813730
+bar pass 3 event mri_trigger val = 1 at 7913.888784
+bar pass 3 event mri_trigger val = 0 at 7913.963769
+bar pass 3 event mri_trigger val = 1 at 7914.038935
+bar pass 3 event mri_trigger val = 0 at 7914.113822
+bar pass 3 event mri_trigger val = 1 at 7914.188779
+bar pass 3 event mri_trigger val = 0 at 7914.263900
+bar pass 3 event mri_trigger val = 1 at 7914.338942
+bar pass 3 event mri_trigger val = 0 at 7914.413771
+bar pass 3 event mri_trigger val = 1 at 7914.488898
+bar pass 3 event mri_trigger val = 0 at 7914.555835
+bar pass 3 trial offset at 7914.611021
+bar pass 3 trial onset at 7914.619451
+bar pass 3 event mri_trigger val = 1 at 7914.630833
+bar pass 3 event mri_trigger val = 0 at 7914.714168
+bar pass 3 event mri_trigger val = 1 at 7914.780795
+bar pass 3 event mri_trigger val = 0 at 7914.855885
+bar pass 3 event mri_trigger val = 1 at 7914.939100
+bar pass 3 event mri_trigger val = 0 at 7915.005803
+bar pass 3 event mri_trigger val = 1 at 7915.081172
+bar pass 3 event mri_trigger val = 0 at 7915.155924
+bar pass 3 event mri_trigger val = 1 at 7915.230830
+bar pass 3 event mri_trigger val = 0 at 7915.305890
+bar pass 3 event mri_trigger val = 1 at 7915.381253
+bar pass 3 event mri_trigger val = 0 at 7915.456017
+bar pass 3 event mri_trigger val = 1 at 7915.531117
+bar pass 3 event mri_trigger val = 0 at 7915.606249
+bar pass 3 event mri_trigger val = 1 at 7915.681336
+bar pass 3 event mri_trigger val = 0 at 7915.756084
+bar pass 3 trial offset at 7915.811580
+bar pass 3 trial onset at 7915.819924
+bar pass 3 event mri_trigger val = 1 at 7915.831300
+bar pass 3 event mri_trigger val = 0 at 7915.906320
+bar pass 3 event mri_trigger val = 1 at 7915.981418
+bar pass 3 event mri_trigger val = 0 at 7916.056503
+bar pass 3 event mri_trigger val = 1 at 7916.131353
+bar pass 3 event mri_trigger val = 0 at 7916.206404
+bar pass 3 event mri_trigger val = 1 at 7916.281502
+bar pass 3 event mri_trigger val = 0 at 7916.356560
+bar pass 3 event mri_trigger val = 1 at 7916.431435
+bar pass 3 event mri_trigger val = 0 at 7916.506482
+bar pass 3 event mri_trigger val = 1 at 7916.581523
+bar pass 3 event mri_trigger val = 0 at 7916.656564
+bar pass 3 event mri_trigger val = 1 at 7916.731724
+bar pass 3 event mri_trigger val = 0 at 7916.806553
+bar pass 3 event mri_trigger val = 1 at 7916.881877
+bar pass 3 event mri_trigger val = 0 at 7916.956987
+bar pass 3 trial offset at 7917.012020
+bar pass 3 trial onset at 7917.020418
+bar pass 3 event mri_trigger val = 1 at 7917.031875
+bar pass 3 event mri_trigger val = 0 at 7917.106860
+bar pass 3 event mri_trigger val = 1 at 7917.181946
+bar pass 3 event mri_trigger val = 0 at 7917.257015
+bar pass 3 event mri_trigger val = 1 at 7917.331900
+bar pass 3 event mri_trigger val = 0 at 7917.406913
+bar pass 3 event mri_trigger val = 1 at 7917.481990
+bar pass 3 event mri_trigger val = 0 at 7917.556869
+bar pass 3 event mri_trigger val = 1 at 7917.631930
+bar pass 3 event mri_trigger val = 0 at 7917.706974
+bar pass 3 event mri_trigger val = 1 at 7917.782035
+bar pass 3 event mri_trigger val = 0 at 7917.857084
+bar pass 3 event mri_trigger val = 1 at 7917.932021
+bar pass 3 event mri_trigger val = 0 at 7918.007048
+bar pass 3 event mri_trigger val = 1 at 7918.082121
+bar pass 3 event mri_trigger val = 0 at 7918.157162
+bar pass 3 trial offset at 7918.212506
+bar pass 3 trial onset at 7918.220922
+bar pass 3 event mri_trigger val = 1 at 7918.232037
+bar pass 3 event mri_trigger val = 0 at 7918.307108
+bar pass 3 event mri_trigger val = 1 at 7918.382499
+bar pass 3 event mri_trigger val = 0 at 7918.457341
+bar pass 3 event mri_trigger val = 1 at 7918.532126
+bar pass 3 event mri_trigger val = 0 at 7918.607514
+bar pass 3 event mri_trigger val = 1 at 7918.682581
+bar pass 3 event mri_trigger val = 0 at 7918.757410
+bar pass 3 event mri_trigger val = 1 at 7918.832512
+bar pass 3 event mri_trigger val = 0 at 7918.907576
+bar pass 3 event mri_trigger val = 1 at 7918.982668
+bar pass 3 event mri_trigger val = 0 at 7919.057485
+bar pass 3 event mri_trigger val = 1 at 7919.132594
+bar pass 3 event mri_trigger val = 0 at 7919.207644
+bar pass 3 event mri_trigger val = 1 at 7919.282737
+bar pass 3 event mri_trigger val = 0 at 7919.357730
+bar pass 3 trial offset at 7919.413058
+bar pass 3 trial onset at 7919.421323
+bar pass 3 event mri_trigger val = 1 at 7919.432683
+bar pass 3 event mri_trigger val = 0 at 7919.507726
+bar pass 3 event mri_trigger val = 1 at 7919.582824
+bar pass 3 event mri_trigger val = 0 at 7919.657885
+bar pass 3 event mri_trigger val = 1 at 7919.732710
+bar pass 3 event mri_trigger val = 0 at 7919.807798
+bar pass 3 event mri_trigger val = 1 at 7919.882888
+bar pass 3 event mri_trigger val = 0 at 7919.957954
+bar pass 3 event mri_trigger val = 1 at 7920.033073
+bar pass 3 event mri_trigger val = 0 at 7920.108101
+bar pass 3 event mri_trigger val = 1 at 7920.183188
+bar pass 3 event mri_trigger val = 0 at 7920.258073
+bar pass 3 event mri_trigger val = 1 at 7920.333104
+bar pass 3 event mri_trigger val = 0 at 7920.408146
+bar pass 3 event mri_trigger val = 1 at 7920.483209
+bar pass 3 event mri_trigger val = 0 at 7920.558284
+bar pass 3 trial offset at 7920.613442
+bar pass 3 - 120/120 drawn bar stimuli - and 0/0 probes - 0 missed sync on 1440 frames, 0.0% (mean/median delay = NaN/NaN ms)
+bar pass 3 stopped at 7920.617642
+bar pass 4 started at 7920.617829
+bar pass 4 trial onset at 7920.630162
+bar pass 4 event mri_trigger val = 1 at 7920.633684
+bar pass 4 event mri_trigger val = 0 at 7920.708206
+bar pass 4 event mri_trigger val = 1 at 7920.783318
+bar pass 4 event mri_trigger val = 0 at 7920.858224
+bar pass 4 event mri_trigger val = 1 at 7920.933253
+bar pass 4 stimulus probe onset at 7920.972016
+bar pass 4 event mri_trigger val = 0 at 7921.008334
+bar pass 4 event mri_trigger val = 1 at 7921.083265
+bar pass 4 event mri_trigger val = 0 at 7921.158707
+bar pass 4 event mri_trigger val = 1 at 7921.233392
+bar pass 4 event mri_trigger val = 0 at 7921.308202
+bar pass 4 event mri_trigger val = 1 at 7921.383660
+bar pass 4 event mri_trigger val = 0 at 7921.458633
+bar pass 4 event mri_trigger val = 1 at 7921.533617
+bar pass 4 event mri_trigger val = 0 at 7921.608655
+bar pass 4 event mri_trigger val = 1 at 7921.683786
+bar pass 4 event u at 7921.683937
+stimulus staircase updated to 11.00 at 7921.684087
+bar pass 4 event mri_trigger val = 0 at 7921.758582
+bar pass 4 event mri_trigger val = 1 at 7921.833687
+bar pass 4 trial offset at 7921.855682
+bar pass 4 trial onset at 7921.864080
+bar pass 4 event mri_trigger val = 0 at 7921.908755
+bar pass 4 event mri_trigger val = 1 at 7921.983848
+bar pass 4 event mri_trigger val = 0 at 7922.058926
+bar pass 4 event mri_trigger val = 1 at 7922.133815
+bar pass 4 stimulus probe onset at 7922.205861
+bar pass 4 event mri_trigger val = 0 at 7922.209097
+bar pass 4 event mri_trigger val = 1 at 7922.284202
+bar pass 4 event mri_trigger val = 0 at 7922.358967
+bar pass 4 event mri_trigger val = 1 at 7922.434122
+bar pass 4 event mri_trigger val = 0 at 7922.508896
+bar pass 4 event mri_trigger val = 1 at 7922.584068
+bar pass 4 event mri_trigger val = 0 at 7922.659133
+bar pass 4 event mri_trigger val = 1 at 7922.733985
+bar pass 4 event mri_trigger val = 0 at 7922.809020
+bar pass 4 event mri_trigger val = 1 at 7922.884143
+bar pass 4 event mri_trigger val = 0 at 7922.959200
+bar pass 4 event u at 7922.975879
+bar pass 4 event mri_trigger val = 1 at 7923.034198
+bar pass 4 trial offset at 7923.089484
+bar pass 4 trial onset at 7923.097882
+bar pass 4 event mri_trigger val = 0 at 7923.109316
+bar pass 4 event mri_trigger val = 1 at 7923.184221
+bar pass 4 event mri_trigger val = 0 at 7923.259425
+bar pass 4 event mri_trigger val = 1 at 7923.334331
+bar pass 4 event mri_trigger val = 0 at 7923.409207
+bar pass 4 stimulus probe onset at 7923.439630
+bar pass 4 event mri_trigger val = 1 at 7923.484249
+bar pass 4 event mri_trigger val = 0 at 7923.559190
+bar pass 4 event mri_trigger val = 1 at 7923.634464
+bar pass 4 event mri_trigger val = 0 at 7923.709289
+bar pass 4 event mri_trigger val = 1 at 7923.784600
+bar pass 4 event mri_trigger val = 0 at 7923.859502
+bar pass 4 event mri_trigger val = 1 at 7923.934353
+bar pass 4 event mri_trigger val = 0 at 7924.009426
+bar pass 4 event mri_trigger val = 1 at 7924.084541
+bar pass 4 event r at 7924.092938
+bar pass 4 event mri_trigger val = 0 at 7924.159577
+bar pass 4 event mri_trigger val = 1 at 7924.234727
+bar pass 4 event mri_trigger val = 0 at 7924.309546
+bar pass 4 trial offset at 7924.331650
+bar pass 4 trial onset at 7924.340077
+bar pass 4 event mri_trigger val = 1 at 7924.384692
+bar pass 4 event mri_trigger val = 0 at 7924.459770
+bar pass 4 event mri_trigger val = 1 at 7924.534870
+bar pass 4 event mri_trigger val = 0 at 7924.609917
+bar pass 4 stimulus probe onset at 7924.681850
+bar pass 4 event mri_trigger val = 1 at 7924.685013
+bar pass 4 event mri_trigger val = 0 at 7924.768496
+bar pass 4 event mri_trigger val = 1 at 7924.834979
+bar pass 4 event mri_trigger val = 0 at 7924.910100
+bar pass 4 event mri_trigger val = 1 at 7924.993521
+bar pass 4 event mri_trigger val = 0 at 7925.060068
+bar pass 4 event mri_trigger val = 1 at 7925.135213
+bar pass 4 event mri_trigger val = 0 at 7925.210264
+bar pass 4 event mri_trigger val = 1 at 7925.285081
+bar pass 4 event mri_trigger val = 0 at 7925.360146
+bar pass 4 event u at 7925.393376
+stimulus staircase updated to 10.00 at 7925.394133
+bar pass 4 event mri_trigger val = 1 at 7925.435235
+bar pass 4 event mri_trigger val = 0 at 7925.510315
+bar pass 4 event mri_trigger val = 1 at 7925.585171
+bar pass 4 trial offset at 7925.590479
+bar pass 4 trial onset at 7925.598923
+bar pass 4 event mri_trigger val = 0 at 7925.660432
+bar pass 4 event mri_trigger val = 1 at 7925.735317
+bar pass 4 event mri_trigger val = 0 at 7925.810366
+bar pass 4 event mri_trigger val = 1 at 7925.885467
+bar pass 4 stimulus probe onset at 7925.940619
+bar pass 4 event mri_trigger val = 0 at 7925.960311
+bar pass 4 event mri_trigger val = 1 at 7926.035408
+bar pass 4 event mri_trigger val = 0 at 7926.110274
+bar pass 4 event mri_trigger val = 1 at 7926.185422
+bar pass 4 event mri_trigger val = 0 at 7926.260422
+bar pass 4 event mri_trigger val = 1 at 7926.335491
+bar pass 4 event mri_trigger val = 0 at 7926.410391
+bar pass 4 event mri_trigger val = 1 at 7926.485447
+bar pass 4 event mri_trigger val = 0 at 7926.560497
+bar pass 4 event mri_trigger val = 1 at 7926.635598
+bar pass 4 event u at 7926.635731
+bar pass 4 event mri_trigger val = 0 at 7926.710683
+bar pass 4 event mri_trigger val = 1 at 7926.785717
+bar pass 4 trial offset at 7926.824336
+bar pass 4 trial onset at 7926.832661
+bar pass 4 event mri_trigger val = 0 at 7926.860572
+bar pass 4 event mri_trigger val = 1 at 7926.935658
+bar pass 4 event mri_trigger val = 0 at 7927.010743
+bar pass 4 event mri_trigger val = 1 at 7927.085883
+bar pass 4 event mri_trigger val = 0 at 7927.161013
+bar pass 4 stimulus probe onset at 7927.174526
+bar pass 4 event mri_trigger val = 1 at 7927.235712
+bar pass 4 event mri_trigger val = 0 at 7927.310958
+bar pass 4 event mri_trigger val = 1 at 7927.386011
+bar pass 4 event mri_trigger val = 0 at 7927.469518
+bar pass 4 event mri_trigger val = 1 at 7927.535977
+bar pass 4 event mri_trigger val = 0 at 7927.611105
+bar pass 4 event mri_trigger val = 1 at 7927.686207
+bar pass 4 event mri_trigger val = 0 at 7927.761262
+bar pass 4 event mri_trigger val = 1 at 7927.836358
+bar pass 4 event u at 7927.852789
+bar pass 4 event mri_trigger val = 0 at 7927.911176
+bar pass 4 event mri_trigger val = 1 at 7927.986255
+bar pass 4 event mri_trigger val = 0 at 7928.061333
+bar pass 4 trial offset at 7928.066481
+bar pass 4 trial onset at 7928.074875
+bar pass 4 event mri_trigger val = 1 at 7928.136484
+bar pass 4 event mri_trigger val = 0 at 7928.211257
+bar pass 4 event mri_trigger val = 1 at 7928.286329
+bar pass 4 event mri_trigger val = 0 at 7928.361404
+bar pass 4 stimulus probe onset at 7928.416609
+bar pass 4 event mri_trigger val = 1 at 7928.436474
+bar pass 4 event mri_trigger val = 0 at 7928.511418
+bar pass 4 event mri_trigger val = 1 at 7928.586418
+bar pass 4 event mri_trigger val = 0 at 7928.661567
+bar pass 4 event mri_trigger val = 1 at 7928.736601
+bar pass 4 event mri_trigger val = 0 at 7928.819854
+bar pass 4 event mri_trigger val = 1 at 7928.886557
+bar pass 4 event mri_trigger val = 0 at 7928.961698
+bar pass 4 event mri_trigger val = 1 at 7929.036548
+bar pass 4 event r at 7929.070012
+stimulus staircase updated to 9.00 at 7929.070260
+bar pass 4 event mri_trigger val = 0 at 7929.111536
+bar pass 4 event mri_trigger val = 1 at 7929.186708
+bar pass 4 event mri_trigger val = 0 at 7929.261699
+bar pass 4 trial offset at 7929.308646
+bar pass 4 trial onset at 7929.317089
+bar pass 4 event mri_trigger val = 1 at 7929.336564
+bar pass 4 event mri_trigger val = 0 at 7929.411649
+bar pass 4 event mri_trigger val = 1 at 7929.486741
+bar pass 4 event mri_trigger val = 0 at 7929.561784
+bar pass 4 event mri_trigger val = 1 at 7929.636884
+bar pass 4 stimulus probe onset at 7929.658825
+bar pass 4 event mri_trigger val = 0 at 7929.711714
+bar pass 4 event mri_trigger val = 1 at 7929.786781
+bar pass 4 event mri_trigger val = 0 at 7929.861850
+bar pass 4 event mri_trigger val = 1 at 7929.937055
+bar pass 4 event mri_trigger val = 0 at 7930.012100
+bar pass 4 event mri_trigger val = 1 at 7930.086849
+bar pass 4 event mri_trigger val = 0 at 7930.162025
+bar pass 4 event mri_trigger val = 1 at 7930.237126
+bar pass 4 event u at 7930.262209
+bar pass 4 event mri_trigger val = 0 at 7930.312198
+bar pass 4 event mri_trigger val = 1 at 7930.387270
+bar pass 4 event mri_trigger val = 0 at 7930.462331
+bar pass 4 trial offset at 7930.509204
+bar pass 4 trial onset at 7930.517552
+bar pass 4 event mri_trigger val = 1 at 7930.537185
+bar pass 4 event mri_trigger val = 0 at 7930.612273
+bar pass 4 event mri_trigger val = 1 at 7930.687131
+bar pass 4 event mri_trigger val = 0 at 7930.762397
+bar pass 4 event mri_trigger val = 1 at 7930.837517
+bar pass 4 stimulus probe onset at 7930.859398
+bar pass 4 event mri_trigger val = 0 at 7930.912337
+bar pass 4 event mri_trigger val = 1 at 7930.987418
+bar pass 4 event mri_trigger val = 0 at 7931.062496
+bar pass 4 event mri_trigger val = 1 at 7931.137627
+bar pass 4 event mri_trigger val = 0 at 7931.212443
+bar pass 4 event mri_trigger val = 1 at 7931.287551
+bar pass 4 event mri_trigger val = 0 at 7931.362631
+bar pass 4 event mri_trigger val = 1 at 7931.437686
+bar pass 4 event r at 7931.470838
+bar pass 4 event mri_trigger val = 0 at 7931.512561
+bar pass 4 event mri_trigger val = 1 at 7931.587650
+bar pass 4 event mri_trigger val = 0 at 7931.662685
+bar pass 4 trial offset at 7931.726382
+bar pass 4 trial onset at 7931.734681
+bar pass 4 event mri_trigger val = 1 at 7931.737735
+bar pass 4 event mri_trigger val = 0 at 7931.812768
+bar pass 4 event mri_trigger val = 1 at 7931.887677
+bar pass 4 event mri_trigger val = 0 at 7931.962713
+bar pass 4 event mri_trigger val = 1 at 7932.037784
+bar pass 4 stimulus probe onset at 7932.076554
+bar pass 4 event mri_trigger val = 0 at 7932.112887
+bar pass 4 event mri_trigger val = 1 at 7932.187764
+bar pass 4 event mri_trigger val = 0 at 7932.262809
+bar pass 4 event mri_trigger val = 1 at 7932.337854
+bar pass 4 event mri_trigger val = 0 at 7932.412785
+bar pass 4 event mri_trigger val = 1 at 7932.487797
+bar pass 4 event mri_trigger val = 0 at 7932.562915
+bar pass 4 event mri_trigger val = 1 at 7932.637935
+bar pass 4 event mri_trigger val = 0 at 7932.713069
+bar pass 4 event mri_trigger val = 1 at 7932.788196
+bar pass 4 event u at 7932.846536
+stimulus staircase updated to 8.00 at 7932.846686
+bar pass 4 event mri_trigger val = 0 at 7932.863278
+bar pass 4 event mri_trigger val = 1 at 7932.938030
+bar pass 4 trial offset at 7932.943448
+bar pass 4 trial onset at 7932.951801
+bar pass 4 event mri_trigger val = 0 at 7933.013198
+bar pass 4 event mri_trigger val = 1 at 7933.088282
+bar pass 4 event mri_trigger val = 0 at 7933.163072
+bar pass 4 event mri_trigger val = 1 at 7933.238447
+bar pass 4 stimulus probe onset at 7933.293672
+bar pass 4 event mri_trigger val = 0 at 7933.313519
+bar pass 4 event mri_trigger val = 1 at 7933.388429
+bar pass 4 event mri_trigger val = 0 at 7933.463418
+bar pass 4 event mri_trigger val = 1 at 7933.538357
+bar pass 4 event mri_trigger val = 0 at 7933.613437
+bar pass 4 event mri_trigger val = 1 at 7933.697149
+bar pass 4 event mri_trigger val = 0 at 7933.763649
+bar pass 4 event mri_trigger val = 1 at 7933.838703
+bar pass 4 event mri_trigger val = 0 at 7933.913583
+bar pass 4 event mri_trigger val = 1 at 7933.988615
+bar pass 4 event mri_trigger val = 0 at 7934.063692
+bar pass 4 event mri_trigger val = 1 at 7934.138543
+bar pass 4 event r at 7934.163700
+bar pass 4 trial offset at 7934.177327
+bar pass 4 trial onset at 7934.185736
+bar pass 4 event mri_trigger val = 0 at 7934.213845
+bar pass 4 event mri_trigger val = 1 at 7934.288704
+bar pass 4 event mri_trigger val = 0 at 7934.363786
+bar pass 4 event mri_trigger val = 1 at 7934.438829
+bar pass 4 event mri_trigger val = 0 at 7934.513919
+bar pass 4 stimulus probe onset at 7934.527522
+bar pass 4 event mri_trigger val = 1 at 7934.588977
+bar pass 4 event mri_trigger val = 0 at 7934.663904
+bar pass 4 event mri_trigger val = 1 at 7934.738922
+bar pass 4 event mri_trigger val = 0 at 7934.822492
+bar pass 4 event mri_trigger val = 1 at 7934.888978
+bar pass 4 event mri_trigger val = 0 at 7934.963849
+bar pass 4 event mri_trigger val = 1 at 7935.039134
+bar pass 4 event mri_trigger val = 0 at 7935.113930
+bar pass 4 event mri_trigger val = 1 at 7935.189344
+bar pass 4 event mri_trigger val = 0 at 7935.264110
+bar pass 4 event mri_trigger val = 1 at 7935.339149
+bar pass 4 event r at 7935.389420
+bar pass 4 event mri_trigger val = 0 at 7935.414265
+bar pass 4 trial offset at 7935.419492
+bar pass 4 trial onset at 7935.427902
+bar pass 4 event mri_trigger val = 1 at 7935.489403
+bar pass 4 event mri_trigger val = 0 at 7935.564129
+bar pass 4 event mri_trigger val = 1 at 7935.639475
+bar pass 4 event mri_trigger val = 0 at 7935.714410
+bar pass 4 stimulus probe onset at 7935.769696
+bar pass 4 event mri_trigger val = 1 at 7935.789462
+bar pass 4 event mri_trigger val = 0 at 7935.864385
+bar pass 4 event mri_trigger val = 1 at 7935.939408
+bar pass 4 event mri_trigger val = 0 at 7936.014498
+bar pass 4 event mri_trigger val = 1 at 7936.089577
+bar pass 4 event mri_trigger val = 0 at 7936.164668
+bar pass 4 event mri_trigger val = 1 at 7936.239721
+bar pass 4 event mri_trigger val = 0 at 7936.314643
+bar pass 4 event mri_trigger val = 1 at 7936.389639
+bar pass 4 event u at 7936.439602
+stimulus staircase updated to 7.00 at 7936.439732
+bar pass 4 event mri_trigger val = 0 at 7936.464751
+bar pass 4 event mri_trigger val = 1 at 7936.539824
+bar pass 4 event mri_trigger val = 0 at 7936.614678
+bar pass 4 trial offset at 7936.628448
+bar pass 4 trial onset at 7936.636733
+bar pass 4 event mri_trigger val = 1 at 7936.689676
+bar pass 4 event mri_trigger val = 0 at 7936.764829
+bar pass 4 event mri_trigger val = 1 at 7936.839634
+bar pass 4 event mri_trigger val = 0 at 7936.914749
+bar pass 4 stimulus probe onset at 7936.978448
+bar pass 4 event mri_trigger val = 1 at 7936.989782
+bar pass 4 event mri_trigger val = 0 at 7937.064914
+bar pass 4 event mri_trigger val = 1 at 7937.139767
+bar pass 4 event mri_trigger val = 0 at 7937.215056
+bar pass 4 event mri_trigger val = 1 at 7937.289972
+bar pass 4 event mri_trigger val = 0 at 7937.364987
+bar pass 4 event mri_trigger val = 1 at 7937.439960
+bar pass 4 event mri_trigger val = 0 at 7937.514972
+bar pass 4 event mri_trigger val = 1 at 7937.589990
+bar pass 4 event mri_trigger val = 0 at 7937.665101
+bar pass 4 event u at 7937.673505
+bar pass 4 event mri_trigger val = 1 at 7937.740174
+bar pass 4 event mri_trigger val = 0 at 7937.815021
+bar pass 4 trial offset at 7937.870547
+bar pass 4 trial onset at 7937.878898
+bar pass 4 event mri_trigger val = 1 at 7937.882006
+bar pass 4 event mri_trigger val = 0 at 7937.965151
+bar pass 4 event mri_trigger val = 1 at 7938.040563
+bar pass 4 event mri_trigger val = 0 at 7938.115398
+bar pass 4 event mri_trigger val = 1 at 7938.182089
+bar pass 4 stimulus probe onset at 7938.220696
+bar pass 4 event mri_trigger val = 0 at 7938.257099
+bar pass 4 event mri_trigger val = 1 at 7938.340622
+bar pass 4 event mri_trigger val = 0 at 7938.407126
+bar pass 4 event mri_trigger val = 1 at 7938.490254
+bar pass 4 event mri_trigger val = 0 at 7938.565362
+bar pass 4 event mri_trigger val = 1 at 7938.632119
+bar pass 4 event mri_trigger val = 0 at 7938.707146
+bar pass 4 event mri_trigger val = 1 at 7938.782249
+bar pass 4 event mri_trigger val = 0 at 7938.857101
+bar pass 4 event mri_trigger val = 1 at 7938.932169
+bar pass 4 event mri_trigger val = 0 at 7939.007204
+bar pass 4 event r at 7939.065645
+bar pass 4 trial offset at 7939.079284
+bar pass 4 event mri_trigger val = 1 at 7939.082288
+bar pass 4 trial onset at 7939.087688
+bar pass 4 event mri_trigger val = 0 at 7939.157401
+bar pass 4 event mri_trigger val = 1 at 7939.232544
+bar pass 4 event mri_trigger val = 0 at 7939.307332
+bar pass 4 event mri_trigger val = 1 at 7939.382344
+bar pass 4 stimulus probe onset at 7939.429520
+bar pass 4 event mri_trigger val = 0 at 7939.457495
+bar pass 4 event mri_trigger val = 1 at 7939.532625
+bar pass 4 event mri_trigger val = 0 at 7939.607696
+bar pass 4 event mri_trigger val = 1 at 7939.682513
+bar pass 4 event mri_trigger val = 0 at 7939.757627
+bar pass 4 event mri_trigger val = 1 at 7939.832661
+bar pass 4 event mri_trigger val = 0 at 7939.907785
+bar pass 4 event mri_trigger val = 1 at 7939.982789
+bar pass 4 event mri_trigger val = 0 at 7940.057728
+bar pass 4 event mri_trigger val = 1 at 7940.132749
+bar pass 4 event r at 7940.141123
+stimulus staircase updated to 6.00 at 7940.141259
+bar pass 4 event mri_trigger val = 0 at 7940.207874
+bar pass 4 trial offset at 7940.279871
+bar pass 4 event mri_trigger val = 1 at 7940.283135
+bar pass 4 trial onset at 7940.288193
+bar pass 4 event mri_trigger val = 0 at 7940.357766
+bar pass 4 event mri_trigger val = 1 at 7940.432841
+bar pass 4 event mri_trigger val = 0 at 7940.507934
+bar pass 4 event mri_trigger val = 1 at 7940.583019
+bar pass 4 stimulus probe onset at 7940.630004
+bar pass 4 event mri_trigger val = 0 at 7940.657861
+bar pass 4 event mri_trigger val = 1 at 7940.733174
+bar pass 4 event mri_trigger val = 0 at 7940.816699
+bar pass 4 event mri_trigger val = 1 at 7940.883176
+bar pass 4 event mri_trigger val = 0 at 7940.958223
+bar pass 4 event mri_trigger val = 1 at 7941.033317
+bar pass 4 event mri_trigger val = 0 at 7941.108192
+bar pass 4 event mri_trigger val = 1 at 7941.183244
+bar pass 4 event mri_trigger val = 0 at 7941.258362
+bar pass 4 event mri_trigger val = 1 at 7941.333171
+bar pass 4 event mri_trigger val = 0 at 7941.408237
+bar pass 4 event mri_trigger val = 1 at 7941.483295
+bar pass 4 trial offset at 7941.521917
+bar pass 4 trial onset at 7941.530325
+bar pass 4 event mri_trigger val = 0 at 7941.558352
+bar pass 4 event mri_trigger val = 1 at 7941.633254
+bar pass 4 event mri_trigger val = 0 at 7941.708319
+bar pass 4 event mri_trigger val = 1 at 7941.783330
+bar pass 4 event mri_trigger val = 0 at 7941.858437
+bar pass 4 stimulus probe onset at 7941.872171
+bar pass 4 event mri_trigger val = 1 at 7941.933573
+bar pass 4 event mri_trigger val = 0 at 7942.008460
+bar pass 4 event mri_trigger val = 1 at 7942.083520
+bar pass 4 event mri_trigger val = 0 at 7942.167296
+bar pass 4 event mri_trigger val = 1 at 7942.233759
+bar pass 4 event mri_trigger val = 0 at 7942.308557
+bar pass 4 event mri_trigger val = 1 at 7942.383765
+bar pass 4 event mri_trigger val = 0 at 7942.458805
+bar pass 4 event mri_trigger val = 1 at 7942.533537
+bar pass 4 event mri_trigger val = 0 at 7942.608971
+bar pass 4 event mri_trigger val = 1 at 7942.683848
+bar pass 4 trial offset at 7942.755861
+bar pass 4 event mri_trigger val = 0 at 7942.759117
+bar pass 4 - 216/2.160000e+02 drawn bar stimuli - and 90/90 probes - 1 missed sync on 2592 frames, 0.0% (mean/median delay = 7.9/7.9 ms)
+bar pass 4 stopped at 7942.760099
+bar pass 5 started at 7942.760457
+bar pass 5 trial onset at 7942.772463
+bar pass 5 event mri_trigger val = 1 at 7942.833951
+bar pass 5 event mri_trigger val = 0 at 7942.909024
+bar pass 5 event mri_trigger val = 1 at 7942.983872
+bar pass 5 event mri_trigger val = 0 at 7943.058945
+bar pass 5 event mri_trigger val = 1 at 7943.134040
+bar pass 5 event mri_trigger val = 0 at 7943.209059
+bar pass 5 event mri_trigger val = 1 at 7943.284240
+bar pass 5 event mri_trigger val = 0 at 7943.359255
+bar pass 5 event mri_trigger val = 1 at 7943.434337
+bar pass 5 event mri_trigger val = 0 at 7943.509098
+bar pass 5 event mri_trigger val = 1 at 7943.584308
+bar pass 5 event mri_trigger val = 0 at 7943.659306
+bar pass 5 event mri_trigger val = 1 at 7943.734428
+bar pass 5 event mri_trigger val = 0 at 7943.809250
+bar pass 5 event mri_trigger val = 1 at 7943.884367
+bar pass 5 event mri_trigger val = 0 at 7943.959358
+bar pass 5 trial offset at 7943.964562
+bar pass 5 trial onset at 7943.973076
+bar pass 5 event mri_trigger val = 1 at 7944.034427
+bar pass 5 event mri_trigger val = 0 at 7944.109469
+bar pass 5 event mri_trigger val = 1 at 7944.184381
+bar pass 5 event mri_trigger val = 0 at 7944.259414
+bar pass 5 event mri_trigger val = 1 at 7944.334460
+bar pass 5 event mri_trigger val = 0 at 7944.409402
+bar pass 5 event mri_trigger val = 1 at 7944.484422
+bar pass 5 event mri_trigger val = 0 at 7944.559494
+bar pass 5 event mri_trigger val = 1 at 7944.634887
+bar pass 5 event mri_trigger val = 0 at 7944.709678
+bar pass 5 event mri_trigger val = 1 at 7944.784489
+bar pass 5 event mri_trigger val = 0 at 7944.859551
+bar pass 5 event mri_trigger val = 1 at 7944.934961
+bar pass 5 event mri_trigger val = 0 at 7945.009869
+bar pass 5 event mri_trigger val = 1 at 7945.084577
+bar pass 5 event mri_trigger val = 0 at 7945.159950
+bar pass 5 trial offset at 7945.165166
+bar pass 5 trial onset at 7945.173522
+bar pass 5 event mri_trigger val = 1 at 7945.235044
+bar pass 5 event mri_trigger val = 0 at 7945.309890
+bar pass 5 event mri_trigger val = 1 at 7945.384947
+bar pass 5 event mri_trigger val = 0 at 7945.460031
+bar pass 5 event mri_trigger val = 1 at 7945.535046
+bar pass 5 event mri_trigger val = 0 at 7945.609956
+bar pass 5 event mri_trigger val = 1 at 7945.684964
+bar pass 5 event mri_trigger val = 0 at 7945.760098
+bar pass 5 event mri_trigger val = 1 at 7945.835191
+bar pass 5 event mri_trigger val = 0 at 7945.910265
+bar pass 5 event mri_trigger val = 1 at 7945.985108
+bar pass 5 event mri_trigger val = 0 at 7946.060188
+bar pass 5 event mri_trigger val = 1 at 7946.135255
+bar pass 5 event mri_trigger val = 0 at 7946.210342
+bar pass 5 event mri_trigger val = 1 at 7946.285476
+bar pass 5 event mri_trigger val = 0 at 7946.360290
+bar pass 5 trial offset at 7946.365572
+bar pass 5 trial onset at 7946.374039
+bar pass 5 event mri_trigger val = 1 at 7946.435537
+bar pass 5 event mri_trigger val = 0 at 7946.510435
+bar pass 5 event mri_trigger val = 1 at 7946.585485
+bar pass 5 event mri_trigger val = 0 at 7946.660572
+bar pass 5 event mri_trigger val = 1 at 7946.735589
+bar pass 5 event mri_trigger val = 0 at 7946.810475
+bar pass 5 event mri_trigger val = 1 at 7946.885535
+bar pass 5 event mri_trigger val = 0 at 7946.960573
+bar pass 5 event mri_trigger val = 1 at 7947.035666
+bar pass 5 event mri_trigger val = 0 at 7947.110525
+bar pass 5 event mri_trigger val = 1 at 7947.185551
+bar pass 5 event mri_trigger val = 0 at 7947.260674
+bar pass 5 event mri_trigger val = 1 at 7947.336058
+bar pass 5 event mri_trigger val = 0 at 7947.410593
+bar pass 5 event mri_trigger val = 1 at 7947.485648
+bar pass 5 event mri_trigger val = 0 at 7947.560713
+bar pass 5 trial offset at 7947.566149
+bar pass 5 trial onset at 7947.574411
+bar pass 5 event mri_trigger val = 1 at 7947.636120
+bar pass 5 event mri_trigger val = 0 at 7947.710912
+bar pass 5 event mri_trigger val = 1 at 7947.785681
+bar pass 5 event mri_trigger val = 0 at 7947.860808
+bar pass 5 event mri_trigger val = 1 at 7947.936208
+bar pass 5 event mri_trigger val = 0 at 7948.011048
+bar pass 5 event mri_trigger val = 1 at 7948.086034
+bar pass 5 event mri_trigger val = 0 at 7948.161197
+bar pass 5 event mri_trigger val = 1 at 7948.236294
+bar pass 5 event mri_trigger val = 0 at 7948.311133
+bar pass 5 event mri_trigger val = 1 at 7948.386192
+bar pass 5 event mri_trigger val = 0 at 7948.461277
+bar pass 5 event mri_trigger val = 1 at 7948.536333
+bar pass 5 event mri_trigger val = 0 at 7948.611204
+bar pass 5 event mri_trigger val = 1 at 7948.686289
+bar pass 5 event mri_trigger val = 0 at 7948.761339
+bar pass 5 trial offset at 7948.766611
+bar pass 5 trial onset at 7948.774896
+bar pass 5 event mri_trigger val = 1 at 7948.836426
+bar pass 5 event mri_trigger val = 0 at 7948.911277
+bar pass 5 event mri_trigger val = 1 at 7948.986342
+bar pass 5 event mri_trigger val = 0 at 7949.061451
+bar pass 5 event mri_trigger val = 1 at 7949.136511
+bar pass 5 event mri_trigger val = 0 at 7949.211585
+bar pass 5 event mri_trigger val = 1 at 7949.286426
+bar pass 5 event mri_trigger val = 0 at 7949.361501
+bar pass 5 event mri_trigger val = 1 at 7949.436727
+bar pass 5 event mri_trigger val = 0 at 7949.511634
+bar pass 5 event mri_trigger val = 1 at 7949.586717
+bar pass 5 event mri_trigger val = 0 at 7949.661731
+bar pass 5 event mri_trigger val = 1 at 7949.736825
+bar pass 5 event mri_trigger val = 0 at 7949.811744
+bar pass 5 event mri_trigger val = 1 at 7949.886731
+bar pass 5 event mri_trigger val = 0 at 7949.961795
+bar pass 5 trial offset at 7949.967134
+bar pass 5 trial onset at 7949.975493
+bar pass 5 event mri_trigger val = 1 at 7950.036885
+bar pass 5 event mri_trigger val = 0 at 7950.111750
+bar pass 5 event mri_trigger val = 1 at 7950.186812
+bar pass 5 event mri_trigger val = 0 at 7950.261893
+bar pass 5 event mri_trigger val = 1 at 7950.336965
+bar pass 5 event mri_trigger val = 0 at 7950.411797
+bar pass 5 event mri_trigger val = 1 at 7950.486890
+bar pass 5 event mri_trigger val = 0 at 7950.561981
+bar pass 5 event mri_trigger val = 1 at 7950.637123
+bar pass 5 event mri_trigger val = 0 at 7950.712199
+bar pass 5 event mri_trigger val = 1 at 7950.787280
+bar pass 5 event mri_trigger val = 0 at 7950.862011
+bar pass 5 event mri_trigger val = 1 at 7950.937478
+bar pass 5 event mri_trigger val = 0 at 7951.012285
+bar pass 5 event mri_trigger val = 1 at 7951.087362
+bar pass 5 event mri_trigger val = 0 at 7951.162175
+bar pass 5 trial offset at 7951.167557
+bar pass 5 trial onset at 7951.175891
+bar pass 5 event mri_trigger val = 1 at 7951.237278
+bar pass 5 event mri_trigger val = 0 at 7951.312372
+bar pass 5 event mri_trigger val = 1 at 7951.387419
+bar pass 5 event mri_trigger val = 0 at 7951.462511
+bar pass 5 event mri_trigger val = 1 at 7951.537651
+bar pass 5 event mri_trigger val = 0 at 7951.612412
+bar pass 5 event mri_trigger val = 1 at 7951.687507
+bar pass 5 event mri_trigger val = 0 at 7951.762581
+bar pass 5 event mri_trigger val = 1 at 7951.837653
+bar pass 5 event mri_trigger val = 0 at 7951.912507
+bar pass 5 event mri_trigger val = 1 at 7951.987522
+bar pass 5 event mri_trigger val = 0 at 7952.062693
+bar pass 5 event mri_trigger val = 1 at 7952.137793
+bar pass 5 event mri_trigger val = 0 at 7952.212782
+bar pass 5 event mri_trigger val = 1 at 7952.287672
+bar pass 5 event mri_trigger val = 0 at 7952.362723
+bar pass 5 trial offset at 7952.368018
+bar pass 5 trial onset at 7952.376454
+bar pass 5 event mri_trigger val = 1 at 7952.437792
+bar pass 5 event mri_trigger val = 0 at 7952.512658
+bar pass 5 event mri_trigger val = 1 at 7952.587698
+bar pass 5 event mri_trigger val = 0 at 7952.663773
+bar pass 5 event mri_trigger val = 1 at 7952.738023
+bar pass 5 event mri_trigger val = 0 at 7952.812885
+bar pass 5 event mri_trigger val = 1 at 7952.887949
+bar pass 5 event mri_trigger val = 0 at 7952.962839
+bar pass 5 event mri_trigger val = 1 at 7953.038308
+bar pass 5 event mri_trigger val = 0 at 7953.112958
+bar pass 5 event mri_trigger val = 1 at 7953.188048
+bar pass 5 event mri_trigger val = 0 at 7953.262877
+bar pass 5 event mri_trigger val = 1 at 7953.338264
+bar pass 5 event mri_trigger val = 0 at 7953.413056
+bar pass 5 event mri_trigger val = 1 at 7953.488091
+bar pass 5 event mri_trigger val = 0 at 7953.563307
+bar pass 5 trial offset at 7953.568571
+bar pass 5 trial onset at 7953.576944
+bar pass 5 event mri_trigger val = 1 at 7953.638348
+bar pass 5 event mri_trigger val = 0 at 7953.713483
+bar pass 5 event mri_trigger val = 1 at 7953.788288
+bar pass 5 event mri_trigger val = 0 at 7953.863352
+bar pass 5 event mri_trigger val = 1 at 7953.938444
+bar pass 5 event mri_trigger val = 0 at 7954.013283
+bar pass 5 event mri_trigger val = 1 at 7954.088589
+bar pass 5 event mri_trigger val = 0 at 7954.163459
+bar pass 5 event mri_trigger val = 1 at 7954.238504
+bar pass 5 event mri_trigger val = 0 at 7954.313600
+bar pass 5 event mri_trigger val = 1 at 7954.388441
+bar pass 5 event mri_trigger val = 0 at 7954.463706
+bar pass 5 event mri_trigger val = 1 at 7954.538592
+bar pass 5 event mri_trigger val = 0 at 7954.613671
+bar pass 5 event mri_trigger val = 1 at 7954.688495
+bar pass 5 event mri_trigger val = 0 at 7954.763811
+bar pass 5 trial offset at 7954.769033
+bar pass 5 - 120/120 drawn bar stimuli - and 0/0 probes - 1 missed sync on 1440 frames, 0.1% (mean/median delay = 0.1/0.1 ms)
+bar pass 5 stopped at 7954.775942
+bar pass 6 started at 7954.776799
+bar pass 6 trial onset at 7954.794110
+bar pass 6 event mri_trigger val = 1 at 7954.838757
+bar pass 6 event mri_trigger val = 0 at 7954.913855
+bar pass 6 event mri_trigger val = 1 at 7954.988887
+bar pass 6 event mri_trigger val = 0 at 7955.063793
+bar pass 6 stimulus probe onset at 7955.135888
+bar pass 6 event mri_trigger val = 1 at 7955.139027
+bar pass 6 event mri_trigger val = 0 at 7955.214383
+bar pass 6 event mri_trigger val = 1 at 7955.288954
+bar pass 6 event mri_trigger val = 0 at 7955.364025
+bar pass 6 event mri_trigger val = 1 at 7955.439063
+bar pass 6 event mri_trigger val = 0 at 7955.514147
+bar pass 6 event mri_trigger val = 1 at 7955.589030
+bar pass 6 event mri_trigger val = 0 at 7955.664404
+bar pass 6 event mri_trigger val = 1 at 7955.739133
+bar pass 6 event mri_trigger val = 0 at 7955.814227
+bar pass 6 event mri_trigger val = 1 at 7955.889322
+bar pass 6 event mri_trigger val = 0 at 7955.964439
+bar pass 6 trial offset at 7955.994498
+bar pass 6 trial onset at 7956.002952
+bar pass 6 event mri_trigger val = 1 at 7956.039240
+bar pass 6 event mri_trigger val = 0 at 7956.114385
+bar pass 6 event mri_trigger val = 1 at 7956.189441
+bar pass 6 event mri_trigger val = 0 at 7956.264785
+bar pass 6 event mri_trigger val = 1 at 7956.339277
+bar pass 6 stimulus probe onset at 7956.344750
+bar pass 6 event mri_trigger val = 0 at 7956.423124
+bar pass 6 event mri_trigger val = 1 at 7956.489565
+bar pass 6 event mri_trigger val = 0 at 7956.564696
+bar pass 6 event u at 7956.622991
+bar pass 6 event mri_trigger val = 1 at 7956.639799
+bar pass 6 event mri_trigger val = 0 at 7956.714613
+bar pass 6 event mri_trigger val = 1 at 7956.789714
+bar pass 6 event mri_trigger val = 0 at 7956.864829
+bar pass 6 event mri_trigger val = 1 at 7956.939622
+bar pass 6 event mri_trigger val = 0 at 7957.014897
+bar pass 6 event mri_trigger val = 1 at 7957.089799
+bar pass 6 event mri_trigger val = 0 at 7957.164919
+bar pass 6 trial offset at 7957.228280
+bar pass 6 trial onset at 7957.236749
+bar pass 6 event mri_trigger val = 1 at 7957.239944
+bar pass 6 event mri_trigger val = 0 at 7957.314839
+bar pass 6 event mri_trigger val = 1 at 7957.389868
+bar pass 6 event mri_trigger val = 0 at 7957.464973
+bar pass 6 event mri_trigger val = 1 at 7957.540044
+bar pass 6 stimulus probe onset at 7957.578485
+bar pass 6 event mri_trigger val = 0 at 7957.615118
+bar pass 6 event mri_trigger val = 1 at 7957.690190
+bar pass 6 event mri_trigger val = 0 at 7957.765300
+bar pass 6 event mri_trigger val = 1 at 7957.840106
+bar pass 6 event mri_trigger val = 0 at 7957.915028
+bar pass 6 event r at 7957.948564
+bar pass 6 event mri_trigger val = 1 at 7957.990132
+bar pass 6 event mri_trigger val = 0 at 7958.065185
+bar pass 6 event mri_trigger val = 1 at 7958.140121
+bar pass 6 event mri_trigger val = 0 at 7958.215113
+bar pass 6 event mri_trigger val = 1 at 7958.290185
+bar pass 6 event mri_trigger val = 0 at 7958.365200
+bar pass 6 event mri_trigger val = 1 at 7958.440308
+bar pass 6 trial offset at 7958.462210
+bar pass 6 trial onset at 7958.470607
+bar pass 6 event mri_trigger val = 0 at 7958.515404
+bar pass 6 event mri_trigger val = 1 at 7958.590214
+bar pass 6 event mri_trigger val = 0 at 7958.665319
+bar pass 6 event mri_trigger val = 1 at 7958.740429
+bar pass 6 stimulus probe onset at 7958.812310
+bar pass 6 event mri_trigger val = 0 at 7958.815552
+bar pass 6 event mri_trigger val = 1 at 7958.890715
+bar pass 6 event mri_trigger val = 0 at 7958.965387
+bar pass 6 event mri_trigger val = 1 at 7959.040520
+bar pass 6 event mri_trigger val = 0 at 7959.115693
+bar pass 6 event mri_trigger val = 1 at 7959.190457
+bar pass 6 event mri_trigger val = 0 at 7959.265819
+bar pass 6 event mri_trigger val = 1 at 7959.340797
+bar pass 6 event mri_trigger val = 0 at 7959.415793
+bar pass 6 event mri_trigger val = 1 at 7959.490674
+bar pass 6 event r at 7959.532463
+stimulus staircase updated to 7.00 at 7959.532658
+bar pass 6 event mri_trigger val = 0 at 7959.565728
+bar pass 6 event mri_trigger val = 1 at 7959.640836
+bar pass 6 trial offset at 7959.704336
+bar pass 6 trial onset at 7959.712763
+bar pass 6 event mri_trigger val = 0 at 7959.716129
+bar pass 6 event mri_trigger val = 1 at 7959.790999
+bar pass 6 event mri_trigger val = 0 at 7959.866040
+bar pass 6 event mri_trigger val = 1 at 7959.940818
+bar pass 6 event mri_trigger val = 0 at 7960.015946
+bar pass 6 stimulus probe onset at 7960.054490
+bar pass 6 event mri_trigger val = 1 at 7960.091094
+bar pass 6 event mri_trigger val = 0 at 7960.166115
+bar pass 6 event mri_trigger val = 1 at 7960.241014
+bar pass 6 event mri_trigger val = 0 at 7960.316108
+bar pass 6 event mri_trigger val = 1 at 7960.391184
+bar pass 6 event mri_trigger val = 0 at 7960.466212
+bar pass 6 event mri_trigger val = 1 at 7960.541129
+bar pass 6 event mri_trigger val = 0 at 7960.616307
+bar pass 6 event mri_trigger val = 1 at 7960.691395
+bar pass 6 event mri_trigger val = 0 at 7960.766208
+bar pass 6 event mri_trigger val = 1 at 7960.841284
+bar pass 6 event u at 7960.908160
+stimulus staircase updated to 8.00 at 7960.908362
+bar pass 6 event mri_trigger val = 0 at 7960.916385
+bar pass 6 trial offset at 7960.921505
+bar pass 6 trial onset at 7960.929954
+bar pass 6 event mri_trigger val = 1 at 7960.991474
+bar pass 6 event mri_trigger val = 0 at 7961.066289
+bar pass 6 event mri_trigger val = 1 at 7961.141408
+bar pass 6 event mri_trigger val = 0 at 7961.216490
+bar pass 6 stimulus probe onset at 7961.271722
+bar pass 6 event r at 7961.275189
+stimulus staircase updated to 9.00 at 7961.275371
+bar pass 6 event mri_trigger val = 1 at 7961.283252
+bar pass 6 event mri_trigger val = 0 at 7961.366472
+bar pass 6 event mri_trigger val = 1 at 7961.441501
+bar pass 6 event mri_trigger val = 0 at 7961.508286
+bar pass 6 event mri_trigger val = 1 at 7961.583398
+bar pass 6 event mri_trigger val = 0 at 7961.658425
+bar pass 6 event mri_trigger val = 1 at 7961.733391
+bar pass 6 event mri_trigger val = 0 at 7961.808397
+bar pass 6 event mri_trigger val = 1 at 7961.883328
+bar pass 6 event mri_trigger val = 0 at 7961.958366
+bar pass 6 event mri_trigger val = 1 at 7962.033678
+bar pass 6 event mri_trigger val = 0 at 7962.108818
+bar pass 6 trial offset at 7962.163641
+bar pass 6 trial onset at 7962.172104
+bar pass 6 event mri_trigger val = 1 at 7962.183575
+bar pass 6 event mri_trigger val = 0 at 7962.258390
+bar pass 6 event mri_trigger val = 1 at 7962.333796
+bar pass 6 event mri_trigger val = 0 at 7962.408582
+bar pass 6 event mri_trigger val = 1 at 7962.483702
+bar pass 6 stimulus probe onset at 7962.513873
+bar pass 6 event mri_trigger val = 0 at 7962.558471
+bar pass 6 event mri_trigger val = 1 at 7962.633569
+bar pass 6 event mri_trigger val = 0 at 7962.708823
+bar pass 6 event mri_trigger val = 1 at 7962.783522
+bar pass 6 event mri_trigger val = 0 at 7962.858963
+bar pass 6 event mri_trigger val = 1 at 7962.933843
+bar pass 6 event mri_trigger val = 0 at 7963.008897
+bar pass 6 event mri_trigger val = 1 at 7963.083816
+bar pass 6 event mri_trigger val = 0 at 7963.158870
+bar pass 6 event mri_trigger val = 1 at 7963.233844
+bar pass 6 event mri_trigger val = 0 at 7963.309043
+bar pass 6 event mri_trigger val = 1 at 7963.383890
+bar pass 6 trial offset at 7963.405918
+bar pass 6 trial onset at 7963.414255
+bar pass 6 event mri_trigger val = 0 at 7963.459228
+bar pass 6 event mri_trigger val = 1 at 7963.534023
+bar pass 6 event mri_trigger val = 0 at 7963.609103
+bar pass 6 event mri_trigger val = 1 at 7963.684199
+bar pass 6 stimulus probe onset at 7963.756046
+bar pass 6 event mri_trigger val = 0 at 7963.759299
+bar pass 6 event mri_trigger val = 1 at 7963.834379
+bar pass 6 event mri_trigger val = 0 at 7963.909186
+bar pass 6 event mri_trigger val = 1 at 7963.984296
+bar pass 6 event mri_trigger val = 0 at 7964.059268
+bar pass 6 event mri_trigger val = 1 at 7964.134366
+bar pass 6 event mri_trigger val = 0 at 7964.209251
+bar pass 6 event mri_trigger val = 1 at 7964.284524
+bar pass 6 event mri_trigger val = 0 at 7964.359401
+bar pass 6 event mri_trigger val = 1 at 7964.434449
+bar pass 6 event mri_trigger val = 0 at 7964.509523
+bar pass 6 event mri_trigger val = 1 at 7964.584573
+bar pass 6 trial offset at 7964.614668
+bar pass 6 trial onset at 7964.623108
+bar pass 6 event mri_trigger val = 0 at 7964.659506
+bar pass 6 event mri_trigger val = 1 at 7964.734511
+bar pass 6 event mri_trigger val = 0 at 7964.809566
+bar pass 6 event mri_trigger val = 1 at 7964.884654
+bar pass 6 event mri_trigger val = 0 at 7964.959564
+bar pass 6 stimulus probe onset at 7964.964820
+bar pass 6 event mri_trigger val = 1 at 7965.034574
+bar pass 6 event mri_trigger val = 0 at 7965.109646
+bar pass 6 event mri_trigger val = 1 at 7965.185045
+bar pass 6 event mri_trigger val = 0 at 7965.259569
+bar pass 6 event mri_trigger val = 1 at 7965.334603
+bar pass 6 event mri_trigger val = 0 at 7965.409703
+bar pass 6 event mri_trigger val = 1 at 7965.485121
+bar pass 6 event mri_trigger val = 0 at 7965.559956
+bar pass 6 event mri_trigger val = 1 at 7965.634723
+bar pass 6 event u at 7965.693180
+bar pass 6 event mri_trigger val = 0 at 7965.709819
+bar pass 6 event mri_trigger val = 1 at 7965.785201
+bar pass 6 trial offset at 7965.815211
+bar pass 6 trial onset at 7965.823591
+bar pass 6 event mri_trigger val = 0 at 7965.860034
+bar pass 6 event mri_trigger val = 1 at 7965.935121
+bar pass 6 event mri_trigger val = 0 at 7966.010178
+bar pass 6 event mri_trigger val = 1 at 7966.085288
+bar pass 6 event mri_trigger val = 0 at 7966.160097
+bar pass 6 stimulus probe onset at 7966.165377
+bar pass 6 event mri_trigger val = 1 at 7966.235212
+bar pass 6 event mri_trigger val = 0 at 7966.310191
+bar pass 6 event mri_trigger val = 1 at 7966.385360
+bar pass 6 event mri_trigger val = 0 at 7966.460201
+bar pass 6 event mri_trigger val = 1 at 7966.535291
+bar pass 6 event mri_trigger val = 0 at 7966.610292
+bar pass 6 event mri_trigger val = 1 at 7966.685424
+bar pass 6 event mri_trigger val = 0 at 7966.760491
+bar pass 6 event mri_trigger val = 1 at 7966.835334
+bar pass 6 event mri_trigger val = 0 at 7966.910419
+bar pass 6 event mri_trigger val = 1 at 7966.985507
+bar pass 6 trial offset at 7967.015659
+bar pass 6 trial onset at 7967.024038
+bar pass 6 event mri_trigger val = 0 at 7967.060562
+bar pass 6 event mri_trigger val = 1 at 7967.135616
+bar pass 6 event mri_trigger val = 0 at 7967.210498
+bar pass 6 event mri_trigger val = 1 at 7967.285721
+bar pass 6 event mri_trigger val = 0 at 7967.360646
+bar pass 6 stimulus probe onset at 7967.365763
+bar pass 6 event mri_trigger val = 1 at 7967.444215
+bar pass 6 event mri_trigger val = 0 at 7967.510792
+bar pass 6 event mri_trigger val = 1 at 7967.585700
+bar pass 6 event mri_trigger val = 0 at 7967.661086
+bar pass 6 event mri_trigger val = 1 at 7967.735805
+bar pass 6 event mri_trigger val = 0 at 7967.810700
+bar pass 6 event mri_trigger val = 1 at 7967.885818
+bar pass 6 event mri_trigger val = 0 at 7967.960839
+bar pass 6 event mri_trigger val = 1 at 7968.035984
+bar pass 6 event mri_trigger val = 0 at 7968.110763
+bar pass 6 event r at 7968.135924
+bar pass 6 event mri_trigger val = 1 at 7968.185922
+bar pass 6 trial offset at 7968.249480
+bar pass 6 trial onset at 7968.257796
+bar pass 6 event mri_trigger val = 0 at 7968.260972
+bar pass 6 event mri_trigger val = 1 at 7968.336136
+bar pass 6 event mri_trigger val = 0 at 7968.410845
+bar pass 6 event mri_trigger val = 1 at 7968.485927
+bar pass 6 event mri_trigger val = 0 at 7968.561087
+bar pass 6 stimulus probe onset at 7968.599660
+bar pass 6 event mri_trigger val = 1 at 7968.636214
+bar pass 6 event mri_trigger val = 0 at 7968.711250
+bar pass 6 event mri_trigger val = 1 at 7968.786007
+bar pass 6 event mri_trigger val = 0 at 7968.861369
+bar pass 6 event mri_trigger val = 1 at 7968.936275
+bar pass 6 event mri_trigger val = 0 at 7969.011306
+bar pass 6 event mri_trigger val = 1 at 7969.086446
+bar pass 6 event mri_trigger val = 0 at 7969.161283
+bar pass 6 event mri_trigger val = 1 at 7969.236390
+bar pass 6 event mri_trigger val = 0 at 7969.311435
+bar pass 6 event mri_trigger val = 1 at 7969.386517
+bar pass 6 trial offset at 7969.458381
+bar pass 6 event mri_trigger val = 0 at 7969.461589
+bar pass 6 trial onset at 7969.466698
+bar pass 6 event mri_trigger val = 1 at 7969.536436
+bar pass 6 event mri_trigger val = 0 at 7969.611534
+bar pass 6 event mri_trigger val = 1 at 7969.686585
+bar pass 6 event mri_trigger val = 0 at 7969.761711
+bar pass 6 stimulus probe onset at 7969.808511
+bar pass 6 event mri_trigger val = 1 at 7969.836571
+bar pass 6 event mri_trigger val = 0 at 7969.911595
+bar pass 6 event mri_trigger val = 1 at 7969.995324
+bar pass 6 event mri_trigger val = 0 at 7970.061784
+bar pass 6 event mri_trigger val = 1 at 7970.136841
+bar pass 6 event mri_trigger val = 0 at 7970.211738
+bar pass 6 event mri_trigger val = 1 at 7970.286821
+bar pass 6 event mri_trigger val = 0 at 7970.361871
+bar pass 6 event mri_trigger val = 1 at 7970.436900
+bar pass 6 event mri_trigger val = 0 at 7970.511970
+bar pass 6 event mri_trigger val = 1 at 7970.586804
+bar pass 6 event mri_trigger val = 0 at 7970.661928
+bar pass 6 trial offset at 7970.683861
+bar pass 6 trial onset at 7970.692183
+bar pass 6 event mri_trigger val = 1 at 7970.736993
+bar pass 6 event mri_trigger val = 0 at 7970.811893
+bar pass 6 event mri_trigger val = 1 at 7970.886908
+bar pass 6 event mri_trigger val = 0 at 7970.962024
+bar pass 6 stimulus probe onset at 7971.033887
+bar pass 6 event mri_trigger val = 1 at 7971.037039
+bar pass 6 event mri_trigger val = 0 at 7971.112264
+bar pass 6 event mri_trigger val = 1 at 7971.186988
+bar pass 6 event mri_trigger val = 0 at 7971.262092
+bar pass 6 event mri_trigger val = 1 at 7971.337308
+bar pass 6 event mri_trigger val = 0 at 7971.412035
+bar pass 6 event mri_trigger val = 1 at 7971.487480
+bar pass 6 event mri_trigger val = 0 at 7971.562370
+bar pass 6 event mri_trigger val = 1 at 7971.637406
+bar pass 6 event mri_trigger val = 0 at 7971.712568
+bar pass 6 event mri_trigger val = 1 at 7971.787576
+bar pass 6 event mri_trigger val = 0 at 7971.862468
+bar pass 6 trial offset at 7971.925958
+bar pass 6 trial onset at 7971.934390
+bar pass 6 event mri_trigger val = 1 at 7971.937727
+bar pass 6 event mri_trigger val = 0 at 7972.012594
+bar pass 6 event mri_trigger val = 1 at 7972.087420
+bar pass 6 event mri_trigger val = 0 at 7972.162772
+bar pass 6 event mri_trigger val = 1 at 7972.237545
+bar pass 6 stimulus probe onset at 7972.276084
+bar pass 6 event mri_trigger val = 0 at 7972.312660
+bar pass 6 event mri_trigger val = 1 at 7972.387634
+bar pass 6 event mri_trigger val = 0 at 7972.462817
+bar pass 6 event mri_trigger val = 1 at 7972.537641
+bar pass 6 event mri_trigger val = 0 at 7972.612721
+bar pass 6 event mri_trigger val = 1 at 7972.687781
+bar pass 6 event mri_trigger val = 0 at 7972.762883
+bar pass 6 event mri_trigger val = 1 at 7972.837893
+bar pass 6 event mri_trigger val = 0 at 7972.912968
+bar pass 6 event mri_trigger val = 1 at 7972.987881
+bar pass 6 event mri_trigger val = 0 at 7973.062915
+bar pass 6 trial offset at 7973.126491
+bar pass 6 trial onset at 7973.134921
+bar pass 6 event mri_trigger val = 1 at 7973.138173
+bar pass 6 event mri_trigger val = 0 at 7973.213030
+bar pass 6 event mri_trigger val = 1 at 7973.288078
+bar pass 6 event mri_trigger val = 0 at 7973.362981
+bar pass 6 event mri_trigger val = 1 at 7973.438018
+bar pass 6 stimulus probe onset at 7973.476568
+bar pass 6 event mri_trigger val = 0 at 7973.513132
+bar pass 6 event mri_trigger val = 1 at 7973.588011
+bar pass 6 event mri_trigger val = 0 at 7973.663399
+bar pass 6 event u at 7973.729877
+stimulus staircase updated to 8.00 at 7973.730025
+bar pass 6 event mri_trigger val = 1 at 7973.738277
+bar pass 6 event mri_trigger val = 0 at 7973.813085
+bar pass 6 event mri_trigger val = 1 at 7973.888129
+bar pass 6 event mri_trigger val = 0 at 7973.963231
+bar pass 6 event mri_trigger val = 1 at 7974.038656
+bar pass 6 event mri_trigger val = 0 at 7974.113178
+bar pass 6 event mri_trigger val = 1 at 7974.188187
+bar pass 6 event mri_trigger val = 0 at 7974.263339
+bar pass 6 event mri_trigger val = 1 at 7974.338477
+bar pass 6 trial offset at 7974.368713
+bar pass 6 trial onset at 7974.377015
+bar pass 6 event mri_trigger val = 0 at 7974.413549
+bar pass 6 event mri_trigger val = 1 at 7974.488307
+bar pass 6 event mri_trigger val = 0 at 7974.563508
+bar pass 6 event mri_trigger val = 1 at 7974.638530
+bar pass 6 event mri_trigger val = 0 at 7974.713654
+bar pass 6 stimulus probe onset at 7974.718823
+bar pass 6 event mri_trigger val = 1 at 7974.797089
+bar pass 6 event mri_trigger val = 0 at 7974.863735
+bar pass 6 event u at 7974.922148
+stimulus staircase updated to 9.00 at 7974.922613
+bar pass 6 event mri_trigger val = 1 at 7974.938953
+bar pass 6 event mri_trigger val = 0 at 7975.013958
+bar pass 6 event mri_trigger val = 1 at 7975.089092
+bar pass 6 event mri_trigger val = 0 at 7975.164099
+bar pass 6 event mri_trigger val = 1 at 7975.239032
+bar pass 6 event mri_trigger val = 0 at 7975.314066
+bar pass 6 event mri_trigger val = 1 at 7975.389128
+bar pass 6 event mri_trigger val = 0 at 7975.464174
+bar pass 6 event mri_trigger val = 1 at 7975.539248
+bar pass 6 trial offset at 7975.585865
+bar pass 6 trial onset at 7975.594122
+bar pass 6 event mri_trigger val = 0 at 7975.614387
+bar pass 6 event mri_trigger val = 1 at 7975.689239
+bar pass 6 event mri_trigger val = 0 at 7975.764252
+bar pass 6 event mri_trigger val = 1 at 7975.839333
+bar pass 6 event mri_trigger val = 0 at 7975.914536
+bar pass 6 stimulus probe onset at 7975.936005
+bar pass 6 event mri_trigger val = 1 at 7975.989595
+bar pass 6 event mri_trigger val = 0 at 7976.064579
+bar pass 6 event mri_trigger val = 1 at 7976.139631
+bar pass 6 event mri_trigger val = 0 at 7976.214591
+bar pass 6 event u at 7976.239538
+stimulus staircase updated to 10.00 at 7976.239724
+bar pass 6 event mri_trigger val = 1 at 7976.289513
+bar pass 6 event mri_trigger val = 0 at 7976.364496
+bar pass 6 event mri_trigger val = 1 at 7976.439694
+bar pass 6 event mri_trigger val = 0 at 7976.514685
+bar pass 6 event mri_trigger val = 1 at 7976.589558
+bar pass 6 event mri_trigger val = 0 at 7976.664609
+bar pass 6 event mri_trigger val = 1 at 7976.739749
+bar pass 6 trial offset at 7976.811258
+bar pass 6 event mri_trigger val = 0 at 7976.814729
+bar pass 6 - 215/2.160000e+02 drawn bar stimuli - and 90/90 probes - 1 missed sync on 2592 frames, 0.0% (mean/median delay = 7.9/7.9 ms)
+bar pass 6 stopped at 7976.815726
+bar pass 7 started at 7976.816344
+bar pass 7 trial onset at 7976.828064
+bar pass 7 event mri_trigger val = 1 at 7976.889908
+bar pass 7 event mri_trigger val = 0 at 7976.964692
+bar pass 7 event mri_trigger val = 1 at 7977.039835
+bar pass 7 event mri_trigger val = 0 at 7977.114884
+bar pass 7 event mri_trigger val = 1 at 7977.189966
+bar pass 7 event mri_trigger val = 0 at 7977.265008
+bar pass 7 event mri_trigger val = 1 at 7977.340124
+bar pass 7 event mri_trigger val = 0 at 7977.414961
+bar pass 7 event mri_trigger val = 1 at 7977.490065
+bar pass 7 event mri_trigger val = 0 at 7977.565019
+bar pass 7 event mri_trigger val = 1 at 7977.639973
+bar pass 7 event mri_trigger val = 0 at 7977.715061
+bar pass 7 event mri_trigger val = 1 at 7977.790152
+bar pass 7 event mri_trigger val = 0 at 7977.865170
+bar pass 7 event mri_trigger val = 1 at 7977.940262
+bar pass 7 event mri_trigger val = 0 at 7978.015269
+bar pass 7 trial offset at 7978.020144
+bar pass 7 trial onset at 7978.028466
+bar pass 7 event mri_trigger val = 1 at 7978.090339
+bar pass 7 event mri_trigger val = 0 at 7978.165239
+bar pass 7 event mri_trigger val = 1 at 7978.240412
+bar pass 7 event mri_trigger val = 0 at 7978.314929
+bar pass 7 event mri_trigger val = 1 at 7978.390053
+bar pass 7 event mri_trigger val = 0 at 7978.465095
+bar pass 7 event mri_trigger val = 1 at 7978.540213
+bar pass 7 event mri_trigger val = 0 at 7978.615193
+bar pass 7 event mri_trigger val = 1 at 7978.690272
+bar pass 7 event mri_trigger val = 0 at 7978.765173
+bar pass 7 event mri_trigger val = 1 at 7978.840214
+bar pass 7 event mri_trigger val = 0 at 7978.915095
+bar pass 7 event mri_trigger val = 1 at 7978.990326
+bar pass 7 event mri_trigger val = 0 at 7979.065197
+bar pass 7 event mri_trigger val = 1 at 7979.140295
+bar pass 7 event mri_trigger val = 0 at 7979.215333
+bar pass 7 trial offset at 7979.220597
+bar pass 7 trial onset at 7979.229009
+bar pass 7 event mri_trigger val = 1 at 7979.290384
+bar pass 7 event mri_trigger val = 0 at 7979.365304
+bar pass 7 event mri_trigger val = 1 at 7979.440330
+bar pass 7 event mri_trigger val = 0 at 7979.515371
+bar pass 7 event mri_trigger val = 1 at 7979.590485
+bar pass 7 event mri_trigger val = 0 at 7979.665298
+bar pass 7 event mri_trigger val = 1 at 7979.740390
+bar pass 7 event mri_trigger val = 0 at 7979.815466
+bar pass 7 event mri_trigger val = 1 at 7979.890876
+bar pass 7 event mri_trigger val = 0 at 7979.965649
+bar pass 7 event mri_trigger val = 1 at 7980.040465
+bar pass 7 event mri_trigger val = 0 at 7980.115530
+bar pass 7 event mri_trigger val = 1 at 7980.190716
+bar pass 7 event mri_trigger val = 0 at 7980.265772
+bar pass 7 event mri_trigger val = 1 at 7980.340871
+bar pass 7 event mri_trigger val = 0 at 7980.415716
+bar pass 7 trial offset at 7980.421121
+bar pass 7 trial onset at 7980.429458
+bar pass 7 event mri_trigger val = 1 at 7980.490949
+bar pass 7 event mri_trigger val = 0 at 7980.565856
+bar pass 7 event mri_trigger val = 1 at 7980.640952
+bar pass 7 event mri_trigger val = 0 at 7980.715778
+bar pass 7 event mri_trigger val = 1 at 7980.791136
+bar pass 7 event mri_trigger val = 0 at 7980.865928
+bar pass 7 event mri_trigger val = 1 at 7980.941037
+bar pass 7 event mri_trigger val = 0 at 7981.016080
+bar pass 7 event mri_trigger val = 1 at 7981.091210
+bar pass 7 event mri_trigger val = 0 at 7981.166272
+bar pass 7 event mri_trigger val = 1 at 7981.241099
+bar pass 7 event mri_trigger val = 0 at 7981.316165
+bar pass 7 event mri_trigger val = 1 at 7981.391279
+bar pass 7 event mri_trigger val = 0 at 7981.466267
+bar pass 7 event mri_trigger val = 1 at 7981.541195
+bar pass 7 event mri_trigger val = 0 at 7981.616440
+bar pass 7 trial offset at 7981.621571
+bar pass 7 trial onset at 7981.629999
+bar pass 7 event mri_trigger val = 1 at 7981.691350
+bar pass 7 event mri_trigger val = 0 at 7981.766389
+bar pass 7 event mri_trigger val = 1 at 7981.841419
+bar pass 7 event mri_trigger val = 0 at 7981.916493
+bar pass 7 event mri_trigger val = 1 at 7981.991548
+bar pass 7 event mri_trigger val = 0 at 7982.066459
+bar pass 7 event mri_trigger val = 1 at 7982.141474
+bar pass 7 event mri_trigger val = 0 at 7982.216532
+bar pass 7 event mri_trigger val = 1 at 7982.291626
+bar pass 7 event mri_trigger val = 0 at 7982.366496
+bar pass 7 event mri_trigger val = 1 at 7982.441551
+bar pass 7 event mri_trigger val = 0 at 7982.516614
+bar pass 7 event mri_trigger val = 1 at 7982.591815
+bar pass 7 event mri_trigger val = 0 at 7982.666575
+bar pass 7 event mri_trigger val = 1 at 7982.741630
+bar pass 7 event mri_trigger val = 0 at 7982.816749
+bar pass 7 trial offset at 7982.822118
+bar pass 7 trial onset at 7982.830461
+bar pass 7 event mri_trigger val = 1 at 7982.891822
+bar pass 7 event mri_trigger val = 0 at 7982.966939
+bar pass 7 event mri_trigger val = 1 at 7983.042059
+bar pass 7 event mri_trigger val = 0 at 7983.116855
+bar pass 7 event mri_trigger val = 1 at 7983.191967
+bar pass 7 event mri_trigger val = 0 at 7983.267031
+bar pass 7 event mri_trigger val = 1 at 7983.341862
+bar pass 7 event mri_trigger val = 0 at 7983.416869
+bar pass 7 event mri_trigger val = 1 at 7983.492033
+bar pass 7 event mri_trigger val = 0 at 7983.567096
+bar pass 7 event mri_trigger val = 1 at 7983.642183
+bar pass 7 event mri_trigger val = 0 at 7983.717253
+bar pass 7 event mri_trigger val = 1 at 7983.792400
+bar pass 7 event mri_trigger val = 0 at 7983.867183
+bar pass 7 event mri_trigger val = 1 at 7983.942277
+bar pass 7 event mri_trigger val = 0 at 7984.017094
+bar pass 7 trial offset at 7984.022550
+bar pass 7 trial onset at 7984.030967
+bar pass 7 event mri_trigger val = 1 at 7984.092425
+bar pass 7 event mri_trigger val = 0 at 7984.167248
+bar pass 7 event mri_trigger val = 1 at 7984.242334
+bar pass 7 event mri_trigger val = 0 at 7984.317410
+bar pass 7 event mri_trigger val = 1 at 7984.392623
+bar pass 7 event mri_trigger val = 0 at 7984.467572
+bar pass 7 event mri_trigger val = 1 at 7984.542421
+bar pass 7 event mri_trigger val = 0 at 7984.617469
+bar pass 7 event mri_trigger val = 1 at 7984.692541
+bar pass 7 event mri_trigger val = 0 at 7984.767618
+bar pass 7 event mri_trigger val = 1 at 7984.842653
+bar pass 7 event mri_trigger val = 0 at 7984.917566
+bar pass 7 event mri_trigger val = 1 at 7984.992824
+bar pass 7 event mri_trigger val = 0 at 7985.067642
+bar pass 7 event mri_trigger val = 1 at 7985.142748
+bar pass 7 event mri_trigger val = 0 at 7985.209586
+bar pass 7 trial offset at 7985.223106
+bar pass 7 trial onset at 7985.231463
+bar pass 7 event mri_trigger val = 1 at 7985.292957
+bar pass 7 event mri_trigger val = 0 at 7985.359650
+bar pass 7 event mri_trigger val = 1 at 7985.434507
+bar pass 7 event mri_trigger val = 0 at 7985.509589
+bar pass 7 event mri_trigger val = 1 at 7985.593036
+bar pass 7 event mri_trigger val = 0 at 7985.667819
+bar pass 7 event mri_trigger val = 1 at 7985.734584
+bar pass 7 event mri_trigger val = 0 at 7985.809659
+bar pass 7 event mri_trigger val = 1 at 7985.884681
+bar pass 7 event mri_trigger val = 0 at 7985.959562
+bar pass 7 event mri_trigger val = 1 at 7986.034584
+bar pass 7 event mri_trigger val = 0 at 7986.109724
+bar pass 7 event mri_trigger val = 1 at 7986.184749
+bar pass 7 event mri_trigger val = 0 at 7986.259851
+bar pass 7 event mri_trigger val = 1 at 7986.334674
+bar pass 7 event mri_trigger val = 0 at 7986.409776
+bar pass 7 trial offset at 7986.423488
+bar pass 7 trial onset at 7986.431838
+bar pass 7 event mri_trigger val = 1 at 7986.484834
+bar pass 7 event mri_trigger val = 0 at 7986.559927
+bar pass 7 event mri_trigger val = 1 at 7986.635048
+bar pass 7 event mri_trigger val = 0 at 7986.710173
+bar pass 7 event mri_trigger val = 1 at 7986.785203
+bar pass 7 event mri_trigger val = 0 at 7986.860093
+bar pass 7 event mri_trigger val = 1 at 7986.935140
+bar pass 7 event mri_trigger val = 0 at 7987.010240
+bar pass 7 event mri_trigger val = 1 at 7987.085180
+bar pass 7 event mri_trigger val = 0 at 7987.160159
+bar pass 7 event mri_trigger val = 1 at 7987.235206
+bar pass 7 event mri_trigger val = 0 at 7987.310319
+bar pass 7 event mri_trigger val = 1 at 7987.385316
+bar pass 7 event mri_trigger val = 0 at 7987.460481
+bar pass 7 event mri_trigger val = 1 at 7987.535507
+bar pass 7 event mri_trigger val = 0 at 7987.610359
+bar pass 7 trial offset at 7987.624090
+bar pass 7 trial onset at 7987.632461
+bar pass 7 event mri_trigger val = 1 at 7987.685437
+bar pass 7 event mri_trigger val = 0 at 7987.760543
+bar pass 7 event mri_trigger val = 1 at 7987.835562
+bar pass 7 event mri_trigger val = 0 at 7987.910466
+bar pass 7 event mri_trigger val = 1 at 7987.985468
+bar pass 7 event mri_trigger val = 0 at 7988.060584
+bar pass 7 event mri_trigger val = 1 at 7988.135620
+bar pass 7 event mri_trigger val = 0 at 7988.210682
+bar pass 7 event mri_trigger val = 1 at 7988.285526
+bar pass 7 event mri_trigger val = 0 at 7988.360661
+bar pass 7 event mri_trigger val = 1 at 7988.435678
+bar pass 7 event mri_trigger val = 0 at 7988.510831
+bar pass 7 event mri_trigger val = 1 at 7988.585859
+bar pass 7 event mri_trigger val = 0 at 7988.660754
+bar pass 7 event mri_trigger val = 1 at 7988.735729
+bar pass 7 event mri_trigger val = 0 at 7988.810847
+bar pass 7 trial offset at 7988.824551
+bar pass 7 - 120/120 drawn bar stimuli - and 0/0 probes - 0 missed sync on 1440 frames, 0.0% (mean/median delay = NaN/NaN ms)
+bar pass 7 stopped at 7988.828860
+bar pass 8 started at 7988.828972
+bar pass 8 trial onset at 7988.841274
+bar pass 8 event mri_trigger val = 1 at 7988.885930
+bar pass 8 event mri_trigger val = 0 at 7988.961814
+bar pass 8 event mri_trigger val = 1 at 7989.035829
+bar pass 8 event mri_trigger val = 0 at 7989.110816
+bar pass 8 stimulus probe onset at 7989.182937
+bar pass 8 event mri_trigger val = 1 at 7989.186077
+bar pass 8 event mri_trigger val = 0 at 7989.261175
+bar pass 8 event mri_trigger val = 1 at 7989.336262
+bar pass 8 event mri_trigger val = 0 at 7989.410830
+bar pass 8 event mri_trigger val = 1 at 7989.486269
+bar pass 8 event mri_trigger val = 0 at 7989.561345
+bar pass 8 event mri_trigger val = 1 at 7989.636086
+bar pass 8 event mri_trigger val = 0 at 7989.711270
+bar pass 8 event mri_trigger val = 1 at 7989.786355
+bar pass 8 event mri_trigger val = 0 at 7989.861417
+bar pass 8 event r at 7989.877854
+bar pass 8 event mri_trigger val = 1 at 7989.936513
+bar pass 8 event mri_trigger val = 0 at 7990.011359
+bar pass 8 trial offset at 7990.066711
+bar pass 8 trial onset at 7990.075002
+bar pass 8 event mri_trigger val = 1 at 7990.086422
+bar pass 8 event mri_trigger val = 0 at 7990.161494
+bar pass 8 event mri_trigger val = 1 at 7990.236577
+bar pass 8 event mri_trigger val = 0 at 7990.311421
+bar pass 8 event mri_trigger val = 1 at 7990.386512
+bar pass 8 stimulus probe onset at 7990.416854
+bar pass 8 event mri_trigger val = 0 at 7990.461585
+bar pass 8 event mri_trigger val = 1 at 7990.536665
+bar pass 8 event mri_trigger val = 0 at 7990.611601
+bar pass 8 event mri_trigger val = 1 at 7990.686644
+bar pass 8 event mri_trigger val = 0 at 7990.761757
+bar pass 8 event mri_trigger val = 1 at 7990.836817
+bar pass 8 event mri_trigger val = 0 at 7990.911679
+bar pass 8 event mri_trigger val = 1 at 7990.986771
+bar pass 8 event mri_trigger val = 0 at 7991.061825
+bar pass 8 event mri_trigger val = 1 at 7991.136853
+bar pass 8 event r at 7991.161978
+bar pass 8 event mri_trigger val = 0 at 7991.211921
+bar pass 8 event mri_trigger val = 1 at 7991.286831
+bar pass 8 trial offset at 7991.300591
+bar pass 8 trial onset at 7991.308880
+bar pass 8 event mri_trigger val = 0 at 7991.361886
+bar pass 8 event mri_trigger val = 1 at 7991.436952
+bar pass 8 event mri_trigger val = 0 at 7991.511998
+bar pass 8 event mri_trigger val = 1 at 7991.587091
+bar pass 8 stimulus probe onset at 7991.650643
+bar pass 8 event mri_trigger val = 0 at 7991.661941
+bar pass 8 event mri_trigger val = 1 at 7991.737350
+bar pass 8 event mri_trigger val = 0 at 7991.811908
+bar pass 8 event mri_trigger val = 1 at 7991.887267
+bar pass 8 event mri_trigger val = 0 at 7991.962083
+bar pass 8 event mri_trigger val = 1 at 7992.037174
+bar pass 8 event mri_trigger val = 0 at 7992.112104
+bar pass 8 event mri_trigger val = 1 at 7992.187116
+bar pass 8 event mri_trigger val = 0 at 7992.262252
+bar pass 8 event mri_trigger val = 1 at 7992.337397
+bar pass 8 event mri_trigger val = 0 at 7992.412111
+bar pass 8 event r at 7992.412258
+stimulus staircase updated to 9.00 at 7992.412381
+bar pass 8 event mri_trigger val = 1 at 7992.487552
+bar pass 8 trial offset at 7992.534313
+bar pass 8 trial onset at 7992.542737
+bar pass 8 event mri_trigger val = 0 at 7992.562365
+bar pass 8 event mri_trigger val = 1 at 7992.637450
+bar pass 8 event mri_trigger val = 0 at 7992.712518
+bar pass 8 event mri_trigger val = 1 at 7992.787552
+bar pass 8 event mri_trigger val = 0 at 7992.862681
+bar pass 8 stimulus probe onset at 7992.884480
+bar pass 8 event mri_trigger val = 1 at 7992.937502
+bar pass 8 event mri_trigger val = 0 at 7993.012595
+bar pass 8 event mri_trigger val = 1 at 7993.087744
+bar pass 8 event mri_trigger val = 0 at 7993.162782
+bar pass 8 event mri_trigger val = 1 at 7993.237699
+bar pass 8 event mri_trigger val = 0 at 7993.312751
+bar pass 8 event mri_trigger val = 1 at 7993.396213
+bar pass 8 event mri_trigger val = 0 at 7993.462727
+bar pass 8 event mri_trigger val = 1 at 7993.537693
+bar pass 8 event mri_trigger val = 0 at 7993.612872
+bar pass 8 event mri_trigger val = 1 at 7993.687940
+bar pass 8 event u at 7993.721088
+bar pass 8 event mri_trigger val = 0 at 7993.762994
+bar pass 8 trial offset at 7993.776561
+bar pass 8 trial onset at 7993.784950
+bar pass 8 event mri_trigger val = 1 at 7993.837878
+bar pass 8 event mri_trigger val = 0 at 7993.912948
+bar pass 8 event mri_trigger val = 1 at 7993.988003
+bar pass 8 event mri_trigger val = 0 at 7994.063031
+bar pass 8 stimulus probe onset at 7994.126684
+bar pass 8 event mri_trigger val = 1 at 7994.137952
+bar pass 8 event mri_trigger val = 0 at 7994.213037
+bar pass 8 event mri_trigger val = 1 at 7994.288058
+bar pass 8 event mri_trigger val = 0 at 7994.363461
+bar pass 8 event mri_trigger val = 1 at 7994.438108
+bar pass 8 event mri_trigger val = 0 at 7994.513142
+bar pass 8 event mri_trigger val = 1 at 7994.588211
+bar pass 8 event mri_trigger val = 0 at 7994.663286
+bar pass 8 event mri_trigger val = 1 at 7994.738134
+bar pass 8 event mri_trigger val = 0 at 7994.813167
+bar pass 8 event mri_trigger val = 1 at 7994.888294
+bar pass 8 event r at 7994.930113
+bar pass 8 event mri_trigger val = 0 at 7994.963453
+bar pass 8 trial offset at 7995.010332
+bar pass 8 trial onset at 7995.018744
+bar pass 8 event mri_trigger val = 1 at 7995.038222
+bar pass 8 event mri_trigger val = 0 at 7995.113286
+bar pass 8 event mri_trigger val = 1 at 7995.188476
+bar pass 8 event mri_trigger val = 0 at 7995.263525
+bar pass 8 event mri_trigger val = 1 at 7995.338631
+bar pass 8 stimulus probe onset at 7995.360540
+bar pass 8 event mri_trigger val = 0 at 7995.413636
+bar pass 8 event mri_trigger val = 1 at 7995.488796
+bar pass 8 event mri_trigger val = 0 at 7995.563567
+bar pass 8 event mri_trigger val = 1 at 7995.638724
+bar pass 8 event mri_trigger val = 0 at 7995.713628
+bar pass 8 event mri_trigger val = 1 at 7995.788703
+bar pass 8 event mri_trigger val = 0 at 7995.872189
+bar pass 8 event mri_trigger val = 1 at 7995.938952
+bar pass 8 event mri_trigger val = 0 at 7996.013737
+bar pass 8 event mri_trigger val = 1 at 7996.088827
+bar pass 8 event mri_trigger val = 0 at 7996.163909
+bar pass 8 event mri_trigger val = 1 at 7996.238998
+bar pass 8 trial offset at 7996.252519
+bar pass 8 trial onset at 7996.260933
+bar pass 8 event mri_trigger val = 0 at 7996.314017
+bar pass 8 event mri_trigger val = 1 at 7996.388906
+bar pass 8 event mri_trigger val = 0 at 7996.464013
+bar pass 8 event mri_trigger val = 1 at 7996.539031
+bar pass 8 stimulus probe onset at 7996.602706
+bar pass 8 event u at 7996.606001
+stimulus staircase updated to 8.00 at 7996.606136
+bar pass 8 event mri_trigger val = 0 at 7996.614160
+bar pass 8 event mri_trigger val = 1 at 7996.689181
+bar pass 8 event mri_trigger val = 0 at 7996.764086
+bar pass 8 event mri_trigger val = 1 at 7996.839107
+bar pass 8 event mri_trigger val = 0 at 7996.914145
+bar pass 8 event mri_trigger val = 1 at 7996.989202
+bar pass 8 event mri_trigger val = 0 at 7997.064242
+bar pass 8 event mri_trigger val = 1 at 7997.139221
+bar pass 8 event mri_trigger val = 0 at 7997.214237
+bar pass 8 event mri_trigger val = 1 at 7997.289272
+bar pass 8 event mri_trigger val = 0 at 7997.364365
+bar pass 8 event mri_trigger val = 1 at 7997.439272
+bar pass 8 trial offset at 7997.453050
+bar pass 8 trial onset at 7997.461328
+bar pass 8 event mri_trigger val = 0 at 7997.514318
+bar pass 8 event mri_trigger val = 1 at 7997.589403
+bar pass 8 event mri_trigger val = 0 at 7997.664498
+bar pass 8 event mri_trigger val = 1 at 7997.739533
+bar pass 8 stimulus probe onset at 7997.803212
+bar pass 8 event mri_trigger val = 0 at 7997.814306
+bar pass 8 event mri_trigger val = 1 at 7997.889456
+bar pass 8 event mri_trigger val = 0 at 7997.964632
+bar pass 8 event mri_trigger val = 1 at 7998.039733
+bar pass 8 event mri_trigger val = 0 at 7998.114804
+bar pass 8 event mri_trigger val = 1 at 7998.189529
+bar pass 8 event mri_trigger val = 0 at 7998.264706
+bar pass 8 event mri_trigger val = 1 at 7998.339806
+bar pass 8 event mri_trigger val = 0 at 7998.414848
+bar pass 8 event mri_trigger val = 1 at 7998.489965
+bar pass 8 event mri_trigger val = 0 at 7998.564763
+bar pass 8 event r at 7998.564888
+bar pass 8 event mri_trigger val = 1 at 7998.639851
+bar pass 8 trial offset at 7998.661880
+bar pass 8 trial onset at 7998.670243
+bar pass 8 event mri_trigger val = 0 at 7998.714959
+bar pass 8 event mri_trigger val = 1 at 7998.790043
+bar pass 8 event mri_trigger val = 0 at 7998.864845
+bar pass 8 event mri_trigger val = 1 at 7998.939939
+bar pass 8 stimulus probe onset at 7999.012022
+bar pass 8 event mri_trigger val = 0 at 7999.015258
+bar pass 8 event mri_trigger val = 1 at 7999.090089
+bar pass 8 event mri_trigger val = 0 at 7999.165168
+bar pass 8 event mri_trigger val = 1 at 7999.240022
+bar pass 8 event mri_trigger val = 0 at 7999.315088
+bar pass 8 event mri_trigger val = 1 at 7999.398563
+bar pass 8 event mri_trigger val = 0 at 7999.465273
+bar pass 8 event mri_trigger val = 1 at 7999.540120
+bar pass 8 event mri_trigger val = 0 at 7999.615195
+bar pass 8 event mri_trigger val = 1 at 7999.690262
+bar pass 8 event mri_trigger val = 0 at 7999.765336
+bar pass 8 event mri_trigger val = 1 at 7999.840381
+bar pass 8 trial offset at 7999.879046
+bar pass 8 trial onset at 7999.887408
+bar pass 8 event mri_trigger val = 0 at 7999.915250
+bar pass 8 event mri_trigger val = 1 at 7999.990333
+bar pass 8 event mri_trigger val = 0 at 8000.065418
+bar pass 8 event mri_trigger val = 1 at 8000.140440
+bar pass 8 event mri_trigger val = 0 at 8000.215323
+bar pass 8 stimulus probe onset at 8000.229093
+bar pass 8 event r at 8000.232360
+stimulus staircase updated to 9.00 at 8000.232781
+bar pass 8 event mri_trigger val = 1 at 8000.290404
+bar pass 8 event mri_trigger val = 0 at 8000.365427
+bar pass 8 event mri_trigger val = 1 at 8000.440510
+bar pass 8 event mri_trigger val = 0 at 8000.515606
+bar pass 8 event mri_trigger val = 1 at 8000.590470
+bar pass 8 event mri_trigger val = 0 at 8000.665840
+bar pass 8 event mri_trigger val = 1 at 8000.740588
+bar pass 8 event mri_trigger val = 0 at 8000.815738
+bar pass 8 event mri_trigger val = 1 at 8000.890849
+bar pass 8 event mri_trigger val = 0 at 8000.965931
+bar pass 8 event mri_trigger val = 1 at 8001.040678
+bar pass 8 trial offset at 8001.079477
+bar pass 8 trial onset at 8001.087884
+bar pass 8 event mri_trigger val = 0 at 8001.116054
+bar pass 8 event mri_trigger val = 1 at 8001.190890
+bar pass 8 event mri_trigger val = 0 at 8001.266031
+bar pass 8 event mri_trigger val = 1 at 8001.341048
+bar pass 8 event mri_trigger val = 0 at 8001.416167
+bar pass 8 stimulus probe onset at 8001.429620
+bar pass 8 event mri_trigger val = 1 at 8001.490958
+bar pass 8 event mri_trigger val = 0 at 8001.566089
+bar pass 8 event mri_trigger val = 1 at 8001.641118
+bar pass 8 event mri_trigger val = 0 at 8001.716204
+bar pass 8 event mri_trigger val = 1 at 8001.791267
+bar pass 8 event mri_trigger val = 0 at 8001.866197
+bar pass 8 event mri_trigger val = 1 at 8001.941239
+bar pass 8 event mri_trigger val = 0 at 8002.016363
+bar pass 8 event mri_trigger val = 1 at 8002.091188
+bar pass 8 event mri_trigger val = 0 at 8002.166287
+bar pass 8 event mri_trigger val = 1 at 8002.241348
+bar pass 8 trial offset at 8002.288395
+bar pass 8 trial onset at 8002.296629
+bar pass 8 event mri_trigger val = 0 at 8002.316416
+bar pass 8 event mri_trigger val = 1 at 8002.391424
+bar pass 8 event mri_trigger val = 0 at 8002.466366
+bar pass 8 event mri_trigger val = 1 at 8002.541436
+bar pass 8 event mri_trigger val = 0 at 8002.616463
+bar pass 8 stimulus probe onset at 8002.638493
+bar pass 8 event mri_trigger val = 1 at 8002.691513
+bar pass 8 event mri_trigger val = 0 at 8002.766881
+bar pass 8 event mri_trigger val = 1 at 8002.841541
+bar pass 8 event mri_trigger val = 0 at 8002.916554
+bar pass 8 event mri_trigger val = 1 at 8002.991511
+bar pass 8 event mri_trigger val = 0 at 8003.066512
+bar pass 8 event mri_trigger val = 1 at 8003.150362
+bar pass 8 event mri_trigger val = 0 at 8003.216689
+bar pass 8 event mri_trigger val = 1 at 8003.291530
+bar pass 8 event mri_trigger val = 0 at 8003.366587
+bar pass 8 event mri_trigger val = 1 at 8003.441662
+bar pass 8 event mri_trigger val = 0 at 8003.516769
+bar pass 8 trial offset at 8003.530479
+bar pass 8 event u at 8003.533610
+bar pass 8 trial onset at 8003.538822
+bar pass 8 event mri_trigger val = 1 at 8003.592045
+bar pass 8 event mri_trigger val = 0 at 8003.666953
+bar pass 8 event mri_trigger val = 1 at 8003.741740
+bar pass 8 event mri_trigger val = 0 at 8003.817174
+bar pass 8 stimulus probe onset at 8003.880616
+bar pass 8 event mri_trigger val = 1 at 8003.892000
+bar pass 8 event mri_trigger val = 0 at 8003.967117
+bar pass 8 event mri_trigger val = 1 at 8004.042212
+bar pass 8 event mri_trigger val = 0 at 8004.117267
+bar pass 8 event mri_trigger val = 1 at 8004.192082
+bar pass 8 event mri_trigger val = 0 at 8004.267213
+bar pass 8 event mri_trigger val = 1 at 8004.342355
+bar pass 8 event mri_trigger val = 0 at 8004.417362
+bar pass 8 event mri_trigger val = 1 at 8004.492260
+bar pass 8 event mri_trigger val = 0 at 8004.567284
+bar pass 8 event mri_trigger val = 1 at 8004.642403
+bar pass 8 event mri_trigger val = 0 at 8004.717222
+bar pass 8 trial offset at 8004.755974
+bar pass 8 trial onset at 8004.764390
+bar pass 8 event mri_trigger val = 1 at 8004.792311
+bar pass 8 event mri_trigger val = 0 at 8004.867369
+bar pass 8 event mri_trigger val = 1 at 8004.942489
+bar pass 8 event mri_trigger val = 0 at 8005.017528
+bar pass 8 event mri_trigger val = 1 at 8005.092620
+bar pass 8 stimulus probe onset at 8005.106167
+bar pass 8 event mri_trigger val = 0 at 8005.167639
+bar pass 8 event mri_trigger val = 1 at 8005.242532
+bar pass 8 event mri_trigger val = 0 at 8005.317581
+bar pass 8 event mri_trigger val = 1 at 8005.392637
+bar pass 8 event mri_trigger val = 0 at 8005.467690
+bar pass 8 event mri_trigger val = 1 at 8005.542617
+bar pass 8 event mri_trigger val = 0 at 8005.617653
+bar pass 8 event mri_trigger val = 1 at 8005.692773
+bar pass 8 event mri_trigger val = 0 at 8005.767730
+bar pass 8 event mri_trigger val = 1 at 8005.842688
+bar pass 8 event mri_trigger val = 0 at 8005.917760
+bar pass 8 trial offset at 8005.956517
+bar pass 8 trial onset at 8005.964804
+bar pass 8 event mri_trigger val = 1 at 8005.992770
+bar pass 8 event mri_trigger val = 0 at 8006.067833
+bar pass 8 event mri_trigger val = 1 at 8006.142922
+bar pass 8 event mri_trigger val = 0 at 8006.217765
+bar pass 8 event mri_trigger val = 1 at 8006.292828
+bar pass 8 stimulus probe onset at 8006.306598
+bar pass 8 event mri_trigger val = 0 at 8006.367940
+bar pass 8 event mri_trigger val = 1 at 8006.443096
+bar pass 8 event mri_trigger val = 0 at 8006.518130
+bar pass 8 event mri_trigger val = 1 at 8006.593305
+bar pass 8 event mri_trigger val = 0 at 8006.667995
+bar pass 8 event mri_trigger val = 1 at 8006.743225
+bar pass 8 event mri_trigger val = 0 at 8006.818219
+bar pass 8 event mri_trigger val = 1 at 8006.893337
+bar pass 8 event mri_trigger val = 0 at 8006.968154
+bar pass 8 event mri_trigger val = 1 at 8007.043226
+bar pass 8 event mri_trigger val = 0 at 8007.118297
+bar pass 8 trial offset at 8007.156933
+bar pass 8 trial onset at 8007.165359
+bar pass 8 event mri_trigger val = 1 at 8007.193437
+bar pass 8 event mri_trigger val = 0 at 8007.268446
+bar pass 8 event mri_trigger val = 1 at 8007.343359
+bar pass 8 event mri_trigger val = 0 at 8007.418381
+bar pass 8 event mri_trigger val = 1 at 8007.493510
+bar pass 8 stimulus probe onset at 8007.507115
+bar pass 8 event mri_trigger val = 0 at 8007.568532
+bar pass 8 event mri_trigger val = 1 at 8007.643608
+bar pass 8 event mri_trigger val = 0 at 8007.718638
+bar pass 8 event mri_trigger val = 1 at 8007.793566
+bar pass 8 event mri_trigger val = 0 at 8007.868558
+bar pass 8 event mri_trigger val = 1 at 8007.943547
+bar pass 8 event mri_trigger val = 0 at 8008.018789
+bar pass 8 event mri_trigger val = 1 at 8008.093717
+bar pass 8 event mri_trigger val = 0 at 8008.168748
+bar pass 8 event mri_trigger val = 1 at 8008.243547
+bar pass 8 event mri_trigger val = 0 at 8008.318881
+bar pass 8 trial offset at 8008.365829
+bar pass 8 trial onset at 8008.374342
+bar pass 8 event mri_trigger val = 1 at 8008.393721
+bar pass 8 event mri_trigger val = 0 at 8008.468802
+bar pass 8 event mri_trigger val = 1 at 8008.535750
+bar pass 8 event mri_trigger val = 0 at 8008.618937
+bar pass 8 event mri_trigger val = 1 at 8008.693833
+bar pass 8 stimulus probe onset at 8008.715865
+bar pass 8 event mri_trigger val = 0 at 8008.760734
+bar pass 8 event mri_trigger val = 1 at 8008.844230
+bar pass 8 event mri_trigger val = 0 at 8008.919081
+bar pass 8 event mri_trigger val = 1 at 8008.985867
+bar pass 8 event mri_trigger val = 0 at 8009.060916
+bar pass 8 event mri_trigger val = 1 at 8009.135748
+bar pass 8 event mri_trigger val = 0 at 8009.210808
+bar pass 8 event mri_trigger val = 1 at 8009.285920
+bar pass 8 event u at 8009.293999
+stimulus staircase updated to 10.00 at 8009.294131
+bar pass 8 event mri_trigger val = 0 at 8009.360798
+bar pass 8 event mri_trigger val = 1 at 8009.435846
+bar pass 8 event mri_trigger val = 0 at 8009.510903
+bar pass 8 event mri_trigger val = 1 at 8009.585842
+bar pass 8 trial offset at 8009.607937
+bar pass 8 trial onset at 8009.616361
+bar pass 8 event mri_trigger val = 0 at 8009.660838
+bar pass 8 event mri_trigger val = 1 at 8009.735923
+bar pass 8 event mri_trigger val = 0 at 8009.810948
+bar pass 8 event mri_trigger val = 1 at 8009.886127
+bar pass 8 stimulus probe onset at 8009.958044
+bar pass 8 event mri_trigger val = 0 at 8009.961097
+bar pass 8 event mri_trigger val = 1 at 8010.036002
+bar pass 8 event mri_trigger val = 0 at 8010.111024
+bar pass 8 event mri_trigger val = 1 at 8010.186137
+bar pass 8 event mri_trigger val = 0 at 8010.261300
+bar pass 8 event mri_trigger val = 1 at 8010.336363
+bar pass 8 event mri_trigger val = 0 at 8010.411450
+bar pass 8 event mri_trigger val = 1 at 8010.486520
+bar pass 8 event mri_trigger val = 0 at 8010.561365
+bar pass 8 event mri_trigger val = 1 at 8010.636529
+bar pass 8 event mri_trigger val = 0 at 8010.711526
+bar pass 8 event mri_trigger val = 1 at 8010.786545
+bar pass 8 trial offset at 8010.816843
+bar pass 8 event r at 8010.820029
+bar pass 8 - 216/2.160000e+02 drawn bar stimuli - and 90/90 probes - 0 missed sync on 2592 frames, 0.0% (mean/median delay = NaN/NaN ms)
+bar pass 8 stopped at 8010.820589
+bar pass 9 started at 8010.820686
+bar pass 9 trial onset at 8010.833508
+bar pass 9 event mri_trigger val = 0 at 8010.861523
+bar pass 9 event mri_trigger val = 1 at 8010.936552
+bar pass 9 event mri_trigger val = 0 at 8011.011676
+bar pass 9 event mri_trigger val = 1 at 8011.086719
+bar pass 9 event mri_trigger val = 0 at 8011.161597
+bar pass 9 event mri_trigger val = 1 at 8011.236618
+bar pass 9 event mri_trigger val = 0 at 8011.311770
+bar pass 9 event mri_trigger val = 1 at 8011.386778
+bar pass 9 event mri_trigger val = 0 at 8011.461898
+bar pass 9 event mri_trigger val = 1 at 8011.536697
+bar pass 9 event mri_trigger val = 0 at 8011.611820
+bar pass 9 event mri_trigger val = 1 at 8011.686855
+bar pass 9 event mri_trigger val = 0 at 8011.761970
+bar pass 9 event mri_trigger val = 1 at 8011.836965
+bar pass 9 event mri_trigger val = 0 at 8011.911921
+bar pass 9 event mri_trigger val = 1 at 8011.986950
+bar pass 9 trial offset at 8012.025651
+bar pass 9 trial onset at 8012.033990
+bar pass 9 event mri_trigger val = 0 at 8012.062011
+bar pass 9 event mri_trigger val = 1 at 8012.137009
+bar pass 9 event mri_trigger val = 0 at 8012.211953
+bar pass 9 event mri_trigger val = 1 at 8012.286972
+bar pass 9 event mri_trigger val = 0 at 8012.362087
+bar pass 9 event mri_trigger val = 1 at 8012.437062
+bar pass 9 event mri_trigger val = 0 at 8012.512192
+bar pass 9 event mri_trigger val = 1 at 8012.587105
+bar pass 9 event mri_trigger val = 0 at 8012.662094
+bar pass 9 event mri_trigger val = 1 at 8012.737163
+bar pass 9 event mri_trigger val = 0 at 8012.812249
+bar pass 9 event mri_trigger val = 1 at 8012.887086
+bar pass 9 event mri_trigger val = 0 at 8012.962202
+bar pass 9 event mri_trigger val = 1 at 8013.037244
+bar pass 9 event mri_trigger val = 0 at 8013.112331
+bar pass 9 event mri_trigger val = 1 at 8013.187472
+bar pass 9 trial offset at 8013.226080
+bar pass 9 trial onset at 8013.234470
+bar pass 9 event mri_trigger val = 0 at 8013.262576
+bar pass 9 event mri_trigger val = 1 at 8013.337314
+bar pass 9 event mri_trigger val = 0 at 8013.412500
+bar pass 9 event mri_trigger val = 1 at 8013.487566
+bar pass 9 event mri_trigger val = 0 at 8013.562657
+bar pass 9 event mri_trigger val = 1 at 8013.637699
+bar pass 9 event mri_trigger val = 0 at 8013.712502
+bar pass 9 event mri_trigger val = 1 at 8013.787623
+bar pass 9 event mri_trigger val = 0 at 8013.863747
+bar pass 9 event mri_trigger val = 1 at 8013.937779
+bar pass 9 event mri_trigger val = 0 at 8014.012886
+bar pass 9 event mri_trigger val = 1 at 8014.087697
+bar pass 9 event mri_trigger val = 0 at 8014.162823
+bar pass 9 event mri_trigger val = 1 at 8014.237859
+bar pass 9 event mri_trigger val = 0 at 8014.312968
+bar pass 9 event mri_trigger val = 1 at 8014.387796
+bar pass 9 trial offset at 8014.426540
+bar pass 9 trial onset at 8014.434907
+bar pass 9 event mri_trigger val = 0 at 8014.463091
+bar pass 9 event mri_trigger val = 1 at 8014.538131
+bar pass 9 event mri_trigger val = 0 at 8014.613020
+bar pass 9 event mri_trigger val = 1 at 8014.688113
+bar pass 9 event mri_trigger val = 0 at 8014.763182
+bar pass 9 event mri_trigger val = 1 at 8014.838193
+bar pass 9 event mri_trigger val = 0 at 8014.913105
+bar pass 9 event mri_trigger val = 1 at 8014.988177
+bar pass 9 event mri_trigger val = 0 at 8015.063226
+bar pass 9 event mri_trigger val = 1 at 8015.138248
+bar pass 9 event mri_trigger val = 0 at 8015.213187
+bar pass 9 event mri_trigger val = 1 at 8015.288220
+bar pass 9 event mri_trigger val = 0 at 8015.363255
+bar pass 9 event mri_trigger val = 1 at 8015.438326
+bar pass 9 event mri_trigger val = 0 at 8015.513438
+bar pass 9 event mri_trigger val = 1 at 8015.588235
+bar pass 9 trial offset at 8015.627094
+bar pass 9 trial onset at 8015.635378
+bar pass 9 event mri_trigger val = 0 at 8015.663358
+bar pass 9 event mri_trigger val = 1 at 8015.738402
+bar pass 9 event mri_trigger val = 0 at 8015.813564
+bar pass 9 event mri_trigger val = 1 at 8015.888329
+bar pass 9 event mri_trigger val = 0 at 8015.963647
+bar pass 9 event mri_trigger val = 1 at 8016.038516
+bar pass 9 event mri_trigger val = 0 at 8016.113706
+bar pass 9 event mri_trigger val = 1 at 8016.188708
+bar pass 9 event mri_trigger val = 0 at 8016.263840
+bar pass 9 event mri_trigger val = 1 at 8016.338639
+bar pass 9 event mri_trigger val = 0 at 8016.413768
+bar pass 9 event mri_trigger val = 1 at 8016.488784
+bar pass 9 event mri_trigger val = 0 at 8016.563925
+bar pass 9 event mri_trigger val = 1 at 8016.638945
+bar pass 9 event mri_trigger val = 0 at 8016.714059
+bar pass 9 event mri_trigger val = 1 at 8016.788871
+bar pass 9 trial offset at 8016.827506
+bar pass 9 trial onset at 8016.835991
+bar pass 9 event mri_trigger val = 0 at 8016.864002
+bar pass 9 event mri_trigger val = 1 at 8016.939021
+bar pass 9 event mri_trigger val = 0 at 8017.014151
+bar pass 9 event mri_trigger val = 1 at 8017.089133
+bar pass 9 event mri_trigger val = 0 at 8017.164092
+bar pass 9 event mri_trigger val = 1 at 8017.239101
+bar pass 9 event mri_trigger val = 0 at 8017.314250
+bar pass 9 event mri_trigger val = 1 at 8017.389021
+bar pass 9 event mri_trigger val = 0 at 8017.464309
+bar pass 9 event mri_trigger val = 1 at 8017.539152
+bar pass 9 event mri_trigger val = 0 at 8017.614289
+bar pass 9 event mri_trigger val = 1 at 8017.689306
+bar pass 9 event mri_trigger val = 0 at 8017.764221
+bar pass 9 event mri_trigger val = 1 at 8017.839255
+bar pass 9 event mri_trigger val = 0 at 8017.914324
+bar pass 9 event mri_trigger val = 1 at 8017.989355
+bar pass 9 trial offset at 8018.028067
+bar pass 9 trial onset at 8018.036421
+bar pass 9 event mri_trigger val = 0 at 8018.064449
+bar pass 9 event mri_trigger val = 1 at 8018.139468
+bar pass 9 event mri_trigger val = 0 at 8018.214339
+bar pass 9 event mri_trigger val = 1 at 8018.289437
+bar pass 9 event mri_trigger val = 0 at 8018.364570
+bar pass 9 event mri_trigger val = 1 at 8018.439386
+bar pass 9 event mri_trigger val = 0 at 8018.514901
+bar pass 9 event mri_trigger val = 1 at 8018.589805
+bar pass 9 event mri_trigger val = 0 at 8018.664555
+bar pass 9 event mri_trigger val = 1 at 8018.739725
+bar pass 9 event mri_trigger val = 0 at 8018.814850
+bar pass 9 event mri_trigger val = 1 at 8018.889552
+bar pass 9 event mri_trigger val = 0 at 8018.964993
+bar pass 9 event mri_trigger val = 1 at 8019.039728
+bar pass 9 event mri_trigger val = 0 at 8019.114895
+bar pass 9 event mri_trigger val = 1 at 8019.189951
+bar pass 9 trial offset at 8019.228513
+bar pass 9 trial onset at 8019.236916
+bar pass 9 event mri_trigger val = 0 at 8019.264820
+bar pass 9 event mri_trigger val = 1 at 8019.339895
+bar pass 9 event mri_trigger val = 0 at 8019.414980
+bar pass 9 event mri_trigger val = 1 at 8019.490031
+bar pass 9 event mri_trigger val = 0 at 8019.565170
+bar pass 9 event mri_trigger val = 1 at 8019.639961
+bar pass 9 event mri_trigger val = 0 at 8019.715325
+bar pass 9 event mri_trigger val = 1 at 8019.790104
+bar pass 9 event mri_trigger val = 0 at 8019.865223
+bar pass 9 event mri_trigger val = 1 at 8019.940315
+bar pass 9 event mri_trigger val = 0 at 8020.015368
+bar pass 9 event mri_trigger val = 1 at 8020.090187
+bar pass 9 event mri_trigger val = 0 at 8020.165299
+bar pass 9 event mri_trigger val = 1 at 8020.240331
+bar pass 9 event mri_trigger val = 0 at 8020.315432
+bar pass 9 event mri_trigger val = 1 at 8020.390271
+bar pass 9 trial offset at 8020.429050
+bar pass 9 trial onset at 8020.437438
+bar pass 9 event mri_trigger val = 0 at 8020.465498
+bar pass 9 event mri_trigger val = 1 at 8020.540408
+bar pass 9 event mri_trigger val = 0 at 8020.615463
+bar pass 9 event mri_trigger val = 1 at 8020.690315
+bar pass 9 trial offset at 8021.629542
+bar pass 9 trial onset at 8021.637794
+bar pass 9 trial offset at 8022.830031
+bar pass 9 - 120/120 drawn bar stimuli - and 0/0 probes - 1 missed sync on 1440 frames, 0.1% (mean/median delay = 0.0/0.0 ms)
+bar pass 9 stopped at 8022.835108
