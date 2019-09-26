@@ -22,8 +22,16 @@ if ~isdir(sprintf('data/%s/func/',const.sjct))
     mkdir(sprintf('data/%s/func/',const.sjct))
 end
 
+
+if const.cond_run_num(const.runNum) > 9
+    const.run_txt   =  sprintf('run-%i',const.cond_run_num(const.runNum));
+else
+    const.run_txt   =  sprintf('run-0%i',const.cond_run_num(const.runNum));
+end
+
+
 % Define directory
-const.dat_output_file   =   sprintf('data/%s/func/%s_task-%s%s_run-%i',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.cond_run_num(const.runNum));
+const.dat_output_file   =   sprintf('data/%s/func/%s_task-%s%s_%s',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.run_txt);
 
 % Eye data
 const.eyelink_temp_file =   'XX.edf';
@@ -51,7 +59,7 @@ if ~isdir(sprintf('data/%s/add/',const.sjct))
 end
 
 % Define directory
-const.add_output_file   =   sprintf('data/%s/add/%s_task-%s%s_run-%i',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.cond_run_num(const.runNum));
+const.add_output_file   =   sprintf('data/%s/add/%s_task-%s%s_%s',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.run_txt);
 
 % Define .mat saving file
 const.mat_file          =   sprintf('%s_matFile.mat',const.add_output_file);
@@ -61,7 +69,7 @@ const.staircase_file    =   sprintf('data/%s/add/%s_staircases.mat',const.sjct,c
 
 % Log file
 if const.writeLogTxt
-    const.log_file          =   sprintf('data/%s/add/%s_logData.txt',const.sjct,const.dat_output_file);
+    const.log_file          =   sprintf('%s_logData.txt',const.add_output_file);
     const.log_file_fid      =   fopen(const.log_file,'w');
 end
 

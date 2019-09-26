@@ -26,7 +26,7 @@ if const.expStart
         const.sjct              =  sprintf('sub-%i',const.sjctNum);
     else
         const.sjct              =  sprintf('sub-0%i',const.sjctNum);
-    end 
+    end
 end
 
 const.runNum            =   input(sprintf('\n\tRun number (1 to 10): '));
