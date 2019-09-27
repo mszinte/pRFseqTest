@@ -21,3 +21,9 @@
 # |    Multi-band 3   |    Multi-band 4   |
 # |     48 slices     |     60 slices     |
 # +-------------------+-------------------+
+
+
+# MRI analysis
+# ------------
+
+# 1. run mriqc on mesocentre using mri_analysis pre_fit/mriqc_srun.py or mriqc_sbatch
