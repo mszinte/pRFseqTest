@@ -4,7 +4,7 @@ Projet :  pRFseqTest<br/>
 With :    Anna MONTAGNINI & Guillaume MASSON<br/>
 Version:  1.0<br/>
 
-# Version description
+## Version description
 Experiment in which we first use a square full screen 4 direction (left/right/up/down)<br/>
 bar pass stimuli with an attention task to the bar in order to pretest two whole brain multi-band<br/>
 acquisition sequences optimal for (occipital, parietal) frontal and subcortical structures<br/>
@@ -24,5 +24,5 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 * Multi-band 4<br/>
 * 60 slices<br/>
 
-# MRI analysis
+## MRI analysis
 1. run mriqc on mesocentre using mri_analysis pre_fit/mriqc_srun.py or mriqc_sbatch<br/>
