@@ -56,30 +56,88 @@ if aroma == 1:
 if sloppy == 1:
 	use_sloppy= ' --sloppy'
 
-# define SLURM cmd
-slurm_cmd = """\
-#!/bin/sh
-#SBATCH -J sub-{sub_num}_fmriprep
+# command for skylake
 #SBATCH -p skylake
-#SBATCH -N 1
-#SBATCH -t {hour_proc}:00:00
-#SBATCH --ntasks-per-node={nb_procs}
-#SBATCH -o %N.%j.%a.out
-#SBATCH -e %N.%j.%a.err
-#SBATCH --mail-type=BEGIN,END
-#SBATCH --mail-user=martin.szinte@gmail.com\n\n""".format(hour_proc = hour_proc, nb_procs = nb_procs, sub_num = sub_num)
+#SBATCH --mem 64
+
+# command for westmere
+#SBATCH -p westmere
+#SBATCH -A westmere
+#SBATCH --mem 24
+
+# define SLURM cmd
+# slurm_cmd = """\
+# #!/bin/sh
+# #SBATCH -J sub-{sub_num}_fmriprep
+# #SBATCH -p skylake
+# #SBATCH -N 1
+# #SBATCH -t {hour_proc}:00:00
+# #SBATCH --cpus-per-task={nb_procs}
+# #SBATCH --mem-per-cpu=4G
+# #SBATCH -o %N.%j.%a.out
+# #SBATCH -e %N.%j.%a.err
+# #SBATCH --mail-type=BEGIN,END
+# #SBATCH --mail-user=martin.szinte@gmail.com\n\n""".format(hour_proc = hour_proc, nb_procs = nb_procs, sub_num = sub_num)
+
+# !/bin/bash
+# SBATCH --mail-type=ALL 			# Mail events (NONE, BEGIN, END, FAIL, ALL)
+# SBATCH --mail-user=martin.szinte@univ-amu.fr	# Your email address
+# SBATCH -p westmere
+# SBATCH -A westmere
+# SBATCH --nodes=1					# OpenMP requires a single node
+# SBATCH --time={hour_proc}:00:00				# Time limit hh:mm:ss
+# SBATCH -e  %N.%j.%a.err			# Standard error
+# SBATCH -o %N.%j.%a.out			# Standard output
+# SBATCH -J sub-{sub_num}_fmriprep
+# SBATCH --mail-type=BEGIN,END\n\n""".format(hour_proc = hour_proc, sub_num = sub_num)
+
+
+slurm_cmd = """\
+#!/bin/bash
+#SBATCH --mail-type=ALL 			# Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH -p skylake
+#SBATCH --mail-user=martin.szinte@univ-amu.fr	# Your email address
+#SBATCH -A a161
+#SBATCH --nodes=1					# OpenMP requires a single node
+#SBATCH --mem=48gb
+#SBATCH --cpus-per-task=32
+#SBATCH --time={hour_proc}:00:00				# Time limit hh:mm:ss
+#SBATCH -e  %N.%j.%a.err			# Standard error
+#SBATCH -o %N.%j.%a.out			# Standard output
+#SBATCH -J sub-{sub_num}_fmriprep
+#SBATCH --mail-type=BEGIN,END\n\n""".format(hour_proc = hour_proc, sub_num = sub_num)
+
+
+# slurm_cmd = """\
+# #!/bin/bash
+# #SBATCH -J sub-{sub_num}_fmriprep
+# #SBATCH -p westmere
+# #SBATCH -A westmere
+# #SBATCH --time={hour_proc}:00:00
+# #SBATCH -o %N.%j.%a.out
+# #SBATCH -e %N.%j.%a.err
+# #SBATCH --mail-type=BEGIN,END
+# #SBATCH --mail-user=adresse@mail
+# #SBATCH --mail-type=BEGIN,END\n\n""".format(hour_proc = hour_proc, sub_num = sub_num)
+
 
 # define singularity cmd
-singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant_label {sub_num} -w /work_dir/{project_dir}/temp_data/ --nthreads {nb_procs:.0f} --fs-license-file /work_dir/freesurfer/license.txt --output-spaces T1w MNI152NLin2009cAsym fsaverage --verbose --notrack --no-submm-recon --cifti-output{anat_only}{use_aroma}{use_sloppy}".format(
+# singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant_label {sub_num} -w /work_dir/{project_dir}/temp_data/ --nthreads {nb_procs:.0f} --omp-nthreads 8 --mem_mb 30000 --fs-license-file /work_dir/freesurfer/license.txt --output-spaces T1w MNI152NLin2009cAsym fsaverage --verbose --notrack --no-submm-recon --cifti-output{anat_only}{use_aroma}{use_sloppy}".format(
+# 									main_dir = main_dir,
+# 									project_dir = project_dir,
+# 									simg = singularity_dir,
+# 									sub_num = sub_num,
+# 									nb_procs = nb_procs,
+# 									anat_only = anat_only,
+# 									use_aroma = use_aroma,
+# 									use_sloppy = use_sloppy
+# 									)
+
+singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/freesurfer/license.txt /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant-label {sub_num} -w /work_dir/{project_dir}/temp_data/ --use-aroma  --cifti-output --anat-only --low-mem --mem-mb 32000".format(
 									main_dir = main_dir,
 									project_dir = project_dir,
 									simg = singularity_dir,
-									sub_num = sub_num,
-									nb_procs = nb_procs,
-									anat_only = anat_only,
-									use_aroma = use_aroma,
-									use_sloppy = use_sloppy
-									)
+									sub_num = sub_num)
 
 # create sh folder and file
 sh_dir = "{main_dir}/{project_dir}/deriv_data/fmriprep/jobs/sub-{sub_num}_fmriprep.sh".format(main_dir = main_dir, sub_num = sub_num,project_dir = project_dir,)
