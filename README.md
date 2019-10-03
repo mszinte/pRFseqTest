@@ -29,4 +29,8 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 2. run fmriprep on mesocenter using mri_analysis/pre_fit/fmriprep_sbatch - use first anat-only option
 3. check/edit pial surface on freeview, see mri_analysis/pre_fit/pial_edit.sh
 4. run fmriprep on mesocenter using mri_analysis/pre_fit/fmriprep_sbatch + evaluate fmriprep
-5. average files and make percentage signal change filter data for slow drift
+	- sub-01: fieldmap less correction for 2.0 mm runs (missing files)
+			  phase-encoding based susceptibility correction for 2.5 mm runs
+	- sub-02: phase-encoding based susceptibility correction for 2.0 and 2.5 mm runs
+5. filter data for slow drift, make percentage signal change and average -acq runs together using pre_fit/pre_fit.py
+6. make fit per group of thousands of voxels
