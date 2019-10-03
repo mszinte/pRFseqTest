@@ -13,7 +13,7 @@ sys.argv[4]: server nb of processor to use (e.g 32)
 sys.argv[5]: server nb of hour to request (e.g 10)
 sys.argv[6]: anat only (1) or not (0)
 sys.argv[7]: use of aroma (1) or not (0)
-sys.argv[8]: Use low-quality tools (1) or not (0)
+sys.argv[8]: Use Use fieldmap-free distortion correction
 -----------------------------------------------------------------------------------------
 Output(s):
 preprocessed files
@@ -23,7 +23,7 @@ To run:
 >> cd /scratch/mszinte/projects/pRFseqTest/mri_analysis/pre_fit/
 2. run python command
 python fmriprep_sbatch.py [main directory] [project name] [subject num] [nb proc.] 
-						  [hour proc.] [anat_only] [use_aroma] [use_sloppy]
+						  [hour proc.] [anat_only] [use_aroma] [fmapfree]
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com)
 -----------------------------------------------------------------------------------------
@@ -45,17 +45,17 @@ nb_procs = int(sys.argv[4])
 hour_proc = int(sys.argv[5])
 anat = int(sys.argv[6])
 aroma = int(sys.argv[7])
-sloppy = int(sys.argv[8])
+fmapfree = int(sys.argv[8])
 
 # special input
-anat_only, use_aroma, use_sloppy, anat_only_end = '','','', ''
+anat_only, use_aroma, use_fmapfree, anat_only_end = '','','', ''
 if anat == 1:
 	anat_only = ' --anat-only'
 	anat_only_end = '_anat'
 if aroma == 1:
 	use_aroma = ' --use-aroma'
-if sloppy == 1:
-	use_sloppy= ' --sloppy'
+if fmapfree == 1:
+	use_fmapfree= ' --use-syn-sdc'
 
 # define SLURM cmd
 slurm_cmd = """\
@@ -74,7 +74,7 @@ slurm_cmd = """\
 #SBATCH --mail-type=BEGIN,END\n\n""".format(nb_procs = nb_procs, hour_proc = hour_proc, sub_num = sub_num,anat_only_end = anat_only_end)
 
 # define singularity cmd
-singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/freesurfer/license.txt /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant-label {sub_num} -w /work_dir/{project_dir}/temp_data/ --output-space T1w fsaverage --cifti-output --low-mem --mem-mb 32000 --nthreads {nb_procs:.0f} {anat_only}{use_aroma}{use_sloppy}".format(
+singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/freesurfer/license.txt /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant-label {sub_num} -w /work_dir/{project_dir}/temp_data/ --output-space T1w fsaverage --cifti-output --low-mem --mem-mb 32000 --nthreads {nb_procs:.0f}{anat_only}{use_aroma}{use_fmapfree}".format(
 									main_dir = main_dir,
 									project_dir = project_dir,
 									simg = singularity_dir,
@@ -82,7 +82,7 @@ singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --f
 									nb_procs = nb_procs,
 									anat_only = anat_only,
 									use_aroma = use_aroma,
-									use_sloppy = use_sloppy)
+									use_fmapfree = use_fmapfree)
 
 # create sh folder and file
 sh_dir = "{main_dir}/{project_dir}/deriv_data/fmriprep/jobs/sub-{sub_num}_fmriprep.sh".format(main_dir = main_dir, sub_num = sub_num,project_dir = project_dir,)
