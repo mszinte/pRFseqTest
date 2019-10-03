@@ -27,4 +27,6 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 ## MRI analysis
 1. run mriqc on mesocentre using mri_analysis/pre_fit/mriqc_srun.py or mriqc_sbatch<br/>
 2. run fmriprep on mesocenter using mri_analysis/pre_fit/fmriprep_sbatch - use first anat-only option
-3. check/edit pial surface on freeview, see mri_analysis/pre_fit/pial_edit
+3. check/edit pial surface on freeview, see mri_analysis/pre_fit/pial_edit.sh
+4. run fmriprep on mesocenter using mri_analysis/pre_fit/fmriprep_sbatch + evaluate fmriprep
+5. average files and make percentage signal change filter data for slow drift

@@ -1,0 +1,16 @@
+{
+    "acq":["acq-2p5mm","acq-2mm"],
+    "runs":["run-01","run-02","run-03","run-04","run-05"],
+    "TR": 1.2,
+    "screen_distance" : 120,
+    "screen_width" : 43.5,
+    "n_timepoints_per_run" : 122,
+    "base_folder": "/scratch/mszinte/data/pRFseqTest",
+    "stim_width": 20.0,
+    "stim_height": 20.0,
+    "fit_step":6,
+    "subject_list": ["sub-01","sub-02"],
+    "sg_filt_window_length": 211,
+    "sg_filt_polyorder": 3,
+    "sg_filt_deriv": 0
+}

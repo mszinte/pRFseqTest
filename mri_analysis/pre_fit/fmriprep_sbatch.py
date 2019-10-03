@@ -74,7 +74,7 @@ slurm_cmd = """\
 #SBATCH --mail-type=BEGIN,END\n\n""".format(nb_procs = nb_procs, hour_proc = hour_proc, sub_num = sub_num,anat_only_end = anat_only_end)
 
 # define singularity cmd
-singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/freesurfer/license.txt /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant-label {sub_num} -w /work_dir/{project_dir}/temp_data/ --cifti-output --low-mem --mem-mb 32000 --nthreads {nb_procs:.0f} {anat_only}{use_aroma}{use_sloppy}".format(
+singularity_cmd = "singularity run --cleanenv -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/freesurfer/license.txt /work_dir/{project_dir}/bids_data/ /work_dir/{project_dir}/deriv_data/fmriprep/ participant --participant-label {sub_num} -w /work_dir/{project_dir}/temp_data/ --output-space T1w fsaverage --cifti-output --low-mem --mem-mb 32000 --nthreads {nb_procs:.0f} {anat_only}{use_aroma}{use_sloppy}".format(
 									main_dir = main_dir,
 									project_dir = project_dir,
 									simg = singularity_dir,
