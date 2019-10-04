@@ -34,14 +34,14 @@ import time
 import platform
 
 # inputs
-main_dir = sys.argv[1]
+base_dir = sys.argv[1]
 sub_num = sys.argv[2]
 nb_procs = int(sys.argv[3])
 singularity_dir = '/scratch/mszinte/softwares/mriqc-0.15.1.simg'
 
 # define singularity command
-singularity_cmd = "singularity run --bind {main_dir}:/work_dir {dir} /work_dir/bids_data/ /work_dir/deriv_data/mriqc/ participant --participant_label {sub_num} -w /work_dir/temp_data/ --n_procs {nb_procs:.0f} --verbose-reports --mem_gb 64 -m bold T1w T2w --no-sub".format(
-									main_dir = main_dir,
+singularity_cmd = "singularity run --bind {base_dir}:/work_dir {dir} /work_dir/bids_data/ /work_dir/deriv_data/mriqc/ participant --participant_label {sub_num} -w /work_dir/temp_data/ --n_procs {nb_procs:.0f} --verbose-reports --mem_gb 64 -m bold T1w T2w --no-sub".format(
+									base_dir = base_dir,
 									dir =singularity_dir, 
 									sub_num = sub_num,
 									nb_procs = nb_procs,

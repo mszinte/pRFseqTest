@@ -3,24 +3,29 @@
 submit_fit_jobs
 -----------------------------------------------------------------------------------------
 Goal of the script:
-create jobscript to run locally, in a cluster (LISA) or server (AENEAS)
+create jobscript to run locally or in a cluster
 -----------------------------------------------------------------------------------------
 Input(s):
-sys.argv[1]: subject name (e.g. 'sub-001')
-sys.argv[2]: fit model ('gauss','css')
-sys.argv[3]: voxel per jobs (used 400 on lisa)
-sys.argv[4]: job duration requested in hours (used 10h on lisa)
+sys.argv[1]: cluster name ('skylake','westmere','debug')
+sys.argv[2]: subject name (e.g. 'sub-001')
+sys.argv[3]: acquisition (e.g. 'acq-2p5mm','acq-2mm')
+sys.argv[4]: fit model ('gauss','css')
 -----------------------------------------------------------------------------------------
 Output(s):
 .sh file to execute in server
 -----------------------------------------------------------------------------------------
 Exemple:
-#1: sub 192641 : ran 18/08/2018 at 20:15
-python fit/submit_fit_jobs.py 999999 gauss 5000 20
+# 
 -----------------------------------------------------------------------------------------
 """
 
+# Stop warnings
+# -------------
+import warnings
+warnings.filterwarnings("ignore")
+
 # General imports
+# ---------------
 import numpy as np
 import os
 import glob
@@ -29,40 +34,42 @@ import sys
 import nibabel as nb
 import platform
 import ipdb
-import cifti
+import datetime
 deb = ipdb.set_trace
 opj = os.path.join
 
-# Get subject number and hemisphere to analyse
-subject = sys.argv[1]
-fit_model = sys.argv[2]
-job_vox = float(sys.argv[3])
-job_dur_req = float(sys.argv[4])
+# Settings
+# ----------
+# Inputs
+cluster_name = sys.argv[1]
+subject = sys.argv[2]
+acq = sys.argv[3]
+fit_model = sys.argv[4]
 
-# Load the analysis parameters from json file
+# Analysis parameters
 with open('settings.json') as f:
     json_s = f.read()
     analysis_info = json.loads(json_s)
 
-# Define server or cluster settings
-if 'lisa' in platform.uname()[1]:
-    jobscript_template_file = opj(os.getcwd(),'fit','lisa_jobscript_template.sh')
-    base_dir = analysis_info['lisa_base_folder'] 
-    sub_command = 'sbatch '
-    print('analysis running on lisa')
-elif 'aeneas' in platform.uname()[1]:
-    jobscript_template_file     =   opj(os.getcwd(),'fit','aeneas_jobscript_template.sh')
-    base_dir = analysis_info['aeneas_base_folder'] 
+# Cluster settings
+base_dir = analysis_info['base_dir'] 
+sub_command = 'sbatch '
+if cluster_name  == 'skylake':
+    fit_per_hour = 1250.0
+    nb_procs = 32
+    proj_name = 'a161'
+elif cluster_name  == 'skylake':
+    base_dir = analysis_info['base_dir_westemere'] 
+    fit_per_hour = 800.0
+    nb_procs = 12
+    proj_name = 'westmere'
+elif cluster_name == 'debug':
     sub_command = 'sh '
-    print('analysis running on aeneas')
-else: # cartesius
-    jobscript_template_file = opj(os.getcwd(),'fit','cartesius_jobscript_template.sh')
-    base_dir = analysis_info['cartesius_base_folder'] 
-    sub_command = 'sbatch '
-    print('analysis running on cartesius')
+    fit_per_hour = 200.0
+    nb_procs = 1
 
-
-fit_script = 'fit/prf_fit.py'
+jobscript__file = opj(os.getcwd(),'fit',"{}_jobscript_template.sh".format(cluster_name))
+print("pRF analysis: running on {}".format(cluster_name))
 
 # Create job and log output folders
 try:
@@ -71,76 +78,97 @@ try:
 except:
     pass
 
-data = []
-    
+
 # Determine data to analyse
-data_file  =  "{basedir}/raw_data/{sub}/tfMRI_RETBARS_Atlas_1.6mm_MSMAll_hp2000_clean_sg_psc.dtseries.nii".format(basedir = base_dir,
-                                                                                                                sub = subject)
+data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
+                                base_dir = base_dir,
+                                sub = subject,
+                                acq = acq)
+img_data = nb.load(data_file)
+data = img_data.get_fdata()
 
-# Cut it in small pieces of voxels
-data_file_load = cifti.read(data_file)
-data = data_file_load[0]
-data_size = data.shape
+mask_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_mask_avg.nii.gz".format(
+                                base_dir = base_dir,
+                                sub = subject,
+                                acq = acq)
 
-start_idx =  np.arange(0,data_size[1],job_vox)
-end_idx = start_idx+job_vox
-end_idx[-1] = data_size[1]
+img_mask = nb.load(mask_file)
+mask = img_mask.get_fdata()
+slices = np.arange(mask.shape[2])[mask.mean(axis=(0,1))>0]
 
 
-print('%i jobs of %1.1fh each will be run/send to %s'%(start_idx.shape[0],job_dur_req,platform.uname()[1]))
+for slice_nb in slices:
 
-job_input = []
-for iter_job in np.arange(0,start_idx.shape[0],1):
-    job_input = data[:,int(start_idx[iter_job]):int(end_idx[iter_job])]
-
-    print('input data vox num: %i to %i'%(int(start_idx[iter_job]),int(end_idx[iter_job])))
+    num_vox = mask[:, :, slice_nb].sum()
+    job_dur = str(datetime.timedelta(hours = np.ceil(num_vox/fit_per_hour)))
 
     # Define output file
-    base_file_name = os.path.split(data_file)[-1][:-13]
-    opfn = opj(base_dir,'pp_data',subject,fit_model,'fit', "{base_file_name}_est_{start}_to_{end}.dtseries.nii".format(  base_file_name = base_file_name,
-                                                                                                                         start = int(start_idx[iter_job]),
-                                                                                                                         end = int(end_idx[iter_job])))
-    
+    opfn = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est_z_{slice_nb}.nii.gz".format(
+                                base_dir = base_dir,
+                                subject = subject,
+                                fit_model = fit_model,
+                                acq = acq,
+                                slice_nb = slice_nb
+                                )
     if os.path.isfile(opfn):
         if os.path.getsize(opfn) != 0:
-            print('output file %s already exists and is non-empty. aborting analysis of voxels %s to %s'%(opfn,str(int(start_idx[iter_job])),str(int(end_idx[iter_job]))))
-            continue
+            print("output file {opfn} already exists and is non-empty. aborting analysis of slice {slice_nb}".format(
+                                opfn = opfn,
+                                slice_nb = slice_nb))
 
     # create job shell
-    jobscript = open(jobscript_template_file)
-    working_string = jobscript.read()
-    jobscript.close()
-    job_dur = '%i:00:00'%job_dur_req
+    if cluster_name != 'debug':
+        slurm_cmd = """\
+#!/bin/bash
+#SBATCH --mail-type=ALL
+#SBATCH -p {cluster_name}
+#SBATCH --mail-user=martin.szinte@univ-amu.fr
+#SBATCH -A {proj_name}
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task={nb_procs}
+#SBATCH --time={job_dur}
+#SBATCH -e %N.%j.%a.err
+#SBATCH -o %N.%j.%a.out
+#SBATCH -J {subject}_{acq}_fit_slice_{slice_nb}
+#SBATCH --mail-type=BEGIN,END\n\n""".format(
+                    cluster_name = cluster_name,        proj_name = proj_name,
+                    nb_procs = nb_procs,                job_dur = job_dur,
+                    subject = subject,                  acq = acq,
+                    slice_nb = slice_nb)
+
+    else:
+        slurm_cmd = ""
+
+    # define fit cmd
+    fit_cmd = "python fit/prf_fit.py {fit_model} {subject} {data_file} {mask_file} {opfn}".format(
+                fit_model = fit_model,
+                subject = subject,
+                data_file = data_file,
+                mask_file = mask_file,
+                opfn = opfn)
+
     
-    re_dict = { '---job_dur---':job_dur,
-                '---fit_file---':fit_script,
-                '---fit_model---':fit_model,
-                '---subject---':subject,
-                '---start_idx---':str(int(start_idx[iter_job])),
-                '---end_idx---':str(int(end_idx[iter_job])),
-                '---data_file---':data_file,
-                '---base_dir---':base_dir}
+    # create sh folder and file
+    sh_dir = "{base_dir}/pp_data/{subject}/{fit_model}/jobs/{subject}_{acq}_fit_slice_{slice_nb}.sh".format(
+                base_dir = base_dir,
+                subject = subject,
+                fit_model = fit_model,
+                acq = acq,
+                slice_nb = slice_nb)
 
-    for e in re_dict.keys():
-        working_string  =   working_string.replace(e, re_dict[e])
+    try:
+        os.makedirs(opj(base_dir,'pp_data',subject,fit_model,'jobs'))
+        os.makedirs(opj(base_dir,'pp_data',subject,fit_model,'log_outputs'))
+    except:
+        pass
 
-    js_name =  opj(base_dir, 'pp_data', subject, fit_model, 'jobs', '%s_vox_%s_to_%s.sh'%(subject,str(int(start_idx[iter_job])),str(int(end_idx[iter_job]))))
-
-    of = open(js_name, 'w')
-    of.write(working_string)
+    of = open(sh_dir, 'w')
+    of.write("{slurm_cmd}{fit_cmd}".format(slurm_cmd = slurm_cmd,fit_cmd = fit_cmd))
     of.close()
 
     # Submit jobs
-    print('submitting ' + js_name + ' to queue')
-
-    if 'lisa' in platform.uname()[1]:
-        os.chdir(opj(base_dir,'pp_data',subject,fit_model,'log_outputs'))
-        os.system(sub_command + js_name)
-
-    elif 'aeneas' in platform.uname()[1]:
-        os.system(sub_command + js_name)
- 
-    else: # cartesius
-        os.chdir(opj(base_dir,'pp_data',subject,fit_model,'log_outputs'))
-        os.system(sub_command + js_name)
+    print("Submitting {sh_dir} to queue".format(sh_dir = sh_dir))
+    os.chdir(opj(base_dir,'pp_data',subject,fit_model,'log_outputs'))
+    os.system("{sub_command} {sh_dir}".format(sub_command = sub_command, sh_dir = sh_dir))
+    
     

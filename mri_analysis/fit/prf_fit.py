@@ -7,8 +7,8 @@ Create pRF estimates
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: subject name
-sys.argv[2]: start voxel index -1
-sys.argv[3]: end voxel index   -2
+sys.argv[2]: start voxel index 
+sys.argv[3]: end voxel index
 sys.argv[4]: data file path
 sys.argv[5]: main directory   
 -----------------------------------------------------------------------------------------
@@ -17,10 +17,15 @@ Gifti image files with fitting parameters per vertex
 -----------------------------------------------------------------------------------------
 """
 
+# Stop warnings
+# -------------
+import warnings
+warnings.filterwarnings("ignore")
+
 # General imports
+# ---------------
 from __future__ import division
 import sys
-import ctypes
 import multiprocessing
 import numpy as np
 import scipy.io
@@ -32,17 +37,16 @@ import json
 import ipdb
 deb = ipdb.set_trace
 opj = os.path.join
-import warnings
-warnings.filterwarnings('ignore')
 
 # MRI analysis imports
-import cifti
+# --------------------
 import popeye.utilities as utils
 from popeye.visual_stimulus import VisualStimulus
 import popeye.css as css
 import popeye.og as og
 
 # Get inputs
+# ----------
 fit_model = sys.argv[1]
 subject = sys.argv[2]
 start_idx = sys.argv[3]
@@ -56,12 +60,12 @@ with open('settings.json') as f:
     analysis_info = json.loads(json_s)
 
 # Define cluster/server specific parameters
-if 'lisa' in platform.uname()[1]:
-    N_PROCS = 16
-elif 'aeneas' in platform.uname()[1]:
-    N_PROCS = 2
-else: # cartesius
-    N_PROCS = 16
+if 'skylake' in platform.uname()[1]:
+    N_PROCS = 32
+elif 'westmere' in platform.uname()[1]:
+    N_PROCS = 12
+else:
+    N_PROCS = 1
 Ns = analysis_info["fit_step"]
 
 # Define output file path and directories
