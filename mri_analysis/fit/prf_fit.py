@@ -6,14 +6,16 @@ Goal of the script:
 Create pRF estimates
 -----------------------------------------------------------------------------------------
 Input(s):
-sys.argv[1]: subject name
-sys.argv[2]: start voxel index 
-sys.argv[3]: end voxel index
-sys.argv[4]: data file path
-sys.argv[5]: main directory   
+sys.argv[1]: cluster name (e.g. skylake)
+sys.argv[2]: subject name
+sys.argv[3]: start voxel index 
+sys.argv[4]: end voxel index
+sys.argv[5]: data file path
+sys.argv[6]: z slice number
+sys.argv[7]: main directory   
 -----------------------------------------------------------------------------------------
 Output(s):
-Gifti image files with fitting parameters per vertex
+Nifti image files with fitting parameters per vertex
 -----------------------------------------------------------------------------------------
 """
 
@@ -24,7 +26,6 @@ warnings.filterwarnings("ignore")
 
 # General imports
 # ---------------
-from __future__ import division
 import sys
 import multiprocessing
 import numpy as np
@@ -42,17 +43,19 @@ opj = os.path.join
 # --------------------
 import popeye.utilities as utils
 from popeye.visual_stimulus import VisualStimulus
-import popeye.css as css
-import popeye.og as og
+import popeye.css_neg as css
+import popeye.og_neg as og
+import nibabel as nb
 
 # Get inputs
 # ----------
-fit_model = sys.argv[1]
-subject = sys.argv[2]
-start_idx = sys.argv[3]
-end_idx =  sys.argv[4]
-data_file = sys.argv[5]
-base_dir = sys.argv[6]
+cluster_name = sys.argv[1]
+fit_model = sys.argv[2]
+subject = sys.argv[3]
+data_file = sys.argv[4]
+mask_file = sys.argv[5]
+slice_nb = int(sys.argv[6])
+opfn = sys.argv[7]
 
 # Define analysis parameters
 with open('settings.json') as f:
@@ -60,33 +63,38 @@ with open('settings.json') as f:
     analysis_info = json.loads(json_s)
 
 # Define cluster/server specific parameters
-if 'skylake' in platform.uname()[1]:
-    N_PROCS = 32
-elif 'westmere' in platform.uname()[1]:
-    N_PROCS = 12
-else:
-    N_PROCS = 1
-Ns = analysis_info["fit_step"]
-
-# Define output file path and directories
-base_file_name = os.path.split(data_file)[-1][:-13]
-opfn_est = opj(base_dir,'pp_data',subject,fit_model,'fit', "{base_file_name}_est_{start}_to_{end}.dtseries.nii".format(  base_file_name = base_file_name,
-                                                                                                                start = int(start_idx),
-                                                                                                                end = int(end_idx)))
-
-try: os.makedirs(opj(base_dir,'pp_data',subject,fit_model,'fit'))
-except: pass
+if cluster_name  == 'skylake':
+    nb_procs = 32
+elif cluster_name  == 'skylake':
+    nb_procs = 12
+elif cluster_name == 'debug':
+    nb_procs = 1
+fit_steps = analysis_info["fit_steps"]
 
 # Load data
-data = []
-data_file_load = cifti.read(data_file)
-data = data_file_load[0]
-data_to_analyse = data[:,int(start_idx):int(end_idx)]
+data_img = nb.load(data_file)
+data = data_img.get_fdata()
+mask_img = nb.load(mask_file)
+mask = mask_img.get_fdata()
+slice_mask = mask[:, :, slice_nb].astype(bool)
+num_vox = np.sum(slice_mask)
+data_slice = data[:,:,:,slice_nb]
+data_to_analyse = data_slice[slice_mask]
+deb()
 
-# Create stimulus design
-visual_dm_file = scipy.io.loadmat(opj(base_dir,'raw_data','stim','retinotopysmall5.mat'))
+## I'm here
+# check why is there nan all around the place
+# get right index indices
+# make visual design
+
+y, x = np.meshgrid( np.arange(data.shape[1]),np.arange(data.shape[0]))
+x_vox,y_vox = x[slice_mask],y[slice_mask]
+vox_indices = [(xx,yy,slice_nr) for xx,yy in zip(x_vox,y_vox)]
+
+
+# Create stimulus design (create in matlab - see others/make_visual_dm.m)
+visual_dm_file = scipy.io.loadmat(opj(analysis_info['base_dir'],'mri_analysis','fif','vis_design.mat'))
 visual_dm = visual_dm_file['stim']
-
 stimulus = VisualStimulus(  stim_arr = visual_dm,
                             viewing_distance = analysis_info["screen_distance"],
                             screen_width = analysis_info["screen_width"],
@@ -109,16 +117,16 @@ elif fit_model == 'css':
 model_func.hrf_delay = 0
 print('models and stimulus loaded')
 
-# Fit: define search grids
-x_grid = (-12, 12)
-y_grid = (-12, 12)
+# Fit: define search grids (1.5 time stimulus radius)
+x_grid = (-15, 15)
+y_grid = (-15, 15)
 sigma_grid = (0.05, 15)
 n_grid =  (0.01, 1.5)
 
-# Fit: define search bounds
+# Fit: define search bounds (3 time stimulus radius)
 x_bound = (-30.0, 30.0)
 y_bound = (-30.0, 30.0)
-sigma_bound = (0.001, 70.0)
+sigma_bound = (0.001, 30.0)
 n_bound = (0.01, 3)
 beta_bound = (-1e3, 1e3)
 baseline_bound = (-1e3, 1e3)
@@ -130,21 +138,24 @@ elif fit_model == 'css':
     fit_model_grids =  (x_grid, y_grid, sigma_grid, n_grid)
     fit_model_bounds = (x_bound, y_bound, sigma_bound, n_bound, beta_bound, baseline_bound)
 
-# Fit: define empty estimate and voxel indeces
-estimates = np.zeros((num_est,data.shape[1]))
-vertex_indices = [(xx, 0, 0) for xx in np.arange(int(start_idx),int(end_idx),1)]
 
+# Fit: main loop
+# --------------
+print("Slice {slice_nb} containing {vox_num} brain mask voxels".format(slice_nb = slice_nb, num_vox = num_vox))
+
+# Define data
+estimates = np.zeros((num_est,data.shape[1]))
 
 # Define multiprocess bundle
 bundle = utils.multiprocess_bundle( Fit = fit_func,
                                     model = model_func,
-                                    data = data_to_analyse.T,
+                                    data = data_to_analyse,
                                     grids = fit_model_grids, 
                                     bounds = fit_model_bounds, 
                                     indices = vertex_indices, 
                                     auto_fit = True, 
                                     verbose = 1, 
-                                    Ns = Ns)
+                                    Ns = fit_steps)
 # Run fitting
 pool = multiprocessing.Pool(processes = N_PROCS)
 output = pool.map(  func = utils.parallel_fit, 
@@ -159,6 +170,6 @@ pool.close()
 pool.join()
 
 # Save estimates data
-bm_full = data_file_load[1][1]
-series = cifti.Series(start=0, step=1, size=num_est)
-cifti.write(opfn_est, estimates, (series, bm_full))
+# bm_full = data_file_load[1][1]
+# series = cifti.Series(start=0, step=1, size=num_est)
+# cifti.write(opfn_est, estimates, (series, bm_full))
