@@ -164,4 +164,3 @@ for sub_name in analysis_info['subject_list'] :
         new_file2 = "{file}_fmriprep_mask_avg.nii.gz".format(file = file2[:-19])
         new_img2 = nb.Nifti1Image(dataobj = mask_avg, affine = img_mask.affine, header = img_mask.header)
         new_img2.to_filename(new_file2)
-        
