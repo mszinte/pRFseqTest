@@ -53,12 +53,16 @@ with open('settings.json') as f:
     analysis_info = json.loads(json_s)
 
 # Cluster settings
-base_dir = analysis_info['base_dir'] 
+base_dir = analysis_info['base_dir']
 sub_command = 'sbatch '
 if cluster_name  == 'skylake':
     fit_per_hour = 1250.0
     nb_procs = 32
     proj_name = 'a161'
+    # copy data from /scratchw to /scratch
+    os.system("rsync -az --no-g --no-p --progress {scratchw}/ {scratch}".format(
+                scratch = analysis_info['base_dir'],
+                scratchw  = analysis_info['base_dir_westmere']))
 elif cluster_name  == 'westmere':
     base_dir = analysis_info['base_dir_westmere'] 
     fit_per_hour = 800.0
@@ -123,22 +127,20 @@ for slice_nb in slices:
             print("output file {opfn} already exists and is non-empty. aborting analysis of slice {slice_nb}".format(
                                 opfn = opfn,
                                 slice_nb = slice_nb))
+            continue
 
     # create job shell
     if cluster_name != 'debug':
         slurm_cmd = """\
 #!/bin/bash
-#SBATCH --mail-type=ALL
 #SBATCH -p {cluster_name}
-#SBATCH --mail-user=martin.szinte@univ-amu.fr
 #SBATCH -A {proj_name}
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task={nb_procs}
 #SBATCH --time={job_dur}
 #SBATCH -e {log_dir}/%N.%j.%a.err
 #SBATCH -o {log_dir}/%N.%j.%a.out
-#SBATCH -J {subject}_{acq}_fit_slice_{slice_nb}
-#SBATCH --mail-type=BEGIN,END\n\n""".format(
+#SBATCH -J {subject}_{acq}_fit_slice_{slice_nb}\n\n""".format(
                     cluster_name = cluster_name,        proj_name = proj_name,
                     nb_procs = nb_procs,                log_dir = log_dir,
                     job_dur = job_dur,                  subject = subject,
