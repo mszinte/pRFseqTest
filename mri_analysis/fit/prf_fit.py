@@ -173,7 +173,7 @@ new_img.to_filename(opfn)
 
 # Print duration
 end_time = datetime.datetime.now()
-print("\nStart time:\t{start_time}\nEnd time:\t{end_time}\nDuration:\t{dur}\n".format(
+print("\nStart time:\t{start_time}\nEnd time:\t{end_time}\nDuration:\t{dur}".format(
                 start_time = start_time,
                 end_time = end_time,
                 dur  = end_time - start_time))
