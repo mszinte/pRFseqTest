@@ -65,7 +65,7 @@ with open('settings.json') as f:
 # Define cluster/server specific parameters
 if cluster_name  == 'skylake':
     nb_procs = 32
-elif cluster_name  == 'skylake':
+elif cluster_name  == 'westmere':
     nb_procs = 12
 elif cluster_name == 'debug':
     nb_procs = 1
@@ -137,9 +137,6 @@ elif fit_model == 'css':
 # --------------
 print("Slice {slice_nb} containing {vox_num} brain mask voxels".format(slice_nb = slice_nb, num_vox = num_vox))
 
-# Define data
-estimates = np.zeros((num_est,data.shape[1]))
-
 # Define multiprocess bundle
 bundle = utils.multiprocess_bundle( Fit = fit_func,
                                     model = model_func,
@@ -155,14 +152,21 @@ pool = multiprocessing.Pool(processes = N_PROCS)
 output = pool.map(  func = utils.parallel_fit, 
                     iterable = bundle)
 
+# Re-arrange data
+estimates_mat = np.zeros((data.shape[0],data.shape[1],data.shape[2],num_est))
 for fit in output:
-    estimates[:num_est-1,fit.voxel_index[0]] = fit.estimate
-    estimates[num_est-1,fit.voxel_index[0]] = fit.rsquared
-
+    estimates_mat[fit.voxel_index[0],fit.voxel_index[1],fit.voxel_index[2],:num_est-1] = fit.estimate
+    estimates_mat[fit.voxel_index[0],fit.voxel_index[1],fit.voxel_index[2],num_est-1] = fit.rsquared
+    
 # Free up memory
 pool.close()
 pool.join()
 
 # Save estimates data
-new_img = nb.Nifti1Image(dataobj = estimates, affine = data_img.affine, header = data_img.header)
+new_img = nb.Nifti1Image(dataobj = estimates_mat, affine = data_img.affine, header = data_img.header)
 new_img.to_filename(opfn)
+
+if cluster_name  == 'westmere':
+    os.system("rsync -az --no-g --no-p --progress {scratchw}/ {scratch}".format(
+                scratch = analysis_info['base_dir'],
+                scratchw  = base_dir))

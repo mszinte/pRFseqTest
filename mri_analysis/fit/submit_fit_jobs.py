@@ -59,11 +59,16 @@ if cluster_name  == 'skylake':
     fit_per_hour = 1250.0
     nb_procs = 32
     proj_name = 'a161'
-elif cluster_name  == 'skylake':
-    base_dir = analysis_info['base_dir_westemere'] 
+elif cluster_name  == 'westmere':
+    base_dir = analysis_info['base_dir_westmere'] 
     fit_per_hour = 800.0
     nb_procs = 12
     proj_name = 'westmere'
+    # copy data from /scratch to /scratchw
+    os.system("rsync -az --no-g --no-p --progress {scratch}/ {scratchw}".format(
+        scratch = analysis_info['base_dir'],
+        scratchw  = base_dir))
+    
 elif cluster_name == 'debug':
     sub_command = 'sh '
     fit_per_hour = 200.0
@@ -130,8 +135,8 @@ for slice_nb in slices:
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task={nb_procs}
 #SBATCH --time={job_dur}
-#SBATCH -e {log_dir}%N.%j.%a.err
-#SBATCH -o {log_dir}%N.%j.%a.out
+#SBATCH -e {log_dir}/%N.%j.%a.err
+#SBATCH -o {log_dir}/%N.%j.%a.out
 #SBATCH -J {subject}_{acq}_fit_slice_{slice_nb}
 #SBATCH --mail-type=BEGIN,END\n\n""".format(
                     cluster_name = cluster_name,        proj_name = proj_name,
@@ -174,7 +179,7 @@ for slice_nb in slices:
 
     # Submit jobs
     print("Submitting {sh_dir} to queue".format(sh_dir = sh_dir))
-    os.system("{sub_command} {sh_dir}".format(sub_command = sub_command, sh_dir = sh_dir))
     
+    os.system("{sub_command} {sh_dir}".format(sub_command = sub_command, sh_dir = sh_dir))
     deb()
     
