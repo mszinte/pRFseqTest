@@ -132,18 +132,20 @@ new_img.to_filename(estfn)
 
 from utils import set_pycortex_config_file, convert_fit_results
 
-# Compute derived measures from prfs
-# ----------------------------------
-print('extracting pRF derivatives')
+# # Compute derived measures from prfs
+# # ----------------------------------
+# print('extracting pRF derivatives')
 
-deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
+# deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
 
-convert_fit_results(est_fn = estfn,
-                    output_dir = deriv_dir,
-                    stim_width = analysis_info['stim_width'],
-                    stim_height = analysis_info['stim_height'],
-                    fit_model = fit_model)
+# convert_fit_results(est_fn = estfn,
+#                     output_dir = deriv_dir,
+#                     stim_width = analysis_info['stim_width'],
+#                     stim_height = analysis_info['stim_height'],
+#                     fit_model = fit_model)
 
-# Create subject in pycortex
-# --------------------------
+# Set pycortex db and colormaps
+# -----------------------------
+set_pycortex_config_file(base_dir)
+
 

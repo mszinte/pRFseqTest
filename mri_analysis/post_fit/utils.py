@@ -8,19 +8,35 @@ from skimage.transform import rotate
 from math import *
 import cortex
 
-def set_pycortex_config_file(project_folder):
+def add_subject_2_cortex(fs_ID,fs_dir):
+    import os
+    import shutil
+    from cortex.freesurfer import import_subj
 
-    
+    sub_cortex_path = os.path.join(fs_dir,'cortex','db',fs_ID)
+    try:
+        shutil.rmtree(sub_cortex_path)
+    except OSError:
+        pass
+    import_subj(subject=fs_ID, sname=fs_ID, freesurfer_subject_dir=fs_dir)
+    return fs_ID
+
+def add_flat_2_cortex(fs_ID,fs_dir):
+    from cortex.freesurfer import import_flat
+    import_flat(subject = fs_ID, patch='full', freesurfer_subject_dir=fs_dir)
+    return fs_ID
+
+def set_pycortex_config_file(data_folder):
+
     # Import necessary modules
     import os
     import cortex
+    import ipdb
     from pathlib import Path
 
-    import ipdb
-
     # Define the new database and colormaps folder
-    pycortex_db_folder = project_folder + '/db/'
-    pycortex_cm_folder = project_folder + '/colormaps/'
+    pycortex_db_folder = data_folder + '/pp_data/cortex/db/'
+    pycortex_cm_folder = data_folder + '/pp_data/cortex/colormaps/'
 
     # Get pycortex config file location
     pycortex_config_file  = cortex.options.usercfg
@@ -178,7 +194,7 @@ def convert_fit_results(est_fn,
     prf_baseline_all = est[:,:,:,baseline_idx]
 
     # pRF coverage
-    deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 30), np.linspace(-30, 30, 30))         # define prfs in visual space
+    deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 121), np.linspace(-30, 30, 121))         # define prfs in visual space
     
     flat_est = est.reshape((-1, est.shape[-1])).astype(np.float64)
 

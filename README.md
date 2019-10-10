@@ -32,6 +32,8 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 	- sub-01: fieldmap less correction for 2.0 mm runs (missing files)
 			  phase-encoding based susceptibility correction for 2.5 mm runs
 	- sub-02: phase-encoding based susceptibility correction for 2.0 and 2.5 mm runs
-5. filter data for slow drift, make percentage signal change and average -acq runs together using pre_fit/pre_fit.py
-6. Fit results per z slices using fit/submit_fit_jobs.py
-7. Combine fits and compute pRF derivatives in post_fit/pp_roi.py
+5. Cut brains with https://docs.google.com/document/d/1mbx3EzTEYr4MIROWbgyklW_a7F6B4NX23bvk7VM7zeY/edit	
+6. filter data for slow drift, make percentage signal change and average -acq runs together using pre_fit/pre_fit.py
+7. Fit results per z slices using fit/submit_fit_jobs.py
+8. Combine fits and compute pRF derivatives in post_fit/pp_roi.py
+
