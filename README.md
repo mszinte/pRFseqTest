@@ -33,4 +33,5 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 			  phase-encoding based susceptibility correction for 2.5 mm runs
 	- sub-02: phase-encoding based susceptibility correction for 2.0 and 2.5 mm runs
 5. filter data for slow drift, make percentage signal change and average -acq runs together using pre_fit/pre_fit.py
-6. make fit per group of thousands of voxels
+6. Fit results per z slices using fit/submit_fit_jobs.py
+7. Combine fits and compute pRF derivatives in post_fit/pp_roi.py

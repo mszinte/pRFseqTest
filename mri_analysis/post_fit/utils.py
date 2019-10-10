@@ -79,9 +79,9 @@ def convert_fit_results(est_fn,
 
     Returns
     -------
-    prf_all: derivative of pRF analysis for all pRF voxels
-    prf_neg: derivative of pRF analysis for all negative pRF voxels
-    prf_pos: derivative of pRF analysis for all positive pRF voxels
+    prf_deriv_all: derivative of pRF analysis for all pRF voxels
+    prf_deriv_neg: derivative of pRF analysis for all negative pRF voxels
+    prf_deriv_pos: derivative of pRF analysis for all positive pRF voxels
 
     stucture output:
     columns: 1->size of input
@@ -129,7 +129,8 @@ def convert_fit_results(est_fn,
     est = []
     img_est = nb.load(est_fn)
     est = img_est.get_fdata()
-    
+
+
     # Compute derived measures from prfs
     # ----------------------------------
     # get data index
@@ -138,7 +139,10 @@ def convert_fit_results(est_fn,
     elif fit_model == 'css':
         x_idx, y_idx, sigma_idx, non_lin_idx, beta_idx, baseline_idx, rsq_idx = 0, 1, 2, 3, 4, 5, 6
 
-        
+
+    # change to nan empty voxels
+    est[est[:,:,:,rsq_idx] == 0] = np.nan
+
     # pRF sign
     prf_sign_all = np.sign((est[:,:,:,beta_idx]))
     pos_mask = prf_sign_all > 0.0
@@ -174,41 +178,47 @@ def convert_fit_results(est_fn,
     prf_baseline_all = est[:,:,:,baseline_idx]
 
     # pRF coverage
-    deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 121), np.linspace(-30, 30, 121))         # define prfs in visual space
+    deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 30), np.linspace(-30, 30, 30))         # define prfs in visual space
     
-    rfs = generate_og_receptive_fields( est[:,:,:,x_idx],
-                                        est[:,:,:,y_idx],
-                                        prf_size_all,
-                                        np.ones(np.prod(est[:,:,:,0].shape[0])),
+    flat_est = est.reshape((-1, est.shape[-1])).astype(np.float64)
+
+    rfs = generate_og_receptive_fields( flat_est[:,x_idx],
+                                        flat_est[:,y_idx],
+                                        flat_est[:,sigma_idx],
+                                        flat_est[:,beta_idx].T*0+1,
                                         deg_x,
                                         deg_y)
     if fit_model == 'css':
-        rfs = rfs ** est[:,:,:,non_lin_idx]
+        rfs = rfs ** flat_est[:,non_lin_idx]
+    
 
-    deb()
-    total_prf_content = rfs.reshape((-1, est.shape[1])).sum(axis=0)
+    total_prf_content = rfs.reshape((-1, flat_est.shape[0])).sum(axis=0)
     log_x = np.logical_and(deg_x >= -stim_width/2.0, deg_x <= stim_width/2.0)
     log_y = np.logical_and(deg_y >= -stim_height/2.0, deg_y <= stim_height/2.0)
     stim_vignet = np.logical_and(log_x,log_y)
     prf_cov_all = rfs[stim_vignet, :].sum(axis=0) / total_prf_content
+    prf_cov_all = prf_cov_all.reshape(prf_baseline_all.shape)
     
     # pRF x
     prf_x_all = est[:,:,:,x_idx]
 
     # pRF y
     prf_y_all = est[:,:,:,y_idx]
-    
-    
+
+    # Save results
+    prf_deriv_all = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    prf_deriv_pos = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    prf_deriv_neg = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    output_list = ['prf_sign','prf_rsq','prf_ecc','prf_polar_real','prf_polar_imag','prf_size','prf_non_lin','prf_amp','prf_baseline','prf_cov','prf_x','prf_y']
+
     for mask_dir in ['all','pos','neg']:
         print('saving: %s'%('os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz")'.format(mask_dir = mask_dir)))
-        for output_type in ['prf_sign','prf_rsq','prf_ecc','prf_polar_real','prf_polar_imag','prf_size','prf_non_lin','prf_amp','prf_baseline','prf_cov','prf_x','prf_y']:
+        for output_num, output_type in enumerate(output_list):
             exec('{output_type}_{mask_dir} = np.copy({output_type}_all)'.format(mask_dir = mask_dir, output_type = output_type))
             exec('{output_type}_{mask_dir}[~{mask_dir}_mask] = np.nan'.format(mask_dir = mask_dir, output_type = output_type))
-        
-        exec('prf_deriv_{mask_dir} = np.row_stack((prf_sign_{mask_dir},prf_rsq_{mask_dir},prf_ecc_{mask_dir},prf_polar_real_{mask_dir},\
-                prf_polar_imag_{mask_dir},prf_size_{mask_dir},prf_non_lin_{mask_dir},prf_amp_{mask_dir},prf_baseline_{mask_dir},prf_cov_{mask_dir},\
-                prf_x_{mask_dir},prf_y_{mask_dir}))'.format(mask_dir = mask_dir))
-        
+
+            exec('prf_deriv_{mask_dir}[...,{output_num}]  = {output_type}_{mask_dir}'.format(mask_dir = mask_dir, output_type = output_type, output_num = output_num))
+
         exec('prf_deriv_{mask_dir} = prf_deriv_{mask_dir}.astype(np.float32)'.format(mask_dir = mask_dir))
         exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{mask_dir}, affine = img_est.affine, header = img_est.header)'.format(mask_dir = mask_dir))
         exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz"))'.format(mask_dir = mask_dir))

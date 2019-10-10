@@ -108,8 +108,8 @@ for slice_nb in slices:
     else:
         miss_files_nb += 1
 
-# if miss_files_nb != 0:
-#     sys.exit('%i missing files, analysis stopped'%miss_files_nb)
+if miss_files_nb != 0:
+    sys.exit('%i missing files, analysis stopped'%miss_files_nb)
 
 # Combine and save estimates
 # --------------------------
@@ -143,3 +143,7 @@ convert_fit_results(est_fn = estfn,
                     stim_width = analysis_info['stim_width'],
                     stim_height = analysis_info['stim_height'],
                     fit_model = fit_model)
+
+# Create subject in pycortex
+# --------------------------
+
