@@ -16,6 +16,7 @@ None
 To run:
 python post_fit/post_fit.py sub-01 gauss 2500
 python post_fit/post_fit.py sub-02 gauss 2500
+> to run localy
 -----------------------------------------------------------------------------------------
 """
 
@@ -32,6 +33,7 @@ import json
 import numpy as np
 import ipdb
 import platform
+import matplotlib.pyplot as plt
 opj = os.path.join
 deb = ipdb.set_trace
 
@@ -44,7 +46,7 @@ from nipype.interfaces import fsl, freesurfer
 
 # Functions import
 # ----------------
-from utils import set_pycortex_config_file, convert_fit_results, draw_cortex_vertex
+from utils import set_pycortex_config_file, draw_cortex_vertex
 
 # Get inputs
 # ----------
@@ -71,13 +73,13 @@ fmriprep_dir = "{base_dir}/deriv_data/fmriprep/fmriprep/".format(base_dir = base
 xfm_name = "AttendStim_{acq}".format(acq = acq)
 xfm_dir = "{cortex_dir}/transforms/{xfm_name}".format(cortex_dir = cortex_dir, xfm_name = xfm_name)
 
-deb()
 # Set pycortex db and colormaps
 # -----------------------------
 set_pycortex_config_file(base_dir)
 
 # Add participant to pycortex db
 # ------------------------------
+
 if os.path.isdir(cortex_dir) == False:
     print('add subject to pycortex database')
 
@@ -86,9 +88,9 @@ if os.path.isdir(cortex_dir) == False:
 
 # Create pycortex xfm
 # -------------------
-
 if os.path.isdir(xfm_dir) == False:
 
+    deb()
     data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
                                 base_dir =base_dir,
                                 sub = subject,
@@ -119,6 +121,7 @@ if os.path.isdir(xfm_dir) == False:
     xfm = cortex.xfm.Transform.from_fsl(xfm = xfm_file, func_nii = mean_file, anat_nii = t1_file)
     xfm.save(subject = subject, name = xfm_name)
 
+
 # Draw pycortex flatmaps
 # ----------------------
 print('draw pycortex flatmaps')
@@ -142,7 +145,7 @@ for mask_dir in ['all','pos','neg']:
 
     # Load data
     deriv_mat=[]
-    deriv_matfn = "{deriv_dir}/{mask_dir}/prf_deriv_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir,mask_dir = mask_dir)
+    deriv_matfn = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
     img_deriv_mat = nb.load(deriv_matfn)
     deriv_mat = img_deriv_mat.get_fdata()
 
@@ -210,7 +213,7 @@ for mask_dir in ['all','pos','neg']:
 
         exec('param_{vertex_name}.update(roi_param)'.format(vertex_name = vertex_name))
         exec('vertex_rgb = draw_cortex_vertex(**param_{vertex_name})'.format(vertex_name=vertex_name))
-        exec('pl.savefig(opj(fig_roi_dir_{mask_dir}, "{vertex_name}_{mask_dir}.pdf"),facecolor="w")'.format(mask_dir=mask_dir,vertex_name = vertex_name))
+        exec('plt.savefig(opj(fig_roi_dir_{mask_dir}, "{vertex_name}_{acq}_{mask_dir}.pdf"),facecolor="w")'.format(mask_dir=mask_dir,vertex_name = vertex_name,acq = acq))
         
-        deb()
-    pl.close()
+        
+    plt.close()

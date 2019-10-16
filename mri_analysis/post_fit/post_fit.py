@@ -15,8 +15,8 @@ Output(s):
 None
 -----------------------------------------------------------------------------------------
 To run:
-python post_fit/post_fit.py sub-01 gauss 2500
-python post_fit/post_fit.py sub-02 gauss 2500
+python post_fit/post_fit.py sub-01 acq-2p5mm gauss
+python post_fit/post_fit.py sub-01 acq-2mm gauss
 -----------------------------------------------------------------------------------------
 """
 
@@ -42,6 +42,9 @@ deb = ipdb.set_trace
 # -----------
 import nibabel as nb
 
+# Functions import
+# ----------------
+from utils import set_pycortex_config_file, convert_fit_results, draw_cortex_vertex
 
 # Get inputs
 # ----------
@@ -125,8 +128,8 @@ estfn = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_
                                 base_dir = base_dir,
                                 subject = subject,
                                 fit_model = fit_model,
-                                acq = acq
-                                )
+                                acq = acq)
+
 new_img = nb.Nifti1Image(dataobj = ests, affine = img_data.affine, header = img_data.header)
 new_img.to_filename(estfn)
 
@@ -137,4 +140,5 @@ convert_fit_results(est_fn = estfn,
                     output_dir = deriv_dir,
                     stim_width = analysis_info['stim_width'],
                     stim_height = analysis_info['stim_height'],
-                    fit_model = fit_model)
+                    fit_model = fit_model,
+                    acq = acq)

@@ -1,68 +1,3 @@
-# Stop warnings
-# -------------
-import warnings
-warnings.filterwarnings("ignore")
-
-# General imports
-# ---------------
-import os
-import sys
-import json
-import glob
-import numpy as np
-import matplotlib.pyplot as pl
-import ipdb
-import platform
-opj = os.path.join
-deb = ipdb.set_trace
-
-# MRI imports
-# -----------
-import nibabel as nb
-import cortex
-from cortex.fmriprep import *
-from nipype.interfaces import fsl, freesurfer
-
-# Functions import
-# ----------------
-from utils import set_pycortex_config_file, convert_fit_results, draw_cortex_vertex
-
-# Get inputs
-# ----------
-subject = sys.argv[1]
-acq = sys.argv[2]
-fit_model = sys.argv[3]
-
-if fit_model == 'gauss': fit_val = 6
-elif fit_model == 'css': fit_val = 7
-
-# Define analysis parameters
-# --------------------------
-with open('settings.json') as f:
-    json_s = f.read()
-    analysis_info = json.loads(json_s)
-
-# Define folder
-# -------------
-base_dir = analysis_info['base_dir']
-deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
-cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
-fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/".format(base_dir = base_dir)
-fmriprep_dir = "{base_dir}/deriv_data/fmriprep/fmriprep/".format(base_dir = base_dir)
-xfm_name = "AttendStim_{acq}".format(acq = acq)
-xfm_dir = "{cortex_dir}/transforms/{xfm_name}".format(cortex_dir = cortex_dir, xfm_name = xfm_name)
-
-import os
-import nibabel as nb
-import numpy as np
-import matplotlib.pyplot as pl
-import scipy as sp
-from scipy.signal import savgol_filter
-from skimage.transform import rotate
-from math import *
-import cortex
-
-
 def set_pycortex_config_file(data_folder):
 
     # Import necessary modules
@@ -70,6 +5,7 @@ def set_pycortex_config_file(data_folder):
     import cortex
     import ipdb
     from pathlib import Path
+    deb = ipdb.set_trace
 
     # Define the new database and colormaps folder
     pycortex_db_folder = data_folder + '/pp_data/cortex/db/'
@@ -78,7 +14,6 @@ def set_pycortex_config_file(data_folder):
     # Get pycortex config file location
     pycortex_config_file  = cortex.options.usercfg
 
-    deb()
 
     # Create name of new config file that will be written
     new_pycortex_config_file = pycortex_config_file[:-4] + '_new.cfg'
@@ -100,8 +35,8 @@ def set_pycortex_config_file(data_folder):
                     fileOut.write(newline)
                     newline = '\n'
 
-                elif 'Colormaps' in line:
-                    newline = 'Colormaps=' + pycortex_cm_folder
+                elif 'colormaps' in line:
+                    newline = 'colormaps=' + pycortex_cm_folder
                     fileOut.write(newline)
                     newline = '\n'
 
@@ -122,7 +57,8 @@ def convert_fit_results(est_fn,
                         output_dir,
                         stim_width,
                         stim_height,
-                        fit_model):
+                        fit_model,
+                        acq):
     """
     Convert pRF fitting value in different parameters for following analysis
    
@@ -133,6 +69,7 @@ def convert_fit_results(est_fn,
     stim_width: stimulus width in deg
     stim_heigth: stimulus height in deg
     fit_model: fit model ('gauss','css')
+    acq: acquisition type ('acq-2p5mm','acq-2mm')
 
     Returns
     -------
@@ -167,7 +104,6 @@ def convert_fit_results(est_fn,
     import ipdb
     deb = ipdb.set_trace
 
-    
     # Popeye imports
     from popeye.spinach import generate_og_receptive_fields
 
@@ -179,7 +115,6 @@ def convert_fit_results(est_fn,
         os.makedirs(os.path.join(output_dir,'neg'))
     except:
         pass
-
 
     # Get data details
     # ----------------
@@ -277,7 +212,7 @@ def convert_fit_results(est_fn,
 
         exec('prf_deriv_{mask_dir} = prf_deriv_{mask_dir}.astype(np.float32)'.format(mask_dir = mask_dir))
         exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{mask_dir}, affine = img_est.affine, header = img_est.header)'.format(mask_dir = mask_dir))
-        exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz"))'.format(mask_dir = mask_dir))
+        exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{acq}_{mask_dir}.nii.gz"))'.format(mask_dir = mask_dir, acq = acq))
 
     return None
     
@@ -341,8 +276,6 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,cbar = 'discrete',cma
     norm_data = ((data-float(vmin))/vrange)*cmap_steps
     mat = colmap(norm_data.astype(int))
 
-    deb()
-
     vertex_rgb = cortex.VolumeRGB(  red = mat[...,0],
                                     green = mat[...,1],
                                     blue = mat[...,2],
@@ -350,7 +283,7 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,cbar = 'discrete',cma
                                     subject = subject,
                                     xfmname = xfmname
                                     )
-    deb()
+    
     
     vertex_rgb_fig = cortex.quickshow(  braindata = vertex_rgb,
                                         depth = depth,
@@ -364,7 +297,7 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,cbar = 'discrete',cma
                                         curvature_brightness = curv_brightness,
                                         curvature_contrast = curv_contrast)
     
-    deb()
+    
     zoom_plot = []
     if zoom_roi != None:
         roi_verts = cortex.get_roi_verts(subject, zoom_roi)[zoom_roi]
