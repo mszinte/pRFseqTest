@@ -40,7 +40,6 @@ import ipdb
 deb = ipdb.set_trace
 opj = os.path.join
 
-
 # MRI analysis imports
 # --------------------
 import popeye.utilities as utils

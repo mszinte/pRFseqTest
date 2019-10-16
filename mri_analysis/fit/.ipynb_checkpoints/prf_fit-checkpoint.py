@@ -34,6 +34,7 @@ import platform
 from math import *
 import os
 import glob
+import datetime
 import json
 import ipdb
 deb = ipdb.set_trace
@@ -56,6 +57,7 @@ data_file = sys.argv[4]
 mask_file = sys.argv[5]
 slice_nb = int(sys.argv[6])
 opfn = sys.argv[7]
+start_time = datetime.datetime.now()
 
 # Define analysis parameters
 with open('settings.json') as f:
@@ -63,9 +65,11 @@ with open('settings.json') as f:
     analysis_info = json.loads(json_s)
 
 # Define cluster/server specific parameters
+base_dir = analysis_info['base_dir']
 if cluster_name  == 'skylake':
     nb_procs = 32
-elif cluster_name  == 'skylake':
+elif cluster_name  == 'westmere':
+    base_dir = analysis_info['base_dir_westmere'] 
     nb_procs = 12
 elif cluster_name == 'debug':
     nb_procs = 1
@@ -87,7 +91,7 @@ x_vox,y_vox = x[slice_mask],y[slice_mask]
 vox_indices = [(xx,yy,slice_nb) for xx,yy in zip(x_vox,y_vox)]
 
 # Create stimulus design (create in matlab - see others/make_visual_dm.m)
-visual_dm_file = scipy.io.loadmat(opj(analysis_info['base_dir'],'pp_data','visual_dm','vis_design.mat'))
+visual_dm_file = scipy.io.loadmat(opj(base_dir,'pp_data','visual_dm','vis_design.mat'))
 visual_dm = visual_dm_file['stim']
 stimulus = VisualStimulus(  stim_arr = visual_dm,
                             viewing_distance = analysis_info["screen_distance"],
@@ -135,7 +139,7 @@ elif fit_model == 'css':
 
 # Fit: main loop
 # --------------
-print("Slice {slice_nb} containing {vox_num} brain mask voxels".format(slice_nb = slice_nb, num_vox = num_vox))
+print("Slice {slice_nb} containing {num_vox} brain mask voxels".format(slice_nb = slice_nb, num_vox = num_vox))
 
 # Define multiprocess bundle
 bundle = utils.multiprocess_bundle( Fit = fit_func,
@@ -143,12 +147,12 @@ bundle = utils.multiprocess_bundle( Fit = fit_func,
                                     data = data_to_analyse,
                                     grids = fit_model_grids, 
                                     bounds = fit_model_bounds, 
-                                    indices = vertex_indices, 
+                                    indices = vox_indices, 
                                     auto_fit = True, 
                                     verbose = 1, 
                                     Ns = fit_steps)
 # Run fitting
-pool = multiprocessing.Pool(processes = N_PROCS)
+pool = multiprocessing.Pool(processes = nb_procs)
 output = pool.map(  func = utils.parallel_fit, 
                     iterable = bundle)
 
@@ -165,3 +169,10 @@ pool.join()
 # Save estimates data
 new_img = nb.Nifti1Image(dataobj = estimates_mat, affine = data_img.affine, header = data_img.header)
 new_img.to_filename(opfn)
+
+# Print duration
+end_time = datetime.datetime.now()
+print("\nStart time:\t{start_time}\nEnd time:\t{end_time}\nDuration:\t{dur}".format(
+                start_time = start_time,
+                end_time = end_time,
+                dur  = end_time - start_time))
