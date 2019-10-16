@@ -1,3 +1,57 @@
+# Stop warnings
+# -------------
+import warnings
+warnings.filterwarnings("ignore")
+
+# General imports
+# ---------------
+import os
+import sys
+import json
+import glob
+import numpy as np
+import matplotlib.pyplot as pl
+import ipdb
+import platform
+opj = os.path.join
+deb = ipdb.set_trace
+
+# MRI imports
+# -----------
+import nibabel as nb
+import cortex
+from cortex.fmriprep import *
+from nipype.interfaces import fsl, freesurfer
+
+# Functions import
+# ----------------
+from utils import set_pycortex_config_file, convert_fit_results, draw_cortex_vertex
+
+# Get inputs
+# ----------
+subject = sys.argv[1]
+acq = sys.argv[2]
+fit_model = sys.argv[3]
+
+if fit_model == 'gauss': fit_val = 6
+elif fit_model == 'css': fit_val = 7
+
+# Define analysis parameters
+# --------------------------
+with open('settings.json') as f:
+    json_s = f.read()
+    analysis_info = json.loads(json_s)
+
+# Define folder
+# -------------
+base_dir = analysis_info['base_dir']
+deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
+cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
+fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/".format(base_dir = base_dir)
+fmriprep_dir = "{base_dir}/deriv_data/fmriprep/fmriprep/".format(base_dir = base_dir)
+xfm_name = "AttendStim_{acq}".format(acq = acq)
+xfm_dir = "{cortex_dir}/transforms/{xfm_name}".format(cortex_dir = cortex_dir, xfm_name = xfm_name)
+
 import os
 import nibabel as nb
 import numpy as np
@@ -23,6 +77,8 @@ def set_pycortex_config_file(data_folder):
 
     # Get pycortex config file location
     pycortex_config_file  = cortex.options.usercfg
+
+    deb()
 
     # Create name of new config file that will be written
     new_pycortex_config_file = pycortex_config_file[:-4] + '_new.cfg'

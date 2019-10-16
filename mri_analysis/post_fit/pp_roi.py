@@ -3,8 +3,7 @@
 pp_roi.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Region of interests pre-processing
-Compute pRF derivatives and plot on pycortex overlay.svg to determine visual ROI
+Plot pycortex maps
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: subject number
@@ -15,8 +14,8 @@ Output(s):
 None
 -----------------------------------------------------------------------------------------
 To run:
-python post_fit/pp_roi.py sub-01 gauss 2500
-python post_fit/pp_roi.py sub-02 gauss 2500
+python post_fit/post_fit.py sub-01 gauss 2500
+python post_fit/post_fit.py sub-02 gauss 2500
 -----------------------------------------------------------------------------------------
 """
 
@@ -30,9 +29,7 @@ warnings.filterwarnings("ignore")
 import os
 import sys
 import json
-import glob
 import numpy as np
-import matplotlib.pyplot as pl
 import ipdb
 import platform
 opj = os.path.join
@@ -66,7 +63,7 @@ with open('settings.json') as f:
 
 # Define folder
 # -------------
-base_dir = analysis_info['base_dir']
+base_dir = analysis_info['base_dir_local']
 deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
 cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
 fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/".format(base_dir = base_dir)
@@ -74,128 +71,53 @@ fmriprep_dir = "{base_dir}/deriv_data/fmriprep/fmriprep/".format(base_dir = base
 xfm_name = "AttendStim_{acq}".format(acq = acq)
 xfm_dir = "{cortex_dir}/transforms/{xfm_name}".format(cortex_dir = cortex_dir, xfm_name = xfm_name)
 
-# # Copy data from scratchw to scratch
-# # ----------------------------------
-# os.system("rsync -az --no-g --no-p --progress {scratchw}/ {scratch}".format(
-#                 scratch = analysis_info['base_dir'],
-#                 scratchw  = analysis_info['base_dir_westmere']))
+deb()
+# Set pycortex db and colormaps
+# -----------------------------
+set_pycortex_config_file(base_dir)
 
-# # Check if all slices are present
-# # -------------------------------
+# Add participant to pycortex db
+# ------------------------------
+if os.path.isdir(cortex_dir) == False:
+    print('add subject to pycortex database')
 
-# # Original data to analyse
-# data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
-#                                 base_dir = base_dir,
-#                                 sub = subject,
-#                                 acq = acq)
-# img_data = nb.load(data_file)
-# data = img_data.get_fdata()
+    cortex.freesurfer.import_subj(subject = subject, sname = subject, freesurfer_subject_dir = fs_dir)
+    cortex.freesurfer.import_flat(subject = subject, patch='full', freesurfer_subject_dir = fs_dir)
 
-# mask_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_mask_avg.nii.gz".format(
-#                                 base_dir = base_dir,
-#                                 sub = subject,
-#                                 acq = acq)
+# Create pycortex xfm
+# -------------------
 
-# img_mask = nb.load(mask_file)
-# mask = img_mask.get_fdata()
-# slices = np.arange(mask.shape[2])[mask.mean(axis=(0,1))>0]
+if os.path.isdir(xfm_dir) == False:
 
-# est_files = []
-# miss_files_nb = 0
-# for slice_nb in slices:
-    
-#     est_file = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est_z_{slice_nb}.nii.gz".format(
-#                                 base_dir = base_dir,
-#                                 subject = subject,
-#                                 fit_model = fit_model,
-#                                 acq = acq,
-#                                 slice_nb = slice_nb
-#                                 )
-#     if os.path.isfile(est_file):
-#         if os.path.getsize(est_file) == 0:
-#             num_miss_part += 1 
-#         else:
-#             est_files.append(est_file)
-#     else:
-#         miss_files_nb += 1
+    data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
+                                base_dir =base_dir,
+                                sub = subject,
+                                acq = acq)
 
-# if miss_files_nb != 0:
-#     sys.exit('%i missing files, analysis stopped'%miss_files_nb)
+    try:os.makedirs(opj(base_dir,'pp_data',subject,'reg'))
+    except:pass
 
-# # Combine and save estimates
-# # --------------------------
-# print('combining est files')
-# ests = np.zeros((data.shape[0],data.shape[1],data.shape[2],fit_val))
-# for est_file in est_files:
-#     img_est = nb.load(est_file)
-#     est = img_est.get_fdata()
-#     ests = ests + est
+    # get mean file
+    mean_file  =  "{base_dir}/pp_data/{sub}/reg/{sub}_task-AttendStim_{acq}_mean.nii.gz".format(
+                                base_dir = base_dir, sub = subject, acq = acq)
 
-# # Save estimates data
-# estfn = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est.nii.gz".format(
-#                                 base_dir = base_dir,
-#                                 subject = subject,
-#                                 fit_model = fit_model,
-#                                 acq = acq
-#                                 )
-# new_img = nb.Nifti1Image(dataobj = ests, affine = img_data.affine, header = img_data.header)
-# new_img.to_filename(estfn)
+    mean_cmd = fsl.maths.MeanImage( output_type = 'NIFTI_GZ', in_file = data_file,
+                                    dimension = 'T', out_file = mean_file)    
+    mean_cmd.run()
 
-# # Compute derived measures from prfs
-# # ----------------------------------
-# print('extracting pRF derivatives')
-# convert_fit_results(est_fn = estfn,
-#                     output_dir = deriv_dir,
-#                     stim_width = analysis_info['stim_width'],
-#                     stim_height = analysis_info['stim_height'],
-#                     fit_model = fit_model)
+    # get reg mat
+    reg_cmd = freesurfer.BBRegister(init = 'header', contrast_type = 't2', 
+                                    subjects_dir = fs_dir, source_file = mean_file,
+                                    subject_id = subject, out_fsl_file = True)
+    reg_cmd.run()
 
-# # Set pycortex db and colormaps
-# # -----------------------------
-# set_pycortex_config_file(base_dir)
+    # create xfm transform
+    xfm_file = "{mean_file}_bbreg_{subject}.mat".format(mean_file = mean_file[:-7],subject = subject)
+    t1_file = "{fmriprep_dir}{subject}/anat/{subject}_desc-preproc_T1w.nii.gz".format(    
+                                    fmriprep_dir = fmriprep_dir, subject = subject)
 
-# # Add participant to pycortex db
-# # ------------------------------
-# if os.path.isdir(cortex_dir) == False:
-#     print('add subject to pycortex database')
-
-#     cortex.freesurfer.import_subj(subject = subject, sname = subject, freesurfer_subject_dir = fs_dir)
-#     cortex.freesurfer.import_flat(subject = subject, patch='full', freesurfer_subject_dir = fs_dir)
-
-# # Create pycortex xfm
-# # -------------------
-
-# if os.path.isdir(xfm_dir) == False:
-
-#     data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
-#                                 base_dir =base_dir,
-#                                 sub = subject,
-#                                 acq = acq)
-
-#     try:os.makedirs(opj(base_dir,'pp_data',subject,'reg'))
-#     except:pass
-
-#     # get mean file
-#     mean_file  =  "{base_dir}/pp_data/{sub}/reg/{sub}_task-AttendStim_{acq}_mean.nii.gz".format(
-#                                 base_dir = base_dir, sub = subject, acq = acq)
-
-#     mean_cmd = fsl.maths.MeanImage( output_type = 'NIFTI_GZ', in_file = data_file,
-#                                     dimension = 'T', out_file = mean_file)    
-#     mean_cmd.run()
-
-#     # get reg mat
-#     reg_cmd = freesurfer.BBRegister(init = 'header', contrast_type = 't2', 
-#                                     subjects_dir = fs_dir, source_file = mean_file,
-#                                     subject_id = subject, out_fsl_file = True)
-#     reg_cmd.run()
-
-#     # create xfm transform
-#     xfm_file = "{mean_file}_bbreg_{subject}.mat".format(mean_file = mean_file[:-7],subject = subject)
-#     t1_file = "{fmriprep_dir}{subject}/anat/{subject}_desc-preproc_T1w.nii.gz".format(    
-#                                     fmriprep_dir = fmriprep_dir, subject = subject)
-
-#     xfm = cortex.xfm.Transform.from_fsl(xfm = xfm_file, func_nii = mean_file, anat_nii = t1_file)
-#     xfm.save(subject = subject, name = xfm_name)
+    xfm = cortex.xfm.Transform.from_fsl(xfm = xfm_file, func_nii = mean_file, anat_nii = t1_file)
+    xfm.save(subject = subject, name = xfm_name)
 
 # Draw pycortex flatmaps
 # ----------------------
