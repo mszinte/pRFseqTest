@@ -1,29 +1,19 @@
-import os
-import nibabel as nb
-import numpy as np
-import matplotlib.pyplot as pl
-import scipy as sp
-from scipy.signal import savgol_filter
-from skimage.transform import rotate
-from math import *
-import cortex
+def set_pycortex_config_file(data_folder):
 
-def set_pycortex_config_file(project_folder):
-
-    
     # Import necessary modules
     import os
     import cortex
-    from pathlib import Path
-
     import ipdb
+    from pathlib import Path
+    deb = ipdb.set_trace
 
     # Define the new database and colormaps folder
-    pycortex_db_folder = project_folder + '/db/'
-    pycortex_cm_folder = project_folder + '/colormaps/'
+    pycortex_db_folder = data_folder + '/pp_data/cortex/db/'
+    pycortex_cm_folder = data_folder + '/pp_data/cortex/colormaps/'
 
     # Get pycortex config file location
     pycortex_config_file  = cortex.options.usercfg
+
 
     # Create name of new config file that will be written
     new_pycortex_config_file = pycortex_config_file[:-4] + '_new.cfg'
@@ -45,8 +35,8 @@ def set_pycortex_config_file(project_folder):
                     fileOut.write(newline)
                     newline = '\n'
 
-                elif 'Colormaps' in line:
-                    newline = 'Colormaps=' + pycortex_cm_folder
+                elif 'colormaps' in line:
+                    newline = 'colormaps=' + pycortex_cm_folder
                     fileOut.write(newline)
                     newline = '\n'
 
@@ -61,11 +51,14 @@ def set_pycortex_config_file(project_folder):
     os.rename(new_pycortex_config_file, pycortex_config_file)
     return None
 
+
+
 def convert_fit_results(est_fn,
                         output_dir,
                         stim_width,
                         stim_height,
-                        fit_model):
+                        fit_model,
+                        acq):
     """
     Convert pRF fitting value in different parameters for following analysis
    
@@ -76,12 +69,13 @@ def convert_fit_results(est_fn,
     stim_width: stimulus width in deg
     stim_heigth: stimulus height in deg
     fit_model: fit model ('gauss','css')
+    acq: acquisition type ('acq-2p5mm','acq-2mm')
 
     Returns
     -------
-    prf_all: derivative of pRF analysis for all pRF voxels
-    prf_neg: derivative of pRF analysis for all negative pRF voxels
-    prf_pos: derivative of pRF analysis for all positive pRF voxels
+    prf_deriv_all: derivative of pRF analysis for all pRF voxels
+    prf_deriv_neg: derivative of pRF analysis for all negative pRF voxels
+    prf_deriv_pos: derivative of pRF analysis for all positive pRF voxels
 
     stucture output:
     columns: 1->size of input
@@ -110,7 +104,6 @@ def convert_fit_results(est_fn,
     import ipdb
     deb = ipdb.set_trace
 
-    
     # Popeye imports
     from popeye.spinach import generate_og_receptive_fields
 
@@ -123,165 +116,286 @@ def convert_fit_results(est_fn,
     except:
         pass
 
+    # Get data details
+    # ----------------
+    est = []
+    img_est = nb.load(est_fn)
+    est = img_est.get_fdata()
 
-#     # Get data details
-#     # ----------------
-#     est = []
-#     img_est = nb.load(est_fn)
-#     est = img_est.get_fdata()
+    # Compute derived measures from prfs
+    # ----------------------------------
+    # get data index
+    if fit_model == 'gauss':
+        x_idx, y_idx, sigma_idx, beta_idx, baseline_idx, rsq_idx = 0, 1, 2, 3, 4, 5
+    elif fit_model == 'css':
+        x_idx, y_idx, sigma_idx, non_lin_idx, beta_idx, baseline_idx, rsq_idx = 0, 1, 2, 3, 4, 5, 6
+
+
+    # change to nan empty voxels
+    est[est[:,:,:,rsq_idx] == 0] = np.nan
+
+    # pRF sign
+    prf_sign_all = np.sign((est[:,:,:,beta_idx]))
+    pos_mask = prf_sign_all > 0.0
+    neg_mask = prf_sign_all < 0.0
+    all_mask = pos_mask | neg_mask
     
-#     # Compute derived measures from prfs
-#     # ----------------------------------
-#     # get data index
-#     if fit_model == 'gauss':
-#         x_idx, y_idx, sigma_idx, beta_idx, baseline_idx, rsq_idx = 0, 1, 2, 3, 4, 5
-#     elif fit_model == 'css':
-#         x_idx, y_idx, sigma_idx, non_lin_idx, beta_idx, baseline_idx, rsq_idx = 0, 1, 2, 3, 4, 5, 6
+    # r-square
+    prf_rsq_all = est[:,:,:,rsq_idx]
 
-#     deb()
-        
-#     # pRF sign
-#     prf_sign_all = np.sign((est[beta_idx,:]))
-#     pos_mask = prf_sign_all > 0.0
-#     neg_mask = prf_sign_all < 0.0
-#     all_mask = pos_mask | neg_mask
+    # pRF eccentricity
+    prf_ecc_all = np.nan_to_num(np.sqrt(est[:,:,:,x_idx]**2 + est[:,:,:,y_idx]**2))
+
+    # pRF polar angle
+    complex_polar = est[:,:,:,x_idx] + 1j * est[:,:,:,y_idx]
+    normed_polar = complex_polar / np.abs(complex_polar)
+    prf_polar_real_all = np.real(normed_polar)
+    prf_polar_imag_all = np.imag(normed_polar)
     
-#     # r-square
-#     prf_rsq_all = est[rsq_idx,:]
+    # pRF size
+    prf_size_all = est[:,:,:,sigma_idx].astype(np.float64)
+    prf_size_all[prf_size_all<1e-4] = 1e-4
 
-#     # pRF eccentricity
-#     prf_ecc_all = np.nan_to_num(np.sqrt(est[x_idx,:]**2 + est[y_idx,:]**2))
+    # pRF non-linearity
+    if fit_model == 'gauss':
+        prf_non_lin_all = np.zeros((prf_size_all.shape))*np.nan
+    elif fit_model == 'css':
+        prf_non_lin_all = est[:,:,:,non_lin_idx]
 
-#     # pRF polar angle
-#     complex_polar = est[x_idx,:] + 1j * est[y_idx,:]
-#     normed_polar = complex_polar / np.abs(complex_polar)
-#     prf_polar_real_all = np.real(normed_polar)
-#     prf_polar_imag_all = np.imag(normed_polar)
+    # pRF amplitude
+    prf_amp_all = est[:,:,:,beta_idx]
     
-#     # pRF size
-#     prf_size_all = est[sigma_idx,:].astype(np.float64)
-#     prf_size_all[prf_size_all<1e-4] = 1e-4
+    # pRF baseline
+    prf_baseline_all = est[:,:,:,baseline_idx]
 
-#     # pRF non-linearity
-#     if fit_model == 'gauss':
-#         prf_non_lin_all = np.zeros((prf_size_all.shape))*np.nan
-#     elif fit_model == 'css':
-#         prf_non_lin_all = est[non_lin_idx,:]
-
-#     # pRF amplitude
-#     if fit_model == 'gauss':
-#         prf_amp_all = est[beta_idx,:]
-#     elif fit_model == 'css':
-#         prf_amp_all = est[beta_idx,:]
-
-#     # pRF baseline
-#     if fit_model == 'gauss':
-#         prf_baseline_all = est[baseline_idx,:]
-#     elif fit_model == 'css':
-#         prf_baseline_all = est[baseline_idx,:]
-
-#     # pRF coverage
-#     deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 121), np.linspace(-30, 30, 121))         # define prfs in visual space
+    # pRF coverage
+    deg_x, deg_y = np.meshgrid(np.linspace(-30, 30, 121), np.linspace(-30, 30, 121))         # define prfs in visual space
     
-#     rfs = generate_og_receptive_fields( est[x_idx,:],
-#                                         est[y_idx,:],
-#                                         prf_size_all,
-#                                         np.ones(np.prod(est[0,:].shape[0])),
-#                                         deg_x,
-#                                         deg_y)
-#     if fit_model == 'css':
-#         rfs = rfs ** est[non_lin_idx,:]
+    flat_est = est.reshape((-1, est.shape[-1])).astype(np.float64)
 
-#     total_prf_content = rfs.reshape((-1, est.shape[1])).sum(axis=0)
-#     log_x = np.logical_and(deg_x >= -stim_width/2.0, deg_x <= stim_width/2.0)
-#     log_y = np.logical_and(deg_y >= -stim_height/2.0, deg_y <= stim_height/2.0)
-#     stim_vignet = np.logical_and(log_x,log_y)
-#     prf_cov_all = rfs[stim_vignet, :].sum(axis=0) / total_prf_content
-    
-#     # pRF x
-#     prf_x_all = est[x_idx,:]
-
-#     # pRF y
-#     prf_y_all = est[y_idx,:]
+    rfs = generate_og_receptive_fields( flat_est[:,x_idx],
+                                        flat_est[:,y_idx],
+                                        flat_est[:,sigma_idx],
+                                        flat_est[:,beta_idx].T*0+1,
+                                        deg_x,
+                                        deg_y)
+    if fit_model == 'css':
+        rfs = rfs ** flat_est[:,non_lin_idx]
     
 
+    total_prf_content = rfs.reshape((-1, flat_est.shape[0])).sum(axis=0)
+    log_x = np.logical_and(deg_x >= -stim_width/2.0, deg_x <= stim_width/2.0)
+    log_y = np.logical_and(deg_y >= -stim_height/2.0, deg_y <= stim_height/2.0)
+    stim_vignet = np.logical_and(log_x,log_y)
+    prf_cov_all = rfs[stim_vignet, :].sum(axis=0) / total_prf_content
+    prf_cov_all = prf_cov_all.reshape(prf_baseline_all.shape)
     
-#     for mask_dir in ['all','pos','neg']:
-#         print('saving: %s'%('os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz")'.format(mask_dir = mask_dir)))
-#         for output_type in ['prf_sign','prf_rsq','prf_ecc','prf_polar_real','prf_polar_imag','prf_size','prf_non_lin','prf_amp','prf_baseline','prf_cov','prf_x','prf_y']:
-#             exec('{output_type}_{mask_dir} = np.copy({output_type}_all)'.format(mask_dir = mask_dir, output_type = output_type))
-#             exec('{output_type}_{mask_dir}[~{mask_dir}_mask] = np.nan'.format(mask_dir = mask_dir, output_type = output_type))
-        
-# #         exec('prf_deriv_{mask_dir} = np.row_stack((prf_sign_{mask_dir},prf_rsq_{mask_dir},prf_ecc_{mask_dir},prf_polar_real_{mask_dir},\
-# #                 prf_polar_imag_{mask_dir},prf_size_{mask_dir},prf_non_lin_{mask_dir},prf_amp_{mask_dir},prf_baseline_{mask_dir},prf_cov_{mask_dir},\
-# #                 prf_x_{mask_dir},prf_y_{mask_dir}))'.format(mask_dir = mask_dir))
-        
-# #         exec('prf_deriv_{mask_dir} = prf_deriv_{mask_dir}.astype(np.float32)'.format(mask_dir = mask_dir))
-# #         exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{mask_dir}, affine = img_est.affine, header = img_est.header)'.format(mask_dir = mask_dir))
-# #         exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz"))'.(mask_dir = mask_dir))
+    # pRF x
+    prf_x_all = est[:,:,:,x_idx]
+
+    # pRF y
+    prf_y_all = est[:,:,:,y_idx]
+
+    # Save results
+    prf_deriv_all = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    prf_deriv_pos = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    prf_deriv_neg = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
+    output_list = ['prf_sign','prf_rsq','prf_ecc','prf_polar_real','prf_polar_imag','prf_size','prf_non_lin','prf_amp','prf_baseline','prf_cov','prf_x','prf_y']
+
+    for mask_dir in ['all','pos','neg']:
+        print('saving: %s'%('os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz")'.format(mask_dir = mask_dir)))
+        for output_num, output_type in enumerate(output_list):
+            exec('{output_type}_{mask_dir} = np.copy({output_type}_all)'.format(mask_dir = mask_dir, output_type = output_type))
+            exec('{output_type}_{mask_dir}[~{mask_dir}_mask] = np.nan'.format(mask_dir = mask_dir, output_type = output_type))
+
+            exec('prf_deriv_{mask_dir}[...,{output_num}]  = {output_type}_{mask_dir}'.format(mask_dir = mask_dir, output_type = output_type, output_num = output_num))
+
+        exec('prf_deriv_{mask_dir} = prf_deriv_{mask_dir}.astype(np.float32)'.format(mask_dir = mask_dir))
+        exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{mask_dir}, affine = img_est.affine, header = img_est.header)'.format(mask_dir = mask_dir))
+        exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{acq}_{mask_dir}.nii.gz"))'.format(mask_dir = mask_dir, acq = acq))
 
     return None
     
-
-def mask_gii_2_hdf5(in_file, mask_file, hdf5_file, folder_alias, roi_num):
-    """masks data in in_file with mask in mask_file,
-    to be stored in an hdf5 file
-
-    Takes a list of 3D or 4D fMRI nifti-files and masks the
-    data with all masks in the list of nifti-files mask_files.
-    These files are assumed to represent the same space, i.e.
-    that of the functional acquisitions. 
-    These are saved in hdf5_file, in the folder folder_alias.
-
+def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'discrete',cmap_steps = 255,\
+                        alpha = None,depth = 1,thick = 1,height = 1024,sampler = 'nearest',\
+                        with_curvature = True,with_labels = False,with_colorbar = False,\
+                        with_borders = False,curv_brightness = 0.95,curv_contrast = 0.05,add_roi = False,\
+                        roi_name = 'empty',col_offset = 0, zoom_roi = None, zoom_hem = None, zoom_margin = 0.0,):
+    """
+    Plot brain data onto a previously saved flatmap.
     Parameters
     ----------
-    in_files : list
-        list of absolute path to functional nifti-files.
-        all nifti files are assumed to have the same ndim
-    mask_file : list
-        list of absolute path to mask nifti-files.
-        mask_files are assumed to be 3D
-    hdf5_file : str
-        absolute path to hdf5 file.
-    folder_alias : str
-                name of the to-be-created folder in the hdf5 file.
-    roi_num: roi row number
-
+    subject             : subject id (e.g. 'sub-001')
+    xfmname             : xfm transform
+    data                : the data you would like to plot on a flatmap
+    cmap                : colormap that shoudl be used for plotting
+    vmins               : minimal values of 1D 2D colormap [0] = 1D, [1] = 2D
+    vmaxs               : minimal values of 1D/2D colormap [0] = 1D, [1] = 2D
+    description         : plot title
+    cbar                : color bar layout
+    cmap_steps          : number of colormap bins
+    alpha               : alpha map
+    depth               : Value between 0 and 1 for how deep to sample the surface for the flatmap (0 = gray/white matter boundary, 1 = pial surface)
+    thick               : Number of layers through the cortical sheet to sample. Only applies for pixelwise = True
+    height              : Height of the image to render. Automatically scales the width for the aspect of the subject's flatmap
+    sampler             : Name of sampling function used to sample underlying volume data. Options include 'trilinear', 'nearest', 'lanczos'
+    with_curvature      : Display the rois, labels, colorbar, annotated flatmap borders, or cross-hatch dropout?
+    with_labels         : Display labels?
+    with_colorbar       : Display pycortex' colorbar?
+    with_borders        : Display borders?
+    curv_brightness     : Mean brightness of background. 0 = black, 1 = white, intermediate values are corresponding grayscale values.
+    curv_contrast       : Contrast of curvature. 1 = maximal contrast (black/white), 0 = no contrast (solid color for curvature equal to curvature_brightness).
+    add_roi             : add roi -image- to overlay.svg
+    roi_name            : roi name
+    col_offset          : colormap offset between 0 and 1
+    zoom_roi            : name of the roi on which to zoom on
+    zoom_hem            : hemifield fo the roi zoom
+    zoom_margin         : margin in mm around the zoom
     Returns
     -------
-    hdf5_file : str
-        absolute path to hdf5 file.
+    vertex_rgb - pycortex vertex file
     """
-
-    import nibabel as nb
-    import os.path as op
+    
+    import cortex
     import numpy as np
-    import h5py
+    import matplotlib.pyplot as plt
+    import matplotlib.colors as colors
+    from matplotlib import cm
+    import matplotlib as mpl
     import ipdb
     deb = ipdb.set_trace
 
-    gii_in_data = nb.load(in_file)
-    data_mat = np.array([gii_in_data.darrays[i].data for i in range(len(gii_in_data.darrays))])
-    data_name = op.split(in_file)[-1].split('.gii')[0]
-
-    gii_in_mask = nb.load(mask_file)
-    mask_mat = np.array([gii_in_mask.darrays[i].data for i in range(len(gii_in_mask.darrays))])
-
-    mask_mat = mask_mat[roi_num,:]
-    mask_mat = np.round(mask_mat)
+    # define colormap
+    base = cortex.utils.get_cmap(cmap)
+    val = np.linspace(0, 1,cmap_steps+1,endpoint=False)
+    colmap = colors.LinearSegmentedColormap.from_list('my_colmap',base(val), N = cmap_steps)
     
-    roi_data = data_mat[:, mask_mat==1]
-    
-    try:
-        h5file = h5py.File(hdf5_file, "r+")
-    except:
-        h5file = h5py.File(hdf5_file, "a")
-    
-    try:
-        g_hemi = h5file.create_group(folder_alias)    
-    except:
-        None
+    # convert data to RGB
+    vrange = float(vmax) - float(vmin)
+    norm_data = ((data-float(vmin))/vrange)*cmap_steps
+    mat = colmap(norm_data.astype(int))*255.0
+    alpha = alpha*255.0
 
-    h5file.create_dataset('{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = data_name),data = roi_data,dtype='float32')
+    # define volume RGB
+    volume = cortex.VolumeRGB(  red = mat[...,0].T.astype(np.uint8),
+                                green = mat[...,1].T.astype(np.uint8),
+                                blue = mat[...,2].T.astype(np.uint8),
+                                alpha = alpha.T.astype(np.uint8),
+                                subject = subject,
+                                xfmname = xfmname)
+    
+    volume_fig = cortex.quickshow(  braindata = volume,
+                                    depth = depth,
+                                    thick = thick,
+                                    height = height,
+                                    sampler = sampler,
+                                    with_curvature = with_curvature,
+                                    with_labels = with_labels,
+                                    with_colorbar = with_colorbar,
+                                    with_borders = with_borders,
+                                    curvature_brightness = curv_brightness,
+                                    curvature_contrast = curv_contrast)
+    
+    if cbar == 'polar':
+        
+        base = cortex.utils.get_cmap(cmap)
+        val = np.arange(1,cmap_steps+1)/cmap_steps - (1/(cmap_steps*2))
+        val = np.fmod(val+col_offset,1)
+        colmap = colors.LinearSegmentedColormap.from_list('my_colmap',base(val),N = cmap_steps)
 
-    return None
+        cbar_axis = volume_fig.add_axes([0.5, 0.07, 0.8, 0.2], projection='polar')
+        norm = colors.Normalize(0, 2*np.pi)
+        t = np.linspace(0,2*np.pi,200,endpoint=True)
+        r = [0,1]
+        rg, tg = np.meshgrid(r,t)
+        im = cbar_axis.pcolormesh(t, r, tg.T,norm= norm, cmap = colmap)
+        cbar_axis.set_yticklabels([])
+        cbar_axis.set_xticklabels([])
+        cbar_axis.set_theta_zero_location("W")
+
+        cbar_axis.spines['polar'].set_visible(False)
+        
+#         # Polar angle color bar
+#         colorbar_location = [0.5, 0.07, 0.8, 0.2]
+#         n = 200
+#         cbar_axis = volume_fig.add_axes(colorbar_location, projection='polar')
+#         norm = mpl.colors.Normalize(0, 2*np.pi)
+
+#         # Plot a color mesh on the polar plot
+#         # with the color set by the angle
+#         t = np.linspace(2*np.pi,0,n)
+#         r = np.linspace(1,0,2)
+#         rg, tg = np.meshgrid(r,t)
+#         c = tg
+#         im = cbar_axis.pcolormesh(t, r, c.T,norm= norm, cmap = colmap)
+#         cbar_axis.set_theta_zero_location("W")
+#         cbar_axis.set_yticklabels([])
+#         cbar_axis.set_xticklabels([])
+#         cbar_axis.spines['polar'].set_visible(False)
+
+    elif cbar == 'ecc':
+        
+        # Ecc color bar
+        colorbar_location = [0.5, 0.07, 0.8, 0.2]
+        n = 200
+        cbar_axis = volume_fig.add_axes(colorbar_location, projection='polar')
+
+        t = np.linspace(0,2*np.pi, n)
+        r = np.linspace(0,1, n)
+        rg, tg = np.meshgrid(r,t)
+        c = tg
+            
+        im = cbar_axis.pcolormesh(t, r, c, norm = mpl.colors.Normalize(0, 2*np.pi), cmap = colmap)
+        cbar_axis.tick_params(pad = 1,labelsize = 15)
+        cbar_axis.spines['polar'].set_visible(False)
+            
+        # superimpose new axis for dva labeling
+        box = cbar_axis.get_position()
+        cbar_axis.set_yticklabels([])
+        cbar_axis.set_xticklabels([])
+        axl = volume_fig.add_axes(  [1.8*box.xmin,
+                                        0.5*(box.ymin+box.ymax),
+                                        box.width/600,
+                                        box.height*0.5])
+        axl.spines['top'].set_visible(False)
+        axl.spines['right'].set_visible(False)
+        axl.spines['bottom'].set_visible(False)
+        axl.yaxis.set_ticks_position('right')
+        axl.xaxis.set_ticks_position('none')
+        axl.set_xticklabels([])
+        axl.set_yticklabels(np.linspace(vmin,vmax,3),size = 'x-large')
+        axl.set_ylabel('$dva$\t\t', rotation = 0, size = 'x-large')
+        axl.yaxis.set_label_coords(box.xmax+30,0.4)
+        axl.patch.set_alpha(0.5)
+
+    elif cbar == 'discrete':
+
+        # Discrete color bars
+        # -------------------
+        colorbar_location= [0.9, 0.05, 0.03, 0.25]
+        cmaplist = [colmap(i) for i in range(colmap.N)]
+
+        # define the bins and normalize
+        bounds = np.linspace(vmin, vmax, cmap_steps + 1)
+        bounds_label = np.linspace(vmin, vmax, 3)
+        norm = mpl.colors.BoundaryNorm(bounds, colmap.N)
+            
+        cbar_axis = volume_fig.add_axes(colorbar_location)
+        cb = mpl.colorbar.ColorbarBase(cbar_axis,cmap = colmap,norm = norm,ticks = bounds_label,boundaries = bounds)
+
+    # add to overalt
+    if add_roi == True:
+        cortex.utils.add_roi(   data = volume,
+                                name = roi_name,
+                                open_inkscape = False,
+                                add_path = False,
+                                depth = depth,
+                                thick = thick,
+                                sampler = sampler,
+                                with_curvature = with_curvature,
+                                with_colorbar = with_colorbar,
+                                with_borders = with_borders,
+                                curvature_brightness = curv_brightness,
+                                curvature_contrast = curv_contrast)
+
+    return volume
