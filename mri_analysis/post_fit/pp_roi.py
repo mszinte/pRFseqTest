@@ -41,13 +41,10 @@ deb = ipdb.set_trace
 # -----------
 import nibabel as nb
 import cortex
-from cortex.fmriprep import *
-from nipype.interfaces import fsl, freesurfer
-from nilearn import image
 
 # Functions import
 # ----------------
-from utils import set_pycortex_config_file, draw_cortex_vertex
+from utils import draw_cortex_vertex
 
 # Get inputs
 # ----------
@@ -75,53 +72,30 @@ xfm_name = 'identity.t1w'
 # -----------------------------
 set_pycortex_config_file(base_dir)
 
-# Add participant to pycortex db
-# ------------------------------
-if os.path.isdir(cortex_dir) == False:
-    cortex.fmriprep.import_subj(subject = subject[-2:], source_dir = fmriprep_dir, sname = subject)
-    cortex.freesurfer.import_flat(subject = subject, patch = 'full', freesurfer_subject_dir = fs_dir, sname = subject)
-    
-    t1w = cortex.db.get_anat(subject)
-    transform = cortex.xfm.Transform(np.identity(4), t1w)
-    transform.save(subject, xfm_name, 'magnet')
-
-# Draw pycortex flatmaps
-# ----------------------
-print('draw pycortex flatmaps')
-sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
-            non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
-
-cmap_neg_pos = 'RdBu_r'
-cmap_polar = 'Retinotopy_RYBCR'
-col_offset = 14/16
-polar_col_steps = [4.0, 8.0, 16.0, 255.0]
-
-cmap_uni = 'Reds'
-cmap_ecc_size = 'Spectral'
-
 for mask_dir in ['all','pos','neg']:
 
+    print('draw pycortex flatmaps: {mask_dir}'.format(mask_dir = mask_dir))
     # Create figure folders
     maps_names = []
-    exec('fig_roi_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"figs","flatmaps","{mask_dir}")'.format(mask_dir = mask_dir))
-    try: exec('os.makedirs(fig_roi_dir_{mask_dir})'.format(mask_dir=mask_dir))
-    except: pass
+    exec('flatmaps_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","flatmaps","{mask_dir}")'.format(mask_dir = mask_dir))
+    exec('dataset_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","dataset","{mask_dir}")'.format(mask_dir = mask_dir))
+    exec('webviewer_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","webviewer","{mask_dir}")'.format(mask_dir = mask_dir))
+    try: 
+        exec('os.makedirs(flatmaps_dir_{mask_dir})'.format(mask_dir=mask_dir))
+        exec('os.makedirs(dataset_dir_{mask_dir})'.format(mask_dir=mask_dir))
+        exec('os.makedirs(webviewer_dir_{mask_dir})'.format(mask_dir=mask_dir))
+    except: 
+        pass
 
     # Load data
-    deriv_mat=[]
-    deriv_mat_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
-    img_deriv_mat = nb.load(deriv_mat_file)
-    deriv_mat = img_deriv_mat.get_data()
-
-    # interpolate to t1w
-    t1w = cortex.db.get_anat(subject)
-    deriv_rs = image.resample_to_img(source_img = img_deriv_mat, target_img = t1w, interpolation = 'nearest')
-    deriv_mat_rs = deriv_rs.get_data()
-
+    deriv_mat_rs_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}_rs.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
+    img_deriv_mat_rs = nb.load(deriv_mat_rs_file)
+    deriv_mat_rs = img_deriv_mat_rs.get_data()
+    
     # R-square
     rsq_data = deriv_mat_rs[...,rsq_idx]
     alpha = rsq_data
-    param_rsq = {'data': rsq_data, 'cmap': cmap_uni, 'alpha': alpha, 'vmin': 0,'vmax': 1,'cbar': 'discrete', 'description': 'pRF rsquare'}
+    param_rsq = {'data': rsq_data, 'cmap': cmap_uni, 'alpha': alpha, 'vmin': 0,'vmax': 1,'cbar': 'discrete', 'description': 'pRF rsquare', 'curv_brightness': 1, 'curv_contrast': 0.1}
     maps_names.append('rsq')
 
     # Polar angle
@@ -132,58 +106,48 @@ for mask_dir in ['all','pos','neg']:
 
     for cmap_steps in polar_col_steps:
         param_polar = {'data': ang_norm, 'cmap': cmap_polar, 'alpha': alpha, 'vmin': 0, 'vmax': 1, 'cmap_steps': cmap_steps,
-                       'cbar': 'polar', 'col_offset': col_offset, 'description': 'pRF polar:{:3.0f} steps'.format(cmap_steps)}
+                       'cbar': 'polar', 'col_offset': col_offset, 'description': 'pRF polar:{:3.0f} steps'.format(cmap_steps), 'curv_brightness': 0.1, 'curv_contrast': 0.25}
         exec('param_polar_{csteps} = param_polar'.format(csteps = int(cmap_steps)))
         exec('maps_names.append("polar_{csteps}")'.format(csteps = int(cmap_steps)))
 
     # Eccentricity
     ecc_data = deriv_mat_rs[...,ecc_idx]
-    param_ecc = {'data': ecc_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 15,'cbar': 'ecc', 'description': 'pRF eccentricity'}
+    param_ecc = {'data': ecc_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 15,'cbar': 'ecc', 'description': 'pRF eccentricity', 'curv_brightness': 1, 'curv_contrast': 0.1}
     maps_names.append('ecc')
 
     # Sign
     sign_data = deriv_mat_rs[...,sign_idx]
-    param_sign = {'data': sign_data, 'cmap': cmap_neg_pos, 'alpha': alpha, 'vmin': -1, 'vmax': 1, 'cbar': 'discrete', 'description': 'pRF sign'}
+    param_sign = {'data': sign_data, 'cmap': cmap_neg_pos, 'alpha': alpha, 'vmin': -1, 'vmax': 1, 'cbar': 'discrete', 'description': 'pRF sign', 'curv_brightness': 1, 'curv_contrast': 0.1}
     maps_names.append('sign')
 
     # Size
     size_data = deriv_mat_rs[...,size_idx]
-    param_size = {'data': size_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 8, 'cbar': 'discrete', 'description': 'pRF size'}
+    param_size = {'data': size_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 8, 'cbar': 'discrete', 'description': 'pRF size', 'curv_brightness': 1, 'curv_contrast': 0.1}
     maps_names.append('size')
 
     # Coverage
     cov_data = deriv_mat_rs[...,cov_idx]
-    param_cov = {'data': cov_data, 'cmap': cmap_uni, 'alpha': alpha,'vmin': 0, 'vmax': 1, 'cbar': 'discrete', 'description': 'pRF coverage'}
+    param_cov = {'data': cov_data, 'cmap': cmap_uni, 'alpha': alpha,'vmin': 0, 'vmax': 1, 'cbar': 'discrete', 'description': 'pRF coverage', 'curv_brightness': 1, 'curv_contrast': 0.1}
     maps_names.append('cov')
 
-    # Draw figures
+    # Draw flatmaps
     volumes = {}
     for maps_name in maps_names:
         roi_name = '{maps_name}_{mask_dir}'.format(maps_name = maps_name, mask_dir = mask_dir)
 
-        roi_param = {   'subject': subject,
-                        'xfmname': xfm_name,
-                        'add_roi': False, 
-                        'roi_name': roi_name,
-                        'curv_brightness': 0.7, 
-                        'curv_contrast': 0.3}
+        roi_param = {'subject': subject, 'xfmname': xfm_name, 'add_roi': False, 'roi_name': roi_name}
 
         exec('param_{maps_name}.update(roi_param)'.format(maps_name = maps_name))
         exec('volume_{maps_name} = draw_cortex_vertex(**param_{maps_name})'.format(maps_name=maps_name))
-        exec('plt.savefig(opj(fig_roi_dir_{mask_dir}, "{maps_name}_{acq}_{mask_dir}.pdf"),facecolor="w")'.format(mask_dir=mask_dir,maps_name = maps_name, acq = acq))
-        plt.close()    
-        print('new_volume = { param_{maps_name}["description"]: volume_{maps_name}}'.format(maps_name=maps_name))
-        deb()
-        volumes.update(new_volume)
-        
-        
+        exec('plt.savefig(opj(flatmaps_dir_{mask_dir}, "{maps_name}_{acq}_{mask_dir}.pdf"),facecolor="w")'.format(mask_dir = mask_dir,maps_name = maps_name, acq = acq))
+        plt.close()
+        exec('vol_description = param_{maps_name}["description"]'.format(maps_name = maps_name))
+        exec('volume = volume_{maps_name}'.format(maps_name = maps_name))
+        volumes.update({vol_description:volume})
     
-        
-    'First Dataset': volume1,
-    'Second Dataset': volume2,
-    'Third Dataset': volume3,
-}
-
-# create viewer
-cortex.webgl.show(data=volumes)
+    print('save pycortex dataset: {mask_dir}'.format(mask_dir = mask_dir))
+    exec('dataset_{mask_dir} = cortex.Dataset(data = volumes)'.format(mask_dir = mask_dir))
+    exec('dataset_{mask_dir}.save(opj(dataset_dir_{mask_dir}, "{acq}_{mask_dir}.hdf"))'.format(acq = acq, mask_dir = mask_dir))
     
+    print('save pycortex webviewer: {mask_dir}'.format(mask_dir = mask_dir))
+    exec('cortex.webgl.make_static(outpath = webviewer_dir_{mask_dir}, data = volumes)'.format(acq = acq, mask_dir = mask_dir))
