@@ -36,4 +36,5 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 6. filter data for slow drift, make percentage signal change and average -acq runs together using pre_fit/pre_fit.py
 7. Fit results per z slices using fit/submit_fit_jobs.py
 8. Combine fits, compute pRF derivatives, resample them to cortex t1w, create pycortex databases using post_fit/post_fit.py
-9. 
+9. Create flatmaps, dataset and webviewer using post_fit/pp_roi.py
+10. Draw ROIs using inkscape
