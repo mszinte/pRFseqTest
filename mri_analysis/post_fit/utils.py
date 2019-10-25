@@ -382,7 +382,7 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'd
 
     return volume
 
-def mask_nifti_2_hdf5(in_file, mask_file, hdf5_file, folder_alias):
+def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file, hdf5_file, folder_alias):
     """
     masks data in in_file with mask in mask_file,
     to be stored in an hdf5 file
@@ -408,17 +408,27 @@ def mask_nifti_2_hdf5(in_file, mask_file, hdf5_file, folder_alias):
     import os
     deb = ipdb.set_trace
 
-    # load file to mask
-    in_file_img = nb.load(in_file)
-    in_file_data = in_file_img.get_data()
-    data_name = os.path.split(in_file)[-1].split('.nii.gz')[0]
+    # load deriv file to mask
+    deriv_file_img = nb.load(deriv_file)
+    deriv_file_data = deriv_file_img.get_data()
+    deriv_data_name = os.path.split(deriv_file)[-1].split('.nii.gz')[0] 
+
+    # load tc file to mask
+    tc_file_img = nb.load(tc_file)
+    tc_file_data = tc_file_img.get_data()
+    tc_data_name = os.path.split(tc_file)[-1].split('.nii.gz')[0]
 
     # load mask
+    
     mask_file_img = nb.load(mask_file)
     mask_file_data = mask_file_img.get_data()
-
-    roi_data = in_file_data[mask_file_data == True,:]
+    coord_mask = np.array(np.where(mask_file_data == True)).T
     
+    # mask files
+    deriv_mask_data = deriv_file_data[mask_file_data == True,:]
+    tc_mask_data = tc_file_data[mask_file_data == True,:]
+    
+
     try:
         h5file = h5py.File(hdf5_file, "r+")
     except:
@@ -429,6 +439,15 @@ def mask_nifti_2_hdf5(in_file, mask_file, hdf5_file, folder_alias):
     except:
         None
 
-    h5file.create_dataset('{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = data_name),data = roi_data,dtype='float32')
+    h5file.create_dataset(  '{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = deriv_data_name),
+                            data = deriv_mask_data,
+                            dtype ='float32')
+
+    h5file.create_dataset(  '{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = tc_data_name),
+                            data = tc_mask_data,
+                            dtype ='float32')
+    h5file.create_dataset(  '{folder_alias}/coord'.format(folder_alias = folder_alias),
+                            data = coord_mask,
+                            dtype ='float32')
 
     return None

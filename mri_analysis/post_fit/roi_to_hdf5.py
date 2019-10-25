@@ -3,7 +3,7 @@
 roi_to_hdf5.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Create roi-masks and save all data in hdf5 format
+Create roi-masks and save all deriv, tc and coord in hdf5 format
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: subject name (e.g. 'sub-01')
@@ -57,9 +57,9 @@ with open('settings.json') as f:
 base_dir = analysis_info['base_dir']
 prf_signs = analysis_info['prf_signs']
 cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
-rois_mask_dir = "{base_dir}/pp_data/{subject}/{fit_model}/masks/".format(base_dir = base_dir, subject = subject, fit_model = fit_model)
-h5_dir = "{base_dir}/pp_data/{subject}/{fit_model}/h5/".format(base_dir = base_dir, subject = subject, fit_model = fit_model)
-deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
+rois_mask_dir = "{base_dir}/pp_data/{subject}/{fit_model}/masks".format(base_dir = base_dir, subject = subject, fit_model = fit_model)
+h5_dir = "{base_dir}/pp_data/{subject}/{fit_model}/h5".format(base_dir = base_dir, subject = subject, fit_model = fit_model)
+deriv_dir = "{base_dir}/pp_data/{subject}/{fit_model}/deriv".format(base_dir = base_dir, subject = subject, fit_model = fit_model)
 xfm_name = "identity.{acq}".format(acq = acq)
 rois = analysis_info['rois']
 cortical_mask = analysis_info['cortical_mask']
@@ -87,10 +87,11 @@ for roi in rois:
 try: os.makedirs(h5_dir)
 except: pass
 
+tc_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
 for roi in rois:
 	print('creating {roi} h5 files'.format(roi = roi))
 
-	h5_file = "{h5_dir}{roi}_{acq}.h5".format(h5_dir = h5_dir, roi = roi, acq = acq)
+	h5_file = "{h5_dir}/{roi}_{acq}.h5".format(h5_dir = h5_dir, roi = roi, acq = acq)
 	
 	try: os.system('rm {h5_file}'.format(h5_file = h5_file))
 	except: pass
@@ -101,7 +102,8 @@ for roi in rois:
 
 		deriv_file = "{deriv_dir}/{prf_sign}/prf_deriv_{acq}_{prf_sign}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, prf_sign = prf_sign)
 
-		mask_nifti_2_hdf5(	in_file = deriv_file,
+		mask_nifti_2_hdf5(	deriv_file = deriv_file,
+					 		tc_file = tc_file,
 							mask_file = mask_file,
 							hdf5_file = h5_file,
 							folder_alias = prf_sign)
