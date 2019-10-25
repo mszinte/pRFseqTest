@@ -9,17 +9,17 @@ Input(s):
 sys.argv[1]: subject 
 sys.argv[2]: acq
 sys.argv[3]: model
-sys.argv[4]: prf_sign
+sys.argv[4]: prf_sign or tc
 sys.argv[5]: recache
 -----------------------------------------------------------------------------------------
 Output(s):
 None
 -----------------------------------------------------------------------------------------
 To run:
-python load_dataset.py sub-01 acq-2mm gauss pos
-python load_dataset.py sub-01 acq-2p5mm gauss pos
-python load_dataset.py sub-02 acq-2mm gauss pos
-python load_dataset.py sub-02 acq-2p5mm gauss pos 
+python post_fit/load_dataset.py sub-01 acq-2mm gauss pos 1
+python post_fit/load_dataset.py sub-01 acq-2mm gauss tc 1
+python post_fit/load_dataset.py sub-01 acq-2p5mm gauss pos 1
+python post_fit/load_dataset.py sub-01 acq-2p5mm gauss tc 1
 > to run localy
 -----------------------------------------------------------------------------------------
 """
@@ -94,4 +94,4 @@ ds = cortex.dataset.Dataset.from_file("{file_dir}{file}".format(file_dir = datas
 
 print('create webgl...')
 cortex.webgl.show(data = ds, recache = recache_val)
-time.sleep(5)
+time.sleep(15)

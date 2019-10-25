@@ -202,17 +202,17 @@ def convert_fit_results(est_fn,
     prf_deriv_neg = np.zeros((est.shape[0],est.shape[1],est.shape[2],12))*np.nan
     output_list = ['prf_sign','prf_rsq','prf_ecc','prf_polar_real','prf_polar_imag','prf_size','prf_non_lin','prf_amp','prf_baseline','prf_cov','prf_x','prf_y']
 
-    for mask_dir in ['all','pos','neg']:
-        print('saving: %s'%('os.path.join(output_dir,"{mask_dir}","prf_deriv_{mask_dir}.nii.gz")'.format(mask_dir = mask_dir)))
+    for prf_sign in ['all','pos','neg']:
+        print('saving: %s'%('os.path.join(output_dir,"{prf_sign}","prf_deriv_{prf_sign}.nii.gz")'.format(prf_sign = prf_sign)))
         for output_num, output_type in enumerate(output_list):
-            exec('{output_type}_{mask_dir} = np.copy({output_type}_all)'.format(mask_dir = mask_dir, output_type = output_type))
-            exec('{output_type}_{mask_dir}[~{mask_dir}_mask] = np.nan'.format(mask_dir = mask_dir, output_type = output_type))
+            exec('{output_type}_{prf_sign} = np.copy({output_type}_all)'.format(prf_sign = prf_sign, output_type = output_type))
+            exec('{output_type}_{prf_sign}[~{prf_sign}_mask] = np.nan'.format(prf_sign = prf_sign, output_type = output_type))
 
-            exec('prf_deriv_{mask_dir}[...,{output_num}]  = {output_type}_{mask_dir}'.format(mask_dir = mask_dir, output_type = output_type, output_num = output_num))
+            exec('prf_deriv_{prf_sign}[...,{output_num}]  = {output_type}_{prf_sign}'.format(prf_sign = prf_sign, output_type = output_type, output_num = output_num))
 
-        exec('prf_deriv_{mask_dir} = prf_deriv_{mask_dir}.astype(np.float32)'.format(mask_dir = mask_dir))
-        exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{mask_dir}, affine = img_est.affine, header = img_est.header)'.format(mask_dir = mask_dir))
-        exec('new_img.to_filename(os.path.join(output_dir,"{mask_dir}","prf_deriv_{acq}_{mask_dir}.nii.gz"))'.format(mask_dir = mask_dir, acq = acq))
+        exec('prf_deriv_{prf_sign} = prf_deriv_{prf_sign}.astype(np.float32)'.format(prf_sign = prf_sign))
+        exec('new_img = nb.Nifti1Image(dataobj = prf_deriv_{prf_sign}, affine = img_est.affine, header = img_est.header)'.format(prf_sign = prf_sign))
+        exec('new_img.to_filename(os.path.join(output_dir,"{prf_sign}","prf_deriv_{acq}_{prf_sign}.nii.gz"))'.format(prf_sign = prf_sign, acq = acq))
 
     return None
     
@@ -314,24 +314,6 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'd
         cbar_axis.set_theta_zero_location("W")
 
         cbar_axis.spines['polar'].set_visible(False)
-        
-#         # Polar angle color bar
-#         colorbar_location = [0.5, 0.07, 0.8, 0.2]
-#         n = 200
-#         cbar_axis = volume_fig.add_axes(colorbar_location, projection='polar')
-#         norm = mpl.colors.Normalize(0, 2*np.pi)
-
-#         # Plot a color mesh on the polar plot
-#         # with the color set by the angle
-#         t = np.linspace(2*np.pi,0,n)
-#         r = np.linspace(1,0,2)
-#         rg, tg = np.meshgrid(r,t)
-#         c = tg
-#         im = cbar_axis.pcolormesh(t, r, c.T,norm= norm, cmap = colmap)
-#         cbar_axis.set_theta_zero_location("W")
-#         cbar_axis.set_yticklabels([])
-#         cbar_axis.set_xticklabels([])
-#         cbar_axis.spines['polar'].set_visible(False)
 
     elif cbar == 'ecc':
         
@@ -399,3 +381,54 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'd
                                 curvature_contrast = curv_contrast)
 
     return volume
+
+def mask_nifti_2_hdf5(in_file, mask_file, hdf5_file, folder_alias):
+    """
+    masks data in in_file with mask in mask_file,
+    to be stored in an hdf5 file
+    Takes a 4D fMRI nifti-files and masks the
+    data with the mask in mask_file.
+    
+    Parameters
+    ----------
+    in_files : absolute path to functional nifti-file
+    mask_file : absolute path to mask nifti-file
+    hdf5_file : absolute path to hdf5 file.
+    folder_alias : name of the to-be-created folder in the hdf5 file.
+    
+    Returns
+    -------
+    None
+    """
+
+    import nibabel as nb
+    import numpy as np
+    import h5py
+    import ipdb
+    import os
+    deb = ipdb.set_trace
+
+    # load file to mask
+    in_file_img = nb.load(in_file)
+    in_file_data = in_file_img.get_data()
+    data_name = os.path.split(in_file)[-1].split('.nii.gz')[0]
+
+    # load mask
+    mask_file_img = nb.load(mask_file)
+    mask_file_data = mask_file_img.get_data()
+
+    roi_data = in_file_data[mask_file_data == True,:]
+    
+    try:
+        h5file = h5py.File(hdf5_file, "r+")
+    except:
+        h5file = h5py.File(hdf5_file, "a")
+    
+    try:
+        h5file.create_group(folder_alias)
+    except:
+        None
+
+    h5file.create_dataset('{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = data_name),data = roi_data,dtype='float32')
+
+    return None

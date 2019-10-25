@@ -1,6 +1,7 @@
 {
     "acq":["acq-2p5mm","acq-2mm"],
     "runs":["run-01","run-02","run-03","run-04","run-05"],
+    "prf_signs": ["pos"],
     "TR": 1.2,
     "TRs": 122,
     "screen_distance": 120,
@@ -19,6 +20,6 @@
     "fit_model":"gauss",
     "fit_steps":6,
     "xfm_masks":["cortical", "thick", "thin", "nearest"],
-    "roi_mask":"cortical",
+    "cortical_mask":"cortical",
     "rois": ["V1","V2","V3","V3A","V3B","LO","VO","hMT+","iIPS","sIPS","iPCS","sPCS","mPCS"]
 }

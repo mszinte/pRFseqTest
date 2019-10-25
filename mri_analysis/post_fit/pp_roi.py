@@ -68,140 +68,141 @@ with open('settings.json') as f:
 # -------------
 xfm_name = "identity.{acq}".format(acq = acq)
 base_dir = analysis_info['base_dir_local']
-deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
+prf_signs = analysis_info['prf_signs']
+deriv_dir = "{base_dir}/pp_data/{subject}/{fit_model}/deriv".format(base_dir = base_dir,subject = subject, fit_model = fit_model)
 cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
 fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/".format(base_dir = base_dir)
 fmriprep_dir = "{base_dir}/deriv_data/fmriprep/".format(base_dir = base_dir)
 bids_dir = "{base_dir}/bids_data/".format(base_dir = base_dir)
 
-
 # Set pycortex db and colormaps
 # -----------------------------
 set_pycortex_config_file(base_dir)
 
-# Pycortex plots
-# --------------
-sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
-            non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
+# # Pycortex plots
+# # --------------
+# sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
+#             non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
 
-cmap_neg_pos = 'RdBu_r'
-cmap_polar = 'hsv'
-cmap_uni = 'Reds'
-cmap_ecc_size = 'Spectral'
-col_offsets = [0.0, 0.0, 0.0, 1/14]
-polar_col_steps = [4.0, 8.0, 16.0, 255.0]
+# cmap_neg_pos = 'RdBu_r'
+# cmap_polar = 'hsv'
+# cmap_uni = 'Reds'
+# cmap_ecc_size = 'Spectral'
+# col_offset = 1/14
+# cmap_steps = 255.0
 
-# for mask_dir in ['all','pos','neg']:
-for mask_dir in ['pos']:
-    print('save pycortex flatmaps: {mask_dir}'.format(mask_dir = mask_dir))
-    # Create figure folders
-    maps_names = []
-    exec('flatmaps_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","flatmaps","{mask_dir}")'.format(mask_dir = mask_dir))
-    exec('dataset_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","dataset","{mask_dir}")'.format(mask_dir = mask_dir))
-    exec('webviewer_dir_{mask_dir} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","webviewer","{mask_dir}","{acq}")'.format(mask_dir = mask_dir, acq = acq)) 
+# for prf_sign in prf_signs:
+#     print('save pycortex flatmaps: {prf_sign}'.format(prf_sign = prf_sign))
+#     # Create figure folders
+#     maps_names = []
+#     exec('flatmaps_dir_{prf_sign} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","flatmaps","{prf_sign}")'.format(prf_sign = prf_sign))
+#     exec('dataset_dir_{prf_sign} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","dataset","{prf_sign}")'.format(prf_sign = prf_sign))
+#     exec('webviewer_dir_{prf_sign} = opj(base_dir,"pp_data",subject,fit_model,"pycortex_outputs","webviewer","{prf_sign}","{acq}")'.format(prf_sign = prf_sign, acq = acq)) 
         
-    try:
-        exec('os.makedirs(flatmaps_dir_{mask_dir})'.format(mask_dir = mask_dir))
-        exec('os.makedirs(dataset_dir_{mask_dir})'.format(mask_dir = mask_dir))
-        exec('os.makedirs(webviewer_dir_{mask_dir})'.format(mask_dir = mask_dir))
-    except:
-        pass
+#     try:
+#         exec('os.makedirs(flatmaps_dir_{prf_sign})'.format(prf_sign = prf_sign))
+#         exec('os.makedirs(dataset_dir_{prf_sign})'.format(prf_sign = prf_sign))
+#         exec('os.makedirs(webviewer_dir_{prf_sign})'.format(prf_sign = prf_sign))
+#     except:
+#         pass
 
-    # Load data
-    deriv_mat_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
-    img_deriv_mat = nb.load(deriv_mat_file)
-    deriv_mat = img_deriv_mat.get_data()
+#     # Load data
+#     deriv_mat_file = "{deriv_dir}/{prf_sign}/prf_deriv_{acq}_{prf_sign}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, prf_sign = prf_sign)
+#     img_deriv_mat = nb.load(deriv_mat_file)
+#     deriv_mat = img_deriv_mat.get_data()
     
-    # R-square
-    rsq_data = deriv_mat[...,rsq_idx]
-    alpha = rsq_data
-    param_rsq = {'data': rsq_data, 'cmap': cmap_uni, 'alpha': alpha, 'vmin': 0,'vmax': 1,'cbar': 'discrete',
-                 'description': '{acq}: pRF rsquare'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
-    maps_names.append('rsq')
+#     # R-square
+#     rsq_data = deriv_mat[...,rsq_idx]
+#     alpha = rsq_data
+#     param_rsq = {'data': rsq_data, 'cmap': cmap_uni, 'alpha': alpha, 'vmin': 0,'vmax': 1,'cbar': 'discrete',
+#                  'description': '{acq}: pRF rsquare'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
+#     maps_names.append('rsq')
 
-    # Polar angle
-    pol_comp_num = deriv_mat[...,polar_real_idx] + 1j * deriv_mat[...,polar_imag_idx]
-    polar_ang = np.angle(pol_comp_num)
-    ang_norm = (polar_ang + np.pi) / (np.pi * 2.0)
+#     # Polar angle
+#     pol_comp_num = deriv_mat[...,polar_real_idx] + 1j * deriv_mat[...,polar_imag_idx]
+#     polar_ang = np.angle(pol_comp_num)
+#     ang_norm = (polar_ang + np.pi) / (np.pi * 2.0)
+#     ang_norm = np.fmod(ang_norm + col_offset,1)
     
+#     param_polar = {'data': ang_norm, 'cmap': cmap_polar, 'alpha': alpha, 'vmin': 0, 'vmax': 1, 'cmap_steps': cmap_steps,
+#                    'cbar': 'polar', 'col_offset': col_offset, 'description': '{acq}: pRF polar:{cmap_steps:3.0f} steps'.format(cmap_steps = cmap_steps, acq = acq), 
+#                    'curv_brightness': 0.1, 'curv_contrast': 0.25, 'add_roi': save_svg}
+#     exec('param_polar_{cmap_steps} = param_polar'.format(cmap_steps = int(cmap_steps)))
+#     exec('maps_names.append("polar_{cmap_steps}")'.format(cmap_steps = int(cmap_steps)))
 
-    for cmap_steps,col_offset in zip(polar_col_steps,col_offsets):
-        ang_norm = np.fmod(ang_norm + col_offset,1)
-        param_polar = {'data': ang_norm, 'cmap': cmap_polar, 'alpha': alpha, 'vmin': 0, 'vmax': 1, 'cmap_steps': cmap_steps,
-                       'cbar': 'polar', 'col_offset': col_offset, 'description': '{acq}: pRF polar:{cmap_steps:3.0f} steps'.format(cmap_steps = cmap_steps, acq = acq), 
-                       'curv_brightness': 0.1, 'curv_contrast': 0.25, 'add_roi': save_svg}
-        exec('param_polar_{csteps} = param_polar'.format(csteps = int(cmap_steps)))
-        exec('maps_names.append("polar_{csteps}")'.format(csteps = int(cmap_steps)))
+#     # Eccentricity
+#     ecc_data = deriv_mat[...,ecc_idx]
+#     param_ecc = {'data': ecc_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 15,'cbar': 'ecc', 
+#                  'description': '{acq}: pRF eccentricity'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': save_svg}
+#     maps_names.append('ecc')
+#     add_roi = True
 
-    # Eccentricity
-    ecc_data = deriv_mat[...,ecc_idx]
-    param_ecc = {'data': ecc_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 15,'cbar': 'ecc', 
-                 'description': '{acq}: pRF eccentricity'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': save_svg}
-    maps_names.append('ecc')
-    add_roi = True
+#     # Sign
+#     sign_data = deriv_mat[...,sign_idx]
+#     param_sign = {'data': sign_data, 'cmap': cmap_neg_pos, 'alpha': alpha, 'vmin': -1, 'vmax': 1, 'cbar': 'discrete', 
+#                   'description': '{acq}: pRF sign'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
+#     maps_names.append('sign')
+#     add_roi = False
 
-    # Sign
-    sign_data = deriv_mat[...,sign_idx]
-    param_sign = {'data': sign_data, 'cmap': cmap_neg_pos, 'alpha': alpha, 'vmin': -1, 'vmax': 1, 'cbar': 'discrete', 
-                  'description': '{acq}: pRF sign'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
-    maps_names.append('sign')
-    add_roi = False
+#     # Size
+#     size_data = deriv_mat[...,size_idx]
+#     param_size = {'data': size_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 8, 'cbar': 'discrete', 
+#                   'description': '{acq}: pRF size'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
+#     maps_names.append('size')
+#     add_roi = False
 
-    # Size
-    size_data = deriv_mat[...,size_idx]
-    param_size = {'data': size_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 8, 'cbar': 'discrete', 
-                  'description': '{acq}: pRF size'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
-    maps_names.append('size')
-    add_roi = False
+#     # Coverage
+#     cov_data = deriv_mat[...,cov_idx]
+#     param_cov = {'data': cov_data, 'cmap': cmap_uni, 'alpha': alpha,'vmin': 0, 'vmax': 1, 'cbar': 'discrete', 
+#                  'description': '{acq}: pRF coverage'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
+#     maps_names.append('cov')
+#     add_roi = False
 
-    # Coverage
-    cov_data = deriv_mat[...,cov_idx]
-    param_cov = {'data': cov_data, 'cmap': cmap_uni, 'alpha': alpha,'vmin': 0, 'vmax': 1, 'cbar': 'discrete', 
-                 'description': '{acq}: pRF coverage'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
-    maps_names.append('cov')
-    add_roi = False
-
-    # Draw flatmaps
-    volumes = {}
+#     # Draw flatmaps
+#     volumes = {}
     
-    for maps_name in maps_names:
-        roi_name = '{maps_name}_{acq}_{mask_dir}'.format(maps_name = maps_name, acq = acq, mask_dir = mask_dir)
+#     for maps_name in maps_names:
+#         roi_name = '{maps_name}_{acq}_{prf_sign}'.format(maps_name = maps_name, acq = acq, prf_sign = prf_sign)
 
-        if mask_dir == 'pos':
-            roi_param = {'subject': subject, 'xfmname': xfm_name, 'roi_name': roi_name}
-        else:
-            roi_param = {'subject': subject, 'xfmname': xfm_name, 'add_roi': False, 'roi_name': roi_name}
+#         if prf_sign == 'pos':
+#             roi_param = {'subject': subject, 'xfmname': xfm_name, 'roi_name': roi_name}
+#         else:
+#             roi_param = {'subject': subject, 'xfmname': xfm_name, 'add_roi': False, 'roi_name': roi_name}
         
-        exec('param_{maps_name}.update(roi_param)'.format(maps_name = maps_name))
-        exec('volume_{maps_name} = draw_cortex_vertex(**param_{maps_name})'.format(maps_name=maps_name))
-        exec('plt.savefig(opj(flatmaps_dir_{mask_dir}, "{maps_name}_{acq}_{mask_dir}.pdf"),facecolor="w")'.format(mask_dir = mask_dir,maps_name = maps_name, acq = acq))
-        plt.close()
-        exec('vol_description = param_{maps_name}["description"]'.format(maps_name = maps_name))
-        exec('volume = volume_{maps_name}'.format(maps_name = maps_name))
-        volumes.update({vol_description:volume})
+#         exec('param_{maps_name}.update(roi_param)'.format(maps_name = maps_name))
+#         exec('volume_{maps_name} = draw_cortex_vertex(**param_{maps_name})'.format(maps_name=maps_name))
+#         exec('plt.savefig(opj(flatmaps_dir_{prf_sign}, "{maps_name}_{acq}_{prf_sign}.pdf"),facecolor="w")'.format(prf_sign = prf_sign,maps_name = maps_name, acq = acq))
+#         plt.close()
+#         exec('vol_description = param_{maps_name}["description"]'.format(maps_name = maps_name))
+#         exec('volume = volume_{maps_name}'.format(maps_name = maps_name))
+#         volumes.update({vol_description:volume})
     
-    print('save pycortex dataset: {mask_dir}'.format(mask_dir = mask_dir))
-    exec('dataset_{mask_dir} = cortex.Dataset(data = volumes)'.format(mask_dir = mask_dir))
-    exec('dataset_{mask_dir}_file = opj(dataset_dir_{mask_dir}, "{acq}_{mask_dir}.hdf")'.format(acq = acq, mask_dir = mask_dir))
+#     print('save pycortex dataset: {prf_sign}'.format(prf_sign = prf_sign))
+#     exec('dataset_{prf_sign} = cortex.Dataset(data = volumes)'.format(prf_sign = prf_sign))
+#     exec('dataset_{prf_sign}_file = opj(dataset_dir_{prf_sign}, "{acq}_{prf_sign}.hdf")'.format(acq = acq, prf_sign = prf_sign))
     
-    try: exec('os.remove(dataset_{mask_dir}_file)'.format(mask_dir = mask_dir))
-    except: pass
-    exec('dataset_{mask_dir}.save(dataset_{mask_dir}_file)'.format(acq = acq, mask_dir = mask_dir))
-    print('save pycortex webviewer: {mask_dir}'.format(mask_dir = mask_dir))
-    exec('cortex.webgl.make_static(outpath = webviewer_dir_{mask_dir}, data = volumes)'.format(mask_dir = mask_dir))
+#     try: exec('os.remove(dataset_{prf_sign}_file)'.format(prf_sign = prf_sign))
+#     except: pass
+#     exec('dataset_{prf_sign}.save(dataset_{prf_sign}_file)'.format(acq = acq, prf_sign = prf_sign))
+#     print('save pycortex webviewer: {prf_sign}'.format(prf_sign = prf_sign))
+#     exec('cortex.webgl.make_static(outpath = webviewer_dir_{prf_sign}, data = volumes)'.format(prf_sign = prf_sign))
     
 # TC data
 # -------
 if plot_tc == 1:
    
     # load volume
+    print('load: time course')
     tc_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
     img_tc = nb.load(tc_file)
     tc = img_tc.get_data()
 
     # create directory
-    dataset_dir = opj(base_dir, 'pp_data', subject, fit_model, 'pycortex_outputs', 'dataset','tc')
-    webviewer_dir = opj(base_dir, 'pp_data', subject, fit_model, 'pycortex_outputs', 'webviewer', 'tc', acq)
+    dataset_dir = "{base_dir}/pp_data/{subject}/{fit_model}/pycortex_outputs/dataset/tc/".format(
+                            base_dir = base_dir, subject = subject, fit_model = fit_model)
+    webviewer_dir = "{base_dir}/pp_data/{subject}/{fit_model}/pycortex_outputs/webviewer/tc/".format(
+                            base_dir = base_dir, subject = subject, fit_model = fit_model)
+
     try: 
         os.makedirs(dataset_dir)
         os.makedirs(webviewer_dir)
@@ -214,7 +215,7 @@ if plot_tc == 1:
     # create dataset
     print('save pycortex dataset: time course')
     dataset_tc = cortex.Dataset(data = volume_tc)
-    dataset_tc.save("{dataset_dir}{acq}_bold.hdf".format(dataset_dir = dataset_dir, acq = acq))
+    dataset_tc.save("{dataset_dir}{acq}_tc.hdf".format(dataset_dir = dataset_dir, acq = acq))
 
     # create webgl
     print('save pycortex webviewer: time course')
