@@ -66,7 +66,7 @@ with open('settings.json') as f:
 
 # Define folder
 # -------------
-xfm_name = "identity.{acq}".format(acq = acq)
+xfm_name = analysis_info['xfm_name']
 base_dir = analysis_info['base_dir_local']
 deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
 cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
@@ -88,7 +88,7 @@ cmap_neg_pos = 'RdBu_r'
 cmap_polar = 'hsv'
 cmap_uni = 'Reds'
 cmap_ecc_size = 'Spectral'
-col_offsets = [0.0, 0.0, 0.0, 1/14]
+col_offset = 1/14
 polar_col_steps = [4.0, 8.0, 16.0, 255.0]
 
 # for mask_dir in ['all','pos','neg']:
@@ -108,25 +108,24 @@ for mask_dir in ['pos']:
         pass
 
     # Load data
-    deriv_mat_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
-    img_deriv_mat = nb.load(deriv_mat_file)
-    deriv_mat = img_deriv_mat.get_data()
+    deriv_mat_rs_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}_rs.nii.gz".format(deriv_dir = deriv_dir,acq = acq, mask_dir = mask_dir)
+    img_deriv_mat_rs = nb.load(deriv_mat_rs_file)
+    deriv_mat_rs = img_deriv_mat_rs.get_data()
     
     # R-square
-    rsq_data = deriv_mat[...,rsq_idx]
+    rsq_data = deriv_mat_rs[...,rsq_idx]
     alpha = rsq_data
     param_rsq = {'data': rsq_data, 'cmap': cmap_uni, 'alpha': alpha, 'vmin': 0,'vmax': 1,'cbar': 'discrete',
                  'description': '{acq}: pRF rsquare'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
     maps_names.append('rsq')
 
     # Polar angle
-    pol_comp_num = deriv_mat[...,polar_real_idx] + 1j * deriv_mat[...,polar_imag_idx]
+    pol_comp_num = deriv_mat_rs[...,polar_real_idx] + 1j * deriv_mat_rs[...,polar_imag_idx]
     polar_ang = np.angle(pol_comp_num)
     ang_norm = (polar_ang + np.pi) / (np.pi * 2.0)
-    
+    ang_norm = np.fmod(ang_norm + col_offset,1)
 
-    for cmap_steps,col_offset in zip(polar_col_steps,col_offsets):
-        ang_norm = np.fmod(ang_norm + col_offset,1)
+    for cmap_steps in polar_col_steps:
         param_polar = {'data': ang_norm, 'cmap': cmap_polar, 'alpha': alpha, 'vmin': 0, 'vmax': 1, 'cmap_steps': cmap_steps,
                        'cbar': 'polar', 'col_offset': col_offset, 'description': '{acq}: pRF polar:{cmap_steps:3.0f} steps'.format(cmap_steps = cmap_steps, acq = acq), 
                        'curv_brightness': 0.1, 'curv_contrast': 0.25, 'add_roi': save_svg}
@@ -134,28 +133,28 @@ for mask_dir in ['pos']:
         exec('maps_names.append("polar_{csteps}")'.format(csteps = int(cmap_steps)))
 
     # Eccentricity
-    ecc_data = deriv_mat[...,ecc_idx]
+    ecc_data = deriv_mat_rs[...,ecc_idx]
     param_ecc = {'data': ecc_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 15,'cbar': 'ecc', 
                  'description': '{acq}: pRF eccentricity'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': save_svg}
     maps_names.append('ecc')
     add_roi = True
 
     # Sign
-    sign_data = deriv_mat[...,sign_idx]
+    sign_data = deriv_mat_rs[...,sign_idx]
     param_sign = {'data': sign_data, 'cmap': cmap_neg_pos, 'alpha': alpha, 'vmin': -1, 'vmax': 1, 'cbar': 'discrete', 
                   'description': '{acq}: pRF sign'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
     maps_names.append('sign')
     add_roi = False
 
     # Size
-    size_data = deriv_mat[...,size_idx]
+    size_data = deriv_mat_rs[...,size_idx]
     param_size = {'data': size_data, 'cmap': cmap_ecc_size, 'alpha': alpha, 'vmin': 0, 'vmax': 8, 'cbar': 'discrete', 
                   'description': '{acq}: pRF size'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
     maps_names.append('size')
     add_roi = False
 
     # Coverage
-    cov_data = deriv_mat[...,cov_idx]
+    cov_data = deriv_mat_rs[...,cov_idx]
     param_cov = {'data': cov_data, 'cmap': cmap_uni, 'alpha': alpha,'vmin': 0, 'vmax': 1, 'cbar': 'discrete', 
                  'description': '{acq}: pRF coverage'.format(acq = acq), 'curv_brightness': 1, 'curv_contrast': 0.1, 'add_roi': False}
     maps_names.append('cov')
@@ -195,9 +194,9 @@ for mask_dir in ['pos']:
 if plot_tc == 1:
    
     # load volume
-    tc_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
-    img_tc = nb.load(tc_file)
-    tc = img_tc.get_data()
+    tc_rs_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg_rs.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
+    img_tc_rs = nb.load(tc_rs_file)
+    tc_rs = img_tc_rs.get_data()
 
     # create directory
     dataset_dir = opj(base_dir, 'pp_data', subject, fit_model, 'pycortex_outputs', 'dataset','tc')
@@ -209,7 +208,7 @@ if plot_tc == 1:
         pass
     
     # create volume
-    volume_tc = cortex.Volume(data = tc.transpose((3,2,1,0)), subject = subject,xfmname = xfm_name, cmap = 'BuBkRd', description = 'BOLD')
+    volume_tc = cortex.Volume(data = tc_rs.transpose((3,2,1,0)), subject = subject,xfmname = xfm_name, cmap = 'BuBkRd', description = 'BOLD')
 
     # create dataset
     print('save pycortex dataset: time course')

@@ -3,8 +3,8 @@
 pp_roi.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Combine fit files
-Compute pRF derivatives
+Combine fit files, compute pRF derivatives, import subject to pycortex, create pycortex 
+transform and pycortex cortical masks
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: subject number
@@ -68,138 +68,118 @@ with open('settings.json') as f:
 base_dir = analysis_info['base_dir']
 deriv_dir = opj(base_dir,'pp_data',subject,fit_model,'deriv')
 
-# Copy data from scratchw to scratch
-# ----------------------------------
-os.system("rsync -az --no-g --no-p --progress {scratchw}/ {scratch}".format(
-                scratch = analysis_info['base_dir'],
-                scratchw  = analysis_info['base_dir_westmere']))
+# # Copy data from scratchw to scratch
+# # ----------------------------------
+# os.system("rsync -az --no-g --no-p --progress {scratchw}/ {scratch}".format(
+#                 scratch = analysis_info['base_dir'],
+#                 scratchw  = analysis_info['base_dir_westmere']))
 
-# Check if all slices are present
-# -------------------------------
+# # Check if all slices are present
+# # -------------------------------
 
-# Original data to analyse
-data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
-                                base_dir = base_dir,
-                                sub = subject,
-                                acq = acq)
-img_data = nb.load(data_file)
-data = img_data.get_fdata()
+# # Original data to analyse
+# data_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(
+#                                 base_dir = base_dir,
+#                                 sub = subject,
+#                                 acq = acq)
+# img_data = nb.load(data_file)
+# data = img_data.get_fdata()
 
-mask_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_mask_avg.nii.gz".format(
-                                base_dir = base_dir,
-                                sub = subject,
-                                acq = acq)
+# mask_file  =  "{base_dir}/pp_data/{sub}/func/{sub}_task-AttendStim_{acq}_fmriprep_mask_avg.nii.gz".format(
+#                                 base_dir = base_dir,
+#                                 sub = subject,
+#                                 acq = acq)
 
-img_mask = nb.load(mask_file)
-mask = img_mask.get_fdata()
-slices = np.arange(mask.shape[2])[mask.mean(axis=(0,1))>0]
+# img_mask = nb.load(mask_file)
+# mask = img_mask.get_fdata()
+# slices = np.arange(mask.shape[2])[mask.mean(axis=(0,1))>0]
 
-est_files = []
-miss_files_nb = 0
-for slice_nb in slices:
+# est_files = []
+# miss_files_nb = 0
+# for slice_nb in slices:
     
-    est_file = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est_z_{slice_nb}.nii.gz".format(
-                                base_dir = base_dir,
-                                subject = subject,
-                                fit_model = fit_model,
-                                acq = acq,
-                                slice_nb = slice_nb
-                                )
-    if os.path.isfile(est_file):
-        if os.path.getsize(est_file) == 0:
-            num_miss_part += 1 
-        else:
-            est_files.append(est_file)
-    else:
-        miss_files_nb += 1
+#     est_file = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est_z_{slice_nb}.nii.gz".format(
+#                                 base_dir = base_dir,
+#                                 subject = subject,
+#                                 fit_model = fit_model,
+#                                 acq = acq,
+#                                 slice_nb = slice_nb
+#                                 )
+#     if os.path.isfile(est_file):
+#         if os.path.getsize(est_file) == 0:
+#             num_miss_part += 1 
+#         else:
+#             est_files.append(est_file)
+#     else:
+#         miss_files_nb += 1
 
-if miss_files_nb != 0:
-    sys.exit('%i missing files, analysis stopped'%miss_files_nb)
+# if miss_files_nb != 0:
+#     sys.exit('%i missing files, analysis stopped'%miss_files_nb)
 
-# Combine and save estimates
-# --------------------------
-print('combining est files')
-ests = np.zeros((data.shape[0],data.shape[1],data.shape[2],fit_val))
-for est_file in est_files:
-    img_est = nb.load(est_file)
-    est = img_est.get_fdata()
-    ests = ests + est
+# # Combine and save estimates
+# # --------------------------
+# print('combining est files')
+# ests = np.zeros((data.shape[0],data.shape[1],data.shape[2],fit_val))
+# for est_file in est_files:
+#     img_est = nb.load(est_file)
+#     est = img_est.get_fdata()
+#     ests = ests + est
 
-# Save estimates data
-estfn = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est.nii.gz".format(
-                                base_dir = base_dir,
-                                subject = subject,
-                                fit_model = fit_model,
-                                acq = acq)
+# # Save estimates data
+# estfn = "{base_dir}/pp_data/{subject}/{fit_model}/fit/{subject}_task-AttendStim_{acq}_est.nii.gz".format(
+#                                 base_dir = base_dir,
+#                                 subject = subject,
+#                                 fit_model = fit_model,
+#                                 acq = acq)
 
-new_img = nb.Nifti1Image(dataobj = ests, affine = img_data.affine, header = img_data.header)
-new_img.to_filename(estfn)
+# new_img = nb.Nifti1Image(dataobj = ests, affine = img_data.affine, header = img_data.header)
+# new_img.to_filename(estfn)
 
-# Compute derived measures from prfs
-# ----------------------------------
-print('extracting pRF derivatives')
-convert_fit_results(est_fn = estfn,
-                    output_dir = deriv_dir,
-                    stim_width = analysis_info['stim_width'],
-                    stim_height = analysis_info['stim_height'],
-                    fit_model = fit_model,
-                    acq = acq)
+# # Compute derived measures from prfs
+# # ----------------------------------
+# print('extracting pRF derivatives')
+# convert_fit_results(est_fn = estfn,
+#                     output_dir = deriv_dir,
+#                     stim_width = analysis_info['stim_width'],
+#                     stim_height = analysis_info['stim_height'],
+#                     fit_model = fit_model,
+#                     acq = acq)
 
 # Define folder
 # -------------
 fmriprep_dir = "{base_dir}/deriv_data/fmriprep/".format(base_dir = base_dir)
 fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/".format(base_dir = base_dir)
-xfm_name = 'identity.t1w'
+xfm_name = "identity.{acq}".format(acq = acq)
 cortex_dir = "{base_dir}/pp_data/cortex/db/{subject}".format(base_dir = base_dir, subject = subject)
 
 # Set pycortex db and colormaps
 # -----------------------------
 set_pycortex_config_file(base_dir)
 
-# Add participant to pycortex db
-# ------------------------------
-if os.path.isdir(cortex_dir) == False:
-    print('import subject in pycortex')
-    cortex.fmriprep.import_subj(subject = subject[-2:], source_dir = fmriprep_dir, sname = subject)
-    cortex.freesurfer.import_flat(subject = subject, patch = 'full', freesurfer_subject_dir = fs_dir, sname = subject)
+# # Add participant to pycortex db
+# # ------------------------------
+# if os.path.isdir(cortex_dir) == False:
+#     print('import subject in pycortex')
+#     cortex.fmriprep.import_subj(subject = subject[-2:], source_dir = fmriprep_dir, sname = subject)
+#     cortex.freesurfer.import_flat(subject = subject, patch = 'full', freesurfer_subject_dir = fs_dir, sname = subject)
 
 # Add transform to pycortex db
-# ------------------------------
-t1w = cortex.db.get_anat(subject)
-transform = cortex.xfm.Transform(np.identity(4), t1w)
+# ----------------------------
+ref_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_mask_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
+transform = cortex.xfm.Transform(np.identity(4), ref_file)
 transform.save(subject, xfm_name, 'magnet')
+
+# Add masks to pycortex transform
+# -------------------------------
+xfm_masks = analysis_info['xfm_masks']
+ref = nb.load(ref_file)
+for xfm_mask in xfm_masks:
     
-# Resample to t1w
-# ---------------
-for mask_dir in ['all','pos','neg']:
+    mask = cortex.get_cortical_mask(subject = subject, xfmname = xfm_name, type = xfm_mask)
+    mask_img = nb.Nifti1Image(dataobj=mask.transpose((2,1,0)), affine=ref.affine, header=ref.header)
+    mask_file = "{cortex_dir}/transforms/{xfm_name}/mask_{xfm_mask}.nii.gz".format(
+                            cortex_dir = cortex_dir, xfm_name = xfm_name, xfm_mask = xfm_mask)
+    mask_img.to_filename(mask_file)
 
-    print('resample deriv mat: {mask_dir}'.format(mask_dir = mask_dir))
-    
-    # Load data
-    deriv_mat_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}.nii.gz".format(deriv_dir = deriv_dir, acq = acq, mask_dir = mask_dir)
-    img_deriv_mat = nb.load(deriv_mat_file)
 
-    # interpolate to t1w cortex
-    deriv_rs = image.resample_to_img(source_img = img_deriv_mat, target_img = t1w, interpolation = 'nearest')
-    
-    # save resample file
-    deriv_mat_rs_file = "{deriv_dir}/{mask_dir}/prf_deriv_{acq}_{mask_dir}_rs.nii.gz".format(deriv_dir = deriv_dir, acq = acq, mask_dir = mask_dir)
-    new_img = nb.Nifti1Image(dataobj = deriv_rs.get_data(), affine = deriv_rs.affine, header = deriv_rs.header)
-    new_img.to_filename(deriv_mat_rs_file)
-    
-# Resample tc file
-# ----------------
 
-print('resample tc file')
-
-# Load data
-tc_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
-img_tc = nb.load(tc_file)
-
-# interpolate to t1w cortex
-tc_rs = image.resample_to_img(source_img = img_tc, target_img = t1w, interpolation = 'nearest')
-
-# save resample file
-tc_rs_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg_rs.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
-new_img = nb.Nifti1Image(dataobj = tc_rs.get_data(), affine = tc_rs.affine, header = tc_rs.header)
-new_img.to_filename(tc_rs_file)

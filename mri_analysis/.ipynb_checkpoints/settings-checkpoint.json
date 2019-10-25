@@ -18,7 +18,7 @@
     "sg_filt_deriv": 0,
     "fit_model":"gauss",
     "fit_steps":6,
-    "xfm_masks":["cortical", "thick", "thin", "nearest"],
-    "roi_mask":"cortical",
+    "xfm_name":"identity.t1w",
+    "gm_sampler":"cortical-conservative",
     "rois": ["V1","V2","V3","V3A","V3B","LO","VO","hMT+","iIPS","sIPS","iPCS","sPCS","mPCS"]
 }
