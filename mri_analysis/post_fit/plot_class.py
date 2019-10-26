@@ -35,15 +35,11 @@ class PlotOperator(object):
             setattr(self, k, v)
 
 
-    def get_stim_circle(self, main_fig):
-        return main_fig.circle(x = 0, y = 0, radius = self.stim_radius, color = self.stim_color)
-
-
     def get_span(self, dimension, location = 0,color = 'black'):
-        fig_span     =   Span(location            =   location,                                   # create a infinte line span                                           
+        fig_span     =   Span(location            =   location,                                   # create a infinte line span                              
                               dimension           =   dimension,                                  # define dimension
                               line_alpha          =   0.5,                                        # define alpha of the line
-                              line_color          =   color,                                    # define color of the line
+                              line_color          =   color,                                      # define color of the line
                               line_width          =   1,                                          # define width of the line
                               line_dash           =   'dashed')                                   # define dash of the line
         return fig_span
@@ -71,9 +67,21 @@ class PlotOperator(object):
 
     def get_weighted_regression_line(self, main_fig, data_source, rsq_string = 'rsq'):
         import numpy as np
-        from scipy.optimize import curve_fit
         
-        
+        from sklearn import linear_model
+        regr = linear_model.LinearRegression()
+
+        def m(x, w):
+            return np.sum(x * w) / np.sum(w)
+
+        def cov(x, y, w):
+            # see https://www2.microstrategy.com/producthelp/archive/10.8/FunctionsRef/Content/FuncRef/WeightedCov__weighted_covariance_.htm
+            return np.sum(w * (x - m(x, w)) * (y - m(y, w))) / np.sum(w)
+
+        def weighted_corr(x, y, w):
+            # see https://www2.microstrategy.com/producthelp/10.4/FunctionsRef/Content/FuncRef/WeightedCorr__weighted_correlation_.htm
+            return cov(x, y, w) / np.sqrt(cov(x, x, w) * cov(y, y, w))
+
         linear_function = lambda x, a, b: a * x + b
         
         x_reg                           =   data_source[self.x_source_label]                                                      # x data for regression line
@@ -83,14 +91,11 @@ class PlotOperator(object):
         x_reg                       =   x_reg[(~np.isnan(x_reg) & ~np.isnan(y_reg))]
         y_reg                       =   y_reg[(~np.isnan(x_reg) & ~np.isnan(y_reg))]
 
-        coeffs, matcov                  =   curve_fit(                                                              # Use non-linear least squares to fit a function, f, to data.
-                                                f                   =   linear_function,                                       # fit function to use
-                                                xdata               =   x_reg,                                      # x data for regression fit
-                                                ydata               =   y_reg,                                      # y data for regression fit
-                                                sigma               =   weight_reg)                                 # weight
+        regr.fit(x_reg.reshape(-1, 1), y_reg.reshape(-1, 1),weight_reg)
         
         x_fit                           =   np.arange(self.stim_fig_xlim[0], self.stim_fig_xlim[1] + self.x_tick_steps, self.x_tick_steps) # define fitted line x values
-        y_fit                           =   linear_function(x_fit, coeffs[0], coeffs[1])                                       # define fitted line y values
+        y_fit                           =   linear_function(x_fit, regr.coef_, regr.intercept_)                                       # define fitted line y values
+        y_fit                           =   y_fit.reshape(x_fit.shape)
 
         plot_reg                        =   main_fig.line(                                                          # draw fitted line on main figure
                                                 x                   =  x_fit,                                       # define x of the line
@@ -98,6 +103,7 @@ class PlotOperator(object):
                                                 line_color          =  'black',                                     # define line color
                                                 line_width          =  4,
                                                 line_alpha          =  0.5)                                         # define line alpha
+        deb()
         return plot_reg
 
 
@@ -131,7 +137,9 @@ class PlotOperator(object):
                                                 plot_height         =   int(self.p_height/4),                       # define figure height
                                                 x_range             =   main_fig.x_range,                           # define figure x range
                                                 y_range             =   self.hist_range,                            # define figure y range
-                                                min_border_bottom   =   self.min_border_small,                      # define bottom border space
+                                                min_border_left     =   self.min_border_large,                      # define left border space
+                                                min_border_right    =   self.min_border_large,                      # define left border space
+                                                min_border_bottom   =   self.min_border_large,                      # define bottom border space
                                                 min_border_top      =   self.min_border_large,                      # define top border space
                                                 y_axis_location     =   'left',                                     # define location of y axis
                                                 x_axis_location     =   'below',                                    # define location of x axis
@@ -142,20 +150,22 @@ class PlotOperator(object):
         h_hist.xaxis.ticker = np.arange(self.stim_fig_xlim[0], self.stim_fig_xlim[1], self.x_tick_steps)
 
         h_hist.grid.grid_line_color     =   None                                                                    # set axis grid color  
-        h_hist.axis.minor_tick_in       =   False                                                                   # set axis minor tick in
-        h_hist.axis.minor_tick_out      =   False                                                                   # set axis minor tick out
-        h_hist.axis.major_tick_in       =   False                                                                   # set axis major tick in
+        h_hist.axis.minor_tick_in       =   0                                                                       # set axis minor tick in
+        h_hist.axis.minor_tick_out      =   0                                                                       # set axis minor tick out
+        h_hist.axis.major_tick_in       =   0                                                                       # set axis major tick in
         h_hist.outline_line_alpha       =   0                                                                       # set contour box alpha
-        h_hist.background_fill_color    =   self.bg_color                                                      # set background color
+        h_hist.background_fill_color    =   self.bg_color                                                           # set background color
         h_hist.xaxis.major_label_text_font_size = '0pt'                                                             # set x axis font size (make it disappear)
+        h_hist.yaxis.axis_label_standoff = 10
+        h_hist.yaxis.axis_label         = ' '                                                                        # define x axis label
 
         # draw stim
         h_hist_stim                     =   h_hist.quad(                                                            # create a quad glyph of the stimulus
-                                                bottom              =   self.stim_fig_ylim[0],                           # define bottom value
-                                                left                =   -self.stim_radius,                                          # define left value
-                                                right               =   +self.stim_radius,                     # define right value
-                                                top                 =   self.stim_fig_ylim[1],                           # define top value
-                                                color               =   self.stim_color)                       # define color
+                                                bottom              =   self.stim_fig_ylim[0],                      # define bottom value
+                                                left                =   -self.stim_width/2.0,                          # define left value
+                                                right               =   +self.stim_width/2.0,                          # define right value
+                                                top                 =   self.stim_fig_ylim[1],                      # define top value
+                                                color               =   self.stim_color)                            # define color
 
         # draw plot
         h_hist_plot                     =   h_hist.quad(                                                            # create a quad glyph of the histogram
@@ -239,25 +249,25 @@ class PlotOperator(object):
         
 
         # # determining axis ticker based on histogram orientation
-        v_hist.xaxis.ticker = np.arange(self.hist_range[0],self.hist_range[1]+self.hist_steps,self.hist_steps)      # set x axis ticks
-        v_hist.yaxis.ticker = np.arange(self.stim_fig_ylim[0], self.stim_fig_ylim[1], self.y_tick_steps)            # set y axis ticks
+        v_hist.xaxis.ticker = np.arange(self.hist_range[0],self.hist_range[1]+self.hist_steps,self.hist_steps)  # set x axis ticks
+        v_hist.yaxis.ticker = np.arange(self.stim_fig_ylim[0], self.stim_fig_ylim[1], self.y_tick_steps)        # set y axis ticks
 
-        v_hist.grid.grid_line_color     =   None                                                                    # set both axis grid line color
-        v_hist.axis.minor_tick_in       =   False                                                                   # set both axis minor tick in
-        v_hist.axis.minor_tick_out      =   False                                                                   # set both axis minor tick out
-        v_hist.axis.major_tick_in       =   False                                                                   # set both axis major tick in
-        v_hist.yaxis.major_label_text_font_size = '0pt'                                                             # set y axis font size (make it disappear)
-        v_hist.outline_line_alpha       =   0                                                                       # set box contour alpha
-        v_hist.background_fill_color    =   self.bg_color                                                      # define background color
+        v_hist.grid.grid_line_color     =   None                                                                # set both axis grid line color
+        v_hist.axis.minor_tick_in       =   0                                                                   # set both axis minor tick in
+        v_hist.axis.minor_tick_out      =   0                                                                   # set both axis minor tick out
+        v_hist.axis.major_tick_in       =   0                                                                   # set both axis major tick in
+        v_hist.yaxis.major_label_text_font_size = '0pt'                                                       # set y axis font size (make it disappear)
+        v_hist.outline_line_alpha       =   0                                                                   # set box contour alpha
+        v_hist.background_fill_color    =   self.bg_color                                                       # define background color
 
         if draw_stim:
             # draw stim
-            v_hist_stim                     =   v_hist.quad(                                                            # create quad glyph of the stimulus
-                                                left                =   self.stim_fig_ylim[0],                           # define left value
-                                                bottom              =   +self.stim_radius,                     # define bottom value
-                                                top                 =   -self.stim_radius,                     # define top value
-                                                right               =   self.stim_fig_ylim[1],                           # define right value
-                                                color               =   self.stim_color)                       # define color
+            v_hist_stim                     =   v_hist.quad(                                                    # create quad glyph of the stimulus
+                                                left                =   self.stim_fig_ylim[0],                  # define left value
+                                                bottom              =   +self.stim_height/2.0,                      # define bottom value
+                                                top                 =   -self.stim_height/2.0,                      # define top value
+                                                right               =   self.stim_fig_ylim[1],                  # define right value
+                                                color               =   self.stim_color)                        # define color
         
 
         # draw plot
@@ -308,23 +318,23 @@ class PlotOperator(object):
         # legend figure
         xy_max                          =   self.leg_xy_max_ratio*self.vmax
         leg                             =   figure(                                                                 # create vertical histogram figure
-                                                plot_width          =   int(self.p_width/4),                   # define figure width 
-                                                plot_height         =   int(self.p_height/4),                  # define figure height
+                                                plot_width          =   int(self.p_width/4),                        # define figure width 
+                                                plot_height         =   int(self.p_height/4),                       # define figure height
                                                 x_range             =   (-xy_max,xy_max),                           # define figure x range
                                                 y_range             =   (-xy_max,xy_max),                           # define figure y range
                                                 toolbar_location    =   None)                                       # define toolbar location
         leg.grid.grid_line_color        =   None                                                                    # set both axis grid line color
         leg.axis.major_label_text_font_size = '0pt'                                                                 # set y axis font size (make it disappear)
         leg.axis.axis_line_color        =   None                                                                    # set axis line color
-        leg.axis.minor_tick_in          =   False                                                                   # set both axis minor tick in
-        leg.axis.minor_tick_out         =   False                                                                   # set both axis minor tick out
-        leg.axis.major_tick_in          =   False                                                                   # set both axis major tick in
-        leg.axis.major_tick_out         =   False                                                                   # set both axis major tick in
+        leg.axis.minor_tick_in          =   0                                                                       # set both axis minor tick in
+        leg.axis.minor_tick_out         =   0                                                                       # set both axis minor tick out
+        leg.axis.major_tick_in          =   0                                                                       # set both axis major tick in
+        leg.axis.major_tick_out         =   0                                                                       # set both axis major tick in
         leg.outline_line_alpha          =   0                                                                       # set box contour alpha
         leg.background_fill_color       =   tuple([255,255,255])                                                    # define background color
         
         # define data leg
-        data_leg                        =   np.linspace(self.vmax,self.vmin,self.cmap_steps+1)       # define colorbar values
+        data_leg                        =   np.linspace(self.vmax,self.vmin,self.cmap_steps+1)                      # define colorbar values
         radius_val                      =   data_leg[:-1]
         data_leg                        =   (data_leg[:-1]+data_leg[1:])/2
         colors_val_leg                  =   self.get_colors(data = data_leg)
@@ -368,19 +378,20 @@ class PlotOperator(object):
         
     def initialize_main_fig_attributes(self, main_fig):
 
-        main_fig.xaxis.axis_label       =   self.x_label                                                       # define x axis label
-        main_fig.yaxis.axis_label       =   self.y_label                                                       # define y axis label
-        main_fig.grid.grid_line_color   =   None                                                                    # define color of the grids for both axis
-        main_fig.axis.minor_tick_in     =   False                                                                   # set minor tick in
-        main_fig.axis.minor_tick_out    =   False                                                                   # set minor tick out
-        main_fig.axis.major_tick_in     =   False                                                                   # set major tick in
-        main_fig.outline_line_alpha     =   0                                                                       # change alpha of box contour
-        main_fig.yaxis.ticker           =   np.arange(self.stim_fig_ylim[0], self.stim_fig_ylim[1], self.y_tick_steps)     # define y axis ticks
-        main_fig.background_fill_color  =   self.bg_color                                                      # define backgroud color
-        main_fig.axis.axis_label_standoff = 10                                                                      # set space between axis and label
+        main_fig.xaxis.axis_label       =   self.x_label                                                        # define x axis label
+        main_fig.yaxis.axis_label       =   self.y_label                                                        # define y axis label
+        main_fig.grid.grid_line_color   =   None                                                                # define color of the grids for both axis
+        main_fig.axis.minor_tick_in     =   0                                                                   # set minor tick in
+        main_fig.axis.minor_tick_out    =   0                                                                   # set minor tick out
+        main_fig.axis.major_tick_in     =   0                                                                   # set major tick in
+        main_fig.outline_line_alpha     =   0                                                                   # change alpha of box contour
+        main_fig.yaxis.ticker           =   np.arange(self.stim_fig_ylim[0], self.stim_fig_ylim[1], 
+                                                                                    self.y_tick_steps)          # define y axis ticks
+        main_fig.background_fill_color  =   self.bg_color                                                       # define backgroud color
+        main_fig.axis.axis_label_standoff = 10                                                                  # set space between axis and label
         main_fig.axis.axis_label_text_font_style = 'normal' 
-        if self.condition != 'roi': 
-            main_fig.xaxis.ticker       = np.arange(self.stim_fig_xlim[0], self.stim_fig_xlim[1], self.x_tick_steps)     # define x axis ticks
+        
+        main_fig.xaxis.ticker       = np.arange(self.stim_fig_xlim[0], self.stim_fig_xlim[1],self.x_tick_steps) # define x axis ticks
         
         return main_fig
 
@@ -417,13 +428,23 @@ class PlotOperator(object):
 
         # create the main plot source
         main_source                     =   ColumnDataSource(data = data_source)                            # define ColumnDataSource
+
+        data_source_sample              =   self.data_source_sample
+        if colors:
+            color                       =   self.get_colors(data = data_source_sample['colors_ref'])        # get the colors
+        else:
+            color                       =   []
+        data_source_sample.update({'color':color})
+
+        # create the main plot source
+        main_source_sample                     =   ColumnDataSource(data = data_source_sample)                            # define ColumnDataSource
+        
         
         # define stimuli settings
         self.stim_fig_xlim              =   (self.x_range[0] - 5 * self.x_tick_steps, \
                                                         self.x_range[1] + 5 * self.x_tick_steps)            # define stimuli max axis
         self.stim_fig_ylim              =   (self.y_range[0] - 5 * self.y_tick_steps, \
                                                          self.y_range[1] + 5 * self.y_tick_steps)           # define stimuli max axis
-        
 
         # figure settings
         main_fig                        =   figure(                                                         # create a figure in bokeh
@@ -442,7 +463,7 @@ class PlotOperator(object):
         main_fig.add_layout(self.get_span('width'))                                                         # add width span
         main_fig.add_layout(self.get_span('height'))                                                        # add height span
         
-        return main_fig, main_source, data_source
+        return main_fig, main_source, data_source, data_source_sample
 
     def draw_pRFmap(self, params, old_main_fig =[]):
         """
@@ -461,11 +482,18 @@ class PlotOperator(object):
         -----------------------------------------------------------------------------------------
         """
         
-        self.condition                  =   'map'
-        self.left_hist_lim              =   -self.stim_radius
-        main_fig,main_source,data_source=   self.initialize_main_fig(old_main_fig)
-        _                               =   main_fig.circle(x = 0, y = 0, radius = self.stim_radius, color = self.stim_color)
+        self.left_hist_lim              =   -self.stim_width/2.0
+        main_fig,main_source,data_source,main_source_sample = \
+                                            self.initialize_main_fig(old_main_fig)
 
+        # plot pRF stim
+        _                               =   main_fig.quad(  
+                                                bottom              =   -self.stim_height/2.0,                      # define bottom value
+                                                left                =   -self.stim_width/2.0,                       # define left value
+                                                top                 =   self.stim_height/2.0,                       # define top value
+                                                right               =   self.stim_height/2.0,                       # define right value
+                                                color               =   self.stim_color)                            # define color
+        
         # plot data
         plot_data                       =   main_fig.circle(                                                        # create circle of the main plots
                                                 x                   =   'x',                                        # define x coord
@@ -475,12 +503,14 @@ class PlotOperator(object):
                                                 line_color          =   'black',                                    # define fill color
                                                 fill_alpha          =   0.5,                                        # define fill alpha
                                                 line_alpha          =   0.5,                                        # define line alpha
-                                                source              =   main_source,                                # specify data source
+                                                source              =   main_source_sample,                                # specify data source
                                                 hover_fill_color    =   'black',                                    # specify hover fill color 
                                                 hover_line_color    =   'black',                                    # specify hover line color
                                                 hover_fill_alpha    =   0.5,                                        # specify hover fill alpha
                                                 hover_line_alpha    =   0.5)                                        # specify hover line alpha
 
+
+        
         h_hist                          =   self.create_horizontal_histogram(data_source = data_source, main_fig = main_fig)
         v_hist                          =   self.create_vertical_histogram(data_source = data_source, main_fig = main_fig, colors = True, draw_stim = True)
         leg                             =   self.create_legend_figure()
@@ -496,6 +526,7 @@ class PlotOperator(object):
                                                 ('Amplitude',           '@beta{0.0000}'),                             # amplitude of hover tool
                                                 ('Non-linarity',        '@non_lin{0.00}'),                          # non-linearity of hover tool
                                                 ('Coverage',            '@cov{0.0}')]                               # coverage
+        
         main_fig_hover                  =   HoverTool(                                                              # create hover tool
                                                 tooltips            =   main_fig_tooltips,                          # specify content
                                                 mode                =   'mouse',                                    # specify mode
@@ -511,7 +542,8 @@ class PlotOperator(object):
                                                 text_font_size      =   "8pt",
                                                 text_align          = "right"
                                                 )
-
+        
+        
         # Put figure together
         # -------------------
         f                               =   column(                                                                 # define figures coluns
@@ -554,14 +586,15 @@ class PlotOperator(object):
         none
         -----------------------------------------------------------------------------------------
         """
-        main_fig,main_source,data_source=   self.initialize_main_fig(old_main_fig)
+        main_fig,main_source,data_source,main_source_sample = \
+                                            self.initialize_main_fig(old_main_fig)
         self.left_hist_lim              =   0
         
         # plot stimulus area
         plot_stim                       =   main_fig.quad(                                                          # create a quad glyph of the stimulus
                                                 bottom              =   self.stim_fig_ylim[0],                      # define bottom value
                                                 left                =   0,                                          # define left value
-                                                right               =   self.stim_radius,                           # define right value
+                                                right               =   self.stim_width/2.0,                           # define right value
                                                 top                 =   self.stim_fig_ylim[1],                      # define top value
                                                 color               =   self.stim_color)                            # define color
         # plot data
@@ -708,14 +741,15 @@ class PlotOperator(object):
         stim_fig_ylim                   =   (self.y_range[0]-5*self.y_tick_steps,self.y_range[1]+5*self.y_tick_steps) # define stimuli max axis
         
 
-        main_fig,main_source,data_source=   self.initialize_main_fig(old_main_fig)                                                
+        main_fig,main_source,data_source,main_source_sample = \
+                                            self.initialize_main_fig(old_main_fig)                                                
 
         main_fig.xaxis.axis_label       =   self.x_label                                                            # define x axis label
         main_fig.yaxis.axis_label       =   self.y_label                                                            # define y axis label
         main_fig.grid.grid_line_color   =   None                                                                    # define color of the grids for both axis
-        main_fig.axis.minor_tick_in     =   False                                                                   # set minor tick in
-        main_fig.axis.minor_tick_out    =   False                                                                   # set minor tick out
-        main_fig.axis.major_tick_in     =   False                                                                   # set major tick in
+        main_fig.axis.minor_tick_in     =   0                                                                       # set minor tick in
+        main_fig.axis.minor_tick_out    =   0                                                                       # set minor tick out
+        main_fig.axis.major_tick_in     =   0                                                                       # set major tick in
         main_fig.outline_line_alpha     =   0                                                                       # change alpha of box contour
         
         main_fig.yaxis.ticker           =   np.linspace(self.x_range[0], self.x_range[1], (-self.x_range[0]+self.x_range[1])/self.y_tick_steps+1)     # define y axis ticks
@@ -746,10 +780,11 @@ class PlotOperator(object):
                                                 color_mapper        =   color_mapper)                               # define colormap
 
         # plot stimulus circle
-        plot_stim                       =   main_fig.circle(                                                        # create circle plots for the stim circle
-                                                x                   =   0,                                          # define x coord
-                                                y                   =   0,                                          # define y coord
-                                                radius              =   self.stim_radius,                           # define radius
+        plot_stim                       =   main_fig.quad(                                                          # create square plots for the stim window
+                                                bottom              =   -self.stim_height/2.0,                      # define bottom value
+                                                left                =   -self.stim_width/2.0,                       # define left value
+                                                right               =   self.stim_width/2.0,                        # define right value
+                                                top                 =   self.stim_height/2.0,                       # define top value
                                                 line_alpha          =   0.5,                                        # define line alpha
                                                 fill_color          =   None,                                       # define color
                                                 line_color          =   'white',                                    # define line color
@@ -758,21 +793,21 @@ class PlotOperator(object):
         # Colorbar
         # --------
         colorbar_fig                    =   figure(                                                                 # create vertical histogram figure
-                                                plot_width          =   int(self.p_width/4),                   # define figure width 
-                                                plot_height         =   self.p_height,                         # define figure height
-                                                x_range             =  (0,1),                                       # define x range
-                                                y_range             =  (self.vmin,self.vmax),             # define y range
-                                                min_border_left     =   self.min_border_small,                 # define left border space
-                                                min_border_right    =   self.min_border_large,                 # define right border space 
+                                                plot_width          =   int(self.p_width/4),                        # define figure width 
+                                                plot_height         =   self.p_height,                              # define figure height
+                                                x_range             =   (0,1),                                      # define x range
+                                                y_range             =   (self.vmin,self.vmax),                      # define y range
+                                                min_border_left     =   self.min_border_small,                      # define left border space
+                                                min_border_right    =   self.min_border_large,                      # define right border space 
                                                 toolbar_location    =   None,                                       # define toolbar location
                                                 y_axis_location     =   'right',                                    # define y axis location
                                                 )
 
         colorbar_fig.grid.grid_line_color     =   None                                                              # set both axis grid line color
-        colorbar_fig.axis.minor_tick_in       =   False                                                             # set both axis minor tick in
-        colorbar_fig.axis.minor_tick_out      =   False                                                             # set both axis minor tick out
-        colorbar_fig.axis.major_tick_in       =   False                                                             # set both axis major tick in
-        colorbar_fig.xaxis.major_tick_out     =   False                                                             # set both axis major tick in
+        colorbar_fig.axis.minor_tick_in       =   0                                                                 # set both axis minor tick in
+        colorbar_fig.axis.minor_tick_out      =   0                                                                 # set both axis minor tick out
+        colorbar_fig.axis.major_tick_in       =   0                                                                 # set both axis major tick in
+        colorbar_fig.xaxis.major_tick_out     =   0                                                                 # set both axis major tick in
         colorbar_fig.xaxis.major_label_text_font_size = '0pt'                                                       # set y axis font size (make it disappear)
         colorbar_fig.outline_line_alpha       =   0                                                                 # set box contour alpha
         colorbar_fig.axis.axis_label_standoff =   10                                                                # set space between axis and label
@@ -1290,9 +1325,9 @@ class PlotOperator(object):
         high_param_tc_fig.xaxis.axis_label       =   ''
         high_param_tc_fig.yaxis.axis_label       =   self.y_label_tc
         high_param_tc_fig.grid.grid_line_color   =   None
-        high_param_tc_fig.axis.minor_tick_in     =   False
-        high_param_tc_fig.axis.minor_tick_out    =   False
-        high_param_tc_fig.axis.major_tick_in     =   False
+        high_param_tc_fig.axis.minor_tick_in     =   0
+        high_param_tc_fig.axis.minor_tick_out    =   0
+        high_param_tc_fig.axis.major_tick_in     =   0
         high_param_tc_fig.outline_line_alpha     =   0
         high_param_tc_fig.xaxis.ticker           =   np.arange(self.x_range_tc[0],self.x_range_tc[1] + self.x_tick_tc, self.x_tick_tc)
         high_param_tc_fig.background_fill_color  =   self.bg_color
@@ -1358,9 +1393,9 @@ class PlotOperator(object):
         high_param_map_fig.xaxis.axis_label       =   ''
         high_param_map_fig.yaxis.axis_label       =   self.y_label_map
         high_param_map_fig.grid.grid_line_color   =   None
-        high_param_map_fig.axis.minor_tick_in     =   False
-        high_param_map_fig.axis.minor_tick_out    =   False
-        high_param_map_fig.axis.major_tick_in     =   False
+        high_param_map_fig.axis.minor_tick_in     =   0
+        high_param_map_fig.axis.minor_tick_out    =   0
+        high_param_map_fig.axis.major_tick_in     =   0
         high_param_map_fig.outline_line_alpha     =   0
         high_param_map_fig.yaxis.ticker           =   np.arange(self.y_range_map[0],self.y_range_map[1] + self.y_tick_map, self.y_tick_map)
         high_param_map_fig.xaxis.ticker           =   np.arange(self.x_range_map[0],self.x_range_map[1] + self.x_tick_map, self.x_tick_map)
@@ -1370,8 +1405,12 @@ class PlotOperator(object):
         high_param_map_fig.xaxis.major_label_text_font_size = '0pt'
 
         if self.num_vertex[1] != -1:
-            # stimulus circle
-            high_param_map_fig.circle(x = 0, y = 0, radius = self.stim_radius, color = self.stim_color)
+            # stimulus
+            high_param_map_fig.quad(bottom              =   -self.stim_height/2.0,                      # define bottom value
+                                    left                =   -self.stim_width/2.0,                       # define left value
+                                    top                 =   self.stim_height/2.0,                       # define top value
+                                    right               =   self.stim_height/2.0,                       # define right value
+                                    color               =   self.stim_color)                            # define color
 
             # spans
             high_param_map_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
@@ -1460,9 +1499,9 @@ class PlotOperator(object):
         low_param_tc_fig.xaxis.axis_label       =   self.x_label_tc
         low_param_tc_fig.yaxis.axis_label       =   self.y_label_tc
         low_param_tc_fig.grid.grid_line_color   =   None
-        low_param_tc_fig.axis.minor_tick_in     =   False
-        low_param_tc_fig.axis.minor_tick_out    =   False
-        low_param_tc_fig.axis.major_tick_in     =   False
+        # low_param_tc_fig.axis.minor_tick_in     =   False
+        # low_param_tc_fig.axis.minor_tick_out    =   False
+        # low_param_tc_fig.axis.major_tick_in     =   False
         low_param_tc_fig.outline_line_alpha     =   0
         low_param_tc_fig.xaxis.ticker           =   np.arange(self.x_range_tc[0],self.x_range_tc[1] + self.x_tick_tc, self.x_tick_tc)
         low_param_tc_fig.background_fill_color  =   self.bg_color
@@ -1522,9 +1561,9 @@ class PlotOperator(object):
         low_param_map_fig.xaxis.axis_label       =   self.x_label_map
         low_param_map_fig.yaxis.axis_label       =   self.y_label_map
         low_param_map_fig.grid.grid_line_color   =   None
-        low_param_map_fig.axis.minor_tick_in     =   False
-        low_param_map_fig.axis.minor_tick_out    =   False
-        low_param_map_fig.axis.major_tick_in     =   False
+        low_param_map_fig.axis.minor_tick_in     =   0
+        low_param_map_fig.axis.minor_tick_out    =   0
+        low_param_map_fig.axis.major_tick_in     =   0
         low_param_map_fig.outline_line_alpha     =   0
         low_param_map_fig.yaxis.ticker           =   np.arange(self.y_range_map[0],self.y_range_map[1] + self.y_tick_map, self.y_tick_map)
         low_param_map_fig.xaxis.ticker           =   np.arange(self.x_range_map[0],self.x_range_map[1] + self.x_tick_map, self.x_tick_map)
@@ -1533,8 +1572,12 @@ class PlotOperator(object):
         low_param_map_fig.axis.axis_label_text_font_style = 'normal'
 
         if self.num_vertex[0] != -1:
-            # stimulus circle
-            low_param_map_fig.circle(x = 0, y = 0, radius = self.stim_radius, color = self.stim_color)
+            # stimulus
+            low_param_map_fig.quad(bottom              =   -self.stim_height/2.0,                      # define bottom value
+                                    left                =   -self.stim_width/2.0,                       # define left value
+                                    top                 =   self.stim_height/2.0,                       # define top value
+                                    right               =   self.stim_height/2.0,                       # define right value
+                                    color               =   self.stim_color)                            # define color
 
             # spans
             low_param_map_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
