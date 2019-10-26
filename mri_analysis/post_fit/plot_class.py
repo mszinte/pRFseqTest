@@ -17,11 +17,12 @@ import matplotlib.colors as colors
 import numpy as np
 import ipdb
 from decimal import Decimal
+from sklearn import linear_model
+regr = linear_model.LinearRegression()
 deb = ipdb.set_trace
 
 from popeye.spinach import generate_og_receptive_fields
 from IPython import embed as shell
-
 
 class PlotOperator(object):
     """
@@ -33,7 +34,6 @@ class PlotOperator(object):
         
         for k,v in params.items():
             setattr(self, k, v)
-
 
     def get_span(self, dimension, location = 0,color = 'black'):
         fig_span     =   Span(location            =   location,                                   # create a infinte line span                              
@@ -66,11 +66,7 @@ class PlotOperator(object):
 
 
     def get_weighted_regression_line(self, main_fig, data_source, rsq_string = 'rsq'):
-        import numpy as np
         
-        from sklearn import linear_model
-        regr = linear_model.LinearRegression()
-
         def m(x, w):
             return np.sum(x * w) / np.sum(w)
 
@@ -103,7 +99,6 @@ class PlotOperator(object):
                                                 line_color          =  'black',                                     # define line color
                                                 line_width          =  4,
                                                 line_alpha          =  0.5)                                         # define line alpha
-        deb()
         return plot_reg
 
 
@@ -1001,119 +996,119 @@ class PlotOperator(object):
         bins = self.ang_bins
         bin_angle = 2*np.pi/bins
 
-        if self.hemi == 'L' or self.hemi == 'LR':
-            data_L = data[data[:,hemi_idx]== 1,:]
-            if data_L.shape[0] > 0:
-                weights_val_L = data_L[:,rsq_idx]
-                pol_comp_num_L = data_L[:,polar_real_idx] + 1j * data_L[:,polar_imag_idx]
-                polar_ang_L = np.angle(pol_comp_num_L)
-                
-                hist_L, bin_edges_L = np.histogram( a = polar_ang_L,
-                                                    range = (-np.pi-bin_angle/2,np.pi-bin_angle/2),
-                                                    bins = bins,
-                                                    weights = weights_val_L)
-                hist_perc_L = hist_L/np.nansum(hist_L)
-                hist_percent_L = hist_perc_L*100
-                
-                hist_val_L = convert_on_axis(hist_perc_L,min_val,max_val,min_axis,max_axis)
-                start_angle_hist_L = bin_edges_L[:-1]
-                end_angle_hist_L = bin_edges_L[1:]
+        
+        data_L = data[data[:,hemi_idx]== 1,:]
+        if data_L.shape[0] > 0:
+            weights_val_L = data_L[:,rsq_idx]
+            pol_comp_num_L = data_L[:,polar_real_idx] + 1j * data_L[:,polar_imag_idx]
+            polar_ang_L = np.angle(pol_comp_num_L)
+            
+            hist_L, bin_edges_L = np.histogram( a = polar_ang_L,
+                                                range = (-np.pi-bin_angle/2,np.pi-bin_angle/2),
+                                                bins = bins,
+                                                weights = weights_val_L)
+            hist_perc_L = hist_L/np.nansum(hist_L)
+            hist_percent_L = hist_perc_L*100
+            
+            hist_val_L = convert_on_axis(hist_perc_L,min_val,max_val,min_axis,max_axis)
+            start_angle_hist_L = bin_edges_L[:-1]
+            end_angle_hist_L = bin_edges_L[1:]
 
-                start_angle_hist_deg_L = np.degrees(start_angle_hist_L)
-                end_angle_hist_deg_L = np.degrees(end_angle_hist_L)
-                
-                hist_data_source_L = {  'hist_L': hist_L,
-                                        'hist_percent_L': hist_percent_L,
-                                        'hist_val_L': hist_val_L,
-                                        'start_angle_L': start_angle_hist_L,
-                                        'end_angle_L': end_angle_hist_L,
-                                        'start_angle_deg_L': start_angle_hist_deg_L,
-                                        'end_angle_deg_L': end_angle_hist_deg_L}
-                hist_source_L = ColumnDataSource(data = hist_data_source_L)
-                
-                an_wedges_L = main_fig.annular_wedge(   x                   =   0,
-                                                        y                   =   0,
-                                                        inner_radius        =   min_val,
-                                                        outer_radius        =   'hist_val_L',
-                                                        start_angle         =   'start_angle_L',
-                                                        end_angle           =   'end_angle_L',
-                                                        fill_color          =   hemi_col_L,
-                                                        source              =   hist_source_L,
-                                                        line_width          =   0.5,
-                                                        direction           =   'anticlock',
-                                                        line_color          =   'black',
-                                                        fill_alpha          =   0.6,
-                                                        hover_fill_color    =   'black',
-                                                        hover_line_color    =   'black',
-                                                        hover_fill_alpha    =   0.5,
-                                                        hover_line_alpha    =   0.5)
-                
-                hist_tooltips_L = [ ('LH vertex', 'n = @hist_L{0}'),
-                                    ('Prop.', '@hist_percent_L{0.0}%'),
-                                    ('Edges','(@start_angle_deg_L{0} deg,@end_angle_deg_L{0} deg)')]
-                hist_hover_L = HoverTool(               tooltips            =   hist_tooltips_L,
-                                                        mode                = 'mouse',
-                                                        renderers           =   [an_wedges_L])
-                main_fig.add_tools(hist_hover_L)
+            start_angle_hist_deg_L = np.degrees(start_angle_hist_L)
+            end_angle_hist_deg_L = np.degrees(end_angle_hist_L)
+            
+            hist_data_source_L = {  'hist_L': hist_L,
+                                    'hist_percent_L': hist_percent_L,
+                                    'hist_val_L': hist_val_L,
+                                    'start_angle_L': start_angle_hist_L,
+                                    'end_angle_L': end_angle_hist_L,
+                                    'start_angle_deg_L': start_angle_hist_deg_L,
+                                    'end_angle_deg_L': end_angle_hist_deg_L}
+            hist_source_L = ColumnDataSource(data = hist_data_source_L)
+            
+            an_wedges_L = main_fig.annular_wedge(   x                   =   0,
+                                                    y                   =   0,
+                                                    inner_radius        =   min_val,
+                                                    outer_radius        =   'hist_val_L',
+                                                    start_angle         =   'start_angle_L',
+                                                    end_angle           =   'end_angle_L',
+                                                    fill_color          =   hemi_col_L,
+                                                    source              =   hist_source_L,
+                                                    line_width          =   0.5,
+                                                    direction           =   'anticlock',
+                                                    line_color          =   'black',
+                                                    fill_alpha          =   0.6,
+                                                    hover_fill_color    =   'black',
+                                                    hover_line_color    =   'black',
+                                                    hover_fill_alpha    =   0.5,
+                                                    hover_line_alpha    =   0.5)
+            
+            hist_tooltips_L = [ ('LH voxels', 'n = @hist_L{0}'),
+                                ('Prop.', '@hist_percent_L{0.0}%'),
+                                ('Edges','(@start_angle_deg_L{0} deg,@end_angle_deg_L{0} deg)')]
+            hist_hover_L = HoverTool(               tooltips            =   hist_tooltips_L,
+                                                    mode                = 'mouse',
+                                                    renderers           =   [an_wedges_L])
+            main_fig.add_tools(hist_hover_L)
 
-        if self.hemi == 'R' or self.hemi == 'LR':
+        
 
-            data_R = data[data[:,hemi_idx] == 2,:]
+        data_R = data[data[:,hemi_idx] == 2,:]
 
-            if data_R.shape[0] > 0:
-                weights_val_R = data_R[:,rsq_idx]
-                pol_comp_num_R = data_R[:,polar_real_idx] + 1j * data_R[:,polar_imag_idx]
-                polar_ang_R = np.angle(pol_comp_num_R)
-                
-                hist_R, bin_edges_R = np.histogram( a = polar_ang_R,
-                                                    range = (-np.pi-bin_angle/2,np.pi-bin_angle/2),
-                                                    bins = bins,
-                                                    weights = weights_val_R)
+        if data_R.shape[0] > 0:
+            weights_val_R = data_R[:,rsq_idx]
+            pol_comp_num_R = data_R[:,polar_real_idx] + 1j * data_R[:,polar_imag_idx]
+            polar_ang_R = np.angle(pol_comp_num_R)
+            
+            hist_R, bin_edges_R = np.histogram( a = polar_ang_R,
+                                                range = (-np.pi-bin_angle/2,np.pi-bin_angle/2),
+                                                bins = bins,
+                                                weights = weights_val_R)
 
-                hist_perc_R = hist_R/np.nansum(hist_R)
-                hist_percent_R = hist_perc_R*100
+            hist_perc_R = hist_R/np.nansum(hist_R)
+            hist_percent_R = hist_perc_R*100
 
-                hist_val_R = convert_on_axis(hist_perc_R,min_val,max_val,min_axis,max_axis)
-                start_angle_hist_R = bin_edges_R[:-1]
-                end_angle_hist_R = bin_edges_R[1:]
+            hist_val_R = convert_on_axis(hist_perc_R,min_val,max_val,min_axis,max_axis)
+            start_angle_hist_R = bin_edges_R[:-1]
+            end_angle_hist_R = bin_edges_R[1:]
 
-                start_angle_hist_deg_R = np.degrees(start_angle_hist_R)
-                end_angle_hist_deg_R = np.degrees(end_angle_hist_R)
+            start_angle_hist_deg_R = np.degrees(start_angle_hist_R)
+            end_angle_hist_deg_R = np.degrees(end_angle_hist_R)
 
-                hist_data_source_R = {  'hist_R': hist_R,
-                                        'hist_percent_R': hist_percent_R,
-                                        'hist_val_R': hist_val_R,
-                                        'start_angle_R': start_angle_hist_R,
-                                        'end_angle_R': end_angle_hist_R,
-                                        'start_angle_deg_R': start_angle_hist_deg_R,
-                                        'end_angle_deg_R': end_angle_hist_deg_R}
-                hist_source_R = ColumnDataSource(data = hist_data_source_R)
-                
-                an_wedges_R = main_fig.annular_wedge(          x                   =   0,
-                                                        y                   =   0,
-                                                        inner_radius        =   min_val,
-                                                        outer_radius        =   'hist_val_R',
-                                                        start_angle         =   'start_angle_R',
-                                                        end_angle           =   'end_angle_R',
-                                                        fill_color          =   hemi_col_R,
-                                                        source              =   hist_source_R,
-                                                        line_width          =   0.5,
-                                                        direction           =   'anticlock',
-                                                        line_color          =   'black',
-                                                        fill_alpha          =   0.6,
-                                                        hover_fill_color    =   'black',
-                                                        hover_line_color    =   'black',
-                                                        hover_fill_alpha    =   0.5,
-                                                        hover_line_alpha    =   0.5)
-                
-                hist_tooltips_R = [ ('RH vertex', 'n = @hist_R{0}'),
-                                    ('Prop.', '@hist_percent_R{0.0}%'),
-                                    ('Edges','(@start_angle_deg_R{0} deg,@end_angle_deg_R{0} deg)')]
-                hist_hover_R = HoverTool( tooltips = hist_tooltips_R,
-                                    mode = 'mouse',
-                                    renderers = [an_wedges_R])
+            hist_data_source_R = {  'hist_R': hist_R,
+                                    'hist_percent_R': hist_percent_R,
+                                    'hist_val_R': hist_val_R,
+                                    'start_angle_R': start_angle_hist_R,
+                                    'end_angle_R': end_angle_hist_R,
+                                    'start_angle_deg_R': start_angle_hist_deg_R,
+                                    'end_angle_deg_R': end_angle_hist_deg_R}
+            hist_source_R = ColumnDataSource(data = hist_data_source_R)
+            
+            an_wedges_R = main_fig.annular_wedge(          x                   =   0,
+                                                    y                   =   0,
+                                                    inner_radius        =   min_val,
+                                                    outer_radius        =   'hist_val_R',
+                                                    start_angle         =   'start_angle_R',
+                                                    end_angle           =   'end_angle_R',
+                                                    fill_color          =   hemi_col_R,
+                                                    source              =   hist_source_R,
+                                                    line_width          =   0.5,
+                                                    direction           =   'anticlock',
+                                                    line_color          =   'black',
+                                                    fill_alpha          =   0.6,
+                                                    hover_fill_color    =   'black',
+                                                    hover_line_color    =   'black',
+                                                    hover_fill_alpha    =   0.5,
+                                                    hover_line_alpha    =   0.5)
+            
+            hist_tooltips_R = [ ('RH voxels', 'n = @hist_R{0}'),
+                                ('Prop.', '@hist_percent_R{0.0}%'),
+                                ('Edges','(@start_angle_deg_R{0} deg,@end_angle_deg_R{0} deg)')]
+            hist_hover_R = HoverTool( tooltips = hist_tooltips_R,
+                                mode = 'mouse',
+                                renderers = [an_wedges_R])
 
-                main_fig.add_tools(hist_hover_R)
+            main_fig.add_tools(hist_hover_R)
     
         # major axis values
         main_fig.text(x = 0.125,y = ticks_val , text = np.round(ticks_axis*100), text_font_size = "8pt", text_align = "center", text_baseline = "bottom")
@@ -1148,48 +1143,47 @@ class PlotOperator(object):
         main_fig.text(bar_ctr[0]+bar_width/2,bar_ctr[1]-bar_height/2-0.2,['LH'],text_font_size = "8pt",text_align = "center")
 
         # plots
-        if self.hemi == 'R' or self.hemi == 'LR':
-            if data_R.shape[0] > 0:
-                val_R = np.sum(data_R[data_R[:,x_idx] < 0,rsq_idx])/np.sum(data_R[:,rsq_idx])
-                val_text_R = '%1.1f %%'%(val_R*100)
-                main_fig.quad( left = bar_ctr[0]-bar_width, 
-                        right = bar_ctr[0], 
-                        top = bar_ctr[1]-bar_height/2+val_R*bar_height, 
-                        bottom = bar_ctr[1]-bar_height/2,
-                        fill_color = hemi_col_R, 
-                        line_width = 1,
-                        line_color = 'black',
-                        fill_alpha = 0.8)
-                main_fig.text(x = bar_ctr[0]-bar_width/2,
-                       y = bar_ctr[1]-bar_height/2 +(val_R*bar_height*0.5),
-                       text = [val_text_R],
-                        angle = np.pi/2,
-                       text_font_size = "8pt",
-                       text_align = "center",
-                       text_baseline = "middle",
-                       text_color = 'black')
+    
+        if data_R.shape[0] > 0:
+            val_R = np.sum(data_R[data_R[:,x_idx] < 0,rsq_idx])/np.sum(data_R[:,rsq_idx])
+            val_text_R = '%1.1f %%'%(val_R*100)
+            main_fig.quad( left = bar_ctr[0]-bar_width, 
+                    right = bar_ctr[0], 
+                    top = bar_ctr[1]-bar_height/2+val_R*bar_height, 
+                    bottom = bar_ctr[1]-bar_height/2,
+                    fill_color = hemi_col_R, 
+                    line_width = 1,
+                    line_color = 'black',
+                    fill_alpha = 0.8)
+            main_fig.text(x = bar_ctr[0]-bar_width/2,
+                   y = bar_ctr[1]-bar_height/2 +(val_R*bar_height*0.5),
+                   text = [val_text_R],
+                    angle = np.pi/2,
+                   text_font_size = "8pt",
+                   text_align = "center",
+                   text_baseline = "middle",
+                   text_color = 'black')
 
-        if self.hemi == 'L' or self.hemi == 'LR':
-            if data_L.shape[0] > 0:
-                val_L = np.sum(data_L[data_L[:,x_idx] > 0,rsq_idx])/np.sum(data_L[:,rsq_idx])
-                val_text_L = '%1.1f %%'%(val_L*100)
-                main_fig.quad( left = bar_ctr[0], 
-                        right = bar_ctr[0]+bar_width, 
-                        top = bar_ctr[1]-bar_height/2+val_L*bar_height, 
-                        bottom = bar_ctr[1]-bar_height/2,
-                        fill_color = hemi_col_L, 
-                        line_width = 1,
-                        line_color = 'black',
-                        fill_alpha = 0.8)
-                main_fig.text(x = bar_ctr[0]+bar_width/2,
-                       y = bar_ctr[1]-bar_height/2 +(val_L*bar_height*0.5),
-                       text = [val_text_L],
-                       angle = np.pi/2,
-                       text_font_size = "8pt",
-                       text_align = "center",
-                       text_baseline = "middle",
-                       text_color = 'black')
-
+    
+        if data_L.shape[0] > 0:
+            val_L = np.sum(data_L[data_L[:,x_idx] > 0,rsq_idx])/np.sum(data_L[:,rsq_idx])
+            val_text_L = '%1.1f %%'%(val_L*100)
+            main_fig.quad( left = bar_ctr[0], 
+                    right = bar_ctr[0]+bar_width, 
+                    top = bar_ctr[1]-bar_height/2+val_L*bar_height, 
+                    bottom = bar_ctr[1]-bar_height/2,
+                    fill_color = hemi_col_L, 
+                    line_width = 1,
+                    line_color = 'black',
+                    fill_alpha = 0.8)
+            main_fig.text(x = bar_ctr[0]+bar_width/2,
+                   y = bar_ctr[1]-bar_height/2 +(val_L*bar_height*0.5),
+                   text = [val_text_L],
+                   angle = np.pi/2,
+                   text_font_size = "8pt",
+                   text_align = "center",
+                   text_baseline = "middle",
+                   text_color = 'black')
 
         # title
         title_txt                       =   main_fig.text(
@@ -1201,9 +1195,6 @@ class PlotOperator(object):
                                                 )
         # up space
         s1 = Spacer(width=int(self.p_width), height=int(self.p_height/4))
-
-
-
 
         # Put figure together
         # -------------------
@@ -1251,32 +1242,32 @@ class PlotOperator(object):
             non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
 
         
-        def get_prediction(fit_model,num_vertex):
+        def get_prediction(fit_model,num_voxel):
             
 
             # get data time course
-            tc_data_mat = self.tc_mat[num_vertex,:]
+            tc_data_mat = self.tc_mat[num_voxel,:]
             
 
             # # get model time course
             if fit_model == 'gauss':
                 tc_model_mat = self.model_func.generate_prediction( 
-                                                    x = self.deriv_mat[num_vertex,x_idx], 
-                                                    y = self.deriv_mat[num_vertex,y_idx], 
-                                                    sigma = self.deriv_mat[num_vertex,size_idx],
-                                                    beta = self.deriv_mat[num_vertex,amp_idx], 
-                                                    baseline = self.deriv_mat[num_vertex,baseline_idx])
+                                                    x = self.deriv_mat[num_voxel,x_idx], 
+                                                    y = self.deriv_mat[num_voxel,y_idx], 
+                                                    sigma = self.deriv_mat[num_voxel,size_idx],
+                                                    beta = self.deriv_mat[num_voxel,amp_idx], 
+                                                    baseline = self.deriv_mat[num_voxel,baseline_idx])
 
             elif fit_model == 'css':
                 tc_model_mat = self.model_func.generate_prediction( 
-                                                    x = self.deriv_mat[num_vertex,x_idx], 
-                                                    y = self.deriv_mat[num_vertex,y_idx], 
-                                                    sigma = self.deriv_mat[num_vertex,size_idx],
-                                                    beta = self.deriv_mat[num_vertex,amp_idx], 
-                                                    n = self.deriv_mat[num_vertex,non_lin_idx], 
-                                                    baseline = self.deriv_mat[num_vertex,baseline_idx])
+                                                    x = self.deriv_mat[num_voxel,x_idx], 
+                                                    y = self.deriv_mat[num_voxel,y_idx], 
+                                                    sigma = self.deriv_mat[num_voxel,size_idx],
+                                                    beta = self.deriv_mat[num_voxel,amp_idx], 
+                                                    n = self.deriv_mat[num_voxel,non_lin_idx], 
+                                                    baseline = self.deriv_mat[num_voxel,baseline_idx])
             
-            deriv_model_mat = self.deriv_mat[num_vertex,:]
+            deriv_model_mat = self.deriv_mat[num_voxel,:]
 
             return (tc_data_mat, tc_model_mat,deriv_model_mat)
 
@@ -1284,8 +1275,8 @@ class PlotOperator(object):
         # ---------------------------
 
         # get model and data time course
-        if self.num_vertex[1] != -1:
-            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_vertex = self.num_vertex[1])
+        if self.num_voxel[1] != -1:
+            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_voxel = self.num_voxel[1])
             low_val = np.nanpercentile(tc_data_mat,5)*1.5
             if np.round(low_val,0): low_val_dec_round = 1
             elif np.round(low_val,1): low_val_dec_round = 2
@@ -1338,7 +1329,7 @@ class PlotOperator(object):
         # span
         high_param_tc_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
 
-        if self.num_vertex[1] != -1:
+        if self.num_voxel[1] != -1:
             # plot data
             high_param_tc_fig.circle(x = 'x_data', y = 'y_data',fill_color = 'black',line_color = 'black',line_width = 1,size = 2,source=high_param_tc_source, legend = "data")
 
@@ -1404,7 +1395,7 @@ class PlotOperator(object):
         high_param_map_fig.axis.axis_label_text_font_style = 'normal'
         high_param_map_fig.xaxis.major_label_text_font_size = '0pt'
 
-        if self.num_vertex[1] != -1:
+        if self.num_voxel[1] != -1:
             # stimulus
             high_param_map_fig.quad(bottom              =   -self.stim_height/2.0,                      # define bottom value
                                     left                =   -self.stim_width/2.0,                       # define left value
@@ -1455,9 +1446,9 @@ class PlotOperator(object):
         # ----------------------------
 
         # get model and data time course        
-        if self.num_vertex[0] != -1:
+        if self.num_voxel[0] != -1:
             
-            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_vertex = self.num_vertex[0])
+            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_voxel = self.num_voxel[0])
             low_val = np.nanpercentile(tc_data_mat,5)*1.5
             if np.round(low_val,0): low_val_dec_round = 1
             elif np.round(low_val,1): low_val_dec_round = 2
@@ -1509,7 +1500,7 @@ class PlotOperator(object):
         low_param_tc_fig.axis.axis_label_text_font_style = 'normal'
         low_param_tc_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
 
-        if self.num_vertex[0] != -1:
+        if self.num_voxel[0] != -1:
             # plot data
             low_param_tc_fig.circle(x = 'x_data', y = 'y_data', fill_color = 'black', line_color = 'black', line_width = 1, size = 2, source = low_param_tc_source, legend="data" )
 
@@ -1571,7 +1562,7 @@ class PlotOperator(object):
         low_param_map_fig.axis.axis_label_standoff = 10
         low_param_map_fig.axis.axis_label_text_font_style = 'normal'
 
-        if self.num_vertex[0] != -1:
+        if self.num_voxel[0] != -1:
             # stimulus
             low_param_map_fig.quad(bottom              =   -self.stim_height/2.0,                      # define bottom value
                                     left                =   -self.stim_width/2.0,                       # define left value
@@ -1636,9 +1627,9 @@ class PlotOperator(object):
                                                 min_border_top      =   self.min_border_large,
                                                 toolbar_location    =   None)
 
-        stim_on = ([16,47],[48,79],[80,111],[112,143],[156,187],[188,219],[220,251],[252,283])
-        stim_off = ([0,15],[144,155],[284,299])
-        stim_dir = (['right'],['up'],['left'],['down'],['up\nright'],['up\nleft'],['down\nleft'],['down\nright'])
+        stim_on = ([10,27],[38,55],[66,83],[94,111])
+        stim_off = ([0,9],[28,37],[56,65],[84,93],[112,121])
+        stim_dir = (['left'],['down'],['right'],['up'])
 
         for t_stim_on in np.arange(0,len(stim_on),1):
             time_leg_fig.quad(left=stim_on[t_stim_on][0], right=stim_on[t_stim_on][1], top=1, bottom=0, fill_color="black",line_color = 'white',line_width = 1)

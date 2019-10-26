@@ -77,10 +77,11 @@ except: pass
 
 for roi in rois:
 	print('creating {roi} {cortical_mask} mask'.format(roi = roi, cortical_mask = cortical_mask))
-	roi_mask = cortex.utils.get_roi_masks(subject = subject, xfmname = xfm_name, gm_sampler = cortical_mask, roi_list = roi, return_dict = True)
-	roi_mask_img = nb.Nifti1Image(dataobj = roi_mask[roi].transpose((2,1,0)), affine = ref_img.affine, header = ref_img.header)
-	roi_mask_file = "{rois_mask_dir}/{roi}_{cortical_mask}_{acq}.nii.gz".format(rois_mask_dir = rois_mask_dir, roi = roi, cortical_mask = cortical_mask, acq = acq)
-	roi_mask_img.to_filename(roi_mask_file)
+	roi_mask = cortex.utils.get_roi_masks(subject = subject, xfmname = xfm_name, gm_sampler = cortical_mask, roi_list = roi, return_dict = True, split_lr = True)
+	for hemi in ['L','R']:
+		roi_mask_img = nb.Nifti1Image(dataobj = roi_mask['{roi}_{hemi}'.format(roi = roi, hemi = hemi)].transpose((2,1,0)), affine = ref_img.affine, header = ref_img.header)
+		roi_mask_file = "{rois_mask_dir}/{roi}_{cortical_mask}_{acq}_{hemi}.nii.gz".format(rois_mask_dir = rois_mask_dir, roi = roi, cortical_mask = cortical_mask, acq = acq, hemi = hemi)
+		roi_mask_img.to_filename(roi_mask_file)
 
 # Create HDF5 files
 # -----------------
@@ -96,7 +97,8 @@ for roi in rois:
 	try: os.system('rm {h5_file}'.format(h5_file = h5_file))
 	except: pass
 
-	mask_file = "{rois_mask_dir}/{roi}_{cortical_mask}_{acq}.nii.gz".format(rois_mask_dir = rois_mask_dir, roi = roi, cortical_mask = cortical_mask, acq = acq)
+	mask_file_L = "{rois_mask_dir}/{roi}_{cortical_mask}_{acq}_L.nii.gz".format(rois_mask_dir = rois_mask_dir, roi = roi, cortical_mask = cortical_mask, acq = acq)
+	mask_file_R = "{rois_mask_dir}/{roi}_{cortical_mask}_{acq}_R.nii.gz".format(rois_mask_dir = rois_mask_dir, roi = roi, cortical_mask = cortical_mask, acq = acq)
 	
 	for prf_sign in prf_signs:
 
@@ -104,7 +106,8 @@ for roi in rois:
 
 		mask_nifti_2_hdf5(	deriv_file = deriv_file,
 					 		tc_file = tc_file,
-							mask_file = mask_file,
+							mask_file_L = mask_file_L,
+							mask_file_R = mask_file_R,
 							hdf5_file = h5_file,
 							folder_alias = prf_sign)
 

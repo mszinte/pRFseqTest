@@ -382,7 +382,7 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'd
 
     return volume
 
-def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file, hdf5_file, folder_alias):
+def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, folder_alias):
     """
     masks data in in_file with mask in mask_file,
     to be stored in an hdf5 file
@@ -392,7 +392,8 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file, hdf5_file, folder_alias):
     Parameters
     ----------
     in_files : absolute path to functional nifti-file
-    mask_file : absolute path to mask nifti-file
+    mask_file_L : absolute path to LH mask nifti-file 
+    mask_file_R : absolute path to RH mask nifti-file 
     hdf5_file : absolute path to hdf5 file.
     folder_alias : name of the to-be-created folder in the hdf5 file.
     
@@ -418,17 +419,31 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file, hdf5_file, folder_alias):
     tc_file_data = tc_file_img.get_data()
     tc_data_name = os.path.split(tc_file)[-1].split('.nii.gz')[0]
 
-    # load mask
+    # load masks
+    mask_file_L_img = nb.load(mask_file_L)
+    mask_file_L_data = mask_file_L_img.get_data()
+    mask_file_R_img = nb.load(mask_file_R)
+    mask_file_R_data = mask_file_R_img.get_data()
+    # mask_file_data = mask_file_L_data + mask_file_R_data
     
-    mask_file_img = nb.load(mask_file)
-    mask_file_data = mask_file_img.get_data()
-    coord_mask = np.array(np.where(mask_file_data == True)).T
     
-    # mask files
-    deriv_mask_data = deriv_file_data[mask_file_data == True,:]
-    tc_mask_data = tc_file_data[mask_file_data == True,:]
+    # coordinates
+    coord_mask_L = np.array(np.where(mask_file_L_data == True)).T
+    coord_mask_R = np.array(np.where(mask_file_R_data == True)).T
+    coord_mask = np.vstack((coord_mask_L,coord_mask_R))
     
+    # deriv + add hemi val (LH = 1; RH = 2)
+    deriv_mask_L_data = deriv_file_data[mask_file_L_data == True,:]
+    deriv_mask_L_data = np.hstack((deriv_mask_L_data,np.ones((deriv_mask_L_data.shape[0],1)) * 1.0))
+    deriv_mask_R_data = deriv_file_data[mask_file_R_data == True,:]
+    deriv_mask_R_data = np.hstack((deriv_mask_R_data,np.ones((deriv_mask_R_data.shape[0],1)) * 2.0))
+    deriv_mask_data = np.vstack((deriv_mask_L_data,deriv_mask_R_data))
 
+    # time course
+    tc_mask_L_data = tc_file_data[mask_file_L_data == True,:]
+    tc_mask_R_data = tc_file_data[mask_file_R_data == True,:]
+    tc_mask_data = np.vstack((tc_mask_L_data,tc_mask_R_data))
+    
     try:
         h5file = h5py.File(hdf5_file, "r+")
     except:
@@ -450,4 +465,5 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file, hdf5_file, folder_alias):
                             data = coord_mask,
                             dtype ='float32')
 
+    
     return None

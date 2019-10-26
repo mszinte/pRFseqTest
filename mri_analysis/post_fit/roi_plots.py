@@ -130,16 +130,13 @@ model_func.hrf_delay = 0
 # -------------------------
 print('creating bokeh plots')
 sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
-            non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
-
+            non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx, hemi_idx = 0,1,2,3,4,5,6,7,8,9,10,11,12
 
 # Initialize data
 # ---------------
 for roi_num, roi in enumerate(rois):
     for prf_sign in prf_signs:
         
-        tc_mat = []
-
         # create html folder
         exec("html_dir_{prf_sign} = '{bokeh_dir}/html/{prf_sign}'".format(bokeh_dir = bokeh_dir, prf_sign = prf_sign))
         try: exec('os.makedirs(html_dir_{prf_sign})'.format(prf_sign = prf_sign))
@@ -262,10 +259,121 @@ for roi_num, roi in enumerate(rois):
 
             plotter = PlotOperator(**param_all)
             
-            # # FIG 1: PRF MAP + PRF COV
+            # # FIG 1: PRF ECC VS...
+            # # --------------------
+
+            # # pRFecc
+            # old_main_fig = []
+            # f_pRFecc = []
+            # if fit_model == 'gauss':
+            #     type_comp_list = ['Size','R2','Amplitude','Coverage','Baseline']
+            # elif fit_model == 'css':
+            #     type_comp_list = ['Size','R2','Non-Linearity','Amplitude','Coverage','Baseline']
+
+            # for numData, type_comp in enumerate(type_comp_list):
+
+            #     params_pRFecc = param_all
+            #     params_pRFecc.update(
+            #                {    'x_range': (0, 15),
+            #                     'x_label': 'Eccentricity (dva)',
+            #                     'x_tick_steps': 5,
+            #                     'x_source_label': 'ecc',
+            #                     'draw_reg': False,
+            #                     'h_hist_bins': 15,
+            #                     'link_x': True})
+
+            #     title = '{roi} {prf_sign}: Eccentricity vs. {type_comp}'.format(roi = roi, type_comp = type_comp, prf_sign = prf_sign)
+            #     params_pRFecc.update({'main_fig_title': title})
+
+            #     if save_svg == 1:
+            #         params_pRFecc.update({'svg_subfolder':'{roi}_{prf_sign}_pRFecc'.format(prf_sign = prf_sign, roi = roi)})
+
+            #     if type_comp == 'Size':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (0, 15),
+            #                         'y_label': 'Size (dva)',
+            #                         'y_source_label': 'sigma',
+            #                         'y_tick_steps': 5,
+            #                         'v_hist_bins': 15,
+            #                         'draw_reg': True})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_size'.format(prf_sign = prf_sign, roi = roi)})
+
+            #     elif type_comp == 'R2':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (0, 1),
+            #                         'y_label': 'R2',
+            #                         'y_source_label': 'rsq',
+            #                         'y_tick_steps': 0.2,
+            #                         'v_hist_bins': 20})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_rsq'.format(prf_sign = prf_sign, roi = roi)})
+
+            #     elif type_comp == 'Non-Linearity':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (0, 1.5),
+            #                         'y_label': 'Non-linearity',
+            #                         'y_source_label': 'non_lin',
+            #                         'y_tick_steps': 0.25,
+            #                         'v_hist_bins': 30})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_non_lin'.format(prf_sign = prf_sign, roi = roi)})
+
+            #     elif type_comp == 'Amplitude':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (0, 10),
+            #                         'y_label': 'Amplitude',
+            #                         "y_source_label": 'beta',
+            #                         'y_tick_steps': 2,
+            #                         'v_hist_bins': 20})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_amp'.format(prf_sign = prf_sign, roi = roi)})
+
+            #     elif type_comp == 'Coverage':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (0, 1),
+            #                         'y_label': 'pRF coverage (%)',
+            #                         'y_source_label': 'cov',
+            #                         'y_tick_steps': 0.2,
+            #                         'v_hist_bins': 20})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_cov'.format(prf_sign = prf_sign, roi= roi)})
+
+            #     elif type_comp == 'Baseline':
+            #         params_pRFecc.update(
+            #                     {   'y_range': (-4, 4),
+            #                         'y_label': 'Baseline',
+            #                         'y_source_label': 'baseline',
+            #                         'y_tick_steps': 2,
+            #                         'v_hist_bins': 16})
+            #         if save_svg == 1:
+            #             params_pRFecc.update({'svg_filename': '{roi}_{prf_sign}_pRFecc_baseline'.format(prf_sign = prf_sign,roi = roi)})
+
+            #     out1, old_main_fig  = plotter.draw_figure(  parameters = params_pRFecc,
+            #                                                 plot = 'ecc',
+            #                                                 old_main_fig = old_main_fig)
+            #     f_pRFecc.append(out1)
+
+            # if fit_model == 'gauss':
+            #     all_fig1 = gridplot([ [f_pRFecc[0],f_pRFecc[1],f_pRFecc[2]],
+            #                           [f_pRFecc[3],f_pRFecc[4],None]],toolbar_location='right')
+
+            # elif fit_model == 'css':
+            #     all_fig1 = gridplot([ [f_pRFecc[0],f_pRFecc[1],f_pRFecc[2]],
+            #                           [f_pRFecc[3],f_pRFecc[4],f_pRFecc[5]]],toolbar_location='right')
+
+            # exec('output_file_html = opj(html_dir_{prf_sign},"{roi}_{prf_sign}_pRFecc.html")'.format(prf_sign = prf_sign,roi = roi))
+            # html_title = "Subject: {subject} | ROI: {roi} | Sign: {prf_sign} | Voxel num: {voxel_num} | Figures: pRF maps eccentricity vs.".format(
+            #                                     subject = subject,roi = roi,prf_sign = prf_sign,voxel_num = voxel_num)
+            # output_file(output_file_html, title = html_title)
+            # save(all_fig1)
+            
+
+            # # FIG 2: PRF MAP + PRF COV
             # # ------------------------
 
             # # pRFmap
+            # old_main_fig = []
             # title = '{roi} {prf_sign}: pRF map (n = {voxel_num})'.format(roi = roi, voxel_num = voxel_num, prf_sign = prf_sign)
             # params_pRFmap = param_all
 
@@ -285,7 +393,8 @@ for roi_num, roi in enumerate(rois):
             #     params_pRFmap.update({'svg_filename': '{roi}_{prf_sign}_pRFmap'.format(prf_sign = prf_sign, roi= roi)})
 
             # f_pRFmap, old_main_fig1 = plotter.draw_figure(  parameters = params_pRFmap, 
-            #                                                 plot = 'map')
+            #                                                 plot = 'map',
+            #                                                 old_main_fig = old_main_fig)
 
             
             # # pRF cov
@@ -313,126 +422,157 @@ for roi_num, roi in enumerate(rois):
                         
             # params_pRFcov.update({'main_fig_title':   title})
 
-            # f_pRFcov, old_main_fig1 = plotter.draw_figure(parameters = params_pRFcov, 
-            #                                plot = 'cov',
-            #                                old_main_fig = old_main_fig1)
+            # f_pRFcov, old_main_fig1 = plotter.draw_figure( parameters = params_pRFcov, 
+            #                                                plot = 'cov',
+            #                                                old_main_fig = old_main_fig1)
 
-            # all_fig1 = gridplot([ [f_pRFmap,f_pRFcov]], toolbar_location = 'right')
+            # all_fig2 = gridplot([ [f_pRFmap,f_pRFcov]], toolbar_location = 'right')
 
             # exec('output_file_html = opj(html_dir_{prf_sign},"{roi}_{prf_sign}_pRFmap.html")'.format(prf_sign = prf_sign,roi = roi))
             # html_title = "Subject: {subject} | ROI: {roi} | Sign: {prf_sign} | Voxel num: {voxel_num} | Figures: pRF maps parameters and density".format(
             #                                     subject = subject,roi = roi,prf_sign = prf_sign,voxel_num = voxel_num)
             # output_file(output_file_html, title = html_title)
-            # save(all_fig1)
-            
-            # FIG 2: PRF ECC VS...
-            # --------------------
+            # save(all_fig2)
 
-            # pRFecc
-            old_main_fig = []
-            f_pRFecc = []
+            # # FIG 3: pRF laterality
+            # # ---------------------
+            # old_main_fig = []
+            # title = '{roi} {prf_sign}: pRF laterality histogram'.format(roi = roi, prf_sign = prf_sign)
+            # params_pRFlat = param_all
+            # params_pRFlat.update(
+            #             {   'p_width': 500, 
+            #                 'p_height': 500,
+            #                 'dataMat': deriv_data,
+            #                 'x_range': (-2.6, 2.6), 
+            #                 'y_range': (-2.6, 2.6),
+            #                 'vmin': 0,
+            #                 'vmax': 0.2,
+            #                 'weighted_data': True,
+            #                 'main_fig_title': title,
+            #                 'cmap': 'hsv',
+            #                 'cmap_steps': 16,
+            #                 'ang_bins': 36})
+            # if save_svg == 1:
+            #     params_pRFlat.update({'svg_filename':'{roi}_{prf_sign}_pRFlat'.format(prf_sign = prf_sign, roi= roi)})
+
+            # params_pRFcov.update({'main_fig_title':   title})
+            # f_pRFlat, old_main_fig1 = plotter.draw_figure( parameters = params_pRFlat, 
+            #                                                plot = 'lat',
+            #                                                old_main_fig = old_main_fig)
+
+            # all_fig3 = gridplot([[f_pRFlat]],toolbar_location = 'right')
+            # exec('output_file_html = opj(html_dir_{prf_sign},"{roi}_{prf_sign}_pRFlat.html")'.format(prf_sign = prf_sign,roi = roi))
+            # html_title = "Subject: {subject} | ROI: {roi} | Sign: {prf_sign} | Voxel num: {voxel_num} | Figures: pRF laterality histogram".format(
+            #                                     subject = subject,roi = roi,prf_sign = prf_sign,voxel_num = voxel_num)
+            # output_file(output_file_html, title = html_title)
+            # save(all_fig3)
+
+            # FIG 4: pRF time course
+            # ----------------------
+
+            # pRF tc
+            params_pRFtc = param_all
+            params_pRFtc.update(
+                        {   'p_width': 500, 
+                            'p_height': 500,
+                            'x_range_map': (-15,15),
+                            'y_range_map': (-15,15),
+                            'x_label_map': 'Horizontal coord. (dva)',
+                            'y_label_map': 'Vertical coord. (dva)',
+                            'x_tick_map': 5,
+                            'y_tick_map': 5,
+                            'x_range_tc': (0,analysis_info['TRs']),
+                            'x_label_tc': 'Time (s)',
+                            'y_label_tc': 'BOLD signal change (%)',
+                            'x_tick_tc': 25,
+                            'tr_dur': analysis_info['TR'],
+                            'model_line_color': tuple([254,51,10]),
+                            'model_fill_color': tuple([254,51,10])
+                        })
+
+            if save_svg == 1:
+                params_pRFtc.update({'svg_subfolder': '{roi}_{prf_sign}_pRFtc'.format(prf_sign = prf_sign,roi = roi)})
+
+            f_pRFtc = []
+
+            # get index matrices
+            prct_r2 = np.nanpercentile(a = deriv_data[:,rsq_idx],q = step_r2)
+            idx_r2 = []
+
+            for r2_step in np.arange(0,len(step_r2)-1,2):
+                idx_r2.append(np.logical_and(deriv_data[:,rsq_idx]>=prct_r2[r2_step],deriv_data[:,rsq_idx]<=prct_r2[r2_step+1]))
+
+            # get voxel number to draw
+            for param in list_params:
+
+                exec('prct_{param} = np.nanpercentile(a = deriv_data[:,{param}_idx],q = step_params)'.format(param = param))
+                exec('idx_{param} = []'.format(param = param))
+
+                for param_step in np.arange(0,len(step_params)-1,2):
+                    exec('idx_{param}.append(np.logical_and(deriv_data[:,{param}_idx]>=prct_{param}[param_step],deriv_data[:,{param}_idx]<=prct_{param}[param_step+1]))'.format(param = param))
+
+
+                exec('num_{param} = []'.format(param = param))
+                
+                for r2_step in np.arange(0,2,1):
+
+                    for param_step in np.arange(0,2,1):
+
+                        exec('mat = np.where(np.logical_and(idx_r2[r2_step],idx_{param}[param_step]))'.format(param = param))
+
+                        if mat[0].size == 0:
+                            exec('num_{param}.append(-1)'.format(param = param))
+                        else:
+                            exec('num_{param}.append(mat[0][np.random.choice(len(mat[0]))])'.format(param = param))
+
+
+            for param in list_params:
+                exec('num_voxel = num_{param}'.format(param = param))
+
+                for r2_level in list_r2_level:
+                    if r2_level == 'Low':
+                        num_voxel2draw = num_voxel[0:2]
+                    elif r2_level == 'High':
+                        num_voxel2draw = num_voxel[2:4]
+
+                    
+                    params_pRFtc.update(   
+                                    {   'params': param,
+                                        'r2_level': r2_level,
+                                        'deriv_mat': deriv_data,
+                                        'tc_mat': tc_data,
+                                        'num_voxel': num_voxel2draw,
+                                        'fit_model': fit_model,
+                                        'model_func': model_func,
+                                        'prf_sign': prf_sign,
+                                        'title': '{roi} {sign}'.format(sign = prf_sign,roi = roi)
+                                    })
+                    if save_svg == 1:
+                        params_pRFtc.update({'svg_filename':'{roi}_{prf_sign}_pRFtc_rsq_{r2_level}_{param}'.format(prf_sign = prf_sign, roi = roi,r2_level = r2_level, param = param)})
+
+                    
+                    out4,main_fig4  = plotter.draw_figure(  parameters = params_pRFtc,
+                                                            plot = 'tc')
+                    
+                    f_pRFtc.append(out4)
+
             if fit_model == 'gauss':
-                type_comp_list = ['Size','R2','Amplitude','Coverage','Baseline']
+                all_fig4 = gridplot([   [f_pRFtc[0],f_pRFtc[1]],
+                                        [f_pRFtc[2],f_pRFtc[3]],
+                                        [f_pRFtc[4],f_pRFtc[5]],
+                                        [f_pRFtc[6],f_pRFtc[7]]],toolbar_location = None)
             elif fit_model == 'css':
-                type_comp_list = ['Size','R2','Non-Linearity','Amplitude','Coverage','Baseline']
+                all_fig4 = gridplot([   [f_pRFtc[0],f_pRFtc[1]],
+                                        [f_pRFtc[2],f_pRFtc[3]],
+                                        [f_pRFtc[4],f_pRFtc[5]],
+                                        [f_pRFtc[6],f_pRFtc[7]],
+                                        [f_pRFtc[8],f_pRFtc[9]],],toolbar_location = None)
 
-            for numData, type_comp in enumerate(type_comp_list):
-
-                params_pRFecc = param_all
-                params_pRFecc.update(
-                           {    'x_range':          (0, 15),
-                                'x_label':          'Eccentricity (dva)',
-                                'x_tick_steps':     5,
-                                'x_source_label':   'ecc',
-                                'draw_reg':         False,
-                                'h_hist_bins':      15,
-                                'link_x':           True})
-
-                title = '{roi} {prf_sign}: Eccentricity vs. {type_comp}'.format(roi = roi, type_comp = type_comp, prf_sign = prf_sign)
-                params_pRFecc.update({'main_fig_title': title})
-
-                if save_svg == 1:
-                    params_pRFecc.update({'svg_subfolder':'{roi}_{prf_sign}_pRFecc'.format(prf_sign = prf_sign, roi = roi)})
-
-                if type_comp == 'Size':
-                    params_pRFecc.update(
-                                {   'y_range':          (0, 15),
-                                    'y_label':          'Size (dva)',
-                                    'y_source_label':   'sigma',
-                                    'y_tick_steps':     5,
-                                    'v_hist_bins':      15,
-                                    'draw_reg':         True})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_size'.format(prf_sign = prf_sign, roi = roi)})
-
-                elif type_comp == 'R2':
-                    params_pRFecc.update(
-                                {   'y_range':          (0, 1),
-                                    'y_label':          'R2',
-                                    'y_source_label':   'rsq',
-                                    'y_tick_steps':     0.2,
-                                    'v_hist_bins':      20})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_rsq'.format(prf_sign = prf_sign, roi = roi)})
-
-                elif type_comp == 'Non-Linearity':
-                    params_pRFecc.update(
-                                {   'y_range':          (0, 1.5),
-                                    'y_label':          'Non-linearity',
-                                    'y_source_label':   'non_lin',
-                                    'y_tick_steps':     0.25,
-                                    'v_hist_bins':      30})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_non_lin'.format(prf_sign = prf_sign, roi = roi)})
-
-                elif type_comp == 'Amplitude':
-                    params_pRFecc.update(
-                                {   'y_range':          (0, 10),
-                                    'y_label':          'Amplitude',
-                                    "y_source_label":   'beta',
-                                    'y_tick_steps':     2,
-                                    'v_hist_bins':      20})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_amp'.format(prf_sign = prf_sign, roi = roi)})
-
-                elif type_comp == 'Coverage':
-                    params_pRFecc.update(
-                                {   'y_range':          (0, 1),
-                                    'y_label':          'pRF coverage (%)',
-                                    'y_source_label':   'cov',
-                                    'y_tick_steps':     0.2,
-                                    'v_hist_bins':      20})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename':'{roi}_{prf_sign}_pRFecc_cov'.format(prf_sign = prf_sign, roi= roi)})
-
-                elif type_comp == 'Baseline':
-                    params_pRFecc.update(
-                                {   'y_range':          (-4, 4),
-                                    'y_label':          'Baseline',
-                                    'y_source_label':   'baseline',
-                                    'y_tick_steps':     2,
-                                    'v_hist_bins':      16})
-                    if save_svg == 1:
-                        params_pRFecc.update({'svg_filename': '{roi}_{prf_sign}_pRFecc_baseline'.format(prf_sign = prf_sign,roi = roi)})
-
-                out1, old_main_fig  = plotter.draw_figure(  parameters = params_pRFecc,
-                                                            plot = 'ecc',
-                                                            old_main_fig = old_main_fig)
-                f_pRFecc.append(out1)
-
-            if fit_model == 'gauss':
-                all_fig2 = gridplot([ [f_pRFecc[0],f_pRFecc[1],f_pRFecc[2]],
-                                      [f_pRFecc[3],f_pRFecc[4],None]],toolbar_location='right')
-
-            elif fit_model == 'css':
-                all_fig2 = gridplot([ [f_pRFecc[0],f_pRFecc[1],f_pRFecc[2]],
-                                      [f_pRFecc[3],f_pRFecc[4],f_pRFecc[5]]],toolbar_location='right')
-
-            exec('output_file_html = opj(html_dir_{prf_sign},"{roi}_{prf_sign}_pRFecc.html")'.format(prf_sign = prf_sign,roi = roi))
-            html_title = "Subject: {subject} | ROI: {roi} | Sign: {prf_sign} | Voxel num: {voxel_num} | Figures: pRF maps eccentricity vs.".format(
+            exec('output_file_html = opj(html_dir_{prf_sign},"{roi}_{prf_sign}_pRFtc.html")'.format(prf_sign = prf_sign,roi = roi))
+            html_title = "Subject: {subject} | ROI: {roi} | Sign: {prf_sign} | Voxel num: {voxel_num} | Figures: pRF time course".format(
                                                 subject = subject,roi = roi,prf_sign = prf_sign,voxel_num = voxel_num)
             output_file(output_file_html, title = html_title)
-            save(all_fig2)
+            save(all_fig4)
             deb()
 
         else:
@@ -441,113 +581,8 @@ for roi_num, roi in enumerate(rois):
             
 
                     
-                    #     # pRF lat
-                    #     # -------
-                    #     params_pRFlat = param_all
-                    #     params_pRFlat.update(
-                    #                 {   'p_width':          500, 
-                    #                     'p_height':         500,
-                    #                     'dataMat':          data,
-                    #                     'x_range':          (-2.6, 2.6), 
-                    #                     'y_range':          (-2.6, 2.6),
-                    #                     'vmin':             0,
-                    #                     'vmax':             0.2,
-                    #                     'weighted_data':    True,
-                    #                     'main_fig_title':   title,
-                    #                     'cmap':             'hsv',
-                    #                     'cmap_steps':       16,
-                    #                     'ang_bins':         36,
-                    #                     'hemi':             hemi})
-                    #     if save_svg == 1:
-                    #         params_pRFlat.update(
-                    #                 {   'svg_filename':     '{roi}_{hemi}_{prf_sign}_pRFlat'.format(prf_sign=prf_sign,hemi=hemi,roi= roi_text)})
-                    #     title = '{roi}{hemi} {prf_sign}: pRF laterality histogram'.format(roi = roi_text, hemi = hemi, type_comp = type_comp, prf_sign = prf_sign)
-                    #     params_pRFcov.update({'main_fig_title':   title})
-                    #     f_pRFlat = plotter.draw_figure(parameters = params_pRFlat, plot = 'lat')
-
-                    #     # pRF tc
-                    #     # -------
-                    #     params_pRFtc = param_all
-                    #     params_pRFtc.update(
-                    #                 {   'p_width':          500, 
-                    #                     'p_height':         500,
-                    #                     'x_range_map':      (-12,12),
-                    #                     'y_range_map':      (-12,12),
-                    #                     'x_label_map':      'Horizontal coord. (dva)',
-                    #                     'y_label_map':      'Vertical coord. (dva)',
-                    #                     'x_tick_map':       4,
-                    #                     'y_tick_map':       4,
-                    #                     'x_range_tc':       (0,analysis_info['n_timepoints_per_run']),
-                    #                     'x_label_tc':       'Time (s)',
-                    #                     'y_label_tc':       'BOLD signal change (%)',
-                    #                     'x_tick_tc':        50,
-                    #                     'tr_dur':           analysis_info['TR'],
-                    #                     'model_line_color': tuple([254,51,10]),
-                    #                     'model_fill_color': tuple([254,51,10])
-                    #                 })
-
-                    #     if save_svg == 1:
-                    #         params_pRFtc.update(
-                    #                     {   'svg_subfolder':    '{roi}_{hemi}_{prf_sign}_pRFtc'.format(prf_sign=prf_sign,hemi=hemi,roi= roi_text)})
-
-                    #     f_pRFtc = []
-
-                    #     # get index matrices
-                    #     prct_r2 = np.nanpercentile(a = data[:,rsq_idx],q = step_r2)
-                    #     idx_r2 = []
-                    #     for r2_step in np.arange(0,len(step_r2)-1,2):
-
-                    #         idx_r2.append(np.logical_and(data[:,rsq_idx]>=prct_r2[r2_step],data[:,rsq_idx]<=prct_r2[r2_step+1]))
-
-
-                    #     # get vertex number to draw
-                    #     for param in list_params:
-                    #         exec('prct_{param} = np.nanpercentile(a = data[:,{param}_idx],q = step_params)'.format(param = param))
-                    #         exec('idx_{param} = []'.format(param = param))
-
-                    #         for param_step in np.arange(0,len(step_params)-1,2):
-                    #             exec('idx_{param}.append(np.logical_and(data[:,{param}_idx]>=prct_{param}[param_step],data[:,{param}_idx]<=prct_{param}[param_step+1]))'.format(param = param))
-
-                    #         exec('num_{param} = []'.format(param = param))
-                    #         exec('num_{param} = []'.format(param = param))
-                    #         for r2_step in np.arange(0,2,1):
-
-                    #             for param_step in np.arange(0,2,1):
-
-                    #                 exec('mat = np.where(np.logical_and(idx_r2[r2_step],idx_{param}[param_step]))'.format(param = param))
-                    #                 if mat[0].size == 0:
-                    #                     exec('num_{param}.append(-1)'.format(param = param))
-                    #                 else:
-                    #                     exec('num_{param}.append(mat[0][np.random.choice(len(mat[0]))])'.format(param = param))
-
-                    #     for param in list_params:
-                    #         exec('num_vertex = num_{param}'.format(param = param))
-
-                    #         for r2_level in list_r2_level:
-                    #             if r2_level == 'Low':
-                    #                 num_vertex2draw = num_vertex[0:2]
-                    #             elif r2_level == 'High':
-                    #                 num_vertex2draw = num_vertex[2:4]
-
-                    #             params_pRFtc.update(   
-                    #                             {   'params':               param,
-                    #                                 'r2_level':             r2_level,
-                    #                                 'deriv_mat':            data,
-                    #                                 'tc_mat':               tc_mat,
-                    #                                 'num_vertex':           num_vertex2draw,
-                    #                                 'fit_model':            fit_model,
-                    #                                 'model_func':           model_func,
-                    #                                 'prf_sign':             prf_sign,
-                    #                                 'title':                '{roi} {hemi} {sign}'.format(sign = prf_sign,hemi=hemi,roi = roi_text)
-                    #                             })
-                    #             if save_svg == 1:
-                    #                 params_pRFtc.update(
-                    #                                 {   'svg_filename':     '{roi}_{hemi}_{prf_sign}_pRFtc_rsq_{r2_level}_{param}'.format(prf_sign=prf_sign,hemi=hemi,roi= roi_text,r2_level = r2_level, param = param)})
-
-                    #             out4,main_fig4  = plotter.draw_figure(    parameters =    params_pRFtc,
-                    #                                             plot =          'tc')
-
-                    #             f_pRFtc.append(out4)
+       
+                    
 
                     #     # save files
                     #     if fit_model == 'gauss':
