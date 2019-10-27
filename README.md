@@ -40,10 +40,9 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 10. Draw ROIs using inkscape
 11. Re-create flatmaps, datasets and webviewers with ROIs using post_fit/pp_roi.py
 12. Create ROIs hdf5 files using rois_to_hdf5.py
-
+13. Draw roi plots with bokeh using post_fit/roi_plots.py
 
 ## TO DO
-
-13. Make bokeh plots (to do)
+13. Fix error with time course (check that time course correspond well to extacted value)
 14. Make slice cuts to see subcortical structures
 15. Make SC ROI

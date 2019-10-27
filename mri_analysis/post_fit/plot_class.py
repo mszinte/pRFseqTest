@@ -8,6 +8,7 @@ from bokeh.layouts import row, column, gridplot
 from bokeh.models import BoxZoomTool, BoxSelectTool, Spacer, WheelZoomTool, PanTool, ResetTool
 from bokeh.models.glyphs import Text
 from bokeh.models.mappers import LinearColorMapper
+from bokeh.models import NumeralTickFormatter
 
 # Other imports
 # -------------
@@ -1271,6 +1272,7 @@ class PlotOperator(object):
 
             return (tc_data_mat, tc_model_mat,deriv_model_mat)
 
+
         # Time course - high parameter
         # ---------------------------
 
@@ -1323,8 +1325,11 @@ class PlotOperator(object):
         high_param_tc_fig.xaxis.ticker           =   np.arange(self.x_range_tc[0],self.x_range_tc[1] + self.x_tick_tc, self.x_tick_tc)
         high_param_tc_fig.background_fill_color  =   self.bg_color
         high_param_tc_fig.axis.axis_label_standoff = 10
+        high_param_tc_fig.yaxis.major_label_standoff = 10
         high_param_tc_fig.axis.axis_label_text_font_style = 'normal'
         high_param_tc_fig.xaxis.major_label_text_font_size = '0pt'
+        high_param_tc_fig.yaxis.formatter = NumeralTickFormatter(format="00.0")
+        
 
         # span
         high_param_tc_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
@@ -1392,6 +1397,7 @@ class PlotOperator(object):
         high_param_map_fig.xaxis.ticker           =   np.arange(self.x_range_map[0],self.x_range_map[1] + self.x_tick_map, self.x_tick_map)
         high_param_map_fig.background_fill_color  =   self.bg_color
         high_param_map_fig.axis.axis_label_standoff = 10
+        high_param_map_fig.yaxis.major_label_standoff = 10
         high_param_map_fig.axis.axis_label_text_font_style = 'normal'
         high_param_map_fig.xaxis.major_label_text_font_size = '0pt'
 
@@ -1421,13 +1427,10 @@ class PlotOperator(object):
             x_text2 = self.x_range_map[0] + (self.x_range_map[1]-self.x_range_map[0])*0.55
             y_text = self.y_range_map[1] - (self.y_range_map[1]-self.y_range_map[0])*0.025
             if self.fit_model == 'gauss':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.1f} dva'.format(
-                                                                                                deriv_model_mat[rsq_idx],
-                                                                                                deriv_model_mat[ecc_idx],
-                                                                                                deriv_model_mat[size_idx],
-                                                                                                 )
-                text2 = 'Cov.: \t{:1.0f} %'.format(   deriv_model_mat[cov_idx]*100,
-                                                                        )
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva'.format(deriv_model_mat[rsq_idx],
+                                                                        deriv_model_mat[ecc_idx])
+                text2 = 'Size: \t{:1.1f} dva\nCov.: \t{:1.0f} %'.format(deriv_model_mat[size_idx],
+                                                                        deriv_model_mat[cov_idx]*100)
 
             elif self.fit_model == 'css':
                 text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.1f} dva'.format(   deriv_model_mat[rsq_idx],
@@ -1490,14 +1493,16 @@ class PlotOperator(object):
         low_param_tc_fig.xaxis.axis_label       =   self.x_label_tc
         low_param_tc_fig.yaxis.axis_label       =   self.y_label_tc
         low_param_tc_fig.grid.grid_line_color   =   None
-        # low_param_tc_fig.axis.minor_tick_in     =   False
-        # low_param_tc_fig.axis.minor_tick_out    =   False
-        # low_param_tc_fig.axis.major_tick_in     =   False
+        low_param_tc_fig.axis.minor_tick_in     =   0
+        low_param_tc_fig.axis.minor_tick_out    =   0
+        low_param_tc_fig.axis.major_tick_in     =   0
         low_param_tc_fig.outline_line_alpha     =   0
         low_param_tc_fig.xaxis.ticker           =   np.arange(self.x_range_tc[0],self.x_range_tc[1] + self.x_tick_tc, self.x_tick_tc)
         low_param_tc_fig.background_fill_color  =   self.bg_color
         low_param_tc_fig.axis.axis_label_standoff = 10
+        low_param_tc_fig.yaxis.major_label_standoff = 10
         low_param_tc_fig.axis.axis_label_text_font_style = 'normal'
+        low_param_tc_fig.yaxis.formatter = NumeralTickFormatter(format="00.0")
         low_param_tc_fig.add_layout(Span(location = 0, dimension = 'width', line_alpha = 0.5, line_color = 'black', line_width = 1, line_dash = 'dashed'))
 
         if self.num_voxel[0] != -1:
@@ -1560,6 +1565,8 @@ class PlotOperator(object):
         low_param_map_fig.xaxis.ticker           =   np.arange(self.x_range_map[0],self.x_range_map[1] + self.x_tick_map, self.x_tick_map)
         low_param_map_fig.background_fill_color  =   self.bg_color
         low_param_map_fig.axis.axis_label_standoff = 10
+        low_param_map_fig.yaxis.major_label_standoff = 10
+
         low_param_map_fig.axis.axis_label_text_font_style = 'normal'
 
         if self.num_voxel[0] != -1:
@@ -1591,13 +1598,10 @@ class PlotOperator(object):
             x_text2 = self.x_range_map[0] + (self.x_range_map[1]-self.x_range_map[0])*0.55
             y_text = self.y_range_map[1] - (self.y_range_map[1]-self.y_range_map[0])*0.025
             if self.fit_model == 'gauss':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.1f} dva'.format(
-                                                                                                deriv_model_mat[rsq_idx],
-                                                                                                deriv_model_mat[ecc_idx],
-                                                                                                deriv_model_mat[size_idx],
-                                                                                                 )
-                text2 = 'Cov.: \t{:1.0f} %'.format(   deriv_model_mat[cov_idx]*100
-                                                                        )
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva'.format(deriv_model_mat[rsq_idx],
+                                                                        deriv_model_mat[ecc_idx])
+                text2 = 'Size: \t{:1.1f} dva\nCov.: \t{:1.0f} %'.format(deriv_model_mat[size_idx],
+                                                                        deriv_model_mat[cov_idx]*100)
 
             elif self.fit_model == 'css':
                 text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.2f} dva'.format(   deriv_model_mat[rsq_idx],
@@ -1614,12 +1618,12 @@ class PlotOperator(object):
 
         # Time course stimuli legend
         # --------------------------
+
+
         time_leg_fig              =   figure(   plot_width          =   self.p_width,
                                                 plot_height         =   int(self.p_height/8),
                                                 x_range             =   self.x_range_tc,
                                                 y_range             =   (0,1),
-                                                x_axis_type         =   None,
-                                                y_axis_type         =   None,
                                                 outline_line_color  =   "white",
                                                 min_border_left     =   self.min_border_large,
                                                 min_border_right    =   self.min_border_large,
@@ -1627,21 +1631,31 @@ class PlotOperator(object):
                                                 min_border_top      =   self.min_border_large,
                                                 toolbar_location    =   None)
 
-        stim_on = ([10,27],[38,55],[66,83],[94,111])
-        stim_off = ([0,9],[28,37],[56,65],[84,93],[112,121])
-        stim_dir = (['left'],['down'],['right'],['up'])
+        
+        time_leg_fig.grid.grid_line_color     =   None                                                                    # set axis grid color  
+        time_leg_fig.axis.axis_line_color     =   'white'
+        time_leg_fig.axis.minor_tick_in       =   0                                                                       # set axis minor tick in
+        time_leg_fig.axis.minor_tick_out      =   0                                                                       # set axis minor tick out
+        time_leg_fig.axis.major_tick_in       =   0                                                                       # set axis major tick in
+        time_leg_fig.axis.major_tick_out      =   0                                                                       # set axis major tick in
+        time_leg_fig.outline_line_alpha       =   0                                                                       # set contour box alpha
+        time_leg_fig.background_fill_color    =   self.bg_color                                                           # set background color
+        time_leg_fig.xaxis.major_label_text_font_size = '0pt'                                                             # set x axis font size
+        time_leg_fig.yaxis.major_label_text_color  = 'white'
+        time_leg_fig.yaxis.axis_label_standoff = 30
+        time_leg_fig.yaxis.major_label_standoff = 10
+        time_leg_fig.yaxis.axis_label         = ' '                                                                        # define x axis label
+
+        stim_on = np.array(self.stim_on)*self.tr_dur
+        stim_dir = self.stim_dir
 
         for t_stim_on in np.arange(0,len(stim_on),1):
             time_leg_fig.quad(left=stim_on[t_stim_on][0], right=stim_on[t_stim_on][1], top=1, bottom=0, fill_color="black",line_color = 'white',line_width = 1)
             x_dir_txt = (stim_on[t_stim_on][1]+stim_on[t_stim_on][0])/2.0
             time_leg_fig.text(x = x_dir_txt, y=0.5,text = ['{text}'.format(text = stim_dir[t_stim_on][0])],text_align = 'center',text_font_size = '8pt',text_color = 'white',text_baseline = 'middle')
 
-        for t_stim_off in np.arange(0,len(stim_off),1):
-            time_leg_fig.quad(left=stim_off[t_stim_off][0], right=stim_off[t_stim_off][1], top=1, bottom=0, fill_color=self.bg_color,line_color = 'white',line_width = 1)
-
         # up-right space
         s2 = Spacer(width=int(self.p_height/2), height=int(self.p_height/10))
-
 
         # Put figure together
         # -------------------
