@@ -382,7 +382,7 @@ def draw_cortex_vertex(subject,xfmname,data,cmap,vmin,vmax,description,cbar = 'd
 
     return volume
 
-def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, folder_alias):
+def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, model_func, hdf5_file, folder_alias):
     """
     masks data in in_file with mask in mask_file,
     to be stored in an hdf5 file
@@ -394,6 +394,7 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, 
     in_files : absolute path to functional nifti-file
     mask_file_L : absolute path to LH mask nifti-file 
     mask_file_R : absolute path to RH mask nifti-file 
+    model_func: pRF model function
     hdf5_file : absolute path to hdf5 file.
     folder_alias : name of the to-be-created folder in the hdf5 file.
     
@@ -412,13 +413,11 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, 
     # load deriv file to mask
     deriv_file_img = nb.load(deriv_file)
     deriv_file_data = deriv_file_img.get_data()
-    deriv_data_name = os.path.split(deriv_file)[-1].split('.nii.gz')[0] 
 
     # load tc file to mask
     tc_file_img = nb.load(tc_file)
     tc_file_data = tc_file_img.get_data()
-    tc_data_name = os.path.split(tc_file)[-1].split('.nii.gz')[0]
-
+    
     # load masks
     mask_file_L_img = nb.load(mask_file_L)
     mask_file_L_data = mask_file_L_img.get_data()
@@ -443,6 +442,21 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, 
     tc_mask_L_data = tc_file_data[mask_file_L_data == True,:]
     tc_mask_R_data = tc_file_data[mask_file_R_data == True,:]
     tc_mask_data = np.vstack((tc_mask_L_data,tc_mask_R_data))
+
+
+    # model time course
+    sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
+            non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
+    tc_model_mask_data = np.zeros(tc_mask_data.shape)*np.nan
+    for i in np.arange(0,tc_model_mask_data.shape[0]):
+        if np.isnan(deriv_mask_data[i,rsq_idx]):
+            pass
+        else:
+            tc_model_mask_data[i,:] = model_func.generate_prediction(x = deriv_mask_data[i,x_idx],
+                                                                     y = deriv_mask_data[i,y_idx], 
+                                                                     sigma = deriv_mask_data[i,size_idx],
+                                                                     beta = deriv_mask_data[i,amp_idx],
+                                                                     baseline = deriv_mask_data[i,baseline_idx])
     
     try:
         h5file = h5py.File(hdf5_file, "r+")
@@ -454,12 +468,15 @@ def mask_nifti_2_hdf5(deriv_file, tc_file, mask_file_L, mask_file_R, hdf5_file, 
     except:
         None
 
-    h5file.create_dataset(  '{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = deriv_data_name),
+    h5file.create_dataset(  '{folder_alias}/derivatives'.format(folder_alias = folder_alias),
                             data = deriv_mask_data,
                             dtype ='float32')
 
-    h5file.create_dataset(  '{folder_alias}/{data_name}'.format(folder_alias = folder_alias, data_name = tc_data_name),
+    h5file.create_dataset(  '{folder_alias}/time_course'.format(folder_alias = folder_alias),
                             data = tc_mask_data,
+                            dtype ='float32')
+    h5file.create_dataset(  '{folder_alias}/time_course_model'.format(folder_alias = folder_alias),
+                            data = tc_model_mask_data,
                             dtype ='float32')
     h5file.create_dataset(  '{folder_alias}/coord'.format(folder_alias = folder_alias),
                             data = coord_mask,

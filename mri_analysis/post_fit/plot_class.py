@@ -1242,43 +1242,16 @@ class PlotOperator(object):
         sign_idx, rsq_idx, ecc_idx, polar_real_idx, polar_imag_idx , size_idx, \
             non_lin_idx, amp_idx, baseline_idx, cov_idx, x_idx, y_idx = 0,1,2,3,4,5,6,7,8,9,10,11
 
-        
-        def get_prediction(fit_model,num_voxel):
-            
-
-            # get data time course
-            tc_data_mat = self.tc_mat[num_voxel,:]
-            
-
-            # # get model time course
-            if fit_model == 'gauss':
-                tc_model_mat = self.model_func.generate_prediction( 
-                                                    x = self.deriv_mat[num_voxel,x_idx], 
-                                                    y = self.deriv_mat[num_voxel,y_idx], 
-                                                    sigma = self.deriv_mat[num_voxel,size_idx],
-                                                    beta = self.deriv_mat[num_voxel,amp_idx], 
-                                                    baseline = self.deriv_mat[num_voxel,baseline_idx])
-
-            elif fit_model == 'css':
-                tc_model_mat = self.model_func.generate_prediction( 
-                                                    x = self.deriv_mat[num_voxel,x_idx], 
-                                                    y = self.deriv_mat[num_voxel,y_idx], 
-                                                    sigma = self.deriv_mat[num_voxel,size_idx],
-                                                    beta = self.deriv_mat[num_voxel,amp_idx], 
-                                                    n = self.deriv_mat[num_voxel,non_lin_idx], 
-                                                    baseline = self.deriv_mat[num_voxel,baseline_idx])
-            
-            deriv_model_mat = self.deriv_mat[num_voxel,:]
-
-            return (tc_data_mat, tc_model_mat,deriv_model_mat)
-
 
         # Time course - high parameter
         # ---------------------------
 
         # get model and data time course
         if self.num_voxel[1] != -1:
-            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_voxel = self.num_voxel[1])
+            tc_data_mat = self.tc_mat[self.num_voxel[1],:]
+            tc_model_mat = self.tc_model_mat[self.num_voxel[1],:]
+            deriv_model_mat = self.deriv_mat[self.num_voxel[1],:]
+            coord_mat = self.coord_mat[self.num_voxel[1],:]
             low_val = np.nanpercentile(tc_data_mat,5)*1.5
             if np.round(low_val,0): low_val_dec_round = 1
             elif np.round(low_val,1): low_val_dec_round = 2
@@ -1427,19 +1400,19 @@ class PlotOperator(object):
             x_text2 = self.x_range_map[0] + (self.x_range_map[1]-self.x_range_map[0])*0.55
             y_text = self.y_range_map[1] - (self.y_range_map[1]-self.y_range_map[0])*0.025
             if self.fit_model == 'gauss':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva'.format(deriv_model_mat[rsq_idx],
-                                                                        deriv_model_mat[ecc_idx])
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nCoord: \t[{:1.0f},{:1.0f},{:1.0f}]'.format(deriv_model_mat[rsq_idx],
+                                                                                                            deriv_model_mat[ecc_idx],
+                                                                                                            coord_mat[0],coord_mat[1],coord_mat[2])
                 text2 = 'Size: \t{:1.1f} dva\nCov.: \t{:1.0f} %'.format(deriv_model_mat[size_idx],
                                                                         deriv_model_mat[cov_idx]*100)
 
             elif self.fit_model == 'css':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.1f} dva'.format(   deriv_model_mat[rsq_idx],
-                                                                                                deriv_model_mat[ecc_idx],
-                                                                                                deriv_model_mat[size_idx],
-                                                                                                 )
-                text2 = 'n:    \t{:1.1f}\nCov.: \t{:1.0f} %'.format(  deriv_model_mat[non_lin_idx],
-                                                                                        deriv_model_mat[cov_idx]*100,
-                                                                        )
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nCoord: \t[{:1.0f},{:1.0f},{:1.0f}]'.format(deriv_model_mat[rsq_idx],
+                                                                                                            deriv_model_mat[ecc_idx],
+                                                                                                            coord_mat[0],coord_mat[1],coord_mat[2])
+                text2 = 'n:    \t{:1.1f}\nCov.: \t{:1.0f} %\nSize: \t{:1.1f} dva'.format( deriv_model_mat[non_lin_idx],
+                                                                                          deriv_model_mat[cov_idx]*100,
+                                                                                          deriv_model_mat[size_idx])
 
             high_param_map_fig.text(x=x_text1,y=y_text,text = [text1],text_font_size = '8pt',text_baseline = 'top')
             high_param_map_fig.text(x=x_text2,y=y_text,text = [text2],text_font_size = '8pt',text_baseline = 'top')
@@ -1451,7 +1424,10 @@ class PlotOperator(object):
         # get model and data time course        
         if self.num_voxel[0] != -1:
             
-            tc_data_mat,tc_model_mat,deriv_model_mat = get_prediction(fit_model = self.fit_model,num_voxel = self.num_voxel[0])
+            tc_data_mat = self.tc_mat[self.num_voxel[0],:]
+            tc_model_mat = self.tc_model_mat[self.num_voxel[0],:]
+            deriv_model_mat = self.deriv_mat[self.num_voxel[0],:]
+            coord_mat = self.coord_mat[self.num_voxel[0],:]
             low_val = np.nanpercentile(tc_data_mat,5)*1.5
             if np.round(low_val,0): low_val_dec_round = 1
             elif np.round(low_val,1): low_val_dec_round = 2
@@ -1598,22 +1574,23 @@ class PlotOperator(object):
             x_text2 = self.x_range_map[0] + (self.x_range_map[1]-self.x_range_map[0])*0.55
             y_text = self.y_range_map[1] - (self.y_range_map[1]-self.y_range_map[0])*0.025
             if self.fit_model == 'gauss':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva'.format(deriv_model_mat[rsq_idx],
-                                                                        deriv_model_mat[ecc_idx])
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nCoord: \t[{:1.0f},{:1.0f},{:1.0f}]'.format(deriv_model_mat[rsq_idx],
+                                                                                                            deriv_model_mat[ecc_idx],
+                                                                                                            coord_mat[0],coord_mat[1],coord_mat[2])
                 text2 = 'Size: \t{:1.1f} dva\nCov.: \t{:1.0f} %'.format(deriv_model_mat[size_idx],
                                                                         deriv_model_mat[cov_idx]*100)
 
             elif self.fit_model == 'css':
-                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nSize: \t{:1.2f} dva'.format(   deriv_model_mat[rsq_idx],
-                                                                                                deriv_model_mat[ecc_idx],
-                                                                                                deriv_model_mat[size_idx],
-                                                                                                 )
-                text2 = 'n:    \t{:1.1f}\nCov.: \t{:1.0f} %'.format(  deriv_model_mat[non_lin_idx],
-                                                                                        deriv_model_mat[cov_idx]*100
-                                                                        )
+                text1 = 'r2:     \t{:1.2f}\nEcc.: \t{:1.1f} dva\nCoord: \t[{:1.0f},{:1.0f},{:1.0f}]'.format(deriv_model_mat[rsq_idx],
+                                                                                                            deriv_model_mat[ecc_idx],
+                                                                                                            coord_mat[0],coord_mat[1],coord_mat[2])
+                text2 = 'n:    \t{:1.1f}\nCov.: \t{:1.0f} %\nSize: \t{:1.1f} dva'.format( deriv_model_mat[non_lin_idx],
+                                                                                          deriv_model_mat[cov_idx]*100,
+                                                                                          deriv_model_mat[size_idx])
 
             low_param_map_fig.text(x=x_text1,y=y_text,text = [text1],text_font_size = '8pt',text_baseline = 'top')
             low_param_map_fig.text(x=x_text2,y=y_text,text = [text2],text_font_size = '8pt',text_baseline = 'top')
+
 
 
         # Time course stimuli legend

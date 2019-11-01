@@ -55,11 +55,6 @@ from utils import set_pycortex_config_file
 from bokeh.io import output_notebook, show, save, output_file, export_png, export_svgs
 from bokeh.layouts import row, column, gridplot
 
-# Popeye imports
-import popeye.utilities as utils
-from popeye.visual_stimulus import VisualStimulus
-import popeye.css_neg as css
-import popeye.og_neg as og
 
 # Check system
 # ------------
@@ -90,42 +85,6 @@ bokeh_dir = "{base_dir}/pp_data/{subject}/{fit_model}/bokeh_outputs".format(base
 try: os.makedirs(bokeh_dir)
 except: pass
 
-# Create stimulus design
-# ----------------------
-visual_dm_file = scipy.io.loadmat("{base_dir}/pp_data/visual_dm/vis_design.mat".format(base_dir = base_dir))
-visual_dm = visual_dm_file['stim']
-stimulus = VisualStimulus(  stim_arr = visual_dm,
-                            viewing_distance = analysis_info["screen_distance"],
-                            screen_width = analysis_info["screen_width"],
-                            scale_factor = 1/10.0,
-                            tr_length = analysis_info["TR"],
-                            dtype = np.short)
-
-if fit_model == 'gauss':
-    fit_func = og.GaussianFit
-    model_func = og.GaussianModel(  stimulus = stimulus,
-                                    hrf_model = utils.spm_hrf)
-    step_r2 = [0,100/3.0,250/3.0,100]
-    list_r2_level = ['High','Low']
-    step_params = [0,100/3.0,200/3.0,100]
-    list_params_level = ['High','Low']
-    list_params = ['ecc','amp','size','cov']
-    num_plots = len(list_params)*len(step_params)*(len(step_r2)-1)
-    
-elif fit_model == 'css':
-    fit_func = css.CompressiveSpatialSummationFit
-    model_func = css.CompressiveSpatialSummationModel(  stimulus = stimulus,
-                                                        hrf_model = utils.spm_hrf)
-    step_r2 = [0,100/3.0,200/3.0,100]
-    list_r2_level = ['Low','High']
-    step_params = [0,100/3.0,200/3.0,100]
-    list_params_level = ['Low','High']
-    list_params = ['ecc','amp','size','cov','non_lin']
-
-    num_plots = len(list_params)*len(step_params)*(len(step_r2)-1)
-    
-model_func.hrf_delay = 0
-
 # Draw main analysis figure
 # -------------------------
 print('creating bokeh plots')
@@ -138,7 +97,7 @@ for roi_num, roi in enumerate(rois):
     for prf_sign in prf_signs:
         
         # create html folder
-        exec("html_dir_{prf_sign} = '{bokeh_dir}/html/{prf_sign}'".format(bokeh_dir = bokeh_dir, prf_sign = prf_sign))
+        exec("html_dir_{prf_sign} = '{bokeh_dir}/html/{acq}/{prf_sign}'".format(bokeh_dir = bokeh_dir, acq = acq, prf_sign = prf_sign))
         try: exec('os.makedirs(html_dir_{prf_sign})'.format(prf_sign = prf_sign))
         except: pass
 
@@ -149,30 +108,30 @@ for roi_num, roi in enumerate(rois):
             except: pass
             exec('svg_folder = svg_dir_{prf_sign}'.format(prf_sign = prf_sign))
 
-        
         # load h5 file
         h5_file = h5py.File("{h5_dir}/{roi}_{acq}.h5".format(h5_dir = h5_dir, roi = roi, acq = acq),'r')
 
         # load deriv data
-        deriv_data_name = "prf_deriv_{acq}_{prf_sign}".format(acq = acq, prf_sign = prf_sign)
-        deriv_data = h5_file['{folder_alias}/{data_name}'.format(folder_alias = prf_sign, data_name = deriv_data_name)]
+        deriv_data = h5_file['{folder_alias}/derivatives'.format(folder_alias = prf_sign)]
         
         # load time course data
-        tc_data_name = "{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg".format(subject = subject, acq = acq)
-        tc_data = h5_file['{folder_alias}/{data_name}'.format(folder_alias = prf_sign, data_name = tc_data_name)]
+        tc_data = h5_file['{folder_alias}/time_course'.format(folder_alias = prf_sign)]
+
+        # load model time course data
+        tc_model_data = h5_file['{folder_alias}/time_course_model'.format(folder_alias = prf_sign)]
 
         # load coordinates data
-        coord_data_name = "coord"
-        coord_data = h5_file['{folder_alias}/{data_name}'.format(folder_alias = prf_sign, data_name = coord_data_name)]
+        coord_data = h5_file['{folder_alias}/coord'.format(folder_alias = prf_sign)]
         
         # threshold data
         voxel_num_ini = deriv_data.shape[0]
         voxel_num = 0
         if voxel_num_ini > 0:
             # take out nan
-            deriv_data = deriv_data[~np.isnan(deriv_data[:,rsq_idx]),:]
             tc_data = tc_data[~np.isnan(deriv_data[:,rsq_idx]),:]
+            tc_model_data = tc_model_data[~np.isnan(deriv_data[:,rsq_idx]),:]
             coord_data = coord_data[~np.isnan(deriv_data[:,rsq_idx]),:]
+            deriv_data = deriv_data[~np.isnan(deriv_data[:,rsq_idx]),:]
             
             # threshold on eccentricity and size
             deriv_data_th = deriv_data
@@ -185,6 +144,7 @@ for roi_num, roi in enumerate(rois):
 
             deriv_data = deriv_data[np.logical_and.reduce(all_th),:]
             tc_data = tc_data[np.logical_and.reduce(all_th),:]
+            tc_model_data = tc_model_data[np.logical_and.reduce(all_th),:]
             coord_data = coord_data[np.logical_and.reduce(all_th),:]
             voxel_num = deriv_data.shape[0]
         
@@ -195,6 +155,7 @@ for roi_num, roi in enumerate(rois):
             new_order = np.random.permutation(voxel_num)
             deriv_data = deriv_data[new_order,:]
             tc_data = tc_data[new_order,:]
+            tc_model_data = tc_model_data[new_order,:]
             coord_data = coord_data[new_order,:]
             deriv_data_sample = deriv_data[0:int(np.round(voxel_num*sample_ratio)),:]
             
@@ -466,9 +427,20 @@ for roi_num, roi in enumerate(rois):
             output_file(output_file_html, title = html_title)
             save(all_fig3)
 
+
             # FIG 4: pRF time course
             # ----------------------
 
+            step_r2 = [0,100/3.0,250/3.0,100]
+            list_r2_level = ['High','Low']
+            step_params = [0,100/3.0,200/3.0,100]
+            list_params_level = ['Low','High']
+            if fit_model == 'gauss':
+                list_params = ['ecc','amp','size','cov']
+            elif fit_model == 'css':
+                list_params = ['ecc','amp','size','cov','non_lin']
+            num_plots = len(list_params)*len(step_params)*(len(step_r2)-1)
+                
             # pRF tc
             params_pRFtc = param_all
             params_pRFtc.update(
@@ -534,15 +506,15 @@ for roi_num, roi in enumerate(rois):
                     elif r2_level == 'High':
                         num_voxel2draw = num_voxel[2:4]
 
-                    
-                    params_pRFtc.update(   
+                    params_pRFtc.update(
                                     {   'params': param,
                                         'r2_level': r2_level,
                                         'deriv_mat': deriv_data,
                                         'tc_mat': tc_data,
+                                        'tc_model_mat': tc_model_data,
                                         'num_voxel': num_voxel2draw,
-                                        'fit_model': fit_model,
-                                        'model_func': model_func,
+                                        'fit_model':fit_model,
+                                        'coord_mat':coord_data,
                                         'stim_on': ([10,28],[38,56],[66,84],[94,112]),
                                         'stim_dir': (['left'],['down'],['right'],['up']),
                                         'prf_sign': prf_sign,
@@ -551,13 +523,15 @@ for roi_num, roi in enumerate(rois):
                     if save_svg == 1:
                         params_pRFtc.update({'svg_filename':'{roi}_{prf_sign}_pRFtc_rsq_{r2_level}_{param}'.format(prf_sign = prf_sign, roi = roi,r2_level = r2_level, param = param)})
 
-                    
                     out4,main_fig4  = plotter.draw_figure(  parameters = params_pRFtc,
                                                             plot = 'tc')
                     
+
+
                     f_pRFtc.append(out4)
 
             if fit_model == 'gauss':
+
                 all_fig4 = gridplot([   [f_pRFtc[0],f_pRFtc[1]],
                                         [f_pRFtc[2],f_pRFtc[3]],
                                         [f_pRFtc[4],f_pRFtc[5]],
@@ -574,7 +548,6 @@ for roi_num, roi in enumerate(rois):
                                                 subject = subject,roi = roi,prf_sign = prf_sign,voxel_num = voxel_num)
             output_file(output_file_html, title = html_title)
             save(all_fig4)
-            deb()
-
+            
         else:
-            print("drawing {roi}_{prf_sign} figures not possible: n = {voxel_num}".format(roi = roi,voxel_num = voxel_num,prf_sign = prf_sign)) 
+            print("drawing {roi}_{prf_sign} figures not possible: n = {voxel_num}".format(roi = roi,voxel_num = voxel_num,prf_sign = prf_sign))

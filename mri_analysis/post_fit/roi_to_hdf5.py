@@ -27,6 +27,7 @@ import sys
 import json
 import numpy as np
 import ipdb
+import scipy.io
 import matplotlib.pyplot as plt
 opj = os.path.join
 deb = ipdb.set_trace
@@ -39,6 +40,10 @@ import cortex
 # Function import
 # ---------------
 from utils import set_pycortex_config_file, mask_nifti_2_hdf5
+import popeye.utilities as utils
+from popeye.visual_stimulus import VisualStimulus
+import popeye.css_neg as css
+import popeye.og_neg as og
 
 # Get inputs
 # ----------
@@ -63,6 +68,29 @@ deriv_dir = "{base_dir}/pp_data/{subject}/{fit_model}/deriv".format(base_dir = b
 xfm_name = "identity.{acq}".format(acq = acq)
 rois = analysis_info['rois']
 cortical_mask = analysis_info['cortical_mask']
+
+
+# Define visual design
+# --------------------
+visual_dm_file = scipy.io.loadmat(opj(base_dir,'pp_data','visual_dm','vis_design.mat'))
+visual_dm = visual_dm_file['stim']
+stimulus = VisualStimulus(  stim_arr = visual_dm,
+                            viewing_distance = analysis_info["screen_distance"],
+                            screen_width = analysis_info["screen_width"],
+                            scale_factor = 1/10.0,
+                            tr_length = analysis_info["TR"],
+                            dtype = np.short)
+
+if fit_model == 'gauss':
+    fit_func = og.GaussianFit
+    model_func = og.GaussianModel(  stimulus = stimulus,
+                                    hrf_model = utils.spm_hrf)
+elif fit_model == 'css':
+    fit_func = css.CompressiveSpatialSummationFit
+    model_func = css.CompressiveSpatialSummationModel(  stimulus = stimulus,
+                                                        hrf_model = utils.spm_hrf)
+
+model_func.hrf_delay = 0
 
 # Set pycortex db and colormaps
 # -----------------------------
@@ -90,7 +118,7 @@ except: pass
 
 tc_file = "{base_dir}/pp_data/{subject}/func/{subject}_task-AttendStim_{acq}_fmriprep_sg_psc_avg.nii.gz".format(base_dir = base_dir, subject = subject, acq = acq)
 for roi in rois:
-	print('creating {roi} h5 files'.format(roi = roi))
+	print('creating {roi} h5 files (deriv, tc, tc_model)'.format(roi = roi))
 
 	h5_file = "{h5_dir}/{roi}_{acq}.h5".format(h5_dir = h5_dir, roi = roi, acq = acq)
 	
@@ -109,5 +137,7 @@ for roi in rois:
 							mask_file_L = mask_file_L,
 							mask_file_R = mask_file_R,
 							hdf5_file = h5_file,
-							folder_alias = prf_sign)
-
+							folder_alias = prf_sign,
+							model_func = model_func,
+							)
+		
