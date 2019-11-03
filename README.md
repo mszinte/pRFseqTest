@@ -1,7 +1,7 @@
 # pRFseqTEST
 By :      Martin SZINTE<br/>
 Projet :  pRFseqTest<br/>
-With :    Julien Sein, Bruno Nazarian, Anna Montagnini & Guillaume Masson<br/>
+With :    Julien Sein, Bruno Nazarian, Jean-Luc Anton, Anna Montagnini & Guillaume Masson<br/>
 Version:  1.0<br/>
 
 ## Version description
