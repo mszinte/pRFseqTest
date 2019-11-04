@@ -37,7 +37,7 @@ acquisition sequences optimal for (occipital, parietal) frontal and subcortical 
 7. Fit results per z slices using fit/submit_fit_jobs.py
 8. Combine fits, compute pRF derivatives, create pycortex databases/transform/mask using post_fit/post_fit.py
 9. Create flatmaps, datasets and webviewers using post_fit/pp_roi.py
-10. Draw ROIs using inkscape
+10. Using inkscape, draw ROIs and sulcus (https://drive.google.com/file/d/1zk3zPfKkDrKlYvsZzSVVw3Q9ePAc6hK1/view?usp=sharing)
 11. Re-create flatmaps, datasets and webviewers with ROIs using post_fit/pp_roi.py
 12. Create ROIs hdf5 files using rois_to_hdf5.py
 13. Draw roi plots with bokeh using post_fit/roi_plots.py
