@@ -1,67 +1,90 @@
+"""
+-----------------------------------------------------------------------------------------
+freeview.py
+-----------------------------------------------------------------------------------------
+Goal of the script:
+Make freeview sagital video of segmentation (to run before and after manual edit)
+-----------------------------------------------------------------------------------------
+Input(s):
+sys.argv[1]: subject
+sys.argv[2]: x slice start number (e.g. 0)
+sys.argv[3]: x slice end number (e.g. 255)
+sys.argv[4]: explanations ('before_edit', 'after_edit')
+-----------------------------------------------------------------------------------------
+Output(s):
+preprocessed files
+-----------------------------------------------------------------------------------------
+To run:
+cd ~/disks/meso_H/projects/pRFgazeMod/mri_analysis/
+python pre_fit/freeview.py sub-001 45 195 before_edit
+python pre_fit/freeview.py sub-001 45 195 after_edit
+-----------------------------------------------------------------------------------------
+Written by Martin Szinte (martin.szinte@gmail.com)
+-----------------------------------------------------------------------------------------
+"""
+
+# imports modules
 import subprocess as sb
 import os
 import glob
 import ipdb
+import sys
+import json
+import numpy as np
 deb = ipdb.set_trace
 
+# Inputs
 subject = sys.argv[1]
+x_start = int(sys.argv[2])
+x_end = int(sys.argv[3])
+expl = sys.argv[4]
 
 # Define analysis parameters
 with open('settings.json') as f:
     json_s = f.read()
     analysis_info = json.loads(json_s)
 
-# base_dir = '/Users/martin/disks/meso_S/data/pRFseqTest/deriv_data/fmriprep/'
+# define directory
 base_dir = analysis_info['base_dir_local']
-fs_dir = "{base_dir}/deriv_data/fmriprep/{subject}".format(base_dir = base_dir, subject = subject)
+fs_dir = "{base_dir}/deriv_data/fmriprep/freesurfer/{subject}".format(base_dir = base_dir, subject = subject)
+bids_dir = "{base_dir}/bids_data/{subject}".format(base_dir = base_dir, subject = subject)
+vid_dir = "{fs_dir}/vid/{expl}".format(fs_dir = fs_dir, expl = expl)
+image_dir = "{vid_dir}/img".format(vid_dir = vid_dir)
+sh_dir = "{vid_dir}/{subject}_{expl}.sh".format(vid_dir = vid_dir, subject = subject, expl = expl)
+try: os.makedirs(image_dir)
+except: pass
 
-t1mgz = 
-mean_epi = 
+# list commands
+anat_cmd = '-v {t1mgz}:grayscale=10,100'.format(t1mgz = '{fs_dir}/mri/T1.mgz'.format(fs_dir = fs_dir))
+volumes_cmd = '-f {fs_dir}/surf/lh.white:color=red:edgecolor=red \
+-f {fs_dir}/surf/rh.white:color=red:edgecolor=red \
+-f {fs_dir}/surf/lh.pial:color=white:edgecolor=white \
+-f {fs_dir}/surf/rh.pial:color=white:edgecolor=white '.format(fs_dir = fs_dir)
 
-anat_cmd = '-v {t1mgz}:grayscale=10,100'.format(t1mgz = t1mgz)
-mean_epi_cmd = '-v {epi}:colormap=jet:heatscale=20,200,500:opacity=0.65'
-volumes_cmd = '-f {lh_wm}:color=red:edgecolor=red -f {rh_wm}:color=red:edgecolor=red -f {lh_pial}:color=white:edgecolor=white -f {rh_pial}:color=white:edgecolor=white'.format()
-slice_cmd = ' -slice {xpos} 127 127 \n -ss {opfn} \n'
-freeview_cmd = 'freeview -cmd {anat_cmd} {mean_epi_cmd} {volumes_cmd} -viewport sagittal {slice_cmd}'.fomat(
+slice_cmd = ''
+for x in np.arange(x_start,x_end):
+    if x < 10:x_name = '00{x}'.format(x = x)
+    elif x >= 10 and x < 100:x_name = '0{x}'.format(x = x)
+    else: x_name = '{x}'.format(x = x)
+
+    slice_cmd += ' -slice {x} 127 127 \n -ss {image_dir}/{x_name}.png \n'.format(x = x,image_dir = image_dir,x_name = x_name)
+
+# main command
+freeview_cmd = '{anat_cmd} {volumes_cmd} -viewport sagittal {slice_cmd}-quit '.format(
                             anat_cmd = anat_cmd,
-                            mean_epi_cmd = mean_epi_cmd,
                             volumes_cmd = volumes_cmd,
                             slice_cmd = slice_cmd)
 
- """
+of = open(sh_dir, 'w')
+of.write(freeview_cmd)
+of.close()
 
+# run freeview cmd
+sb.call('freeview -cmd {sh_dir}'.format(sh_dir = sh_dir),shell=True)
 
+# convert images in video
+video_command = 'ffmpeg -framerate 5 -pattern_type glob -i "{image_dir}/*.png" -b:v 2M -c:v mpeg4 {vid_dir}/{subject}_{expl}.mp4'.format(
+                                        image_dir = image_dir, vid_dir = vid_dir, 
+                                        subject = subject, expl = expl)
 
-FS_folder = os.path.join(base_dir,'freesurfer',subject)
-target_directory = '/Users/martin/disks/meso_S/data/pRFseqTest/deriv_data/fmriprep/images/{subject}'.format(subject = subject)
-os.makedirs(target_directory, exist_ok=True)
-cmd_file = os.path.join(target_directory, 'cmd.txt')
-
-slices = range(0, 255)  #
-
-sj_cmd = cmd_txt.format(
-    anatomy=os.path.join(FS_folder, 'mri', 'T1.mgz'),
-    lh_wm=os.path.join(FS_folder, 'surf', 'lh.white'),
-    lh_pial=os.path.join(FS_folder, 'surf', 'lh.pial'),
-    rh_wm=os.path.join(FS_folder, 'surf', 'rh.white'),
-    rh_pial=os.path.join(FS_folder, 'surf', 'rh.pial'),
-    subject=subject,
-)
-
-for sag_slice in slices:
-
-    sj_cmd += slice_addition.format(
-        xpos=sag_slice,
-        opfn=os.path.join(target_directory, str(
-            sag_slice).zfill(3) + '.png')
-    )
-
-sj_cmd += ' -quit \n '
-
-with open(cmd_file, 'w') as f:
-    f.write(sj_cmd)
-
-# sb.call(freeview_command.format(cmd=cmd_file), shell=True)
-
-convert_command = 'ffmpeg -framerate 5 -pattern_type glob -i "{target_directory}/*.png" -b:v 2M -c:v mpeg4 {target_directory}/{subject}.mp4'.format(target_directory = target_directory, subject = subject)
-sb.call(convert_command, shell=True)
+os.system(video_command)
