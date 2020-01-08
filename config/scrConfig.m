@@ -102,9 +102,9 @@ elseif const.room == 2
     % ---------------------
     
     % Screen distance 
-    scr.dist                =   57;                            % general screen distance in cm
-    scr.distTop             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
-    scr.distBot             =   580;                           % screen distance to top of the screeen for eyelink in mm (!)
+    scr.dist                =   108;                           % general screen distance in cm (value to mimic screen scaner)
+    scr.distTop             =   1009;                          % screen distance to top of the screeen for eyelink in mm (!)
+    scr.distBot             =   1008;                          % screen distance to top of the screeen for eyelink in mm (!)
 
     % Center of the screen :
     scr.x_mid               =   (scr.scr_sizeX/2.0);

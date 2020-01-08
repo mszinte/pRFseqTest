@@ -94,7 +94,8 @@ if const.room == 1
     
     % first reading execution
     my_key.first_val = my_key.ni_session.inputSingleScan;
-    
+else
+    my_key.first_val = [0, 0, 0];
 end
     
 
