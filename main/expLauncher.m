@@ -7,7 +7,7 @@
 
 % Version description
 % ===================
-% Experiment in which we first use a squqre full screen 4 direction (left/right/up/down) 
+% Experiment in which we first use a squqre full screen 4 directions (left/right/up/down) 
 % bar pass stimuli with an attention task to the bar in order to pretest two whole brain multi-band
 % acquisition sequences optimal for (occipital, parietal) frontal and subcortical structures
 
@@ -30,7 +30,7 @@ Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpen
 % General settings
 % ----------------
 const.expName           =   'pRFseqTest';   % experiment name.
-const.expStart          =   0;              % Start of a recording exp                          0 = NO  , 1 = YES
+const.expStart          =   1;              % Start of a recording exp                          0 = NO  , 1 = YES
 const.checkTrial        =   0;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
 const.writeLogTxt       =   1;              % write a log file in addition to eyelink file      0 = NO  , 1 = YES
 const.genStimuli        =   0;              % Generate all stimuli                              0 = NO  , 1 = YES
@@ -39,7 +39,7 @@ const.mkVideo           =   0;              % Make a video of a run (on mac not 
 
 % External controls
 % -----------------
-const.tracker           =   0;              % run with eye tracker                              0 = NO  , 1 = YES
+const.tracker           =   1;              % run with eye tracker                              0 = NO  , 1 = YES
 const.scanner           =   0;              % run in MRI scanner                                0 = NO  , 1 = YES
 const.scannerTest       =   1;              % run with T returned at TR time                    0 = NO  , 1 = YES
 const.room              =   2;              % run in MRI or eye-tracking room                   1 = MRI , 2 = eye-tracking
