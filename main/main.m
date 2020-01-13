@@ -12,12 +12,21 @@ function main(const)
 % none
 % ----------------------------------------------------------------------
 % Function created by Martin SZINTE (martin.szinte@gmail.com)
-% Last update : 13 / 09 / 2019
+% Last update : 13 / 01 / 2020
 % Project :     pRFseqTest
 % Version :     1.0
 % ----------------------------------------------------------------------
 
 tic;
+% Connection
+% ----------
+if ismac && const.tracker
+    [~,~] = system('echo invibe | sudo -S networksetup -switchtolocation "Eyelink"');
+else
+    [~,~] = system('echo invibe | sudo -S networksetup -switchtolocation "Web"');
+end
+pause(2);
+
 % File director
 % -------------
 [const]                 =   dirSaveFile(const);
